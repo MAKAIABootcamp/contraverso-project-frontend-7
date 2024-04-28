@@ -1,0 +1,249 @@
+  /* --------------------------------------------------------------------------------------- */
+  /*   Founders Grotesk                                                                      */
+  /* --------------------------------------------------------------------------------------- */
+
+  /* Founders Grotesk Bold */
+@font-face {
+    font-family: 'Founders Grotesk Bold';
+    src: url('./Founders_Grotesk/FoundersGrotesk-Bold.otf') format('opentype');
+  }
+  
+  /* Founders Grotesk Bold Italic */
+  @font-face {
+    font-family: 'Founders Grotesk Bold Italic';
+    src: url('./Founders_Grotesk/FoundersGrotesk-BoldItalic.otf') format('opentype');
+  }
+  
+  /* Founders Grotesk Condensed Light */
+  @font-face {
+    font-family: 'Founders Grotesk Condensed Light';
+    src: url('./Founders_Grotesk/FoundersGroteskCond-Lt.otf') format('opentype');
+  }
+  
+  /* Founders Grotesk Light */
+  @font-face {
+    font-family: 'Founders Grotesk Light';
+    src: url('./Founders_Grotesk/FoundersGrotesk-Light.otf') format('opentype');
+  }
+  
+  /* Founders Grotesk Light Italic */
+  @font-face {
+    font-family: 'Founders Grotesk Light Italic';
+    src: url('./Founders_Grotesk/FoundersGrotesk-LightItalic.otf') format('opentype');
+  }
+  
+  /* Founders Grotesk Medium */
+  @font-face {
+    font-family: 'Founders Grotesk Medium';
+    src: url('./Founders_Grotesk/FoundersGrotesk-Medium.otf') format('opentype');
+  }
+  
+  /* Founders Grotesk Medium Italic */
+  @font-face {
+    font-family: 'Founders Grotesk Medium Italic';
+    src: url('./Founders_Grotesk/FoundersGrotesk-MediumItalic.otf') format('opentype');
+  }
+  
+  /* Founders Grotesk Regular */
+  @font-face {
+    font-family: 'Founders Grotesk Regular';
+    src: url('./Founders_Grotesk/FoundersGrotesk-Regular.otf') format('opentype');
+  }
+  
+  /* Founders Grotesk Regular Italic */
+  @font-face {
+    font-family: 'Founders Grotesk Regular Italic';
+    src: url('./Founders_Grotesk/FoundersGrotesk-RegularItalic.otf') format('opentype');
+  }
+  
+  /* Founders Grotesk Semibold */
+  @font-face {
+    font-family: 'Founders Grotesk Semibold';
+    src: url('./Founders_Grotesk/FoundersGrotesk-Semibold.otf') format('opentype');
+  }
+  
+  /* Founders Grotesk Semibold Italic */
+  @font-face {
+    font-family: 'Founders Grotesk Semibold Italic';
+    src: url('./Founders_Grotesk/FoundersGrotesk-SemiboldItalic.otf') format('opentype');
+  }
+  
+  /* Founders Grotesk Extra Condensed Bold */
+  @font-face {
+    font-family: 'Founders Grotesk Extra Condensed Bold';
+    src: url('./Founders_Grotesk/FoundersGroteskXCond-Bold.otf') format('opentype');
+  }
+  
+  /* Founders Grotesk Extra Condensed Light */
+  @font-face {
+    font-family: 'Founders Grotesk Extra Condensed Light';
+    src: url('./Founders_Grotesk/FoundersGroteskXCond-Lt.otf') format('opentype');
+  }
+  
+
+  /* --------------------------------------------------------------------------------------- */
+  /*   MADE Soulmaze                                                                         */
+  /* --------------------------------------------------------------------------------------- */
+
+  @font-face {
+    font-family: 'MADE Soulmaze Brush';
+    src: url('./made_souldmaze/MADE Soulmaze Brush PERSONAL USE.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'MADE Soulmaze Italic';
+    src: url('./made_souldmaze/MADE Soulmaze Italic PERSONAL USE.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'MADE Soulmaze Outline Italic';
+    src: url('./made_souldmaze/MADE Soulmaze Outline Italic PERSONAL USE.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'MADE Soulmaze Outline';
+    src: url('./made_souldmaze/MADE Soulmaze Outline PERSONAL USE.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'MADE Soulmaze';
+    src: url('./made_souldmaze/MADE Soulmaze PERSONAL USE.otf') format('opentype');
+  }  
+
+  /* --------------------------------------------------------------------------------------- */
+  /*   Filson Pro Black                                                                      */
+  /* --------------------------------------------------------------------------------------- */
+
+  @font-face {
+    font-family: 'Filson Pro Black';
+    src: url('./filson-pro-cufonfonts/FilsonProBlack.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'Filson Pro Black Italic';
+    src: url('./filson-pro-cufonfonts/FilsonProBlackItalic.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'Filson Pro Bold';
+    src: url('./filson-pro-cufonfonts/FilsonProBold.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'Filson Pro Bold Italic';
+    src: url('./filson-pro-cufonfonts/FilsonProBoldItalic.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'Filson Pro Book';
+    src: url('./filson-pro-cufonfonts/FilsonProBook.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'Filson Pro Book Italic';
+    src: url('./filson-pro-cufonfonts/FilsonProBookItalic.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'Filson Pro Heavy';
+    src: url('./filson-pro-cufonfonts/FilsonProHeavy.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'Filson Pro Heavy Italic';
+    src: url('./filson-pro-cufonfonts/FilsonProHeavyItalic.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'Filson Pro Light';
+    src: url('./filson-pro-cufonfonts/FilsonProLight.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'Filson Pro Light Italic';
+    src: url('./filson-pro-cufonfonts/FilsonProLightItalic.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'Filson Pro Medium';
+    src: url('./filson-pro-cufonfonts/FilsonProMedium.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'Filson Pro Medium Italic';
+    src: url('./filson-pro-cufonfonts/FilsonProMediumItalic.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'Filson Pro Regular';
+    src: url('./filson-pro-cufonfonts/FilsonProRegular.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'Filson Pro Regular Italic';
+    src: url('./filson-pro-cufonfonts/FilsonProRegularItalic.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'Filson Pro Thin';
+    src: url('./filson-pro-cufonfonts/FilsonProThin.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'Filson Pro Thin Italic';
+    src: url('./filson-pro-cufonfonts/FilsonProThinItalic.otf') format('opentype');
+  }  
+
+  /* --------------------------------------------------------------------------------------- */
+  /*   Inter                                                                                 */
+  /* --------------------------------------------------------------------------------------- */
+
+  @font-face {
+    font-family: 'Inter Black';
+    src: url('./Inter/Inter-Black.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Inter Bold';
+    src: url('./Inter/Inter-Bold.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Inter ExtraBold';
+    src: url('./Inter/Inter-ExtraBold.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Inter ExtraLight';
+    src: url('./Inter/Inter-ExtraLight.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Inter Light';
+    src: url('./Inter/Inter-Light.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Inter Medium';
+    src: url('./Inter/Inter-Medium.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Inter Regular';
+    src: url('./Inter/Inter-Regular.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Inter SemiBold';
+    src: url('./Inter/Inter-SemiBold.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Inter Thin';
+    src: url('./Inter/Inter-Thin.ttf') format('truetype');
+  }
+  
+
+  /* --------------------------------------------------------------------------------------- */
+  /*   Founders Grotesk                                                                      */
+  /* --------------------------------------------------------------------------------------- */
