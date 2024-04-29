@@ -5,7 +5,7 @@ const StyledInicioSomos = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336889/MONTAJE/INICIO/1_yykjgh.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  height: 60%;
+  height: 30rem;
   display: flex;
   flex-direction: column;
   align-items: center;

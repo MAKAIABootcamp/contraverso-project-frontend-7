@@ -3,5 +3,8 @@
 .inicio {
     background-color: #000000;
     font-family: 'Filson Pro Black';
-    height: 100vh;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
