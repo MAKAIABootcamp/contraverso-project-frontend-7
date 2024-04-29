@@ -1,9 +1,12 @@
+import InicioSomos from "../../components/Inicio/InicioSomos";
 import "./Inicio.scss";
 
 const Inicio = () => {
   return (
       <>
-        <div className="inicio">Inicio</div>
+        <div className="inicio">
+        <InicioSomos />
+        </div>
       </>
   );
 };
