@@ -1,5 +1,10 @@
 @import url('../../../fonts/fonts.css');
 
 .inicio {
-    background-color: palegreen;
+    background-color: #000000;
+    font-family: 'Filson Pro Black';
+    
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
