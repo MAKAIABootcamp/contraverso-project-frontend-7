@@ -66,7 +66,7 @@ const StyledNav = styled.nav`
       }
     }
   }
-  @media (max-width: 1074px) {
+  @media (max-width: 1120px) {
     .containerNav ul li {
       display: none;
     }
@@ -235,7 +235,7 @@ const Header = () => {
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 1074); // Ajusta el valor según tus necesidades
+      setIsMobile(window.innerWidth <= 1120); // Ajusta el valor según tus necesidades
     };
 
     window.addEventListener('resize', checkScreenSize);

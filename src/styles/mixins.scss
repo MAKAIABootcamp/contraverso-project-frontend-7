@@ -1,0 +1,17 @@
+@mixin dimensions($width, $height) {
+    width: $width;
+    height: $height;
+  }
+
+  @mixin customFontStyles($size, $family, $weight) {
+    font-size: $size;
+    font-family: $family;
+    font-weight: $weight;
+  }
+
+
+  @mixin responsive($breakpoint) {
+    @media (max-width: $breakpoint) {
+      @content;
+    }
+  }
