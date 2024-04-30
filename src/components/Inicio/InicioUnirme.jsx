@@ -110,7 +110,7 @@ const InicioUnirme = () => {
           </StyledSpan>
         </StyledTexto>
         <StyledButtonUnirme to="https://discord.gg/tCqfzHWGCV">
-          Unirme
+          UNIRME
         </StyledButtonUnirme>
         <StyledImgLogo
           src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336881/MONTAJE/INICIO/1-7-2_lbpqjx.png"
