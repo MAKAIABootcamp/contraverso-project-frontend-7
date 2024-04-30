@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import "../../../fonts/fonts.css";
+import { NavLink } from "react-router-dom";
 
 const StyledInicioSomos = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336889/MONTAJE/INICIO/1_yykjgh.png");
@@ -15,19 +16,20 @@ const StyledInicioSomos = styled.div`
   padding-bottom: 5%;
 `;
 
-const StyledButtonSomos = styled.button`
+const StyledButtonSomos = styled(NavLink)`
   background-color: #1df4c8;
   color: #000000;
   padding: 1rem;
   font-family: "MADE Soulmaze";
   border: none;
   border-radius: 8px;
+  text-decoration: none;
 `;
 
 const InicioSomos = () => {
   return (
     <StyledInicioSomos>
-      <StyledButtonSomos>¿QUIÉNES SOMOS?</StyledButtonSomos>
+      <StyledButtonSomos to="/contacto">¿QUIÉNES SOMOS?</StyledButtonSomos>
     </StyledInicioSomos>
   );
 };
