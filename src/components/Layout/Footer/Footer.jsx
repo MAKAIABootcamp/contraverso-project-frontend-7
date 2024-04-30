@@ -6,6 +6,102 @@ import { SiTiktok } from "react-icons/si";
 import { FaDiscord } from "react-icons/fa6";
 import styled from 'styled-components';
 
+const StyledFoo = styled.footer`
+  display: flex;
+  background-color: #161616;
+  width: 100%;
+  height: 100%px;
+
+  .containerFoo {
+    ul {
+      li {
+        padding: 10px;
+        list-style-type: none;
+      }
+      .aside {
+        display: flex;
+        margin-top: 45px;
+        margin-left: 45px;
+        margin-bottom: 30px;
+        justify-content: space-between;
+
+        .secContra {
+          img {
+            width: 107px;
+            height: 35px;
+          }
+          p {
+            margin-top: 22px;
+            color: #f1f1d8;
+            font-family: "Filson Pro Book";
+            font-size: 12px;
+            width: 54%;
+          }
+        }
+        .secUnirme {
+          display: flex;
+          flex-direction: column;
+          margin-right: 14px;
+
+          .descriptiones {
+            h1 {
+              font-family: "Founders Grotesk Bold";
+              color: #f1f1d8;
+            }
+            p {
+              margin-top: 12px;
+              color: #f1f1d8;
+              font-family: "Filson Pro Book";
+              font-size: 12px;
+            }
+          }
+          button {
+            background-color: #1df4c8;
+            color: #000000;
+            padding: 1rem;
+            font-family: "MADE Soulmaze";
+            font-size: 12px;
+            border: none;
+            border-radius: 8px;
+            margin-top: 20px;
+          }
+        }
+      }
+      hr {
+        border: none;
+        border-top: 1px solid #4100d0;
+        width: 89%;
+        margin-left: 45px;
+      }
+      .redes {
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 90px;
+        margin-top: 30px;
+        li {
+          .Redes {
+            span {
+              color: #1df4c8;
+            }
+          }
+        }
+      }
+
+      .Derechos {
+        margin-left: 45px;
+        width: auto;
+        p {
+          margin-top: 12px;
+          margin-bottom: 12px;
+          color: #f1f1d8;
+          font-family: "Filson Pro Book";
+          font-size: 12px;
+        }
+      }
+    }
+  }
+`;
+
 
 const links = [
   {
@@ -46,29 +142,45 @@ const redes = [
 const Footer = () => {
   return (
     <>
-      <footer className='containerNav'>
+    <StyledFoo>
+      <footer className='containerFoo'>
         <ul>
+          <div className="aside">
           {
             links.map((item, index) => (
-              <li key={index} className={item.label === "label" ? "highlighted-labelPages" : ""}>
+              <li key={index} className="secContra">
                 <NavLink className={({ isActive }) => isActive ? "linkActive" : "link"} to={item.link}>
-                  <div className="Sections">
+                  <div className="Logo">
                     {item.label === "Inicio" && <img className="logoContraverso" src={item.iconLogo} alt="Logo" />}
                   </div>
-                  <div className="buttonUnirme">
-                    {item.label === "Unirme" && <button>{item.label}</button>}
-                  </div>
                 </NavLink>
+                <div className="Descrip">
                 {item.label === "Inicio" && <p>{item.description}</p>}
-                {item.label === "Unirme" && <h1>Sé parte</h1>}
-                {item.label === "Unirme" && <p>Únete a nuestra comunidad para contrarrestar a la desinformación</p>}
+                </div>
               </li>
             ))
           }
+          {
+            links.map((item, index) => (
+              <li key={index} className="secUnirme">
+                <div className="descriptiones">
+                {item.label === "Unirme" && <h1>Sé parte</h1>}
+                {item.label === "Unirme" && <p>Únete a nuestra comunidad para contrarrestar a la desinformación.</p>}
+                </div>
+                <NavLink className={({ isActive }) => isActive ? "linkActive" : "link"} to={item.link}>
+                  <div className="buttonU">
+                    {item.label === "Unirme" && <button>UNIRME</button>}
+                  </div>
+                </NavLink>
+              </li>
+            ))
+          }
+          </div>
           <hr/>
+          <div className="redes">
           {
             redes.map((item, index) => (
-              <li key={index} className={item.label === "iconRedes" ? "highlighted-iconRedes" : ""}>
+              <li key={index}>
                 <NavLink className={({ isActive }) => isActive ? "linkActive" : "link"} to={item.link}>
                   <div className="Redes">
                     <span>{item.label === "Discord" && <FaDiscord />}</span>
@@ -80,11 +192,13 @@ const Footer = () => {
               </li>
             ))
           }
-          <li>
+          </div>
+          <li className="Derechos">
             <p>© 2024 Contraverso. Todos los derechos reservados.</p>
           </li>
         </ul>
       </footer>
+      </StyledFoo>
     </>
   )
 }
