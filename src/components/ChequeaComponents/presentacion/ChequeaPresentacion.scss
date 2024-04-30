@@ -1,5 +1,5 @@
-@import url("../../../fonts/fonts.css");
-@import "../../styles/mixins.scss";
+@import url("../../../../fonts/fonts.css");
+@import "../../../styles/mixins.scss";
 
 .sectionChequeaPresentacion {
     @include dimensions(100%, 100vh);

@@ -13,12 +13,12 @@ const AppRouter = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Inicio />} />
-          <Route path="chequea" element={<Chequea />} />
           <Route path="confronta" element={<Confronta />} />
           <Route path="expresa" element={<Expresa />} />
           <Route path="aprende" element={<Aprende />} />
           <Route path="contacto" element={<Contacto />} />
         </Route>
+          <Route path="chequea" element={<Chequea />} />
       </Routes>
     </BrowserRouter>
   );
