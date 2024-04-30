@@ -1,5 +1,6 @@
 import InicioChequea from "../../components/Inicio/InicioChequea";
 import InicioConfronta from "../../components/Inicio/InicioConfronta";
+import InicioExpresa from "../../components/Inicio/InicioExpresa";
 import InicioSomos from "../../components/Inicio/InicioSomos";
 import InicioUnirme from "../../components/Inicio/InicioUnirme";
 import "./Inicio.scss";
@@ -12,6 +13,7 @@ const Inicio = () => {
         <InicioUnirme/>
         <InicioChequea/>
         <InicioConfronta />
+        <InicioExpresa />
         </div>
       </>
   );
