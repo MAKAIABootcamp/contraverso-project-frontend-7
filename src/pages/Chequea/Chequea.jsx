@@ -1,9 +1,10 @@
+import ChequeaPresentacion from "../../components/ChequeaComponents/ChequeaPresentacion";
 import "./Chequea.scss";
 
 const Chequea = () => {
   return (
       <>
-        <div className="chequea">Chequea</div>
+        <ChequeaPresentacion/>
       </>
   )
 };
