@@ -14,6 +14,10 @@ const StyledInicioSomos = styled.div`
   padding-left: 5%;
   padding-right: 5%;
   padding-bottom: 5%;
+  @media screen and (max-width: 480px) {
+    height: 15rem;
+    padding: 1rem;
+  }
 `;
 
 const StyledButtonSomos = styled(NavLink)`
@@ -24,6 +28,10 @@ const StyledButtonSomos = styled(NavLink)`
   border: none;
   border-radius: 8px;
   text-decoration: none;
+  text-align: center;
+  @media screen and (max-width: 480px) {
+    font-size: 55%;
+  }
 `;
 
 const InicioSomos = () => {

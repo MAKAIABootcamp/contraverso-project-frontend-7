@@ -16,6 +16,9 @@ const StyledInicioChequea = styled.div`
     width: 100%;
     background-size: contain;
     justify-content: center;
+    height: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
   @media (min-width: 481px) and (max-width: 768px) {
     flex-direction: column;
