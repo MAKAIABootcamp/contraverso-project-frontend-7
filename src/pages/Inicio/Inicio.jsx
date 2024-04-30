@@ -1,3 +1,4 @@
+import InicioAprende from "../../components/Inicio/InicioAprende";
 import InicioChequea from "../../components/Inicio/InicioChequea";
 import InicioConfronta from "../../components/Inicio/InicioConfronta";
 import InicioExpresa from "../../components/Inicio/InicioExpresa";
@@ -14,6 +15,7 @@ const Inicio = () => {
         <InicioChequea/>
         <InicioConfronta />
         <InicioExpresa />
+        <InicioAprende />
         </div>
       </>
   );
