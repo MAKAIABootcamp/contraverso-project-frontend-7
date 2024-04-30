@@ -13,13 +13,13 @@ const StyledInicioChequea = styled.div`
 
   @media screen and (max-width: 480px) {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     width: 100%;
+    background-size: contain;
+    justify-content: center;
   }
   @media (min-width: 481px) and (max-width: 768px) {
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
   }
 `;
 
@@ -31,6 +31,10 @@ const StyledImgContainer = styled.div`
   width: 70%;
   position: relative;
   padding: 1rem;
+  @media screen and (max-width: 480px) {
+    width: 100%;
+    height: 50%;
+  }
   @media (min-width: 481px) and (max-width: 768px) {
     width: 100%;
     height: 50%;
@@ -43,8 +47,10 @@ const StyledImgTittle = styled.img`
   padding-right: 25%;
   padding-left: 5%;
   position: relative;
+
   @media (min-width: 481px) and (max-width: 768px) {
     width: 100%;
+    padding-right: 20%;
   }
 `;
 const StyledImgIcono = styled.img`
@@ -52,23 +58,28 @@ const StyledImgIcono = styled.img`
   max-height: 100%;
   max-width: 35%;
   position: absolute;
-  @media (min-width: 481px) and (max-width: 768px) {
-}
+
+  @media screen and (max-width: 480px) {
+    align-self: center;
+  }
 `;
 
-
 const StyledButtonsContainer = styled.div`
-width: 30%;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-gap:1rem;
-@media (min-width: 481px) and (max-width: 768px) {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  @media screen and (max-width: 480px) {
     width: 100%;
   }
 
-`
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 100%;
+  }
+`;
 const StyledButtonVerifica = styled(NavLink)`
   background-color: #1df4c8;
   color: #000000;
@@ -80,6 +91,10 @@ const StyledButtonVerifica = styled(NavLink)`
   width: 10rem;
   font-size: 1em;
   text-align: center;
+  @media screen and (max-width: 480px) {
+    width: 50%;
+    font-size: 90%;
+  }
 `;
 
 function InicioChequea() {

@@ -11,7 +11,7 @@ const StyledInicioUnirme = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 500px) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -25,18 +25,17 @@ const StyledContainer = styled.div`
   justify-content: space-around;
   width: 60%;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 500px) {
     width: 100%;
-    padding-left:5%;
+    padding-left: 5%;
   }
 `;
 
 const StyledTexto = styled.p`
   margin-top: 8rem;
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 500px) {
     margin-top: 0;
-   text-align: center;
-  
+    text-align: center;
   }
 `;
 
@@ -44,11 +43,11 @@ const StyledSpan = styled.span`
   color: #f1f1d8;
   background-color: #000000;
   font-family: "Filson Pro Book";
-  font-size: 3vw;
+  font-size: 3.5vw;
   line-height: 1.5;
   margin-bottom: 4%;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 500px) {
     font-size: 5vw;
   }
 `;
@@ -65,25 +64,26 @@ const StyledButtonUnirme = styled(NavLink)`
   margin-left: 30%;
   text-decoration: none;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 500px) {
     margin-left: 0;
     align-self: center;
   }
-
 `;
 
 const StyledImgIcono = styled.img`
   width: 40%;
-  height: auto;
+  height: 90%;
+  align-self: flex-end;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 500px) {
     width: 60%;
+    height: auto;
+    align-self: center;
   }
-
 `;
 
 const StyledImgLogo = styled.img`
-width: 36%;
+  width: 36%;
   align-self: flex-end;
   margin-bottom: 2%;
   margin-right: 4%;
