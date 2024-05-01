@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../../Button/Button";
 import styled from "styled-components";
 
@@ -46,6 +46,27 @@ const TitleStyled = styled.figure`
       font-size: 5rem;
     }
   }
+  @media (max-width: 600px) {
+    top: 25%;
+    left: 14%;
+    img {
+    left: 4%;
+  }
+  h1 {
+    font-size: 4.6rem;
+  }
+}
+@media (max-width: 375px) {
+  top: 30%;
+  left: 9%;
+  img {
+  height: 5.6vh;
+}
+h1 {
+  top: -33%;
+  font-size: 3.8rem;
+}
+}
 `;
 
 const TextStyled = styled.div`
@@ -62,7 +83,7 @@ const TextStyled = styled.div`
     left: 12%;
     width: 40%;
     p {
-        font-size: 1.7rem;
+      font-size: 1.7rem;
     }
   }
   @media (max-width: 768px) {
@@ -70,8 +91,25 @@ const TextStyled = styled.div`
     left: 12%;
     width: 80%;
     p {
+      text-align: justify;
+      font-size: 2rem;
+    }
+    @media (max-width: 600px) {
+      top: 38%;
+      left: 11%;
+      p {
+        text-align: center;
+        font-size: 1.8rem;
+      }
+    }
+    @media (max-width: 600px) {
+      top: 41%;
+      left: 14%;
+      width: 75%;
+      p {
         text-align: justify;
-        font-size: 2rem;
+        font-size: 1.5rem;
+      }
     }
   }
 `;
@@ -97,8 +135,25 @@ const ImageStyled = styled.figure`
     img {
       height: 42vh;
     }
+    @media (max-width: 600px) {
+      top: 15%;
+      left: 10%;
+      img {
+        width: auto;
+        height: 15vh;
+      }
+    }
+    @media (max-width: 375px) {
+      top: 10%;
+      left: 10%;
+      img {
+        width: auto;
+        height: 18vh;
+      }
+    }
   }
 `;
+
 const ContainerStyled = styled.div`
   position: absolute;
   display: flex;
@@ -108,16 +163,46 @@ const ContainerStyled = styled.div`
   left: 60%;
   transform: translate(80%, -45%);
   @media (max-width: 1024px) {
-    gap: .5rem;
+    gap: 0.5rem;
     transform: translate(8%, -20%);
   }
   @media (max-width: 768px) {
-    gap: .8rem;
+    gap: 0.8rem;
     transform: translate(-10%, 30%);
-    }
+  }
+  @media (max-width: 600px) {
+    transform: translate(-64%, 20%);
+  }
+  @media (max-width: 375px) {
+    transform: translate(-62%, 30%);
+  }
 `;
 
 const ChequeaVerifica = () => {
+  const [buttonWidth, setButtonWidth] = useState(16.875);
+
+  useEffect(() => {
+    const handleButtonWidth = () => {
+      const screenWidth = window.innerWidth;
+
+      if (screenWidth < 376) {
+        setButtonWidth(18);
+      } else if (screenWidth < 768) {
+        setButtonWidth(25);
+      } else {
+        setButtonWidth(16.875);
+      }
+    };
+
+    handleButtonWidth();
+
+    window.addEventListener("resize", handleButtonWidth);
+
+    return () => {
+      window.removeEventListener("resize", handleButtonWidth);
+    };
+  }, []);
+
   return (
     <>
       <SectionStyled>
@@ -141,10 +226,10 @@ const ChequeaVerifica = () => {
         </ImageStyled>
 
         <ContainerStyled>
-          <Button>IMÁGENES</Button>
-          <Button>VÍDEOS</Button>
-          <Button>DIRECCIONES IP</Button>
-          <Button>REDES SOCIALES</Button>
+          <Button width={buttonWidth}>IMÁGENES</Button>
+          <Button width={buttonWidth}>VÍDEOS</Button>
+          <Button width={buttonWidth}>DIRECCIONES IP</Button>
+          <Button width={buttonWidth}>REDES SOCIALES</Button>
         </ContainerStyled>
       </SectionStyled>
     </>
