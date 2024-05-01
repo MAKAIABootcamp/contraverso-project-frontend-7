@@ -10,9 +10,9 @@ const SectionStyled = styled.section`
 `;
 
 const ContainerStyled = styled.div`
-position: absolute;
-bottom: 63%;
-left: 7%;
+  position: absolute;
+  bottom: 63%;
+  left: 7%;
   img {
     width: auto;
     height: 14vh;
@@ -25,15 +25,37 @@ left: 7%;
     left: 23%;
   }
   @media (max-width: 768px) {
-bottom: 73%;
-left: 20%;
-  img {
-    width: auto;
-    height: 7vh;
+    bottom: 73%;
+    left: 20%;
+    img {
+      width: auto;
+      height: 7vh;
+    }
+    h1 {
+      font-size: 5.5rem;
+    }
   }
-  h1 {
-    font-size: 5.5rem;
+  @media (max-width: 414px) {
+    bottom: 73%;
+    left: 10%;
+    img {
+      width: auto;
+      height: 6.8vh;
+    }
+    h1 {
+      font-size: 4.5rem;
+      left: 19%;
+    }
   }
+  @media (max-width: 375px) {
+    h1 {
+      font-size: 4rem;
+    }
+  }
+  @media (max-width: 375px) {
+    h1 {
+      font-size: 3.5rem;
+    }
   }
 `;
 
@@ -47,12 +69,21 @@ const ButtonsStyled = styled.div`
   @media (max-width: 768px) {
     top: 37%;
   }
+  @media (max-width: 414px) {
+    top: 37%;
+  }
+  @media (max-width: 375px) {
+    top: 35%;
+  }
+  @media (max-width: 320px) {
+    top: 33%;
+  }
 `;
 
 const PerroStyled = styled.img`
-widht: auto;
-height: 77vh;
-position: absolute;
+  widht: auto;
+  height: 77vh;
+  position: absolute;
   top: 23%;
   right: 0;
   z-index: 1;
@@ -93,12 +124,15 @@ const AprendeJuega = () => {
         <Button>JUEGOS EN LÍNEA</Button>
         <Button>JUEGOS DE MESA</Button>
       </ButtonsStyled>
-        <PerroStyled
-          src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336848/MONTAJE/APRENDE/5-2_pisnsy.png"
-          alt="Perro sentado en la mesa"
-        />
+      <PerroStyled
+        src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336848/MONTAJE/APRENDE/5-2_pisnsy.png"
+        alt="Perro sentado en la mesa"
+      />
       <TextureStyled>
-        <img src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336837/MONTAJE/APRENDE/5-2_TEXTU_pnnfs8.png" alt="Textura" />
+        <img
+          src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336837/MONTAJE/APRENDE/5-2_TEXTU_pnnfs8.png"
+          alt="Textura"
+        />
       </TextureStyled>
     </SectionStyled>
   );

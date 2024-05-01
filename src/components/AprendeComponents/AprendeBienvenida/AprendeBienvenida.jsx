@@ -91,7 +91,7 @@ const GatoStyled = styled.img`
         top: 60.4%;
     }
     @media (max-width: 600px) {
-        top: 64.7%;
+        top: 63.5%;
     }
     @media (max-width: 414px) {
       height: 43vh;
