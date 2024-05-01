@@ -10,7 +10,7 @@ const SectionStyled = styled.section`
 const TitleStyled = styled.figure`
   width: 40%;
   position: absolute;
-  top: 26%;
+  top: 46%;
   left: 7%;
   img {
     position: relative;
@@ -26,7 +26,7 @@ const TitleStyled = styled.figure`
   }
   @media (max-width: 1024px) {
     width: 70%;
-    top: 20%;
+    top: 38%;
     left: 10%;
     h1 {
       top: -35%;
@@ -35,7 +35,7 @@ const TitleStyled = styled.figure`
   }
   @media (max-width: 768px) {
     width: 70%;
-    top: 14%;
+    top: 24%;
     left: 18%;
     img {
       height: 8vh;
@@ -47,7 +47,7 @@ const TitleStyled = styled.figure`
     }
   }
   @media (max-width: 600px) {
-    top: 25%;
+    top: 40%;
     left: 14%;
     img {
       left: 4%;
@@ -57,7 +57,7 @@ const TitleStyled = styled.figure`
     }
   }
   @media (max-width: 414px) {
-    top: 25%;
+    top: 40%;
     left: 9%;
     img {
       left: 13%;
@@ -69,13 +69,15 @@ const TitleStyled = styled.figure`
     }
   }
   @media (max-width: 375px) {
-    top: 30%;
+    top: 37%;
+    left: 7%;
     img {
-      height: 5.6vh;
+        left: 11%;
+      height: 6.2vh;
     }
   }
   @media (max-width: 320px) {
-    top: 18%;
+    top: 30%;
     left: 8%;
     img {
       left: 3.4%;
@@ -90,7 +92,7 @@ const TitleStyled = styled.figure`
 
 const TextStyled = styled.div`
   position: absolute;
-  top: 46%;
+  top: 66%;
   left: 6%;
   width: 35%;
   p {
@@ -98,7 +100,7 @@ const TextStyled = styled.div`
     font-size: 2rem;
   }
   @media (max-width: 1024px) {
-    top: 35%;
+    top: 54%;
     left: 12%;
     width: 40%;
     p {
@@ -106,7 +108,7 @@ const TextStyled = styled.div`
     }
   }
   @media (max-width: 768px) {
-    top: 29%;
+    top: 39%;
     left: 12%;
     width: 80%;
     p {
@@ -115,7 +117,7 @@ const TextStyled = styled.div`
     }
   }
   @media (max-width: 600px) {
-    top: 38%;
+    top: 55%;
     left: 11%;
     p {
       text-align: center;
@@ -123,7 +125,7 @@ const TextStyled = styled.div`
     }
   }
   @media (max-width: 414px) {
-    top: 36%;
+    top: 53%;
     left: 17%;
     width: 68%;
     p {
@@ -132,12 +134,12 @@ const TextStyled = styled.div`
     }
   }
   @media (max-width: 375px) {
-    top: 41%;
+    top: 48%;
     left: 14%;
     width: 75%;
   }
   @media (max-width: 320px) {
-    top: 31%;
+    top: 42%;
     left: 13.2%;
     width: 73%;
     p {
@@ -180,14 +182,15 @@ const ImageStyled = styled.figure`
   }
   @media (max-width: 414px) {
     top: 6%;
+    left: 8%;
     img {
       width: auto;
-      height: 18vh;
+      height: 17vh;
     }
   }
   @media (max-width: 375px) {
-    top: 10%;
-    left: 10%;
+    top: 3%;
+    left: 9%;
   }
   @media (max-width: 320px) {
     display: none;
@@ -199,28 +202,28 @@ const ContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  top: 50%;
+  top: 65%;
   left: 60%;
   transform: translate(80%, -45%);
   @media (max-width: 1024px) {
     gap: 0.5rem;
-    transform: translate(8%, -20%);
+    transform: translate(9%, 14%);
   }
   @media (max-width: 768px) {
     gap: 0.8rem;
     transform: translate(-10%, 30%);
   }
   @media (max-width: 600px) {
-    transform: translate(-64%, 20%);
+    transform: translate(-64%, 80%);
   }
   @media (max-width: 414px) {
-    transform: translate(-62%, 13%);
+    transform: translate(-62%, 70%);
   }
   @media (max-width: 375px) {
-    transform: translate(-62%, 30%);
+    transform: translate(-62%, 55%);
   }
   @media (max-width: 320px) {
-    transform: translate(-62%, 5%);
+    transform: translate(-62%, 45%);
   }
 `;
 
