@@ -38,8 +38,8 @@ const TitleStyled = styled.figure`
     top: 14%;
     left: 18%;
     img {
-    height: 8vh;
-  }
+      height: 8vh;
+    }
     h1 {
       top: -25%;
       left: 22%;
@@ -50,23 +50,42 @@ const TitleStyled = styled.figure`
     top: 25%;
     left: 14%;
     img {
-    left: 4%;
+      left: 4%;
+    }
+    h1 {
+      font-size: 4.6rem;
+    }
   }
-  h1 {
-    font-size: 4.6rem;
+  @media (max-width: 414px) {
+    top: 25%;
+    left: 9%;
+    img {
+      left: 13%;
+      height: 6vh;
+    }
+    h1 {
+      top: -33%;
+      font-size: 3.8rem;
+    }
   }
-}
-@media (max-width: 375px) {
-  top: 30%;
-  left: 9%;
-  img {
-  height: 5.6vh;
-}
-h1 {
-  top: -33%;
-  font-size: 3.8rem;
-}
-}
+  @media (max-width: 375px) {
+    top: 30%;
+    img {
+      height: 5.6vh;
+    }
+  }
+  @media (max-width: 320px) {
+    top: 18%;
+    left: 8%;
+    img {
+      left: 3.4%;
+      height: 6.7vh;
+    }
+    h1 {
+      top: -33%;
+      font-size: 3.2rem;
+    }
+  }
 `;
 
 const TextStyled = styled.div`
@@ -94,25 +113,40 @@ const TextStyled = styled.div`
       text-align: justify;
       font-size: 2rem;
     }
-    @media (max-width: 600px) {
-      top: 38%;
-      left: 11%;
-      p {
-        text-align: center;
-        font-size: 1.8rem;
-      }
+  }
+  @media (max-width: 600px) {
+    top: 38%;
+    left: 11%;
+    p {
+      text-align: center;
+      font-size: 1.8rem;
     }
-    @media (max-width: 600px) {
-      top: 41%;
-      left: 14%;
-      width: 75%;
-      p {
-        text-align: justify;
-        font-size: 1.5rem;
-      }
+  }
+  @media (max-width: 414px) {
+    top: 36%;
+    left: 17%;
+    width: 68%;
+    p {
+      text-align: justify;
+      font-size: 1.5rem;
+    }
+  }
+  @media (max-width: 375px) {
+    top: 41%;
+    left: 14%;
+    width: 75%;
+  }
+  @media (max-width: 320px) {
+    top: 31%;
+    left: 13.2%;
+    width: 73%;
+    p {
+      text-align: justify;
+      font-size: 1.44rem;
     }
   }
 `;
+
 const ImageStyled = styled.figure`
   position: relative;
   width: min-content;
@@ -135,22 +169,28 @@ const ImageStyled = styled.figure`
     img {
       height: 42vh;
     }
-    @media (max-width: 600px) {
-      top: 15%;
-      left: 10%;
-      img {
-        width: auto;
-        height: 15vh;
-      }
+  }
+  @media (max-width: 600px) {
+    top: 15%;
+    left: 10%;
+    img {
+      width: auto;
+      height: 15vh;
     }
-    @media (max-width: 375px) {
-      top: 10%;
-      left: 10%;
-      img {
-        width: auto;
-        height: 18vh;
-      }
+  }
+  @media (max-width: 414px) {
+    top: 6%;
+    img {
+      width: auto;
+      height: 18vh;
     }
+  }
+  @media (max-width: 375px) {
+    top: 10%;
+    left: 10%;
+  }
+  @media (max-width: 320px) {
+    display: none;
   }
 `;
 
@@ -173,8 +213,14 @@ const ContainerStyled = styled.div`
   @media (max-width: 600px) {
     transform: translate(-64%, 20%);
   }
+  @media (max-width: 414px) {
+    transform: translate(-62%, 13%);
+  }
   @media (max-width: 375px) {
     transform: translate(-62%, 30%);
+  }
+  @media (max-width: 320px) {
+    transform: translate(-62%, 5%);
   }
 `;
 
@@ -185,7 +231,11 @@ const ChequeaVerifica = () => {
     const handleButtonWidth = () => {
       const screenWidth = window.innerWidth;
 
-      if (screenWidth < 376) {
+      if (screenWidth < 321) {
+        setButtonWidth(15);
+      } else if (screenWidth < 376) {
+        setButtonWidth(18);
+      } else if (screenWidth < 415) {
         setButtonWidth(18);
       } else if (screenWidth < 768) {
         setButtonWidth(25);
