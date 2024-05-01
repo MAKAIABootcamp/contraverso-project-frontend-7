@@ -205,7 +205,7 @@ const ContainerStyled = styled.div`
   flex-direction: column;
   gap: 1rem;
   bottom: -75%;
-  left: 60%;
+  left: 64%;
   transform: translate(80%, 45%);
   @media (max-width: 1024px) {
     gap: 0.5rem;
@@ -216,36 +216,36 @@ const ContainerStyled = styled.div`
     transform: translate(-10%, 50%);
   }
   @media (max-width: 600px) {
-    transform: translate(-64%, 100%);
+    transform: translate(-70%, 100%);
   }
   @media (max-width: 414px) {
-    transform: translate(-62%, 15rem);
+    transform: translate(-66%, 15rem);
   }
   @media (max-width: 375px) {
-    transform: translate(-62%, 96%);
+    transform: translate(-66%, 96%);
   }
   @media (max-width: 320px) {
-    transform: translate(-62%, 100%);
+    transform: translate(-66%, 100%);
   }
 `;
 
 const ChequeaVerifica = () => {
-  const [buttonWidth, setButtonWidth] = useState(16.875);
+  const [buttonWidth, setButtonWidth] = useState(14);
 
   useEffect(() => {
     const handleButtonWidth = () => {
       const screenWidth = window.innerWidth;
 
       if (screenWidth < 321) {
-        setButtonWidth(15);
+        setButtonWidth(14);
       } else if (screenWidth < 376) {
-        setButtonWidth(18);
+        setButtonWidth(17);
       } else if (screenWidth < 415) {
-        setButtonWidth(18);
+        setButtonWidth(17);
       } else if (screenWidth < 768) {
-        setButtonWidth(25);
+        setButtonWidth(24);
       } else {
-        setButtonWidth(16.875);
+        setButtonWidth(14);
       }
     };
 
