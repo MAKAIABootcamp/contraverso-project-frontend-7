@@ -5,8 +5,10 @@ import "./Chequea.scss";
 const Chequea = () => {
   return (
       <>
-        {/* <ChequeaPresentacion/> */}
-        <ChequeaVerifica/>
+        <div className="chequea">
+          <ChequeaPresentacion/>
+          <ChequeaVerifica/>
+        </div>
       </>
   )
 };

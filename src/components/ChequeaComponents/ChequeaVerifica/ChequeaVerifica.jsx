@@ -10,7 +10,8 @@ const SectionStyled = styled.section`
 const TitleStyled = styled.figure`
   width: 40%;
   position: absolute;
-  top: 46%;
+  top: 26%;
+  transform: translate(0%, 120vh);
   left: 7%;
   img {
     position: relative;
@@ -26,7 +27,7 @@ const TitleStyled = styled.figure`
   }
   @media (max-width: 1024px) {
     width: 70%;
-    top: 38%;
+    top: 28%;
     left: 10%;
     h1 {
       top: -35%;
@@ -35,7 +36,7 @@ const TitleStyled = styled.figure`
   }
   @media (max-width: 768px) {
     width: 70%;
-    top: 24%;
+    top: 14%;
     left: 18%;
     img {
       height: 8vh;
@@ -47,7 +48,7 @@ const TitleStyled = styled.figure`
     }
   }
   @media (max-width: 600px) {
-    top: 40%;
+    top: 25%;
     left: 14%;
     img {
       left: 4%;
@@ -57,7 +58,7 @@ const TitleStyled = styled.figure`
     }
   }
   @media (max-width: 414px) {
-    top: 40%;
+    top: 25%;
     left: 9%;
     img {
       left: 13%;
@@ -69,15 +70,15 @@ const TitleStyled = styled.figure`
     }
   }
   @media (max-width: 375px) {
-    top: 37%;
+    top: 20%;
     left: 7%;
     img {
-        left: 11%;
+    left: 4%;
       height: 6.2vh;
     }
   }
   @media (max-width: 320px) {
-    top: 30%;
+    top: 15%;
     left: 8%;
     img {
       left: 3.4%;
@@ -92,7 +93,8 @@ const TitleStyled = styled.figure`
 
 const TextStyled = styled.div`
   position: absolute;
-  top: 66%;
+  transform: translate(0%, 120vh);
+  top: 46%;
   left: 6%;
   width: 35%;
   p {
@@ -100,7 +102,7 @@ const TextStyled = styled.div`
     font-size: 2rem;
   }
   @media (max-width: 1024px) {
-    top: 54%;
+    top: 44%;
     left: 12%;
     width: 40%;
     p {
@@ -108,7 +110,7 @@ const TextStyled = styled.div`
     }
   }
   @media (max-width: 768px) {
-    top: 39%;
+    top: 29%;
     left: 12%;
     width: 80%;
     p {
@@ -117,7 +119,7 @@ const TextStyled = styled.div`
     }
   }
   @media (max-width: 600px) {
-    top: 55%;
+    top: 40%;
     left: 11%;
     p {
       text-align: center;
@@ -125,7 +127,7 @@ const TextStyled = styled.div`
     }
   }
   @media (max-width: 414px) {
-    top: 53%;
+    top: 39%;
     left: 17%;
     width: 68%;
     p {
@@ -134,17 +136,17 @@ const TextStyled = styled.div`
     }
   }
   @media (max-width: 375px) {
-    top: 48%;
+    top: 32%;
     left: 14%;
     width: 75%;
   }
   @media (max-width: 320px) {
-    top: 42%;
+    top: 30%;
     left: 13.2%;
     width: 73%;
     p {
       text-align: justify;
-      font-size: 1.44rem;
+      font-size: 1.3rem;
     }
   }
 `;
@@ -202,28 +204,28 @@ const ContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  top: 65%;
+  bottom: -75%;
   left: 60%;
-  transform: translate(80%, -45%);
+  transform: translate(80%, 45%);
   @media (max-width: 1024px) {
     gap: 0.5rem;
-    transform: translate(9%, 14%);
+    transform: translate(9%, 70%);
   }
   @media (max-width: 768px) {
     gap: 0.8rem;
-    transform: translate(-10%, 30%);
+    transform: translate(-10%, 50%);
   }
   @media (max-width: 600px) {
-    transform: translate(-64%, 80%);
+    transform: translate(-64%, 100%);
   }
   @media (max-width: 414px) {
-    transform: translate(-62%, 70%);
+    transform: translate(-62%, 15rem);
   }
   @media (max-width: 375px) {
-    transform: translate(-62%, 55%);
+    transform: translate(-62%, 96%);
   }
   @media (max-width: 320px) {
-    transform: translate(-62%, 45%);
+    transform: translate(-62%, 100%);
   }
 `;
 
