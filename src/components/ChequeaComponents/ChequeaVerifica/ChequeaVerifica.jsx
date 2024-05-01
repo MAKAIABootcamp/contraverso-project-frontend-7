@@ -28,20 +28,26 @@ const TitleStyled = styled.figure`
     width: 70%;
     top: 20%;
     left: 10%;
-    img {
-      position: relative;
-      width: auto;
-      height: 12vh;
-    }
     h1 {
-      position: absolute;
       top: -35%;
-      left: 10%;
       font-size: 5rem;
-      font-family: "MADE Soulmaze Brush";
+    }
+  }
+  @media (max-width: 768px) {
+    width: 70%;
+    top: 14%;
+    left: 18%;
+    img {
+    height: 8vh;
+  }
+    h1 {
+      top: -25%;
+      left: 22%;
+      font-size: 5rem;
     }
   }
 `;
+
 const TextStyled = styled.div`
   position: absolute;
   top: 46%;
@@ -52,12 +58,20 @@ const TextStyled = styled.div`
     font-size: 2rem;
   }
   @media (max-width: 1024px) {
-    position: absolute;
     top: 35%;
     left: 12%;
     width: 40%;
     p {
         font-size: 1.7rem;
+    }
+  }
+  @media (max-width: 768px) {
+    top: 29%;
+    left: 12%;
+    width: 80%;
+    p {
+        text-align: justify;
+        font-size: 2rem;
     }
   }
 `;
@@ -71,13 +85,17 @@ const ImageStyled = styled.figure`
     height: 85vh;
   }
   @media (max-width: 1024px) {
-    position: relative;
-    width: min-content;
     top: 50%;
     left: 15%;
     img {
-      width: auto;
       height: 48vh;
+    }
+  }
+  @media (max-width: 768px) {
+    left: 1%;
+    top: 42%;
+    img {
+      height: 42vh;
     }
   }
 `;
@@ -90,14 +108,13 @@ const ContainerStyled = styled.div`
   left: 60%;
   transform: translate(80%, -45%);
   @media (max-width: 1024px) {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
     gap: .5rem;
-    top: 50%;
-    left: 60%;
     transform: translate(8%, -20%);
   }
+  @media (max-width: 768px) {
+    gap: .8rem;
+    transform: translate(-10%, 30%);
+    }
 `;
 
 const ChequeaVerifica = () => {
