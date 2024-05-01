@@ -21,14 +21,15 @@ const StyledButton = styled.button`
   border-radius: 0.5rem;
   border: none;
   padding: 0.375rem 0.75rem;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-family: "MADE Soulmaze";
   letter-spacing: 0.1rem;
   font-weight: bolder;
   text-transform: uppercase;
   color: #161616;
   cursor: pointer;
-  width: ${(props) => props.width || 270}px;
+  width: ${(props) => props.width || 16.875}rem;
+  height: 2.8rem;
   background-color: ${(props) => props.color || "#1DF4C8"};
   z-index: 2;
 
@@ -50,7 +51,7 @@ function Button({ width, color, to, children }) {
     setShowSparkles(false);
   };
 
-  const numberOfStars = 16;
+  const numberOfStars = 17;
 
   return (
     <div style={{ position: "relative", display: "inline-block" }}>
