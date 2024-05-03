@@ -1,7 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { NavLink } from "react-router-dom";
-import BotonExpresa from "./BotonExpresa"
+import React from "react";
+import styled from "styled-components";
+import BotonExpresa from "./BotonExpresa";
 
 const StyledExpresa = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336876/MONTAJE/EXPRESA/16_wsdajl.png");
@@ -10,16 +9,26 @@ const StyledExpresa = styled.div`
 `;
 
 const StyledImgRight = styled.img`
-position: absolute;
-    margin-left: 92rem;
-    height: 66%;
-    opacity: 0.8;
-    filter: brightness(491%) opacity(0.8);
-  @media (min-width: 480px) and (max-width: 1370px) {
-    margin-left: 10rem;
-    width: 88%;
-    height: 23rem;
-    
+  position: absolute;
+  width: 36%;
+  height: 50%;
+  margin-left: 64%;
+  filter: brightness(491%) opacity(0.8);
+
+  @media screen and (max-width: 480px) {
+    width: 69%;
+    height: 41%;
+    margin-left: 8.5rem;
+  }
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 69%;
+    height: 41%;
+    margin-left: 31%;
+  }
+  @media (min-width: 769px) and (max-width: 1365px) {
+    width: 67%;
+    height: 41%;
+    margin-left: 33%;
   }
 `;
 
@@ -36,30 +45,28 @@ const StyledImg = styled.img`
   @media (min-width: 481px) and (max-width: 768px) {
     margin-top: 0;
     width: 60%;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
   }
   @media (min-width: 768px) and (max-width: 1365px) {
     margin-top: 0;
     width: 50%;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
   }
 `;
 
 const StyledTextoContainer = styled.p`
   margin-top: 4rem;
   @media screen and (max-width: 480px) {
-    text-align: center;
     margin-left: -4rem;
     width: 13rem;
   }
   @media (min-width: 481px) and (max-width: 768px) {
     margin-left: -5rem;
-    width: 19rem;
+    width: 17rem;
   }
   @media (min-width: 768px) and (max-width: 1365px) {
-    margin-left: -3rem;
-        width: 38rem;
-        height: 9rem;
+    margin-left: -4rem;
+    width: 22rem;
   }
 `;
 
@@ -75,8 +82,8 @@ const StyledTextoSpan = styled.span`
     line-height: 17px;
   }
   @media (min-width: 481px) and (max-width: 768px) {
-    font-size: 21px;
-    line-height: 31px;
+    font-size: 20px;
+    line-height: 28px;
   }
   @media (min-width: 768px) and (max-width: 1375px) {
     font-size: 27px;
@@ -96,33 +103,32 @@ const StyledImgText = styled.img`
     z-index: 10;
     width: 42%;
   }
-  @media (min-width: 480px ) and (max-width: 768px) {
+  @media (min-width: 480px) and (max-width: 768px) {
     margin-left: 0rem;
     z-index: 10;
     width: 42%;
   }
-    @media (min-width: 768px) and (max-width: 1365px) {
+  @media (min-width: 768px) and (max-width: 1365px) {
     margin-left: 0rem;
     z-index: 10;
-    width:  35%;
-  } 
+    width: 35%;
+  }
 `;
 
 const StyledBotonExpresa = styled(BotonExpresa)`
- background-color: #fff35f;
+  background-color: #fff35f;
   color: #000000;
   padding: 0.5rem;
-  font-family: 'MADE Soulmaze';
-  font-weight: 400;
+  font-family: "MADE Soulmaze";
   font-size: 20px;
-  line-height: 23px;
-  border-radius: 3px;
   align-self: flex-end;
   margin-bottom: 5rem;
   text-decoration: none;
-  position: relative; 
-  border: none; 
-
+  position: relative;
+  border: none;
+  font-weight: bold;
+  box-shadow: 0px 1px 3px #1c1c21;
+  cursor: pointer;
 
   @media screen and (max-width: 480px) {
     margin-left: -12rem;
@@ -132,15 +138,15 @@ const StyledBotonExpresa = styled(BotonExpresa)`
     margin-left: -17rem;
   }
   @media (min-width: 768px) and (max-width: 1575px) {
-    margin-left: -31rem;
+    margin-left: -15rem;
     margin-bottom: 2rem;
   }
 `;
 
 const InicioExpresa = () => {
   const handleClick = () => {
-console.log("click")  
-};
+    console.log("click");
+  };
 
   return (
     <StyledExpresa>
@@ -159,15 +165,15 @@ console.log("click")
       <StyledTextoContainer>
         <StyledTextoSpan>
           Interactúa con nuestra colección creativa sobre el problema de la
-          <br/> desinformación. Pregunta, propone y manifiéstate abiertamente.
-          El<br/> debate es central para comprender y transformar la realidad.
+          <br /> desinformación. Pregunta, propone y manifiéstate abiertamente.
+          El
+          <br /> debate es central para comprender y transformar la realidad.
         </StyledTextoSpan>
       </StyledTextoContainer>
 
       <StyledBotonExpresa onClick={handleClick}>
         ENVIAR APORTE
       </StyledBotonExpresa>
-    
     </StyledExpresa>
   );
 };
