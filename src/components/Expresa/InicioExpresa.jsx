@@ -1,6 +1,7 @@
-import styled from "styled-components";
-import "../../../fonts/fonts.css";
+import React from 'react';
+import styled from 'styled-components';
 import { NavLink } from "react-router-dom";
+import BotonExpresa from "./BotonExpresa"
 
 const StyledExpresa = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336876/MONTAJE/EXPRESA/16_wsdajl.png");
@@ -9,13 +10,11 @@ const StyledExpresa = styled.div`
 `;
 
 const StyledImgRight = styled.img`
-  position: absolute;
-  margin-left: 65rem;
-  width: 54rem;
-  height: 50%;
-  opacity: 0.8;
-  overflow-x: hidden;
-
+position: absolute;
+    margin-left: 92rem;
+    height: 66%;
+    opacity: 0.8;
+    filter: brightness(491%) opacity(0.8);
   @media (min-width: 480px) and (max-width: 1370px) {
     margin-left: 10rem;
     width: 88%;
@@ -86,8 +85,8 @@ const StyledTextoSpan = styled.span`
 `;
 
 const StyledImgText = styled.img`
-  margin-left: 10%;
-   height: 12rem;
+  margin-left: 12%;
+  height: 14rem;
   width: 50%;
   align-self: flex-end;
   margin-bottom: 1%;
@@ -109,21 +108,22 @@ const StyledImgText = styled.img`
   } 
 `;
 
-const StyledButtonExpresa = styled(NavLink)`
-  background-color: #fff35f;
+const StyledBotonExpresa = styled(BotonExpresa)`
+ background-color: #fff35f;
   color: #000000;
   padding: 0.5rem;
-  font-family: "MADE Soulmaze";
+  font-family: 'MADE Soulmaze';
   font-weight: 400;
   font-size: 20px;
   line-height: 23px;
   border-radius: 3px;
-  font-weight: bold;
   align-self: flex-end;
   margin-bottom: 5rem;
   text-decoration: none;
-  position: relative;
-  
+  position: relative; 
+  border: none; 
+
+
   @media screen and (max-width: 480px) {
     margin-left: -12rem;
     margin-bottom: 7rem;
@@ -138,6 +138,10 @@ const StyledButtonExpresa = styled(NavLink)`
 `;
 
 const InicioExpresa = () => {
+  const handleClick = () => {
+console.log("click")  
+};
+
   return (
     <StyledExpresa>
       <StyledImg
@@ -159,7 +163,11 @@ const InicioExpresa = () => {
           El<br/> debate es central para comprender y transformar la realidad.
         </StyledTextoSpan>
       </StyledTextoContainer>
-      <StyledButtonExpresa> ENVIAR APORTE</StyledButtonExpresa>
+
+      <StyledBotonExpresa onClick={handleClick}>
+        ENVIAR APORTE
+      </StyledBotonExpresa>
+    
     </StyledExpresa>
   );
 };
