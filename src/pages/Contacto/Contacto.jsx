@@ -2,6 +2,7 @@ import "./Contacto.scss";
 import Contactanos from "../../components/Contactanos/Somos";
 import QueBuscamos from "../../components/Contactanos/QueBuscamos";
 import NuestroProceso from "../../components/Contactanos/NuestroProceso";
+import NuestroEquipo from "../../components/Contactanos/NuestroEquipo";
 
 const Contacto = () => {
   return (
@@ -10,6 +11,7 @@ const Contacto = () => {
         <Contactanos/>
         <QueBuscamos/>
         <NuestroProceso/>
+        <NuestroEquipo/>
       </>
   )
 };

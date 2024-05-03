@@ -35,7 +35,6 @@ const StyledImagenLateralDerecha = styled.img`
   margin-left: 106.5rem;
 `;
 const StyledImagenLateralIzquierda = styled.img`
-  width: 39rem;
   margin-top: -12.5rem;
   height: 24rem;
   opacity: 0.8;

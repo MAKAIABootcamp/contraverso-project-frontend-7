@@ -5,7 +5,7 @@ const StyledNuestroProceso = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336891/MONTAJE/SOMOS/24_x3fx6d.png");
   height: 30rem;
 `;
-const StyledImageBaground = styled.img`
+const StyledImageBackground = styled.img`
   margin-left: 37%;
   margin-top: 2rem;
   width: 30rem;
@@ -20,10 +20,10 @@ const StyledTitulo = styled.h1`
 const NuestroProceso = () => {
   return (
     <StyledNuestroProceso>
-      <StyledImageBaground
+      <StyledImageBackground
         src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336891/MONTAJE/SOMOS/5-2_SUBR_ec4e6r.png"
         alt="Fondo del texto"
-      ></StyledImageBaground>
+      ></StyledImageBackground>
       <StyledTitulo>NUESTRO PROCESO</StyledTitulo>
     </StyledNuestroProceso>
   );
