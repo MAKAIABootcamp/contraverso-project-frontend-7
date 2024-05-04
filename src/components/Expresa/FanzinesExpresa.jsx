@@ -98,8 +98,8 @@ const StyledImgCat = styled.img`
   position: absolute;
   @media (min-width: 1024px) and (max-width: 1366px) {
     width: 14rem;
-    margin-right: 79%;
-    margin-top: 29%;
+    margin-right: 84%;
+    margin-top: 22%;
   }
   @media (max-width: 1024px) {
     width: 16rem;

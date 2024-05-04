@@ -15,10 +15,15 @@ const StyledImgRight = styled.img`
   margin-left: 64%;
   filter: brightness(491%) opacity(0.8);
 
+  @media (min-width: 480px) and (max-width: 1366px) {
+    width: 65%;
+    margin-left: 35%;
+    margin-top: 0%;
+  }
   @media screen and (max-width: 480px) {
     width: 69%;
     height: 41%;
-    margin-left: 8.5rem;
+    margin-left: 8.9rem;
   }
   @media (min-width: 481px) and (max-width: 768px) {
     width: 69%;

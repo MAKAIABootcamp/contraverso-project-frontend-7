@@ -126,12 +126,13 @@ const StyledBotonExpresa = styled(BotonExpresa)`
   position: absolute;
   @media (min-width: 1024px) and (max-width: 1366px) {
     margin-left: 36rem;
-        margin-top: 19rem;
+    margin-top: 19rem;
   }
   @media (max-width: 1024px) {
     width: 8rem;
-    margin-top: 16rem;
+    margin-top: 18rem;
     font-size: 1rem;
+    margin-left: 28%;
   }
   @media (max-width: 768px) {
     margin-left: 16rem;
@@ -165,34 +166,34 @@ const StyledImgDog = styled.img`
 
   @media (max-width: 1024px) {
     width: 22rem;
-    margin-left: 31rem;
+    margin-left: 40.9rem;
     margin-top: 8rem;
   }
 
   @media (max-width: 768px) {
     width: 13rem;
-    margin-left: 22rem;
+    margin-left: 33.8rem;
     margin-top: 17rem;
   }
   @media (max-width: 600px) {
     width: 11rem;
-    margin-left: 14rem;
+    margin-left: 25.4rem;
     margin-top: 19rem;
   }
 
   @media (max-width: 414px) {
-    margin-left: 12rem;
+    margin-left: 14rem;
   }
 
   @media (max-width: 375px) {
     width: 9rem;
-    margin-left: 10rem;
+    margin-left: 13rem;
     margin-top: 21rem;
   }
 
   @media (max-width: 320px) {
     width: 9rem;
-    margin-left: 9rem;
+    margin-left: 10rem;
     margin-top: 21rem;
   }
 `;
@@ -203,7 +204,7 @@ const StyledImgLeft = styled.img`
   position: absolute;
   @media (max-width: 1024px) {
     width: 21rem;
-    margin-top: 9rem;
+    margin-top: 9.5rem;
   }
   @media (max-width: 768px) {
     width: 18.5rem;
