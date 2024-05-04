@@ -152,6 +152,7 @@ const StyledLogo = styled.img`
     margin-top: 23rem;
     width: 18%;
     height: 10%;
+    margin-left: 34rem;
   }
   @media (max-width: 1024px) {
     margin-left: 6%;
