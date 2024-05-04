@@ -7,7 +7,7 @@ import NuestroEquipo from "../../components/Contactanos/NuestroEquipo";
 const Contacto = () => {
   return (
       <>
-        <div className="contacto">Contacto</div>
+        <div className="contacto"></div>
         <Contactanos/>
         <QueBuscamos/>
         <NuestroProceso/>
