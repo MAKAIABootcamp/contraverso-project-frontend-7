@@ -69,7 +69,7 @@ const InicioAprende = () => {
         src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336882/MONTAJE/INICIO/1-aprende_canc8k.png"
         alt="Título Aprende"
       ></StyledImgTitle>
-      <StyledButtonAprende to="expresa">JUEGOS</StyledButtonAprende>
+      <StyledButtonAprende to="aprende">JUEGOS</StyledButtonAprende>
       <StyledImgIcono
         src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336883/MONTAJE/INICIO/1-6_cuinau.png"
         alt="Icono Aprende"
