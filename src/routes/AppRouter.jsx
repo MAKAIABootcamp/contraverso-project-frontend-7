@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
 import Inicio from "../pages/Inicio/Inicio";
 import Chequea from "../pages/Chequea/Chequea";
@@ -6,10 +6,16 @@ import Confronta from "../pages/Confronta/Confronta";
 import Expresa from "../pages/Expresa/Expresa";
 import Aprende from "../pages/Aprende/Aprende";
 import Contacto from "../pages/Contacto/Contacto";
+import { useEffect } from "react";
 
 const AppRouter = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
-    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Inicio />} />
@@ -20,7 +26,6 @@ const AppRouter = () => {
           <Route path="contacto" element={<Contacto />} />
         </Route>
       </Routes>
-    </BrowserRouter>
   );
 };
 

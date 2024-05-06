@@ -1,11 +1,11 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import AppRouter from "./routes/AppRouter";
 import "./styles/universal.scss";
 import "../fonts/fonts.css";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <BrowserRouter>
     <AppRouter />
-  </React.StrictMode>
+  </BrowserRouter>
 );
