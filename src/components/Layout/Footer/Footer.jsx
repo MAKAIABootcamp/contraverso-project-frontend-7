@@ -1,16 +1,18 @@
 import "./Footer.scss"
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaXTwitter } from "react-icons/fa6";
 import { SiTiktok } from "react-icons/si";
 import { FaDiscord } from "react-icons/fa6";
 import styled from 'styled-components';
 
+
 const StyledFoo = styled.footer`
   display: flex;
   background-color: #161616;
   width: 100%;
-  height: 100%px;
+  height: 100vh;
+  scroll-snap-align:center;
 
   .containerFoo {
     ul {
@@ -139,11 +141,11 @@ const redes = [
   }
 ];
 
-const Footer = () => {
+const Footer = ({ footerRef }) => {
   return (
     <>
     <StyledFoo>
-      <footer className='containerFoo'>
+      <footer className='containerFoo'  ref={footerRef}>
         <ul>
           <div className="aside">
           {
@@ -197,6 +199,9 @@ const Footer = () => {
             <p>© 2024 Contraverso. Todos los derechos reservados.</p>
           </li>
         </ul>
+         
+        <button className="scrollToTopButton">Ir arriba</button>
+      
       </footer>
       </StyledFoo>
     </>

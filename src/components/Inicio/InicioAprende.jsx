@@ -6,12 +6,13 @@ const StyledInicioAprende = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336891/MONTAJE/INICIO/6_osufe6.png");
   background-size: 100% 100%;
   width: 100%;
-  height: 30rem;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
+  scroll-snap-align:start;
 
   @media screen and (max-width: 480px) {
     width: 100%;

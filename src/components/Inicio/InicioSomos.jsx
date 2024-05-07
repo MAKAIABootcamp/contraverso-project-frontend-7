@@ -6,7 +6,7 @@ const StyledInicioSomos = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336889/MONTAJE/INICIO/1_yykjgh.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  height: 30rem;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,9 +14,10 @@ const StyledInicioSomos = styled.div`
   padding-left: 5%;
   padding-right: 5%;
   padding-bottom: 5%;
+  scroll-snap-align:end;
   @media screen and (max-width: 480px) {
-    height: 15rem;
     padding: 1rem;
+    justify-content: center;
   }
 `;
 
@@ -29,9 +30,6 @@ const StyledButtonSomos = styled(NavLink)`
   border-radius: 8px;
   text-decoration: none;
   text-align: center;
-  @media screen and (max-width: 480px) {
-    font-size: 55%;
-  }
 `;
 
 const InicioSomos = () => {

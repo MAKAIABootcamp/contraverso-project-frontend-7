@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const StyledComponent = styled.div`
   justify-content: center;
+  scroll-snap-align: start;
 
   @media (max-width: 1024px) {
     width: 50%;

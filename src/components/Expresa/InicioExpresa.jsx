@@ -6,6 +6,7 @@ const StyledExpresa = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336876/MONTAJE/EXPRESA/16_wsdajl.png");
   height: 30rem;
   display: flex;
+  scroll-snap-align: start;
 `;
 
 const StyledImgRight = styled.img`

@@ -5,6 +5,7 @@ const SectionStyled = styled.section`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336853/MONTAJE/APRENDE/21_waoapm.png");
   width: 100%;
   height: 100vh;
+  scroll-snap-align: start;
 `;
 
 const TextStyled = styled.p`

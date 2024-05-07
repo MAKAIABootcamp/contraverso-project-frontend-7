@@ -4,6 +4,8 @@ const StyledImagenes = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336875/MONTAJE/EXPRESA/18_txk2kg.png");
   height: 30rem;
   position: relative;
+  scroll-snap-align: start;
+  scroll-snap-align: start;
 `;
 const StyledBackground = styled.img`
   width: 37%;

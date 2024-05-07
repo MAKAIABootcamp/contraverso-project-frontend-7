@@ -5,6 +5,7 @@ const StyledBuscamos = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336890/MONTAJE/SOMOS/23_okdk9v.png");
   height: 30rem;
   position: relative;
+  scroll-snap-align: start;
 `;
 const StyledBackgroundImage = styled.img`
   margin-left: 37%;

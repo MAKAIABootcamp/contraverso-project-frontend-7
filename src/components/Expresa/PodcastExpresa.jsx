@@ -5,6 +5,7 @@ import BotonExpresa from "./BotonExpresa";
 const StyledPotcast = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336876/MONTAJE/EXPRESA/16_wsdajl.png");
   height: 30rem;
+  scroll-snap-align: start;
 `;
 const StyledBackgroundImg = styled.img`
   margin-left: 5rem;

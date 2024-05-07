@@ -2,10 +2,11 @@
 @import "../../../styles/mixins.scss";
 
 .sectionChequeaPresentacion {
-    @include dimensions(100%, 100vh);
+    @include dimensions(100%, 85vh);
     background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336860/MONTAJE/CHEQUEA/8_bp66eb.png");
     display: flex;
     flex-wrap: wrap;
+    scroll-snap-align:start;
     &__imgContainer {
         position: relative;
         width: 100%;

@@ -12,6 +12,7 @@ const StyledFanzine = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  scroll-snap-align: start;
 `;
 const StyledBackgroundImg = styled.img`
   width: 37%;

@@ -6,11 +6,12 @@ const StyledInicioExpresa = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336890/MONTAJE/INICIO/5_px3dyj.png");
   background-size: 100% 100%;
   width: 100%;
-  height: 30rem;
+  height: 95vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
+  scroll-snap-align:start;
+  
   @media screen and (max-width: 768px) {
     width: 100%;
     height: auto;

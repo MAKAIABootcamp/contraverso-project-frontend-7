@@ -6,6 +6,7 @@ const SectionStyled = styled.section`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336860/MONTAJE/CHEQUEA/8_bp66eb.png");
   width: 100%;
   height: 100vh;
+  scroll-snap-align: start;
 `;
 const TitleStyled = styled.figure`
   width: 40%;

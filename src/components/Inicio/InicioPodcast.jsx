@@ -6,9 +6,11 @@ const StyledInicioPodcast = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336890/MONTAJE/INICIO/7_mz8jo7.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  height: auto;
+  height: 95vh;
   display: flex;
   flex-direction: row;
+  margin-bottom: 5vh;
+  scroll-snap-align:start;
 
   @media screen and (max-width: 480px) {
     flex-direction: column-reverse;

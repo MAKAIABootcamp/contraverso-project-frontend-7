@@ -7,6 +7,7 @@ const StyledNuestroEquipo = styled.div`
     "https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336891/MONTAJE/SOMOS/24_x3fx6d.png"
   );
   height: 30rem;
+  scroll-snap-align: start;
 `;
 
 const StyledLogo = styled.img`

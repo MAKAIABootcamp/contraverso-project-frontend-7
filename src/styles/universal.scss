@@ -5,6 +5,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Founders Grotesk Medium';
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
 }
 
 body::before {

@@ -4,6 +4,7 @@ import "../../../fonts/fonts.css";
 const StyledNuestroProceso = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336891/MONTAJE/SOMOS/24_x3fx6d.png");
   height: 30rem;
+  scroll-snap-align: start;
 `;
 const StyledImageBackground = styled.img`
   margin-left: 37%;

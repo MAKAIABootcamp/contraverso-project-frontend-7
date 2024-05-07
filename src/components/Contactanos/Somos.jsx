@@ -4,6 +4,7 @@ import "../../../fonts/fonts.css";
 const StyledSomos = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336904/MONTAJE/SOMOS/22_bajxgg.png");
   height: 30rem;
+  scroll-snap-align: start;
 `;
 const StyledTitulo = styled.h1`
   font-family: "MADE Soulmaze";
