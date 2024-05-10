@@ -49,32 +49,31 @@
     }
 }
 
-@include responsive(500px) {
+@include responsive(300px) {
     .sectionChequeaPresentacion {
 
         &__textContainer {
-            
+            top: 40%;
             left: 5%;
             &--bg {
-                @include customFontStyles(10vw, "Filson Pro Book", normal);
+                @include customFontStyles(7vw, "Filson Pro Book", normal);
             }
         }
     }
 }
+@media (min-width:301px) and (max-width: 764px){
+    .sectionChequeaPresentacion {
 
+        &__textContainer {
+            top: 20%;
+            left: 5%;
+            &--bg {
+                @include customFontStyles(7vw, "Filson Pro Book", normal);
+            }
+        }
+    }
+}
 @media (min-width:501px) and (max-width: 764px){
-    .sectionChequeaPresentacion {
-
-        &__textContainer {
-            left: 5%;
-            &--bg {
-                @include customFontStyles(6vw, "Filson Pro Book", normal);
-            }
-            
-        }
-    }
-}
-@media (min-width:765px) and (max-width: 932px){
     .sectionChequeaPresentacion {
 
         &__textContainer {
@@ -86,14 +85,26 @@
         }
     }
 }
+@media (min-width:765px) and (max-width: 929px){
+    .sectionChequeaPresentacion {
+
+        &__textContainer {
+            top: 18%;
+            left: 5%;
+            &--bg {
+                @include customFontStyles(4vw, "Filson Pro Book", normal);
+            }
+            
+        }
+    }
+}
 
 @media (min-width:933px) and (max-width: 1110px){
     .sectionChequeaPresentacion {
 
         &__textContainer {
-            left: 5%;
             &--bg {
-                @include customFontStyles(4vw, "Filson Pro Book", normal);
+                @include customFontStyles(3vw, "Filson Pro Book", normal);
             }
             
         }
@@ -104,7 +115,7 @@
 
         &__textContainer {
             &--bg {
-                @include customFontStyles(3.2vw, "Filson Pro Book", normal);
+                @include customFontStyles(2vw, "Filson Pro Book", normal);
             }
             
         }
