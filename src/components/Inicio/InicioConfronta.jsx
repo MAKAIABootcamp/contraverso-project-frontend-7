@@ -16,7 +16,7 @@ const StyledInicioConfronta = styled.div`
     flex-direction: column;
     width: 100%;
     background-size: contain;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 1rem;
   }
 `;

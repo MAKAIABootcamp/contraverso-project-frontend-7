@@ -12,12 +12,11 @@ const StyledInicioPodcast = styled.div`
   margin-bottom: 5vh;
   scroll-snap-align:start;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 600px) {
     flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: auto;
   }
 `;
 
@@ -26,7 +25,7 @@ const StyledImgIcono = styled.img`
   max-height: 80%;
   align-self: flex-end;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 600px) {
     align-self: center;
     max-width: 100%;
   }
