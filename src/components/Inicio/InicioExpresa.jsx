@@ -14,9 +14,9 @@ const StyledInicioExpresa = styled.div`
   
   @media screen and (max-width: 768px) {
     width: 100%;
-    height: auto;
+
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content:center;
     background-size: contain;
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -61,8 +61,8 @@ const StyledButtonExpresa = styled.div`
     width: 100%;
     position: absolute;
     justify-content: flex-end;
-    padding-bottom: 2rem;
     padding-right: 1rem;
+    padding-top: 60%;
   }
 `;
 const StyledButton = styled(NavLink)`

@@ -18,14 +18,13 @@ const StyledInicioAprende = styled.div`
     width: 100%;
     background-size: contain;
     justify-content: center;
-    height: auto;
+
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
   @media (min-width: 481px) and (max-width: 768px) {
     padding-top: 10%;
     padding-bottom: 10%;
-    height: auto;
   }
 `;
 
