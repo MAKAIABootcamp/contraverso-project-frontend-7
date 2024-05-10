@@ -12,7 +12,6 @@ const StyledInicioUnirme = styled.div`
   justify-content: space-between;
   scroll-snap-align:start;
   
-
   @media screen and (max-width: 500px) {
     flex-direction: column;
     align-items: center;
