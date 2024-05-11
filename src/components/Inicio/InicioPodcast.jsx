@@ -6,16 +6,17 @@ const StyledInicioPodcast = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336890/MONTAJE/INICIO/7_mz8jo7.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  height: auto;
+  height: 95vh;
   display: flex;
   flex-direction: row;
+  margin-bottom: 5vh;
+  scroll-snap-align:start;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 600px) {
     flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: auto;
   }
 `;
 
@@ -24,7 +25,7 @@ const StyledImgIcono = styled.img`
   max-height: 80%;
   align-self: flex-end;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 600px) {
     align-self: center;
     max-width: 100%;
   }

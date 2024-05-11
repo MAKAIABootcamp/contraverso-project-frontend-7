@@ -6,25 +6,25 @@ const StyledInicioAprende = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336891/MONTAJE/INICIO/6_osufe6.png");
   background-size: 100% 100%;
   width: 100%;
-  height: 30rem;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
+  scroll-snap-align:start;
 
   @media screen and (max-width: 480px) {
     width: 100%;
     background-size: contain;
     justify-content: center;
-    height: auto;
+
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
   @media (min-width: 481px) and (max-width: 768px) {
     padding-top: 10%;
     padding-bottom: 10%;
-    height: auto;
   }
 `;
 
@@ -69,7 +69,7 @@ const InicioAprende = () => {
         src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336882/MONTAJE/INICIO/1-aprende_canc8k.png"
         alt="Título Aprende"
       ></StyledImgTitle>
-      <StyledButtonAprende to="expresa">JUEGOS</StyledButtonAprende>
+      <StyledButtonAprende to="aprende">JUEGOS</StyledButtonAprende>
       <StyledImgIcono
         src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336883/MONTAJE/INICIO/1-6_cuinau.png"
         alt="Icono Aprende"

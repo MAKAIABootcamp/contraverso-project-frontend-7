@@ -6,17 +6,18 @@ const StyledInicioUnirme = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336886/MONTAJE/INICIO/2_duvvti.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  height: 30rem;
+  height: 95vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
+  scroll-snap-align:start;
+  
   @media screen and (max-width: 500px) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: auto;
+
   }
 `;
 

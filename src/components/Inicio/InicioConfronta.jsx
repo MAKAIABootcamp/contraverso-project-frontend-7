@@ -6,21 +6,18 @@ const StyledInicioConfronta = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336891/MONTAJE/INICIO/4_inynqe.png");
   background-size: 100% 100%;
   width: 100%;
-  height: 30rem;
+  height: 95vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  scroll-snap-align:start;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
     width: 100%;
     background-size: contain;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 1rem;
-    height: auto;
-    padding-top: 1rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
   }
 `;
 
@@ -45,9 +42,6 @@ const StyledButtonArticulos = styled(NavLink)`
   border-radius: 8px;
   text-decoration: none;
   text-align: center;
-  @media screen and (max-width: 780px) {
-    font-size: 90%;
-  }
 `;
 
 const StyledImgContainer = styled.div`
@@ -62,13 +56,9 @@ const StyledImgContainer = styled.div`
   }
 `;
 const StyledImgIcono = styled.img`
-  width: auto;
-  height: 90%;
+  max-width: 100%;
+  max-height: 100%;
   position: relative;
-  @media screen and (max-width: 780px) {
-    width: 100%;
-   
-  }
 `;
 const StyledImgTittle = styled.img`
   width: 90%;

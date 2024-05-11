@@ -14,8 +14,8 @@ const StyledNav = styled.nav`
   display: flex;
   background-color: #161616;
   width: 100%;
-  height: 107px;
-
+  height: 15vh;
+  scroll-snap-align:start;
   .containerNav {
     margin: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

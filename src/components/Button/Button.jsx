@@ -20,23 +20,21 @@ const StyledButton = styled.button`
   position: relative;
   border-radius: 0.5rem;
   border: none;
-  padding: 0.375rem 0.75rem;
-  font-size: 1.3rem;
-  font-family: "MADE Soulmaze";
-  letter-spacing: 0.1rem;
-  font-weight: bolder;
+  padding: 0.375rem 0.2rem;
+  font-size: .9375rem;
+  // font-family: 'MADE Soulmaze Brush';
   text-transform: uppercase;
   color: #161616;
   cursor: pointer;
-  width: ${(props) => props.width || 16.875}rem;
-  height: 2.8rem;
+  width: ${(props) => props.width || 14}rem;
+  height: 2.5rem;
   background-color: ${(props) => props.color || "#1DF4C8"};
   z-index: 2;
 
   &:hover {
-    border: 0.12rem solid #1df4c8;
     background-color: #161616;
     color: #1df4c8;
+    letter-spacing: .2rem;
   }
 `;
 
@@ -62,7 +60,7 @@ function Button({ width, color, to, children }) {
           width={width}
           color={color}
         >
-        <span aria-hidden>{children}</span>
+        <span style={{ fontFamily: 'MADE Soulmaze' }} aria-hidden>{children}</span>
         </StyledButton>
       </Link>
       {showSparkles && (

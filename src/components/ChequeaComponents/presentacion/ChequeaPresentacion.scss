@@ -2,201 +2,126 @@
 @import "../../../styles/mixins.scss";
 
 .sectionChequeaPresentacion {
-    @include dimensions(100%, 100vh);
+    @include dimensions(100%, 80vh);
     background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336860/MONTAJE/CHEQUEA/8_bp66eb.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     display: flex;
     flex-wrap: wrap;
+    scroll-snap-align:start;
     &__imgContainer {
-        position: relative;
+        display: flex;
         width: 100%;
         &-imgCheems {
-            @include dimensions(30%, 85vh);
-            top: 15%;
-            left: 5%;
+            @include dimensions(45%, auto);
+            align-self: flex-end;
             z-index: 1;
+            position: absolute;
+            max-height: 80%
         }
         &-imgTitle {
-            @include dimensions(34%, auto);
-            transform: translate(94%, 40rem);
+            @include dimensions(100%, auto);
             z-index: 0;
+            align-self: flex-end;
+            padding-left: 30%;
+            padding-right: 5%;
+            padding-bottom: 3%;
+            
         }
     }
     &__textContainer {
         top: 28%;
-        left: 35%;
+        left: 45%;
+        padding-right: 2%;
+
         position: absolute;
         display: flex;
         flex-direction: column;
+
         &-text {
             color: #f1f1d8;
             line-height: 1.5;
         }
         &--bg {
             background-color: #161616;
-            @include customFontStyles(2.5rem, "Filson Pro Book", normal);
+            @include customFontStyles(2vw, "Filson Pro Book", normal);
         }
     }
 }
 
-@include responsive(1366px) {
+@include responsive(300px) {
     .sectionChequeaPresentacion {
-        &__imgContainer {
-            &-imgCheems {
-                @include dimensions(38%, 84vh);
-                position: absolute;
-                top: 16%;
-                left: 6%;
-            }
-            &-imgTitle {
-                @include dimensions(38%, auto);
-                transform: translate(100%, 22rem);
-            }
-        }
+
         &__textContainer {
-            top: 38%;
-            left: 42%;
+            top: 40%;
+            left: 5%;
             &--bg {
-                @include customFontStyles(2rem, "Filson Pro Book", normal);
+                @include customFontStyles(7vw, "Filson Pro Book", normal);
             }
         }
     }
 }
-@include responsive(1024px) {
+@media (min-width:301px) and (max-width: 764px){
     .sectionChequeaPresentacion {
-        &__imgContainer {
-            &-imgCheems {
-                @include dimensions(40%, 84vh);
-            }
-        }
-    }
-}
-@include responsive(768px) {
-    .sectionChequeaPresentacion {
-        &__imgContainer {
-            width: 100%;
-            &-imgCheems {
-                @include dimensions(55%, 55vh);
-                top: 45%;
-                left: 3%;
-            }
-            &-imgTitle {
-                @include dimensions(58%, auto);
-                transform: translate(65%, 32rem);
-            }
-        }
+
         &__textContainer {
-            width: 90%;
-            top: 30%;
-            left: 6%;
-            display: flex;
-            flex-direction: column;
-            &-text {
-                color: #f1f1d8;
-                line-height: 1.5;
-            }
+            top: 20%;
+            left: 5%;
             &--bg {
-                background-color: #161616;
-                @include customFontStyles(2.2rem, "Filson Pro Book", normal);
+                @include customFontStyles(7vw, "Filson Pro Book", normal);
             }
         }
     }
 }
-@include responsive(600px) {
+@media (min-width:501px) and (max-width: 764px){
     .sectionChequeaPresentacion {
-        &__imgContainer {
-            &-imgCheems {
-                @include dimensions(80%, 48vh);
-                top: 52%;
-                left: 11%;
-            }
-            &-imgTitle {
-                @include dimensions(73%, auto);
-                transform: translate(18%, 18rem);
-            }
-        }
+
         &__textContainer {
-            width: 75%;
-            top: 22%;
-            left: 7%;
+            left: 5%;
             &--bg {
-                @include customFontStyles(1.8rem, "Filson Pro Book", normal);
+                @include customFontStyles(5vw, "Filson Pro Book", normal);
             }
+            
         }
     }
 }
-@include responsive(414px) {
+@media (min-width:765px) and (max-width: 929px){
     .sectionChequeaPresentacion {
-        &__imgContainer {
-            &-imgCheems {
-                @include dimensions(90%, 22rem);
-                top: 52%;
-                left: 6%;
-            }
-            &-imgTitle {
-                @include dimensions(73%, auto);
-                transform: translate(18%, 19rem);
-            }
-        }
+
         &__textContainer {
-            width: 90%;
-            top: 28%;
-            left: 7%;
+            top: 18%;
+            left: 5%;
             &--bg {
-                @include customFontStyles(1.6rem, "Filson Pro Book", normal);
+                @include customFontStyles(4vw, "Filson Pro Book", normal);
             }
+            
         }
     }
 }
-@include responsive(375px) {
+
+@media (min-width:933px) and (max-width: 1110px){
     .sectionChequeaPresentacion {
-        &__imgContainer {
-            &-imgCheems {
-                @include dimensions(90%, 46vh);
-                top: 54%;
-                left: 3%;
-            }
-            &-imgTitle {
-                @include dimensions(75%, auto);
-                transform: translate(20%, 6rem);
-            }
-        }
+
         &__textContainer {
-            top: 50%;
-            left: 10%;
-            width: 87%;
-            &-text {
-                line-height: 1.4;
-            }
             &--bg {
-                @include customFontStyles(1.2rem, "Filson Pro Book", normal);
+                @include customFontStyles(3vw, "Filson Pro Book", normal);
             }
+            
         }
     }
 }
-@include responsive(320px) {
+@media (min-width:1111px) and (max-width: 1486px){
     .sectionChequeaPresentacion {
-        &__imgContainer {
-            width: 100%;
-            &-imgCheems {
-                @include dimensions(80%, auto);
-                top: 60%;
-                left: 3%;
-            }
-            &-imgTitle {
-                @include dimensions(80%, auto);
-                transform: translate(14%, 5rem);
-            }
-        }
+
         &__textContainer {
-            top: 55%;
-            left: 7%;
-            width: 87%;
-            &-text {
-                line-height: 1.4;
-            }
             &--bg {
-                @include customFontStyles(1.2rem, "Filson Pro Book", normal);
+                @include customFontStyles(2vw, "Filson Pro Book", normal);
             }
+            
         }
     }
 }
+
+
+
+

@@ -1,26 +1,40 @@
+import React from "react";
 import styled from "styled-components";
-import "../../../fonts/fonts.css";
-import { NavLink } from "react-router-dom";
+import BotonExpresa from "./BotonExpresa";
 
 const StyledExpresa = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336876/MONTAJE/EXPRESA/16_wsdajl.png");
   height: 30rem;
   display: flex;
+  scroll-snap-align: start;
 `;
 
 const StyledImgRight = styled.img`
   position: absolute;
-  margin-left: 65rem;
-  width: 54rem;
+  width: 36%;
   height: 50%;
-  opacity: 0.8;
-  overflow-x: hidden;
+  margin-left: 64%;
+  filter: brightness(491%) opacity(0.8);
 
-  @media (min-width: 480px) and (max-width: 1370px) {
-    margin-left: 10rem;
-    width: 88%;
-    height: 23rem;
-    
+  @media (min-width: 480px) and (max-width: 1366px) {
+    width: 65%;
+    margin-left: 35%;
+    margin-top: 0%;
+  }
+  @media screen and (max-width: 480px) {
+    width: 69%;
+    height: 41%;
+    margin-left: 8.9rem;
+  }
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 69%;
+    height: 41%;
+    margin-left: 31%;
+  }
+  @media (min-width: 769px) and (max-width: 1365px) {
+    width: 67%;
+    height: 41%;
+    margin-left: 33%;
   }
 `;
 
@@ -37,30 +51,28 @@ const StyledImg = styled.img`
   @media (min-width: 481px) and (max-width: 768px) {
     margin-top: 0;
     width: 60%;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
   }
   @media (min-width: 768px) and (max-width: 1365px) {
     margin-top: 0;
     width: 50%;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
   }
 `;
 
 const StyledTextoContainer = styled.p`
   margin-top: 4rem;
   @media screen and (max-width: 480px) {
-    text-align: center;
     margin-left: -4rem;
     width: 13rem;
   }
   @media (min-width: 481px) and (max-width: 768px) {
     margin-left: -5rem;
-    width: 19rem;
+    width: 17rem;
   }
   @media (min-width: 768px) and (max-width: 1365px) {
-    margin-left: -3rem;
-        width: 38rem;
-        height: 9rem;
+    margin-left: -4rem;
+    width: 22rem;
   }
 `;
 
@@ -76,8 +88,8 @@ const StyledTextoSpan = styled.span`
     line-height: 17px;
   }
   @media (min-width: 481px) and (max-width: 768px) {
-    font-size: 21px;
-    line-height: 31px;
+    font-size: 20px;
+    line-height: 28px;
   }
   @media (min-width: 768px) and (max-width: 1375px) {
     font-size: 27px;
@@ -86,8 +98,8 @@ const StyledTextoSpan = styled.span`
 `;
 
 const StyledImgText = styled.img`
-  margin-left: 10%;
-   height: 12rem;
+  margin-left: 12%;
+  height: 14rem;
   width: 50%;
   align-self: flex-end;
   margin-bottom: 1%;
@@ -97,33 +109,33 @@ const StyledImgText = styled.img`
     z-index: 10;
     width: 42%;
   }
-  @media (min-width: 480px ) and (max-width: 768px) {
+  @media (min-width: 480px) and (max-width: 768px) {
     margin-left: 0rem;
     z-index: 10;
     width: 42%;
   }
-    @media (min-width: 768px) and (max-width: 1365px) {
+  @media (min-width: 768px) and (max-width: 1365px) {
     margin-left: 0rem;
     z-index: 10;
-    width:  35%;
-  } 
+    width: 35%;
+  }
 `;
 
-const StyledButtonExpresa = styled(NavLink)`
+const StyledBotonExpresa = styled(BotonExpresa)`
   background-color: #fff35f;
   color: #000000;
   padding: 0.5rem;
   font-family: "MADE Soulmaze";
-  font-weight: 400;
   font-size: 20px;
-  line-height: 23px;
-  border-radius: 3px;
-  font-weight: bold;
   align-self: flex-end;
   margin-bottom: 5rem;
   text-decoration: none;
   position: relative;
-  
+  border: none;
+  font-weight: bold;
+  box-shadow: 0px 1px 3px #1c1c21;
+  cursor: pointer;
+
   @media screen and (max-width: 480px) {
     margin-left: -12rem;
     margin-bottom: 7rem;
@@ -132,12 +144,16 @@ const StyledButtonExpresa = styled(NavLink)`
     margin-left: -17rem;
   }
   @media (min-width: 768px) and (max-width: 1575px) {
-    margin-left: -31rem;
+    margin-left: -15rem;
     margin-bottom: 2rem;
   }
 `;
 
 const InicioExpresa = () => {
+  const handleClick = () => {
+    console.log("click");
+  };
+
   return (
     <StyledExpresa>
       <StyledImg
@@ -155,11 +171,15 @@ const InicioExpresa = () => {
       <StyledTextoContainer>
         <StyledTextoSpan>
           Interactúa con nuestra colección creativa sobre el problema de la
-          <br/> desinformación. Pregunta, propone y manifiéstate abiertamente.
-          El<br/> debate es central para comprender y transformar la realidad.
+          <br /> desinformación. Pregunta, propone y manifiéstate abiertamente.
+          El
+          <br /> debate es central para comprender y transformar la realidad.
         </StyledTextoSpan>
       </StyledTextoContainer>
-      <StyledButtonExpresa> ENVIAR APORTE</StyledButtonExpresa>
+
+      <StyledBotonExpresa onClick={handleClick}>
+        ENVIAR APORTE
+      </StyledBotonExpresa>
     </StyledExpresa>
   );
 };
