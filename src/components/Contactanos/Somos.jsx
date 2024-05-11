@@ -3,7 +3,7 @@ import "../../../fonts/fonts.css";
 
 const StyledSomos = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336904/MONTAJE/SOMOS/22_bajxgg.png");
-  height: 83vh;
+  height: 85vh;
   scroll-snap-align: start;
   display: flex;
   flex-direction: row;

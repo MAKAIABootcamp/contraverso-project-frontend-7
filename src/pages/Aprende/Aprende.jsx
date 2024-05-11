@@ -1,15 +1,21 @@
+import styled from "styled-components";
+import "../../../fonts/fonts.css";
 import AprendeBienvenida from "../../components/AprendeComponents/AprendeBienvenida/AprendeBienvenida";
 import AprendeJuega from "../../components/AprendeComponents/AprendeJuega/AprendeJuega";
-import "./Aprende.scss";
+
+const StyledAprende = styled.div`
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  gap: 5vh;
+`;
 
 const Aprende = () => {
   return (
-      <>
-        <div className="aprende">
+      <StyledAprende>
           <AprendeBienvenida/>
           <AprendeJuega/>
-        </div>
-      </>
+      </StyledAprende>
   )
 };
 
