@@ -2,6 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaStar, FaRegStar } from 'react-icons/fa';
 import { useFactChecking, mediosCO, mediosND } from './linksData';
+import styled from 'styled-components';
+
+const StyledReco = styled.div`
+background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336854/MONTAJE/CHEQUEA/12_x1mjvc.png");
+`
 
 const Recomienda = () => {
   const renderStars = (stars) => {
@@ -58,6 +63,7 @@ const Recomienda = () => {
   }, {});
 
   return (
+    <StyledReco >
     <div>
       {Object.entries(groupedDataByCategoryAndCountry).map(([category, countries], index) => (
         <div key={index}>
@@ -115,6 +121,7 @@ const Recomienda = () => {
         </div>
       ))}
     </div>
+    </StyledReco>
   );
 };
 
