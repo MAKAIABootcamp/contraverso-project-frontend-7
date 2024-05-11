@@ -1,60 +1,114 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { factChecking, linksData } from './linksData';
-import { FaStar, FaRegStar } from 'react-icons/fa'; // Importa el icono de estrellas
+import { FaStar, FaRegStar } from 'react-icons/fa';
+import { useFactChecking, mediosCO, mediosND } from './linksData';
 
 const Recomienda = () => {
-    const renderStars = (stars) => {
-        const fullStars = Math.floor(stars);
-        const halfStar = stars >= 4.5;
-        return Array.from({ length: fullStars + (halfStar? 1 : 0) }, (_, i) => i < fullStars? <FaStar key={i} /> : <FaRegStar key={i} />);
-      };
+  const renderStars = (stars) => {
+    const fullStars = Math.floor(stars);
+    const halfStar = stars >= 4.5;
+    return Array.from({ length: fullStars + (halfStar ? 1 : 0) }, (_, i) => i < fullStars ? <FaStar key={i} /> : <FaRegStar key={i} />);
+  };
+
+  const factCheckingData = useFactChecking();
+  const mediosCOData = mediosCO();
+  const mediosNDData = mediosND();
+
+  // Agrupar los datos por category
+  const groupedDataByCategory = factCheckingData.reduce((acc, item) => {
+    const key = item.category;
+    if (!acc[key]) {
+      acc[key] = [];
+    }
+    acc[key].push(item);
+    return acc;
+  }, {});
+
+  // Agrupar los datos por country dentro de cada category
+  const groupedDataByCategoryAndCountry = Object.entries(groupedDataByCategory).reduce((acc, [category, items]) => {
+    items.forEach(item => {
+      const key = item.country;
+      if (!acc[category]) {
+        acc[category] = {};
+      }
+      if (!acc[category][key]) {
+        acc[category][key] = [];
+      }
+      acc[category][key].push(item);
+    });
+    return acc;
+  }, {});
+
+  const groupedMediosCOData = mediosCOData.reduce((acc, item) => {
+    const key = item.category;
+    if (!acc[key]) {
+      acc[key] = [];
+    }
+    acc[key].push(item);
+    return acc;
+  }, {});
+
+  const groupedMediosNDData = mediosNDData.reduce((acc, item) => {
+    const key = item.category;
+    if (!acc[key]) {
+      acc[key] = [];
+    }
+    acc[key].push(item);
+    return acc;
+  }, {});
 
   return (
     <div>
-       {factChecking.map((category, index) => (
+      {Object.entries(groupedDataByCategoryAndCountry).map(([category, countries], index) => (
         <div key={index}>
-          <h2>{category.category}</h2>
+          <h1>{category}</h1>
           <ul>
-            {category.items.map((item, i) => (
+            {Object.entries(countries).map(([country, items], index) => (
+              <div key={index}>
+                <h2>{country}</h2>
+                <ul>
+                  {items.map((item, i) => (
+                    <li key={i}>
+                      <Link to={item.url} target="_blank" rel="noopener noreferrer">
+                        {item.name}
+                      </Link>
+                      {item.stars && renderStars(Number(item.stars.slice(1, -1)))}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </ul>
+        </div>
+      ))}
+
+      {Object.entries(groupedMediosCOData).map(([category, items], index) => (
+        <div key={index}>
+          <h1>{category}</h1>
+          <ul>
+            {items.map((item, i) => (
               <li key={i}>
-                {item.name && <strong>{item.name}:</strong>}
-                {item.items && item.items.map((subItem, subIndex) => (
-                  <div key={subIndex}>
-                    <Link to={subItem.url} target="_blank" rel="noopener noreferrer">
-                      {subItem.name}
-                    </Link>
-                    {subItem.stars && renderStars(Number(subItem.stars.slice(1, -1)))}
-                  </div>
-                ))}
+                <Link to={item.url} target="_blank" rel="noopener noreferrer">
+                  {item.name}
+                </Link>
+                {item.stars && renderStars(Number(item.stars.slice(1, -1)))}
               </li>
             ))}
           </ul>
         </div>
       ))}
-      
-      {linksData.map((category, index) => (
+
+      {Object.entries(groupedMediosNDData).map(([category, items], index) => (
         <div key={index}>
-          <h2>{category.category}</h2>
+          <h1>{category}</h1>
           <ul>
-            {category.items.map((item, i) => (
+            {items.map((item, i) => (
               <li key={i}>
-                {item.description? (
-                  <div>
-                    <Link to={item.url} target="_blank" rel="noopener noreferrer">
-                      {item.name}
-                    </Link>
-                    <p>{item.description}</p>
-                    {item.stars && renderStars(Number(item.stars.slice(1, -1)))}
-                  </div>
-                ) : (
-                    <div>
-                  <Link to={item.url} target="_blank" rel="noopener noreferrer">
-                    {item.name}
-                  </Link>
-                  {item.stars && renderStars(Number(item.stars.slice(1, -1)))}
-                  </div>
-                )}
+                <Link to={item.url} target="_blank" rel="noopener noreferrer">
+                  {item.name}
+                </Link>
+                {item.stars && renderStars(Number(item.stars.slice(1, -1)))}
+                <strong>{item.description}</strong>
               </li>
             ))}
           </ul>
