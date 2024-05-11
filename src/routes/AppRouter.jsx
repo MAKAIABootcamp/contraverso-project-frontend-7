@@ -19,14 +19,14 @@ const AppRouter = () => {
   return (
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="inicio" element={<Inicio />} />
+          <Route index element={<Inicio />} />
           <Route path="chequea" element={<Chequea />} />
           <Route path="confronta" element={<Confronta />} />
           <Route path="expresa" element={<Expresa />} />
           <Route path="aprende" element={<Aprende />} />
           <Route path="contacto" element={<Contacto />} />
         </Route>
-          <Route index element={<Acceso />} />
+          <Route path="YWNjZXNvIGFsIGxvZ2luIGRlbCBhZG1pbg==" element={<Acceso />} />
       </Routes>
   );
 };

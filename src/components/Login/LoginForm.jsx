@@ -29,27 +29,18 @@ const LoginForm = () => {
     }),
     onSubmit: async (values) => {
       dispatch(actionLogin(values));
-      // try {
-      //   const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
-      //   const userFirebase = userCredential.user;
-      //   console.log("Inicio de sesión exitoso:", userFirebase);
-      //   alert(`Bienvenido, ${userFirebase.email}`);
-      //   dispatch(login(userFirebase.email));
-      //   navigate('/inicio');
-      // } catch (error) {
-      //   console.error("Error al iniciar sesión:", error);
-      // }
     },
   });
-
+  
   if (error) {
     alert("Ocurrió un error en el inicio de sesión");
     dispatch(setError(null));
   }
   if (isAuthenticated) {
     alert(`Bienvenido${user.displayName ? `, ${user.displayName}!` : "!"}`);
-    navigate("/inicio");
+    navigate("/");
   }
+
   return (
     <form onSubmit={formik.handleSubmit}>
       <label htmlFor="email">Email</label>
