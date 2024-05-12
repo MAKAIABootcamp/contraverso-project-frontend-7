@@ -1,8 +1,29 @@
-@import url('../../../fonts/fonts.css');
+@import url("../../../fonts/fonts.css");
 
-.login {
-        background-color: paleturquoise;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
+form {
+
+}
+.acceso {
+        &__login-card {
+                &-header {
+                        
+                        div {
+                        }
+                }
+                .acceso__login-card-body {
+                        &-form {
+                        }
+                        &-form-group {
+                               
+                        }
+                        button {
+
+
+                        }
+
+                        button:active {
+
+                        }
+                }
+        }
 }
