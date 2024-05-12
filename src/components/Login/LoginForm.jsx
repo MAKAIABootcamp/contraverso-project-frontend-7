@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { setError } from "../../app/features/userAuth/userAuthSlice";
 import * as Yup from "yup";
 
+import "../../../fonts/fonts.css";
 import styled from "styled-components";
 
 const SectionForm = styled.section`
@@ -45,8 +46,8 @@ div {
 }
 `;
 const ButtonStyled = styled.button`
-width: 13vw;
-font-size: 1rem;
+width: 15vw;
+font-size: .8rem;
 color: #000000;
 border: 2px outset #f1f1d8;
 padding: 0.4rem 0.5rem;
@@ -60,6 +61,7 @@ box-shadow: 0 0.24rem #b2adad4d;
   border: 2px solid #000000;
   box-shadow: 0 0.2rem #b2adad4d;
   transform: translateY(0.2rem);
+  letter-spacing: .2rem;
 }
 `;
 const FormStyled = styled.form`
@@ -135,7 +137,7 @@ const LoginForm = () => {
         </FormGroup>
       </SectionForm>
 
-      <ButtonStyled type="submit">Iniciar sesión</ButtonStyled>
+      <ButtonStyled type="submit" style={{ fontFamily: 'MADE Soulmaze' }}>Iniciar sesión</ButtonStyled>
 
     </FormStyled>
   );

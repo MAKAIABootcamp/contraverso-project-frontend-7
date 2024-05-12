@@ -7,7 +7,7 @@ import Expresa from "../pages/Expresa/Expresa";
 import Aprende from "../pages/Aprende/Aprende";
 import Contacto from "../pages/Contacto/Contacto";
 import { useEffect } from "react";
-import Acceso from "../pages/Login/Acceso";
+import Acceso from "../pages/Acceso/Acceso";
 
 const AppRouter = () => {
   const { pathname } = useLocation();
