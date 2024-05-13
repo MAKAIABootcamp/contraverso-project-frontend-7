@@ -7,7 +7,7 @@ import Expresa from "../pages/Expresa/Expresa";
 import Aprende from "../pages/Aprende/Aprende";
 import Contacto from "../pages/Contacto/Contacto";
 import { useEffect } from "react";
-import Acceso from "../pages/Login/Acceso";
+import Acceso from "../pages/Acceso/Acceso";
 
 const AppRouter = () => {
   const { pathname } = useLocation();
@@ -19,14 +19,14 @@ const AppRouter = () => {
   return (
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="inicio" element={<Inicio />} />
+          <Route index element={<Inicio />} />
           <Route path="chequea" element={<Chequea />} />
           <Route path="confronta" element={<Confronta />} />
           <Route path="expresa" element={<Expresa />} />
           <Route path="aprende" element={<Aprende />} />
           <Route path="contacto" element={<Contacto />} />
         </Route>
-          <Route index element={<Acceso />} />
+          <Route path="YWNjZXNvIGFsIGxvZ2luIGRlbCBhZG1pbg==" element={<Acceso />} />
       </Routes>
   );
 };

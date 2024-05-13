@@ -148,8 +148,8 @@ const AprendeJuega = () => {
         <h1>Juegos</h1>
       </ContainerStyled>
       <ButtonsStyled>
-        <Button>JUEGOS EN LÍNEA</Button>
-        <Button>JUEGOS DE MESA</Button>
+        <Button bgColor="#1DF4C8">JUEGOS EN LÍNEA</Button>
+        <Button bgColor="#1DF4C8">JUEGOS DE MESA</Button>
       </ButtonsStyled>
 
       <StyledContainer>

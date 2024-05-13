@@ -176,10 +176,10 @@ const ChequeaVerifica = () => {
         </ImageStyled>
 
         <ContainerStyled>
-          <Button width={buttonWidth}>IMÁGENES</Button>
-          <Button width={buttonWidth}>VÍDEOS</Button>
-          <Button width={buttonWidth}>DIRECCIONES IP</Button>
-          <Button width={buttonWidth}>REDES SOCIALES</Button>
+          <Button bgColor="#1DF4C8" width={buttonWidth}>IMÁGENES</Button>
+          <Button bgColor="#1DF4C8" width={buttonWidth}>VÍDEOS</Button>
+          <Button bgColor="#1DF4C8" width={buttonWidth}>DIRECCIONES IP</Button>
+          <Button bgColor="#1DF4C8" width={buttonWidth}>REDES SOCIALES</Button>
         </ContainerStyled>
       </SectionStyled>
     </>

@@ -3,7 +3,9 @@ import "./Confronta.scss";
 const Confronta = () => {
   return (
       <>
-        <div className="confronta">Confronta</div>
+        <div className="confronta">
+          Confronta
+        </div>
       </>
   )
 };
