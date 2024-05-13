@@ -15,14 +15,13 @@ const SectionStyled = styled.section`
 `;
 
 const ContainerStyled = styled.div`
-  width: 40%;
+  width: 45%;
   height: 30%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 5%;
-  
 
   img {
     position: relative;
@@ -35,39 +34,49 @@ const ContainerStyled = styled.div`
     font-family: "MADE Soulmaze Brush";
     position: absolute;
   }
-  /* @media (max-width: 768px) {
-    bottom: 73%;
-    left: 20%;
+   @media (max-width: 500px) {
+    width: 100%;
+    align-self: center;
     img {
-      width: auto;
-      height: 7vh;
+      width:100%;
     }
-    h1 {
-      font-size: 5.5rem;
-    }
-  }
-  @media (max-width: 414px) {
-    bottom: 73%;
-    left: 10%;
-    img {
-      width: auto;
-      height: 6.8vh;
-    }
-    h1 {
-      font-size: 4.5rem;
-      left: 19%;
-    }
-  }
-  @media (max-width: 375px) {
-    h1 {
-      font-size: 4rem;
-    }
-  }
-  @media (max-width: 375px) {
     h1 {
       font-size: 3.5rem;
     }
-  } */
+  }
+
+  @media (min-width: 501px)  and (max-width:560px){
+    width: 100%;
+    align-self: center;
+    img {
+      width:100%;
+    }
+    h1 {
+      font-size: 5rem;
+    }
+  }
+
+  @media (min-width: 561px)  and (max-width:800px){
+    width: 100%;
+    align-self: center;
+    img {
+      width:100%;
+    }
+    h1 {
+      font-size: 6.5rem;
+    }
+  }
+  @media (min-width: 801px)  and (max-width:1115px){
+    width: 100%;
+    align-self: center;
+    img {
+      width:100%;
+    }
+    h1 {
+      font-size: 7.5rem;
+    }
+  }
+  
 `;
 
 const StyledContainer = styled.div`
@@ -87,18 +96,12 @@ const ButtonsStyled = styled.div`
   gap: 1.2rem;
   width: 100%;
   height: 100%;
-  /* @media (max-width: 768px) {
-    top: 37%;
-  }
-  @media (max-width: 414px) {
-    top: 37%;
-  }
-  @media (max-width: 375px) {
-    top: 35%;
-  }
-  @media (max-width: 320px) {
-    top: 33%;
-  } */
+
+  @media (max-width: 500px) {
+    button{
+      width: 12rem;
+    }
+    }
 `;
 
 const PerroStyled = styled.img`
@@ -107,10 +110,14 @@ const PerroStyled = styled.img`
   z-index: 1;
   align-self: flex-end;
 
-  /* @media (max-width: 768px) {
-    top: 53%;
-    height: 47vh;
-  } */
+  @media (max-width: 360px) {
+    width: 100%;
+    
+  }
+  @media (min-width: 361px) and (max-width:500px) {
+    width: 100%;
+    height: 65%;
+  }
 `;
 
 const TextureStyled = styled.figure`
@@ -124,12 +131,10 @@ const TextureStyled = styled.figure`
     width: 100%;
     z-index: 0;
   }
-  /* @media (max-width: 768px) {
-    img {
-      height: 45vh;
-    }
-    transform: translate(0, 96.8%);
-  } */
+
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 const AprendeJuega = () => {
