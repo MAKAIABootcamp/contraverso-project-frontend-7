@@ -25,9 +25,25 @@ const StyledImgIcono = styled.img`
   max-height: 80%;
   align-self: flex-end;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 352px) {
     align-self: center;
     max-width: 100%;
+    margin-top: auto;
+  }
+  @media (min-width:353px) and (max-width: 403px) {
+    align-self: center;
+    max-width: 80%;
+    margin-top: auto;
+  }
+  @media (min-width:404px) and (max-width: 433px) {
+    align-self: center;
+    max-width: 70%;
+    margin-top: auto;
+  }
+  @media (min-width:434px) and (max-width: 600px) {
+    align-self: center;
+    max-width: 60%;
+    margin-top: auto;
   }
 `;
 

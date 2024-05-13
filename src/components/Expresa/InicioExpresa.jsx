@@ -1,78 +1,59 @@
-import React from "react";
 import styled from "styled-components";
 import BotonExpresa from "./BotonExpresa";
 
 const StyledExpresa = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336876/MONTAJE/EXPRESA/16_wsdajl.png");
-  height: 30rem;
+  height: 80vh;
   display: flex;
+  flex-direction: row;
   scroll-snap-align: start;
 `;
 
-const StyledImgRight = styled.img`
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-self: flex-start;
+  z-index: 4;
   position: absolute;
-  width: 36%;
-  height: 50%;
-  margin-left: 64%;
-  filter: brightness(491%) opacity(0.8);
+  padding-left: 30%;
+  padding-right: 5%;
+  padding-top: 5%;
 
-  @media (min-width: 480px) and (max-width: 1366px) {
-    width: 65%;
-    margin-left: 35%;
-    margin-top: 0%;
+  @media (max-width: 570px) {
+    padding-left: 5%;
   }
-  @media screen and (max-width: 480px) {
-    width: 69%;
-    height: 41%;
-    margin-left: 8.9rem;
-  }
-  @media (min-width: 481px) and (max-width: 768px) {
-    width: 69%;
-    height: 41%;
-    margin-left: 31%;
-  }
-  @media (min-width: 769px) and (max-width: 1365px) {
-    width: 67%;
-    height: 41%;
-    margin-left: 33%;
+  @media (min-width: 571px) and (max-width: 800px) {
+    padding-left: 40%;
   }
 `;
 
-const StyledImg = styled.img`
-  margin-top: 3rem;
-  width: 30%;
-  position: relative;
+const StyledImgTexture = styled.img`
+  width: 40%;
+  height: auto;
+  z-index: 1;
+  align-self: flex-start;
+  margin-left: auto;
+  margin-bottom: auto;
+
+  filter: brightness(491%) opacity(0.8);
+`;
+
+const StyledImgIcono = styled.img`
+  width: 40%;
+  max-height: 100%;
   z-index: 3;
-  @media screen and (max-width: 480px) {
-    margin-top: 5rem;
-    width: 59%;
-    margin-bottom: 5rem;
-  }
-  @media (min-width: 481px) and (max-width: 768px) {
-    margin-top: 0;
+  align-self: flex-end;
+
+  @media (max-width: 800px) {
     width: 60%;
-    margin-bottom: 5rem;
-  }
-  @media (min-width: 768px) and (max-width: 1365px) {
-    margin-top: 0;
-    width: 50%;
-    margin-bottom: 5rem;
   }
 `;
 
 const StyledTextoContainer = styled.p`
-  margin-top: 4rem;
-  @media screen and (max-width: 480px) {
-    margin-left: -4rem;
-    width: 13rem;
-  }
-  @media (min-width: 481px) and (max-width: 768px) {
-    margin-left: -5rem;
-    width: 17rem;
-  }
-  @media (min-width: 768px) and (max-width: 1365px) {
-    margin-left: -4rem;
-    width: 22rem;
+  @media (max-width: 800px) {
+    margin-bottom: 5%;
   }
 `;
 
@@ -80,44 +61,20 @@ const StyledTextoSpan = styled.span`
   color: #f1f1d8;
   background-color: #000000;
   font-family: "Filson Pro Book";
-  font-size: 30px;
-  line-height: 40px;
-  position: relative;
-  @media screen and (max-width: 480px) {
-    font-size: 17px;
-    line-height: 17px;
-  }
-  @media (min-width: 481px) and (max-width: 768px) {
-    font-size: 20px;
-    line-height: 28px;
-  }
-  @media (min-width: 768px) and (max-width: 1375px) {
-    font-size: 27px;
-    line-height: 37px;
+  font-size: 2rem;
+  @media screen and (max-width: 800px) {
+    font-size: 1.3rem;
   }
 `;
 
-const StyledImgText = styled.img`
-  margin-left: 12%;
-  height: 14rem;
-  width: 50%;
+const StyledImgTitle = styled.img`
+  width: 55%;
   align-self: flex-end;
-  margin-bottom: 1%;
+  margin-left: 20%;
   position: absolute;
-  @media screen and (max-width: 480px) {
-    margin-left: 0rem;
-    z-index: 10;
-    width: 42%;
-  }
-  @media (min-width: 480px) and (max-width: 768px) {
-    margin-left: 0rem;
-    z-index: 10;
-    width: 42%;
-  }
-  @media (min-width: 768px) and (max-width: 1365px) {
-    margin-left: 0rem;
-    z-index: 10;
-    width: 35%;
+  z-index: 2;
+  @media (max-width: 800px) {
+    width: 80%;
   }
 `;
 
@@ -127,25 +84,20 @@ const StyledBotonExpresa = styled(BotonExpresa)`
   padding: 0.5rem;
   font-family: "MADE Soulmaze";
   font-size: 20px;
-  align-self: flex-end;
-  margin-bottom: 5rem;
   text-decoration: none;
-  position: relative;
   border: none;
   font-weight: bold;
   box-shadow: 0px 1px 3px #1c1c21;
   cursor: pointer;
 
-  @media screen and (max-width: 480px) {
-    margin-left: -12rem;
-    margin-bottom: 7rem;
-  }
-  @media (min-width: 481px) and (max-width: 768px) {
-    margin-left: -17rem;
-  }
-  @media (min-width: 768px) and (max-width: 1575px) {
-    margin-left: -15rem;
-    margin-bottom: 2rem;
+  align-self: flex-end;
+
+  margin-top: auto;
+  margin-bottom: auto;
+  z-index: 4;
+  @media (max-width: 800px) {
+    align-self: center;
+    margin-top: 0;
   }
 `;
 
@@ -156,30 +108,31 @@ const InicioExpresa = () => {
 
   return (
     <StyledExpresa>
-      <StyledImg
+      <StyledImgIcono
         src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336875/MONTAJE/EXPRESA/4-1_no0oii.png"
         alt="Icon"
-      ></StyledImg>
-      <StyledImgRight
-        src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336881/MONTAJE/EXPRESA/4-TEXTU_jhes8z.png"
-        alt=""
-      ></StyledImgRight>
-      <StyledImgText
+      ></StyledImgIcono>
+      <StyledImgTitle
         src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336879/MONTAJE/EXPRESA/4-expresa_gwsluu.png"
         alt="textoImagen"
-      ></StyledImgText>
-      <StyledTextoContainer>
-        <StyledTextoSpan>
-          Interactúa con nuestra colección creativa sobre el problema de la
-          <br /> desinformación. Pregunta, propone y manifiéstate abiertamente.
-          El
-          <br /> debate es central para comprender y transformar la realidad.
-        </StyledTextoSpan>
-      </StyledTextoContainer>
+      ></StyledImgTitle>
 
-      <StyledBotonExpresa onClick={handleClick}>
-        ENVIAR APORTE
-      </StyledBotonExpresa>
+      <StyledContainer>
+        <StyledTextoContainer>
+          <StyledTextoSpan>
+            Interactúa con nuestra colección creativa sobre el problema de la
+            desinformación. Pregunta, propone y manifiéstate abiertamente. El
+            debate es central para comprender y transformar la realidad.
+          </StyledTextoSpan>
+        </StyledTextoContainer>
+        <StyledBotonExpresa onClick={handleClick}>
+          ENVIAR APORTE
+        </StyledBotonExpresa>
+      </StyledContainer>
+      <StyledImgTexture
+        src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336881/MONTAJE/EXPRESA/4-TEXTU_jhes8z.png"
+        alt=""
+      ></StyledImgTexture>
     </StyledExpresa>
   );
 };
