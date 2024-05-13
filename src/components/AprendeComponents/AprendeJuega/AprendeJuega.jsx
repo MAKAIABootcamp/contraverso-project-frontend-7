@@ -1,113 +1,139 @@
-import React from "react";
 import styled from "styled-components";
 import Button from "../../Button/Button";
 
 const SectionStyled = styled.section`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336853/MONTAJE/APRENDE/21_waoapm.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   width: 100%;
-  height: 100vh;
+  height: 95vh;
   position: relative;
   scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 const ContainerStyled = styled.div`
-  position: absolute;
-  bottom: 63%;
-  left: 7%;
+  width: 45%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5%;
+
   img {
-    width: auto;
-    height: 14vh;
+    position: relative;
+    width: 100%;
+    padding: 5%;
+    
   }
   h1 {
     font-size: 6rem;
     font-family: "MADE Soulmaze Brush";
     position: absolute;
-    bottom: -4%;
-    left: 23%;
   }
-  @media (max-width: 768px) {
-    bottom: 73%;
-    left: 20%;
+   @media (max-width: 500px) {
+    width: 100%;
+    align-self: center;
     img {
-      width: auto;
-      height: 7vh;
+      width:100%;
     }
-    h1 {
-      font-size: 5.5rem;
-    }
-  }
-  @media (max-width: 414px) {
-    bottom: 73%;
-    left: 10%;
-    img {
-      width: auto;
-      height: 6.8vh;
-    }
-    h1 {
-      font-size: 4.5rem;
-      left: 19%;
-    }
-  }
-  @media (max-width: 375px) {
-    h1 {
-      font-size: 4rem;
-    }
-  }
-  @media (max-width: 375px) {
     h1 {
       font-size: 3.5rem;
     }
   }
+
+  @media (min-width: 501px)  and (max-width:560px){
+    width: 100%;
+    align-self: center;
+    img {
+      width:100%;
+    }
+    h1 {
+      font-size: 5rem;
+    }
+  }
+
+  @media (min-width: 561px)  and (max-width:800px){
+    width: 100%;
+    align-self: center;
+    img {
+      width:100%;
+    }
+    h1 {
+      font-size: 6.5rem;
+    }
+  }
+  @media (min-width: 801px)  and (max-width:1115px){
+    width: 100%;
+    align-self: center;
+    img {
+      width:100%;
+    }
+    h1 {
+      font-size: 7.5rem;
+    }
+  }
+  
+`;
+
+const StyledContainer = styled.div`
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
 `;
 
 const ButtonsStyled = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  position: relative;
-  top: 49%;
+  position: absolute;
   gap: 1.2rem;
-  @media (max-width: 768px) {
-    top: 37%;
-  }
-  @media (max-width: 414px) {
-    top: 37%;
-  }
-  @media (max-width: 375px) {
-    top: 35%;
-  }
-  @media (max-width: 320px) {
-    top: 33%;
-  }
+  width: 100%;
+  height: 100%;
+
+  @media (max-width: 500px) {
+    button{
+      width: 12rem;
+    }
+    }
 `;
 
 const PerroStyled = styled.img`
-  widht: auto;
-  height: 77vh;
-  position: absolute;
-  top: 23%;
-  right: 0;
+  width: 50%;
+  max-height: 100%;
   z-index: 1;
-  @media (max-width: 768px) {
-    top: 53%;
-    height: 47vh;
+  align-self: flex-end;
+
+  @media (max-width: 360px) {
+    width: 100%;
+    
+  }
+  @media (min-width: 361px) and (max-width:500px) {
+    width: 100%;
+    height: 65%;
   }
 `;
 
 const TextureStyled = styled.figure`
-  position: absolute;
-  transform: translate(0, 39%);
+  display: flex;
+  width: 50%;
+  padding-right: 10%;
+  max-height: 80%;
+  align-self: flex-end;
   img {
     opacity: 0.5;
-    width: auto;
-    height: 60vh;
+    width: 100%;
     z-index: 0;
   }
-  @media (max-width: 768px) {
-    img {
-      height: 45vh;
-    }
-    transform: translate(0, 96.8%);
+
+  @media (max-width: 500px) {
+    display: none;
   }
 `;
 
@@ -125,16 +151,19 @@ const AprendeJuega = () => {
         <Button>JUEGOS EN LÍNEA</Button>
         <Button>JUEGOS DE MESA</Button>
       </ButtonsStyled>
-      <PerroStyled
-        src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336848/MONTAJE/APRENDE/5-2_pisnsy.png"
-        alt="Perro sentado en la mesa"
-      />
-      <TextureStyled>
-        <img
-          src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336837/MONTAJE/APRENDE/5-2_TEXTU_pnnfs8.png"
-          alt="Textura"
-        />
-      </TextureStyled>
+
+      <StyledContainer>
+        <TextureStyled>
+          <img
+            src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336837/MONTAJE/APRENDE/5-2_TEXTU_pnnfs8.png"
+            alt="Textura"
+          />
+        </TextureStyled>
+        <PerroStyled
+          src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336848/MONTAJE/APRENDE/5-2_pisnsy.png"
+          alt="Perro sentado en la mesa"
+        ></PerroStyled>
+      </StyledContainer>
     </SectionStyled>
   );
 };
