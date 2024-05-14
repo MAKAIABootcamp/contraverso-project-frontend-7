@@ -126,7 +126,7 @@ const ContainerStyled = styled.div`
 
 `;
 
-const ChequeaVerifica = () => {
+const ChequeaVerifica = ({onButtonClick}) => {
   const [buttonWidth, setButtonWidth] = useState(14);
 
   useEffect(() => {
@@ -176,10 +176,10 @@ const ChequeaVerifica = () => {
         </ImageStyled>
 
         <ContainerStyled>
-          <Button bgColor="#1DF4C8" width={buttonWidth}>IMÁGENES</Button>
-          <Button bgColor="#1DF4C8" width={buttonWidth}>VÍDEOS</Button>
-          <Button bgColor="#1DF4C8" width={buttonWidth}>DIRECCIONES IP</Button>
-          <Button bgColor="#1DF4C8" width={buttonWidth}>REDES SOCIALES</Button>
+          <Button fondoColor="#1DF4C8" width={buttonWidth} handleClick={() => onButtonClick('Imagenes')}>IMÁGENES</Button>
+          <Button fondoColor="#1DF4C8" width={buttonWidth} handleClick={() => onButtonClick('Videos')}>VÍDEOS</Button>
+          <Button fondoColor="#1DF4C8" width={buttonWidth} handleClick={() => onButtonClick('DireccionesIP')}>DIRECCIONES IP</Button>
+          <Button fondoColor="#1DF4C8" width={buttonWidth} handleClick={() => onButtonClick('RedesSociales')}>REDES SOCIALES</Button>
         </ContainerStyled>
       </SectionStyled>
     </>

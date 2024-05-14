@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../../../fonts/fonts.css";
 
 const randomNumberBetween = (min, max) => {
@@ -21,24 +21,32 @@ const StyledButton = styled.button`
   border-radius: 0.5rem;
   border: none;
   padding: 0.375rem 0.2rem;
-  font-size: .9375rem;
+  font-size: 0.9375rem;
   // font-family: 'MADE Soulmaze Brush';
   text-transform: uppercase;
   color: ${(props) => props.color || "#161616"};
   cursor: pointer;
   width: ${(props) => props.width || 14}rem;
   height: 2.5rem;
-  background-color: ${(props) => props.bgColor || "#1DF4C8"};
+  background-color: ${(props) => props.fondoColor || "#1DF4C8"};
   z-index: 2;
 
   &:hover {
     background-color: ${(props) => props.color || "#161616"};
-    color: ${(props) => props.bgColor || "#1DF4C8"};
-    letter-spacing: .2rem;
+    color: ${(props) => props.fondoColor || "#1DF4C8"};
+    letter-spacing: 0.2rem;
   }
 `;
 
-function Button({ width, color, bgColor, to, children }) {
+function Button({
+  width,
+  color,
+  fondoColor,
+  to = "",
+  children,
+  handleClick = null,
+}) {
+  const navigate = useNavigate();
   const [showSparkles, setShowSparkles] = useState(false);
 
   const handleMouseEnter = () => {
@@ -51,19 +59,30 @@ function Button({ width, color, bgColor, to, children }) {
 
   const numberOfStars = 17;
 
+  const handleOnClick = () => {
+    if (to) {
+      navigate(to);
+    }
+    if (handleClick) {
+      handleClick();
+    }
+  };
+
   return (
     <div style={{ position: "relative", display: "inline-block" }}>
-      <Link to={to}>
-        <StyledButton
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          width={width}
-          color={color}
-          bgColor={bgColor} // Pasar el color de fondo
-        >
-          <span style={{ fontFamily: 'MADE Soulmaze' }} aria-hidden>{children}</span>
-        </StyledButton>
-      </Link>
+      <StyledButton
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        width={width}
+        color={color}
+        onClick={handleOnClick}
+        fondoColor={fondoColor} // Pasar el color de fondo
+      >
+        <span style={{ fontFamily: "MADE Soulmaze" }} aria-hidden>
+          {children}
+        </span>
+      </StyledButton>
+
       {showSparkles && (
         <div
           style={{
@@ -94,7 +113,7 @@ function Button({ width, color, bgColor, to, children }) {
               <motion.path
                 className="fill-blue-600"
                 d="M64.39,2,80.11,38.76,120,42.33a3.2,3.2,0,0,1,1.83,5.59h0L91.64,74.25l8.92,39a3.2,3.2,0,0,1-4.87,3.4L61.44,96.19,27.09,116.73a3.2,3.2,0,0,1-4.76-3.46h0l8.92-39L1.09,47.92A3.2,3.2,0,0,1,3,42.32l39.74-3.56L58.49,2a3.2,3.2,0,0,1,5.9,0Z"
-                fill={`${bgColor}`}
+                fill={`${fondoColor}`}
               />
             </Sparkle>
           ))}

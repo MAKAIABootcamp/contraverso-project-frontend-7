@@ -122,8 +122,8 @@ const AprendeJuega = () => {
         <h1>Juegos</h1>
       </ContainerStyled>
       <ButtonsStyled>
-        <Button bgColor="#1DF4C8">JUEGOS EN LÍNEA</Button>
-        <Button bgColor="#1DF4C8">JUEGOS DE MESA</Button>
+        <Button fondoColor="#1DF4C8">JUEGOS EN LÍNEA</Button>
+        <Button fondoColor="#1DF4C8">JUEGOS DE MESA</Button>
       </ButtonsStyled>
       <PerroStyled
         src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336848/MONTAJE/APRENDE/5-2_pisnsy.png"
