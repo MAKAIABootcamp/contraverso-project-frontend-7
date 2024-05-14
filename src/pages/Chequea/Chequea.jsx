@@ -20,7 +20,10 @@ const Chequea = () => {
       <div className="chequea">
         <ChequeaPresentacion />
         <ChequeaVerifica onButtonClick={handleButtonClick} />
-        {componentToRender && <section>{componentToRender}</section>}
+        {componentToRender === 'Imagenes' && <Imagenes/>}
+        {componentToRender === 'DireccionesIP' && <DireccionesIP/>}
+        {componentToRender === 'Videos' && <Videos/>}
+        {componentToRender === 'RedesSociales' && <RedesSociales/>}
         <Recomienda />
       </div>
     </>
