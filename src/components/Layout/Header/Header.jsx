@@ -16,9 +16,9 @@ const StyledNav = styled.nav`
   width: 100%;
   height: 15vh;
   scroll-snap-align:start;
+  align-items: center;
   .containerNav {
-    margin: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 .25rem .5rem rgba(0, 0, 0, 0.1);
 
     ul {
       display: flex;
@@ -28,20 +28,20 @@ const StyledNav = styled.nav`
       li {
         display: flex;
         list-style-type: none;
-        padding: 5px;
+        padding: .3125rem;
 
         .Sections {
-          margin-left: 20px;
-          margin-right: 40px;
+          margin-left: 1.25rem;
+          margin-right: 2.5rem;
 
           p {
             color: #f1f1d8;
             margin-left: 10%;
           }
           img {
-            width: 177px;
-            height: 60px;
-            margin: 15px;
+            width: 11.0625rem;
+            height: 3.75rem;
+            margin: .625rem;
           }
         }
 
@@ -57,7 +57,7 @@ const StyledNav = styled.nav`
         }
 
         .Redes {
-          margin-left: 35px;
+          margin-left: 2.1875rem;
           gap: 5%;
           span {
             color: #1df4c8;
@@ -84,18 +84,18 @@ const StyledNav = styled.nav`
           justify-content: flex-end;
           align-items: center;
           list-style-type: none;
-          padding: 5px;
+          padding: .3125rem;
 
           img {
-            width: 177px;
-            height: 60px;
-            margin: 15px;
+            width: 11.0625rem;
+            height: 3.75rem;
+            margin: .9375rem;
           }
 
           .openModal {
-            margin-right: 30px;
-            width: 40px;
-            height: 40px;
+            margin-right: 1.875rem;
+            width: 2.5rem;
+            height: 2.5rem;
             color: #1df4c8;
           }
         }
@@ -103,11 +103,49 @@ const StyledNav = styled.nav`
 
       .modal {
         display: flex;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 .25rem .5rem rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  @media (max-width: 338px) {
+    .isMobile {
+      ul{
+        .liVisibles {
+        padding: 0px;
+        img {
+        width: 9.1875rem;
+        height: 3rem;
+      }
+      }
+      }
+    }
+  }
+  @media (max-width: 361px) {
+    .isMobile {
+      ul{
+        .liVisibles {
+          width: 60%;
+      }
+      }
+    }
+  }
+
+  @media (min-width: 1720px) {
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    ul{
+      display: flex;
+      justify-content: space-between;
+
+      li{
+        margin-left: 2.5rem;
       }
     }
   }
 `;
+
 const ModalBackground = styled.div`
   position: fixed;
   top: 0;
@@ -123,10 +161,10 @@ const ModalBackground = styled.div`
 
 const ModalContent = styled.div`
   background-color: #161616;
-  padding: 20px;
-  border-radius: 14px;
+  padding: 1.25rem;
+  border-radius: .875rem;
   width: 90%;
-  max-width: 500px;
+  max-width: 31.25rem;
   height: auto;
   overflow: auto;
   display: flex;
@@ -137,8 +175,8 @@ const ModalContent = styled.div`
     justify-content: flex-end;
     align-content: flex-end;
     .closeModal {
-      width: 20px;
-      height: 20px;
+      width: 1.25rem;
+      height: 1.25rem;
       color: #1df4c8;
     }
   }
@@ -146,7 +184,7 @@ const ModalContent = styled.div`
   .Sections {
     p {
       color: #f1f1d8;
-      margin-top: 10px;
+      margin-top: .625rem;
     }
   }
 
@@ -170,7 +208,7 @@ const ModalContent = styled.div`
     flex-direction: row;
     justify-content: center;
     justify-content: space-around;
-    margin-top: 80px;
+    margin-top: 5rem;
     span{
       color: #4100D0;
     }
