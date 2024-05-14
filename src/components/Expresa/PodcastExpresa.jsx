@@ -4,14 +4,14 @@ import BotonExpresa from "./BotonExpresa";
 
 const StyledPotcast = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336876/MONTAJE/EXPRESA/16_wsdajl.png");
-  height: 30rem;
+  height: 95vh;
   scroll-snap-align: start;
 `;
 const StyledBackgroundImg = styled.img`
   margin-left: 5rem;
   width: 50rem;
   position: absolute;
-  @media (max-width: 1024px) {
+  /* @media (max-width: 1024px) {
     width: 35rem;
     margin-top: 2rem;
     margin-left: 1rem;
@@ -38,7 +38,7 @@ const StyledBackgroundImg = styled.img`
     width: 17rem;
     margin-left: 1rem;
     height: 8rem;
-  }
+  } */
 `;
 
 const StyledText = styled.h1`
@@ -47,7 +47,7 @@ const StyledText = styled.h1`
   margin-top: -1rem;
   margin-left: 6rem;
   position: absolute;
-  @media (max-width: 1024px) {
+  /* @media (max-width: 1024px) {
     font-size: 439%;
     margin-top: 2rem;
     margin-left: 3rem;
@@ -73,7 +73,7 @@ const StyledText = styled.h1`
     font-size: 225%;
     margin-top: 5rem;
     margin-left: 2rem;
-  }
+  } */
 `;
 const StyleSpotifyImg = styled.img`
   width: 24rem;
@@ -81,7 +81,7 @@ const StyleSpotifyImg = styled.img`
   margin-left: 25rem;
   margin-top: 11rem;
   position: absolute;
-  @media (max-width: 1024px) {
+  /* @media (max-width: 1024px) {
     width: 18rem;
     margin-left: 10rem;
   }
@@ -106,7 +106,7 @@ const StyleSpotifyImg = styled.img`
     width: 13rem;
     margin-left: 2rem;
     margin-top: 11rem;
-  }
+  } */
 `;
 
 const StyledBotonExpresa = styled(BotonExpresa)`
@@ -125,7 +125,7 @@ const StyledBotonExpresa = styled(BotonExpresa)`
   margin-left: 29%;
   margin-top: 20rem;
   position: absolute;
-  @media (min-width: 1024px) and (max-width: 1366px) {
+  /* @media (min-width: 1024px) and (max-width: 1366px) {
     margin-left: 36rem;
     margin-top: 19rem;
   }
@@ -151,7 +151,7 @@ const StyledBotonExpresa = styled(BotonExpresa)`
   }
   @media (max-width: 320px) {
     margin-left: 5rem;
-  }
+  } */
 `;
 const StyledImgDog = styled.img`
   position: absolute;
@@ -159,7 +159,7 @@ const StyledImgDog = styled.img`
   margin-left: 75%;
   margin-top: 0.1%;
 
-  @media (min-width: 1024px) and (max-width: 1366px) {
+  /* @media (min-width: 1024px) and (max-width: 1366px) {
     width: 36%;
     margin-left: 64%;
     margin-top: -0.5%;
@@ -196,14 +196,14 @@ const StyledImgDog = styled.img`
     width: 9rem;
     margin-left: 10rem;
     margin-top: 21rem;
-  }
+  } */
 `;
 const StyledImgLeft = styled.img`
   margin-top: 1.5rem;
   width: 29rem;
   filter: brightness(491%) opacity(0.8);
   position: absolute;
-  @media (max-width: 1024px) {
+  /* @media (max-width: 1024px) {
     width: 21rem;
     margin-top: 9.5rem;
   }
@@ -226,7 +226,7 @@ const StyledImgLeft = styled.img`
   @media (max-width: 320px) {
     width: 12rem;
     margin-top: 18rem;
-  }
+  } */
 `;
 const PodcastExpresa = () => {
   const handleClick = () => {
