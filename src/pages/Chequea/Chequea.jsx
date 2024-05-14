@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedComponent } from "../../app/features/filtersByButtons/filtersByButtonsSlice";
 import ChequeaVerifica from "../../components/ChequeaComponents/ChequeaVerifica/ChequeaVerifica";
 import ChequeaPresentacion from "../../components/ChequeaComponents/presentacion/ChequeaPresentacion";
 import Recomienda from "../../components/ChequeaComponents/Recomienda/RecomiendaCompo";
@@ -9,10 +10,13 @@ import RedesSociales from "../../components/ChequeaComponents/ChequeaVerifica/ve
 import "./Chequea.scss";
 
 const Chequea = () => {
-  const [componentToRender, setComponentToRender] = useState(null);
+  const dispatch = useDispatch();
+
+  const componentToRender = useSelector((store) => store.filtersByButtons.selectedComponent);
+
 
   const handleButtonClick = (componentName) => {
-    setComponentToRender(componentName);
+    dispatch(setSelectedComponent(componentName));
   };
 
   return (

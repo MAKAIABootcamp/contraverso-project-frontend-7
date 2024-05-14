@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     data: [],
     error: null,
-    sectionSelected: 1
+    selectedComponent: null
 }
 
 const filtersByButtonsSlice = createSlice({
@@ -13,8 +13,8 @@ const filtersByButtonsSlice = createSlice({
         setData: (state, action) => {
             state.data = action.payload;
         },
-        setSectionSelected: (state, action) => {
-            state.sectionSelected = action.payload;
+        setSelectedComponent: (state, action) => {
+            state.selectedComponent = action.payload;
         },
         setError: (state, action) => {
             state.error = action.payload;
@@ -22,6 +22,6 @@ const filtersByButtonsSlice = createSlice({
     }
 });
 
-export const { setData, setSectionSelected, setError } = filtersByButtonsSlice.actions;
+export const { setData, setSelectedComponent , setError } = filtersByButtonsSlice.actions;
 
 export default filtersByButtonsSlice.reducer;
