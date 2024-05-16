@@ -97,6 +97,17 @@ const LoginForm = () => {
     },
   });
 
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    formik.handleSubmit(event);
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleFormSubmit(event);
+    }
+  };
+
   if (error) {
     alert("Ocurrió un error en el inicio de sesión");
     dispatch(setError(null));
@@ -106,8 +117,9 @@ const LoginForm = () => {
     navigate("/");
   }
 
+
   return (
-    <FormStyled onSubmit={formik.handleSubmit}>
+    <FormStyled onSubmit={handleFormSubmit} onKeyDown={handleKeyDown}>
       <SectionForm>
         <FormGroup className="acceso__login-card-body-form-group">
           <label htmlFor="email"> Email</label>
