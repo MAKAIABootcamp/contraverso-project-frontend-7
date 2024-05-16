@@ -1,7 +1,5 @@
-import React from "react";
 import LoginForm from "../../components/Login/LoginForm";
 import { FaUserSecret } from "react-icons/fa";
-
 import { useEffect, useState } from "react";
 import { useAnimation, motion } from "framer-motion";
 import styled from "styled-components";

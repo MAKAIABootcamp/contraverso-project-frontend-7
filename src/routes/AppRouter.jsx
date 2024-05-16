@@ -13,6 +13,8 @@ import Aprende from "../pages/Aprende/Aprende";
 import Contacto from "../pages/Contacto/Contacto";
 import Acceso from "../pages/Acceso/Acceso";
 import PublicRoutes from "./PublicRoutes";
+import IniciarSesion from "../pages/Acceso/IniciarSesion";
+import Verificacion from "../pages/Acceso/Verificacion";
 
 const AppRouter = () => {
   const dispatch = useDispatch();
@@ -56,6 +58,8 @@ const AppRouter = () => {
           path="YWNjZXNvIGFsIGxvZ2luIGRlbCBhZG1pbg=="
           element={<Acceso />}
         />
+        <Route path="iniciarsesion" element={<IniciarSesion/>}/>
+        <Route path="verificacion" element={<Verificacion/>}/>
       </Route>
     </Routes>
   );
