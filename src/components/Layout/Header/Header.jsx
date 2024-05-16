@@ -1,24 +1,27 @@
 // import "./Header.scss"
-import '../../../../fonts/fonts.css';
+import "../../../../fonts/fonts.css";
 import { NavLink } from "react-router-dom";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaXTwitter } from "react-icons/fa6";
 import { SiTiktok } from "react-icons/si";
 import { FaDiscord } from "react-icons/fa6";
-import styled from 'styled-components';
+import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { MdFilterList } from "react-icons/md";
 import { IoCloseCircleSharp } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { actionLogout } from "../../../app/features/userAuth/userAuthActions";
+import { useSelector } from "react-redux";
 
 const StyledNav = styled.nav`
   display: flex;
   background-color: #161616;
   width: 100%;
   height: 15vh;
-  scroll-snap-align:start;
+  scroll-snap-align: start;
   align-items: center;
   .containerNav {
-    box-shadow: 0 .25rem .5rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 
     ul {
       display: flex;
@@ -28,7 +31,7 @@ const StyledNav = styled.nav`
       li {
         display: flex;
         list-style-type: none;
-        padding: .3125rem;
+        padding: 0.3125rem;
 
         .Sections {
           margin-left: 1.25rem;
@@ -41,7 +44,7 @@ const StyledNav = styled.nav`
           img {
             width: 11.0625rem;
             height: 3.75rem;
-            margin: .625rem;
+            margin: 0.625rem;
           }
         }
 
@@ -84,12 +87,12 @@ const StyledNav = styled.nav`
           justify-content: flex-end;
           align-items: center;
           list-style-type: none;
-          padding: .3125rem;
+          padding: 0.3125rem;
 
           img {
             width: 11.0625rem;
             height: 3.75rem;
-            margin: .9375rem;
+            margin: 0.9375rem;
           }
 
           .openModal {
@@ -103,43 +106,43 @@ const StyledNav = styled.nav`
 
       .modal {
         display: flex;
-        box-shadow: 0 .25rem .5rem rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
       }
     }
   }
 
   @media (max-width: 338px) {
     .isMobile {
-      ul{
+      ul {
         .liVisibles {
-        padding: 0px;
-        img {
-        width: 9.1875rem;
-        height: 3rem;
-      }
-      }
+          padding: 0px;
+          img {
+            width: 9.1875rem;
+            height: 3rem;
+          }
+        }
       }
     }
   }
   @media (max-width: 361px) {
     .isMobile {
-      ul{
+      ul {
         .liVisibles {
           width: 60%;
-      }
+        }
       }
     }
   }
 
   @media (min-width: 1720px) {
-    display:flex;
+    display: flex;
     justify-content: space-around;
     align-items: center;
-    ul{
+    ul {
       display: flex;
       justify-content: space-between;
 
-      li{
+      li {
         margin-left: 2.5rem;
       }
     }
@@ -162,7 +165,7 @@ const ModalBackground = styled.div`
 const ModalContent = styled.div`
   background-color: #161616;
   padding: 1.25rem;
-  border-radius: .875rem;
+  border-radius: 0.875rem;
   width: 90%;
   max-width: 31.25rem;
   height: auto;
@@ -184,7 +187,7 @@ const ModalContent = styled.div`
   .Sections {
     p {
       color: #f1f1d8;
-      margin-top: .625rem;
+      margin-top: 0.625rem;
     }
   }
 
@@ -209,114 +212,143 @@ const ModalContent = styled.div`
     justify-content: center;
     justify-content: space-around;
     margin-top: 5rem;
-    span{
-      color: #4100D0;
+    span {
+      color: #4100d0;
     }
   }
 `;
 
-
 const links = [
   {
     label: "Inicio",
-    iconLogo: "https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336881/MONTAJE/INICIO/1-7-2_lbpqjx.png",
-    link: "/"
+    iconLogo:
+      "https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336881/MONTAJE/INICIO/1-7-2_lbpqjx.png",
+    link: "/",
   },
   {
     label: "Chequea",
-    link: "chequea"
+    link: "chequea",
   },
   {
     label: "Confronta",
-    link: "confronta"
+    link: "confronta",
   },
   {
     label: "Expresa",
-    link: "expresa"
+    link: "expresa",
   },
   {
     label: "Aprende",
-    link: "aprende"
+    link: "aprende",
   },
   {
     label: "Contacto",
-    link: "contacto"
-  }
+    link: "contacto",
+  },
 ];
 
 const redes = [
   {
     label: "Discord",
     iconDiscord: FaDiscord,
-    link: "https://discord.gg/tCqfzHWGCV"
+    link: "https://discord.gg/tCqfzHWGCV",
   },
   {
     label: "Insta",
     iconInsta: AiFillInstagram,
-    link: "https://www.instagram.com/_contraverso/"
+    link: "https://www.instagram.com/_contraverso/",
   },
   {
     label: "X",
     iconX: FaXTwitter,
-    link: "https://twitter.com/_contraverso"
+    link: "https://twitter.com/_contraverso",
   },
   {
     label: "Tiktok",
     iconTiktok: SiTiktok,
-    link: "https://tiktok.com/@_contraverso"
-  }
+    link: "https://tiktok.com/@_contraverso",
+  },
 ];
 
 const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
+  const { isAuthenticated } = useSelector(store => store.userAuth);
 
   useEffect(() => {
     const checkScreenSize = () => {
       setIsMobile(window.innerWidth <= 1120); // Ajusta el valor según tus necesidades
     };
 
-    window.addEventListener('resize', checkScreenSize);
+    window.addEventListener("resize", checkScreenSize);
     checkScreenSize(); // Llamada inicial para establecer el estado inicial
 
-    return () => window.removeEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
 
+  const handleLogout = () => {
+    dispatch(actionLogout());
+  };
+
   return (
     <>
-      <StyledNav >
-        <nav className='containerNav'>
+      <StyledNav>
+        <nav className="containerNav">
           <ul>
-            {
-              links.map((item, index) => (
-                <li key={index} className={item.label === "label" ? "highlighted-labelPages" : ""}>
-                  <NavLink className={({ isActive }) => isActive ? "linkActive" : "link"} to={item.link}>
-                    <div className="Sections">
-                      {item.label === "Inicio" && <img className="logoContraverso" src={item.iconLogo} alt="Logo" />}
-                      {item.label !== "Inicio" && <p>{item.label}</p>}
-                    </div>
-                  </NavLink>
-                </li>
-              ))
-            }
-            {
-              redes.map((item, index) => (
-                <li key={index} className={item.label === "iconRedes" ? "highlighted-iconRedes" : ""}>
-                  <NavLink className={({ isActive }) => isActive ? "linkActive" : "link"} to={item.link}>
-                    <div className="Redes">
-                      <span>{item.label === "Discord" && <FaDiscord />}</span>
-                      <span>{item.label === "Insta" && <AiFillInstagram />}</span>
-                      <span> {item.label === "X" && <FaXTwitter />}</span>
-                      <span>{item.label === "Tiktok" && <SiTiktok />}</span>
-                    </div>
-                  </NavLink>
-                </li>
-              ))
-            }
+            {links.map((item, index) => (
+              <li
+                key={index}
+                className={
+                  item.label === "label" ? "highlighted-labelPages" : ""
+                }
+              >
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "linkActive" : "link"
+                  }
+                  to={item.link}
+                >
+                  <div className="Sections">
+                    {item.label === "Inicio" && (
+                      <img
+                        className="logoContraverso"
+                        src={item.iconLogo}
+                        alt="Logo"
+                      />
+                    )}
+                    {item.label !== "Inicio" && <p>{item.label}</p>}
+                  </div>
+                </NavLink>
+              </li>
+            ))}
+            {redes.map((item, index) => (
+              <li
+                key={index}
+                className={
+                  item.label === "iconRedes" ? "highlighted-iconRedes" : ""
+                }
+              >
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "linkActive" : "link"
+                  }
+                  to={item.link}
+                >
+                  <div className="Redes">
+                    <span>{item.label === "Discord" && <FaDiscord />}</span>
+                    <span>{item.label === "Insta" && <AiFillInstagram />}</span>
+                    <span> {item.label === "X" && <FaXTwitter />}</span>
+                    <span>{item.label === "Tiktok" && <SiTiktok />}</span>
+                  </div>
+                </NavLink>
+              </li>
+            ))}
+            {isAuthenticated && <button onClick={handleLogout}>Logout</button>}
           </ul>
         </nav>
 
@@ -324,20 +356,28 @@ const Header = () => {
           <>
             <div className="isMobile">
               <ul>
-                {
-                  links.map((item, index) => (
-
-                    <li key={index} className='liVisibles'>
-                      <NavLink className={({ isActive }) => isActive ? "linkActive" : "link"} to={item.link}>
-                        <div className="Sections">
-                          {item.label === "Inicio" && <img className="logoContraverso" src={item.iconLogo} alt="Logo" />}
-                        </div>
-                      </NavLink>
-                    </li>
-                  ))
-                }
-                <li className='liVisibles'>
-                  <MdFilterList className='openModal' onClick={toggleModal} />
+                {links.map((item, index) => (
+                  <li key={index} className="liVisibles">
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive ? "linkActive" : "link"
+                      }
+                      to={item.link}
+                    >
+                      <div className="Sections">
+                        {item.label === "Inicio" && (
+                          <img
+                            className="logoContraverso"
+                            src={item.iconLogo}
+                            alt="Logo"
+                          />
+                        )}
+                      </div>
+                    </NavLink>
+                  </li>
+                ))}
+                <li className="liVisibles">
+                  <MdFilterList className="openModal" onClick={toggleModal} />
                 </li>
               </ul>
               <div className="modal">
@@ -345,30 +385,56 @@ const Header = () => {
                   <ModalBackground>
                     <ModalContent onClick={(e) => e.stopPropagation()}>
                       <div className="contentWrapper">
-                        <IoCloseCircleSharp className='closeModal' onClick={toggleModal} />
+                        <IoCloseCircleSharp
+                          className="closeModal"
+                          onClick={toggleModal}
+                        />
                       </div>
-                      {links.map((item, index) => (
-                        item.label !== "Inicio" && (
-                          <NavLink key={index} className={({ isActive }) => isActive ? "linkActive" : "link"} to={item.link} onClick={toggleModal}>
-                            <div className="Sections">
-                              <p>{item.label}</p>
+                      {links.map(
+                        (item, index) =>
+                          item.label !== "Inicio" && (
+                            <NavLink
+                              key={index}
+                              className={({ isActive }) =>
+                                isActive ? "linkActive" : "link"
+                              }
+                              to={item.link}
+                              onClick={toggleModal}
+                            >
+                              <div className="Sections">
+                                <p>{item.label}</p>
+                              </div>
+                            </NavLink>
+                          )
+                      )}
+                      <div className="Redes">
+                        {redes.map((item, index) => (
+                          <NavLink
+                            key={index}
+                            className={({ isActive }) =>
+                              isActive ? "linkActive" : "link"
+                            }
+                            to={item.link}
+                            onClick={toggleModal}
+                          >
+                            <div>
+                              <span>
+                                {item.label === "Discord" && <FaDiscord />}
+                              </span>
+                              <span>
+                                {item.label === "Insta" && <AiFillInstagram />}
+                              </span>
+                              <span>
+                                {" "}
+                                {item.label === "X" && <FaXTwitter />}
+                              </span>
+                              <span>
+                                {item.label === "Tiktok" && <SiTiktok />}
+                              </span>
                             </div>
                           </NavLink>
-                        )
-                      ))}
-                      <div className="Redes">
-                      {redes.map((item, index) => (
-                        <NavLink key={index} className={({ isActive }) => isActive ? "linkActive" : "link"} to={item.link} onClick={toggleModal}>
-                          <div>
-                            <span>{item.label === "Discord" && <FaDiscord />}</span>
-                            <span>{item.label === "Insta" && <AiFillInstagram />}</span>
-                            <span> {item.label === "X" && <FaXTwitter />}</span>
-                            <span>{item.label === "Tiktok" && <SiTiktok />}</span>
-                          </div>
-                        </NavLink>
-                      ))}
+                        ))}
                       </div>
-
                     </ModalContent>
                   </ModalBackground>
                 )}
@@ -376,9 +442,9 @@ const Header = () => {
             </div>
           </>
         )}
-      </StyledNav >
+      </StyledNav>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

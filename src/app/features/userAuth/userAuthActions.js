@@ -1,6 +1,7 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../Firebase/firebaseConfig";
-import { login } from "./userAuthSlice";
+import { login, logout } from "./userAuthSlice";
+import { signOut } from "firebase/auth";
 
 import { setError } from "./userAuthSlice";
 
@@ -45,5 +46,18 @@ export const actionUpdateProfile = ({ name, photo }) => {
       console.error(error);
       dispatch(setError(error.message));
     }
+  };
+};
+
+export const actionLogout = () => {
+  return async (dispatch) => {
+    try {
+      await signOut(auth);
+      dispatch(logout());
+      dispatch(setError(null));
+    } catch (error) {
+      console.error(error);
+      dispatch(setError(error.message));
+      }
   };
 };
