@@ -1,4 +1,3 @@
-// import "./Header.scss"
 import "../../../../fonts/fonts.css";
 import { NavLink } from "react-router-dom";
 import { AiFillInstagram } from "react-icons/ai";
@@ -9,9 +8,9 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { MdFilterList } from "react-icons/md";
 import { IoCloseCircleSharp } from "react-icons/io5";
-import { useDispatch } from "react-redux";
-import { actionLogout } from "../../../app/features/userAuth/userAuthActions";
 import { useSelector } from "react-redux";
+import { FaUserCircle } from "react-icons/fa";
+import { Modal } from "../../ModalAdmin/Modal";
 
 const StyledNav = styled.nav`
   display: flex;
@@ -67,6 +66,18 @@ const StyledNav = styled.nav`
           }
         }
       }
+      .userAdmin {
+        .openUserAdmin{
+          color: #fff35f;
+          gap: 5%;
+          margin-left: 50px;
+          font-size: 22px;
+        }
+        .modalAdmin {
+        display: flex;
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+      }
+      }
     }
   }
   @media (max-width: 1120px) {
@@ -101,6 +112,13 @@ const StyledNav = styled.nav`
             height: 2.5rem;
             color: #1df4c8;
           }
+
+          .openUserAdmin{
+          color: #fff35f;
+          margin-left: -101vw;
+          margin-right: 5vw;
+          font-size: 22px;
+        }
         }
       }
 
@@ -110,7 +128,20 @@ const StyledNav = styled.nav`
       }
     }
   }
-
+  @media (max-width: 420px) {
+    .isMobile {
+      ul {
+        .liVisibles {
+          padding: 0px;
+          .openUserAdmin{
+          color: #fff35f;
+          margin-right: 5vw;
+          font-size: 22px;
+        }
+        }
+      }
+    }
+  }
   @media (max-width: 338px) {
     .isMobile {
       ul {
@@ -273,7 +304,7 @@ const redes = [
 const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
   const { isAuthenticated } = useSelector(store => store.userAuth);
 
   useEffect(() => {
@@ -291,8 +322,12 @@ const Header = () => {
     setIsModalOpen(!isModalOpen);
   };
 
-  const handleLogout = () => {
-    dispatch(actionLogout());
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   return (
@@ -348,7 +383,14 @@ const Header = () => {
                 </NavLink>
               </li>
             ))}
-            {isAuthenticated && <button onClick={handleLogout}>Logout</button>}
+            {isAuthenticated ? (
+              <>
+                <li className="userAdmin">
+                  <div className="openUserAdmin"><FaUserCircle onClick={openModal}/></div>
+                  <div className="modalAdmin">{showModal && <Modal onClose={closeModal} />}</div>
+                </li>
+              </>
+            ) : null}
           </ul>
         </nav>
 
@@ -379,6 +421,14 @@ const Header = () => {
                 <li className="liVisibles">
                   <MdFilterList className="openModal" onClick={toggleModal} />
                 </li>
+                {isAuthenticated ? (
+              <>
+                <li className="liVisibles">
+                  <div className="openUserAdmin"><FaUserCircle onClick={openModal}/></div>
+                  <div className="modalAdmin">{showModal && <Modal onClose={closeModal} />}</div>
+                </li>
+              </>
+            ) : null}
               </ul>
               <div className="modal">
                 {isModalOpen && (
