@@ -1,16 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getData } from "./filtersByButtonsActions";
+import { getData, getDataFiltered } from "./filtersByButtonsActions";
 
 const initialState = {
-    data: [],
+    data: {
+        metadatos: [],
+        analisisDigital: [],
+        busquedaInversa: []
+    },
     error: null,
     loading: true,
     selectedComponent: null
-}
+};
 
 const filtersByButtonsSlice = createSlice({
     name: 'filtersByButtonsSlice',
-    initialState: initialState,
+    initialState,
     reducers: {
         setData: (state, action) => {
             state.data = action.payload;
@@ -21,15 +25,29 @@ const filtersByButtonsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-           .addCase(getData.pending, (state) => {
+            .addCase(getData.pending, (state) => {
                 state.loading = true;
             })
-           .addCase(getData.fulfilled, (state, action) => {
-                state.data = action.payload;
+            .addCase(getData.fulfilled, (state, action) => {
+                const category = action.meta.arg.filterValue;
+                state.data[category] = action.payload;
                 state.loading = false;
             })
-           .addCase(getData.rejected, (state, action) => {
+            .addCase(getData.rejected, (state, action) => {
                 state.error = action.error.message;
+                state.loading = false;
+            })
+            .addCase(getDataFiltered.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getDataFiltered.fulfilled, (state, action) => {
+                const category = action.meta.arg.filterValue;
+                state.data[category] = action.payload;
+                state.loading = false;
+            })
+            .addCase(getDataFiltered.rejected, (state, action) => {
+                state.error = action.payload;
                 state.loading = false;
             });
     }
