@@ -1,14 +1,23 @@
 import styled from "styled-components";
+import CarruselIMG from "./CarruselIMG/CarruselIMG";
 
 const StyledImagenes = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336875/MONTAJE/EXPRESA/18_txk2kg.png");
-  height: 30rem;
+  height: 38rem;
   position: relative;
   scroll-snap-align: start;
   scroll-snap-align: start;
-`;
-const StyledBackground = styled.img`
-  width: 37%;
+
+  div{
+    z-index: 1;
+  }
+  section{
+    z-index: 2;
+    margin-top: 180px;
+  }
+
+  .StyledBackground {
+    width: 37%;
   margin-top: 2%;
   margin-left: 2%;
   position: absolute;
@@ -45,9 +54,9 @@ const StyledBackground = styled.img`
     margin-top: 4%;
     margin-left: 4%;
   }
-`;
+  }
 
-const StyledTextoImg = styled.img`
+  .StyledTextoImg {
   position: absolute;
   width: 38rem;
   margin-left: 6rem;
@@ -82,9 +91,9 @@ const StyledTextoImg = styled.img`
     width: 55%;
     margin-left: 16%;
   }
-`;
+  }
 
-const StyledImgCat = styled.img`
+  .StyledImgCat {
   width: 17rem;
   position: absolute;
   margin-top: 8rem;
@@ -122,23 +131,23 @@ const StyledImgCat = styled.img`
     margin-top: 17rem;
     margin-left: 50%;
   }
+  }
+
 `;
 
+  
 const ImagenesExpresa = () => {
   return (
     <StyledImagenes>
-      <StyledBackground
-        src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336877/MONTAJE/EXPRESA/4-4_SUBR_nnp6gv.png"
-        alt="Backgroun de la imagen"
-      ></StyledBackground>
-      <StyledTextoImg
-        src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336880/MONTAJE/EXPRESA/4-imagenes_v7jgsf.png"
-        alt="Imagen texto"
-      ></StyledTextoImg>
-      <StyledImgCat
-        src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336879/MONTAJE/EXPRESA/4-4_gqrlzp.png"
-        alt="Gato leyendo"
-      ></StyledImgCat>
+      <div>
+      <img src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336877/MONTAJE/EXPRESA/4-4_SUBR_nnp6gv.png"
+        alt="Backgroun de la imagen"className="StyledBackground"/>
+      <img src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336880/MONTAJE/EXPRESA/4-imagenes_v7jgsf.png"
+        alt="Imagen texto" className="StyledTextoImg"/>
+      <img src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336879/MONTAJE/EXPRESA/4-4_gqrlzp.png"
+        alt="Gato leyendo" className="StyledImgCat"/>
+      </div>
+      <section className="ContainerIMG"><CarruselIMG/></section>            
     </StyledImagenes>
   );
 };
