@@ -11,18 +11,28 @@ const StyledImagenes = styled.div`
   div{
     z-index: 1;
   }
-  section{
+  .ContainerIMG{
     z-index: 2;
-    margin-top: 180px;
+    width: 98%;
+    height: auto;
+    @media(max-width: 735px) {
+    width: 90%;
+  }
+    @media(max-width: 459px) {
+    width: 80%;
+  }
+  @media(max-width: 316px) {
+    width: 70%;
+  }
   }
 
   .StyledBackground {
-    width: 37%;
+    width: 20%;
   margin-top: 2%;
   margin-left: 2%;
   position: absolute;
   @media (min-width: 1024px) and (max-width: 1366px) {
-    width: 73%;
+    width: 48%;
     margin-top: 4%;
     margin-left: 4%;
   }
@@ -58,11 +68,12 @@ const StyledImagenes = styled.div`
 
   .StyledTextoImg {
   position: absolute;
-  width: 38rem;
-  margin-left: 6rem;
+  width: 46%;
+  margin-left: -1rem;
+  margin-top: 6vh;
   @media (min-width: 1024px) and (max-width: 1366px) {
-    width: 55%;
-    margin-left: 16%;
+    width: 42%;
+    margin-left: 9%;
   }
   @media (max-width: 1024px) {
     width: 52%;
@@ -100,7 +111,7 @@ const StyledImagenes = styled.div`
   margin-left: 101rem;
   @media (min-width: 1024px) and (max-width: 1366px) {
     width: 21%;
-    margin-top: 9rem;
+    margin-top: 5rem;
     margin-left: 77%;
   }
   @media (max-width: 1024px) {
@@ -147,7 +158,7 @@ const ImagenesExpresa = () => {
       <img src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336879/MONTAJE/EXPRESA/4-4_gqrlzp.png"
         alt="Gato leyendo" className="StyledImgCat"/>
       </div>
-      <section className="ContainerIMG"><CarruselIMG/></section>            
+      <div className="ContainerIMG"><CarruselIMG/></div>            
     </StyledImagenes>
   );
 };
