@@ -67,20 +67,18 @@ const CustomSlider = styled(Slider)`
 `;
 
 const CarouselFanzines = () => {
-  const [posters, setPosters] = useState([]);
+  const [fanzines, setFanzines] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const fetchPosters = async () => {
+    const fetchFanzines = async () => {
       const fanzinesCollection = collection(db, "fanzines");
       const fanzinesSnapshot = await getDocs(fanzinesCollection);
-      const fanzinesList = fanzinesSnapshot.docs.map(
-        (doc) => doc.data().poster
-      );
-      setPosters(fanzinesList);
+      const fanzinesList = fanzinesSnapshot.docs.map((doc) => doc.data());
+      setFanzines(fanzinesList);
     };
 
-    fetchPosters();
+    fetchFanzines();
   }, []);
 
   const settings = {
@@ -96,13 +94,17 @@ const CarouselFanzines = () => {
     beforeChange: (next) => setCurrentIndex(next),
   };
 
+  const handleImageClick = (url) => {
+    window.open(url, "_blank");
+  };
+
   return (
     <CarouselContainer>
       <CustomSlider {...settings}>
-        {posters.map((poster, index) => (
-          <div key={index}>
+        {fanzines.map((fanzine, index) => (
+          <div key={index} onClick={() => handleImageClick(fanzine.urlDocument)}>
             <div className="slick-slide-content">
-              <img src={poster} alt={`Poster ${index + 1}`} />
+              <img src={fanzine.poster} alt={`Poster ${index + 1}`} />
             </div>
           </div>
         ))}

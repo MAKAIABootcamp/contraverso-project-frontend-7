@@ -58,8 +58,8 @@ const AppRouter = () => {
           path="YWNjZXNvIGFsIGxvZ2luIGRlbCBhZG1pbg=="
           element={<Acceso />}
         />
-        <Route path="iniciarsesion" element={<IniciarSesion/>}/>
-        <Route path="verificacion" element={<Verificacion/>}/>
+        <Route path="iniciarsesion" element={<IniciarSesion />} />
+        <Route path="verificacion" element={<Verificacion />} />
       </Route>
     </Routes>
   );
