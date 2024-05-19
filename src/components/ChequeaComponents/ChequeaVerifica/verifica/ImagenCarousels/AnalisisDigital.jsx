@@ -1,11 +1,10 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
-import styled from 'styled-components';
+import Button from '../../../../Button/Button';
 import Slider from 'react-slick';
+import styled from 'styled-components';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
-import Button from '../../../../Button/Button';
 
 const SectionStyled = styled.section`
   overflow: hidden;
@@ -78,64 +77,73 @@ const ContainerButton = styled.div`
 `;
 
 const AnalisisDigital = () => {
-    const data = useSelector((store) => store.filtersByButtons.data.analisisDigital);
-    const loading = useSelector((store) => store.filtersByButtons.store);
-    const error = useSelector((store) => !!store.filtersByButtons.store);
+  const data = useSelector((store) => store.filtersByButtons.data.analisisDigital);
+  const loading = useSelector((store) => store.filtersByButtons.store);
+  const error = useSelector((store) => !!store.filtersByButtons.store);
 
-    if (loading) {
-        return <div>Loading...</div>;
-      }
-      if (error) {
-        return <div>Error: {error}</div>;
-      }
+  if (loading) {
+      return <div>Loading...</div>;
+    }
+    if (error) {
+      return <div>Error: {error}</div>;
+    }
 
-      const analisisData = data.filter(item => item.category === 'analisisDigital');
+    const analisisDigitalData = data.filter(item => item.category === 'analisisDigital');
 
-      const NextArrow = ({ onClick }) => (
-        <div className="slick-next" onClick={onClick}>
-          <BiSolidRightArrow fill='#1DF4C8' size={30} />
-        </div>
-      );
-    
-      const PrevArrow = ({ onClick }) => (
-        <div className="slick-prev" onClick={onClick}>
-          <BiSolidLeftArrow fill='#1DF4C8' size={30} />
-        </div>
-      );
-    
-      const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />
-      };
+    const NextArrow = ({ onClick }) => (
+      <div className="slick-next" onClick={onClick}>
+        <BiSolidRightArrow fill='#1DF4C8' size={30} />
+      </div>
+    );
+  
+    const PrevArrow = ({ onClick }) => (
+      <div className="slick-prev" onClick={onClick}>
+        <BiSolidLeftArrow fill='#1DF4C8' size={30} />
+      </div>
+    );
+  
+    const settings = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      nextArrow: <NextArrow />,
+      prevArrow: <PrevArrow />
+    };
+
   return (
-  <SectionStyled>
-    <ul>
-      {analisisData.map((item) => (
-        <div key={item.id}>
-          <li>
-            <ContainerImg>
-              <div>
-                <img src={item.poster} alt={item.description} />
-                <figcaption>
-                  <h3>{item.webName}</h3>
-                  <p>{item.description}</p>
-                </figcaption>
-              </div>
-            </ContainerImg>
-            <ContainerButton>
-              <a href={item.url} target='_blank'><Button fondoColor={'#1DF4C8'}>Visitar</Button></a>
-            </ContainerButton>
-          </li>
-        </div>
-      ))}
-    </ul>
+    <SectionStyled>
+    <Slider {...settings}>
+      {analisisDigitalData.length > 0 ? (
+        analisisDigitalData.map((item) => (
+          <div key={item.id}>
+            <ul>
+              <li>
+                <ContainerImg>
+                  <div>
+                    <img src={item.poster} alt={item.description} />
+                    <figcaption>
+                      <h3>{item.webName}</h3>
+                      <p>{item.description}</p>
+                    </figcaption>
+                  </div>
+                </ContainerImg>
+                <ContainerButton>
+                  <a href={item.url} target="_blank">
+                    <Button fondoColor={"#1DF4C8"}>Visitar</Button>
+                  </a>
+                </ContainerButton>
+              </li>
+            </ul>
+          </div>
+        ))
+      ) : (
+        <div>No hay datos disponibles.</div>
+      )}
+    </Slider>
   </SectionStyled>
-);
+  );
 }
 
 export default AnalisisDigital;

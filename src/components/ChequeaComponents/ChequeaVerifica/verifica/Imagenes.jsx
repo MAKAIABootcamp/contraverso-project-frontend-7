@@ -67,7 +67,7 @@ const Imagenes = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDataFiltered({ collectionName: 'verificaImagenes', filterValue: 'metadatos' }));
-    dispatch(getDataFiltered({ collectionName: 'verificaImagenes', filterValue: 'analisisDigital' }));
+    dispatch(getDataFiltered({ collectionName: 'verificaImagenes', filterValue: 'analisisDigital'}));
     dispatch(getDataFiltered({ collectionName: 'verificaImagenes', filterValue: 'busquedaInversa' }));
   }, [dispatch]);
 

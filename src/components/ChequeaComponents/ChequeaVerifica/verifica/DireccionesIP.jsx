@@ -62,7 +62,7 @@ const DireccionesIP = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDataFiltered({ collectionName: 'verificaDireccionesIP', filterValue: 'buscarIP' }));
-    dispatch(getDataFiltered({ collectionName: 'verificaDireccionesIP', filterValue: 'rastearIP' }));
+    dispatch(getDataFiltered({ collectionName: 'verificaDireccionesIP', filterValue: 'rastrearIP' }));
   }, [dispatch]);
 
   return (
