@@ -23,13 +23,16 @@ export const getDataFiltered = createAsyncThunk(
     async ({ collectionName, filterValue }, thunkAPI) => {
         try {
             const getCollection = await getDocs(collection(db, collectionName));
-            const filteredData = getCollection.docs.filter(doc => doc.data().category === filterValue).map(doc => ({
-                id: doc.id,
-                ...doc.data(),
-            }));
+            const filteredData = getCollection.docs
+                .filter(doc => doc.data().category === filterValue)
+                .map(doc => ({
+                    id: doc.id,
+                    ...doc.data(),
+                }));
             return filteredData;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
         }
     }
 );
+

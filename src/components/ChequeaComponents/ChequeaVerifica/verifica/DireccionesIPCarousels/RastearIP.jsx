@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Slider from 'react-slick';
@@ -77,10 +76,11 @@ const ContainerButton = styled.div`
   margin-bottom: 10%;
 `;
 
-const MetadatosImg = () => {
-  const data = useSelector((store) => store.filtersByButtons.data.metadatos);
-  const loading = useSelector((store) => store.filtersByButtons.store);
-  const error = useSelector((store) => !!store.filtersByButtons.store);
+const RastearIP = () => {
+  // Asegúrate de que los datos existan antes de intentar filtrarlos
+  const data = useSelector((store) => store.filtersByButtons.data.rastrearIP);
+  const loading = useSelector((store) => store.filtersByButtons.loading);
+  const error = useSelector((store) => !!store.filtersByButtons.error);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -89,7 +89,7 @@ const MetadatosImg = () => {
     return <div>Error: {error}</div>;
   }
 
-  const metadatosData = data.filter(item => item.category === 'metadatos');
+  const filteredData = data.length > 0? data : [];
 
   const NextArrow = ({ onClick }) => (
     <div className="slick-next" onClick={onClick}>
@@ -115,34 +115,24 @@ const MetadatosImg = () => {
 
   return (
     <SectionStyled>
-      <Slider {...settings}>
-        {metadatosData.length > 0 ? (
-          metadatosData.map(item => (
-            <div key={item.id}>
-              <ul>
-                <li>
-                  <ContainerImg>
-                    <div>
-                      <img src={item.poster} alt={item.description} />
-                      <figcaption>
-                        <h3>{item.webName}</h3>
-                        <p>{item.description}</p>
-                      </figcaption>
-                    </div>
-                  </ContainerImg>
-                  <ContainerButton>
-                    <a href={item.url} target='_blank'><Button fondoColor={'#1DF4C8'}>Visitar</Button></a>
-                  </ContainerButton>
-                </li>
-              </ul>
-            </div>
-          ))
-        ) : (
-          <div>No hay datos disponibles.</div>
-        )}
-      </Slider>
+            <ul>
+              <li>
+                <ContainerImg>
+                  <div>
+                    <img src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714584442/MONTAJE/BASE%20DE%20DATOS/CHEQUEA/VERIFICA/DIRECCIONES%20IP/3IpLogger_wrsok6.png" alt="IPplogger" />
+                    <figcaption>
+                      <h3>IPplogger</h3>
+                      <p>Con IPLogger usted puede encontrar la dirección IP y la ubicación exacta de cualquier dispositivo móvil o PC, así como comprobar URL para redirecciones ocultas por razones de seguridad. Hay varias maneras de hacerlo: enlaces cortos, un píxel invisible, una herramienta única de geo-logger y el URL tracker.</p>
+                    </figcaption>
+                  </div>
+                </ContainerImg>
+                <ContainerButton>
+                  <a href="https://iplogger.org/es/" target='_blank'><Button fondoColor={'#1DF4C8'}>Visitar</Button></a>
+                </ContainerButton>
+              </li>
+            </ul>
     </SectionStyled>
   );
 }
 
-export default MetadatosImg;
+export default RastearIP;

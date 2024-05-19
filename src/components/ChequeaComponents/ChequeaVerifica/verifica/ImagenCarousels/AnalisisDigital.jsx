@@ -40,12 +40,6 @@ const ContainerImg = styled.figure`
   width: 60%;
   height: 100%;
   padding: 1rem;
-  h2 {
-    font-family: 'Founders Grotesk Bold';
-    text-transform: uppercase;
-    font-size: 2.1rem;
-    padding-bottom: 1rem;
-  }
   div {
     display: flex;
     justify-content: center;
@@ -123,9 +117,8 @@ const AnalisisDigital = () => {
     <ul>
       {analisisData.map((item) => (
         <div key={item.id}>
-          <li> {/* Mueve <li> dentro del bucle */}
+          <li>
             <ContainerImg>
-              <h2>Analisis Digital</h2>
               <div>
                 <img src={item.poster} alt={item.description} />
                 <figcaption>

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Slider from 'react-slick';
@@ -40,12 +39,6 @@ const ContainerImg = styled.figure`
   width: 60%;
   height: 100%;
   padding: 1rem;
-  h2 {
-    font-family: 'Founders Grotesk Bold';
-    text-transform: uppercase;
-    font-size: 2.1rem;
-    padding-bottom: 1rem;
-  }
   div {
     display: flex;
     justify-content: center;
@@ -128,7 +121,6 @@ const BusquedaInversa = () => {
               <ul>
                 <li>
                   <ContainerImg>
-                    <h2>Busqueda inversa de imágenes</h2>
                     <div>
                       <img src={item.poster} alt={item.description} />
                       <figcaption>

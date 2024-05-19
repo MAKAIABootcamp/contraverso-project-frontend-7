@@ -25,6 +25,13 @@ const SectionStyled = styled.section`
     font-style: italic;
   }
 
+  h2 {
+    font-family: 'Founders Grotesk Bold';
+    text-transform: uppercase;
+    font-size: 2.1rem;
+    padding-bottom: 1rem;
+  }
+
   @media screen and (max-width: 816px) {
     flex-direction: column;
     justify-content: center;
@@ -69,8 +76,11 @@ const Imagenes = () => {
     <SectionStyled>
       <h1>Imágenes</h1>
       <DivStyled>
+      <h2>Busqueda inversa de imágenes</h2>
         <BusquedaInversa />
+        <h2>Metadatos</h2>
         <MetadatosImg />
+        <h2>Analisis Digital</h2>
         <AnalisisDigital/>
       </DivStyled>
     </SectionStyled>

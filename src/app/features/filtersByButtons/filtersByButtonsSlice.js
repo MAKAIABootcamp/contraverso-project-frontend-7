@@ -5,7 +5,9 @@ const initialState = {
     data: {
         metadatos: [],
         analisisDigital: [],
-        busquedaInversa: []
+        busquedaInversa: [],
+        rastrearIP: [],
+        buscarIP: [],
     },
     error: null,
     loading: true,
@@ -13,7 +15,7 @@ const initialState = {
 };
 
 const filtersByButtonsSlice = createSlice({
-    name: 'filtersByButtonsSlice',
+    name: 'filtersByButtons',
     initialState,
     reducers: {
         setData: (state, action) => {

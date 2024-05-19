@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Slider from 'react-slick';
@@ -77,10 +76,14 @@ const ContainerButton = styled.div`
   margin-bottom: 10%;
 `;
 
-const MetadatosImg = () => {
-  const data = useSelector((store) => store.filtersByButtons.data.metadatos);
-  const loading = useSelector((store) => store.filtersByButtons.store);
-  const error = useSelector((store) => !!store.filtersByButtons.store);
+const BuscarIP = () => {
+  const data = useSelector((store) => store.filtersByButtons.data.buscarIP);
+  const loading = useSelector((store) => store.filtersByButtons.loading);
+  const error = useSelector((store) => store.filtersByButtons.error);
+
+  console.log('Data from Redux store:', data);
+  console.log('Loading state:', loading);
+  console.log('Error state:', error);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -89,7 +92,11 @@ const MetadatosImg = () => {
     return <div>Error: {error}</div>;
   }
 
-  const metadatosData = data.filter(item => item.category === 'metadatos');
+  if (!data || data.length === 0) {
+    return <div>No hay datos disponibles.</div>;
+  }
+
+  const buscarIPData = data.filter(item => item.category === 'buscarIP');
 
   const NextArrow = ({ onClick }) => (
     <div className="slick-next" onClick={onClick}>
@@ -116,8 +123,8 @@ const MetadatosImg = () => {
   return (
     <SectionStyled>
       <Slider {...settings}>
-        {metadatosData.length > 0 ? (
-          metadatosData.map(item => (
+        {buscarIPData.length > 0 ? (
+          buscarIPData.map(item => (
             <div key={item.id}>
               <ul>
                 <li>
@@ -145,4 +152,4 @@ const MetadatosImg = () => {
   );
 }
 
-export default MetadatosImg;
+export default BuscarIP;
