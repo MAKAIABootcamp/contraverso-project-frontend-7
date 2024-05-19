@@ -36,7 +36,6 @@ const SectionStyled = styled.section`
     align-items: center;
   }
 `;
-
 const DivStyled = styled.div`
   overflow-y: auto;
   padding: 0 4%;

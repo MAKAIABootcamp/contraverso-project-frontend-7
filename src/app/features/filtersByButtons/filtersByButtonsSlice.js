@@ -10,7 +10,9 @@ const initialState = {
         buscarIP: [],
         revisarVideosCuadroPorCuadro: [],
         autenticidadDeLosVideos: [],
-        visorDeDatosDeYoutube:[],
+        visorDeDatosDeYoutube: [],
+        analisisDeCuentasTwitter: [],
+        analisisDeCuentasMeta: []
     },
     error: null,
     loading: true,

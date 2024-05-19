@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import Button from '../../../../Button/Button';
+import Button from '../../../../../Button/Button';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 import "slick-carousel/slick/slick.css";
@@ -76,27 +76,19 @@ const ContainerButton = styled.div`
   margin-bottom: 10%;
 `;
 
-const BuscarIP = () => {
-  const data = useSelector((store) => store.filtersByButtons.data.buscarIP);
-  const loading = useSelector((store) => store.filtersByButtons.loading);
-  const error = useSelector((store) => store.filtersByButtons.error);
-
-  console.log('Data from Redux store:', data);
-  console.log('Loading state:', loading);
-  console.log('Error state:', error);
+const AnalisisDeCuentasMeta = () => {
+  const data = useSelector((store) => store.filtersByButtons.data.analisisDeCuentasMeta);
+  const loading = useSelector((store) => store.filtersByButtons.store);
+  const error = useSelector((store) => !!store.filtersByButtons.store);
 
   if (loading) {
-    return <div>Loading...</div>;
-  }
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+      return <div>Loading...</div>;
+    }
+    if (error) {
+      return <div>Error: {error}</div>;
+    }
 
-  if (!data || data.length === 0) {
-    return <div>No hay datos disponibles.</div>;
-  }
-
-  const buscarIPData = data.filter(item => item.category === 'buscarIP');
+  const analisisDeCuentasMetaData = data.filter(item => item.category === 'analisisDeCuentasMeta');
 
   const NextArrow = ({ onClick }) => (
     <div className="slick-next" onClick={onClick}>
@@ -123,8 +115,8 @@ const BuscarIP = () => {
   return (
     <SectionStyled>
       <Slider {...settings}>
-        {buscarIPData.length > 0 ? (
-          buscarIPData.map(item => (
+        {analisisDeCuentasMetaData.length > 0 ? (
+          analisisDeCuentasMetaData.map((item) => (
             <div key={item.id}>
               <ul>
                 <li>
@@ -138,7 +130,9 @@ const BuscarIP = () => {
                     </div>
                   </ContainerImg>
                   <ContainerButton>
-                    <a href={item.url} target='_blank'><Button fondoColor={'#1DF4C8'}>Visitar</Button></a>
+                    <a href={item.url} target="_blank">
+                      <Button fondoColor={"#1DF4C8"}>Visitar</Button>
+                    </a>
                   </ContainerButton>
                 </li>
               </ul>
@@ -152,4 +146,4 @@ const BuscarIP = () => {
   );
 }
 
-export default BuscarIP;
+export default AnalisisDeCuentasMeta;
