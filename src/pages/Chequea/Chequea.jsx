@@ -25,8 +25,8 @@ const Chequea = () => {
         <ChequeaPresentacion />
         <ChequeaVerifica onButtonClick={handleButtonClick} />
         {componentToRender === 'Imagenes' && <Imagenes/>}
-        {componentToRender === 'DireccionesIP' && <DireccionesIP/>}
         {componentToRender === 'Videos' && <Videos/>}
+        {componentToRender === 'DireccionesIP' && <DireccionesIP/>}
         {componentToRender === 'RedesSociales' && <RedesSociales/>}
         <Recomienda />
       </div>
