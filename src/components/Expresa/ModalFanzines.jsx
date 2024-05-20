@@ -59,6 +59,8 @@ const StyledModal = styled.div`
     font-size: 80%;
     border-radius: 1rem;
     font-family: "MADE Soulmaze";
+    cursor: pointer;
+
   }
   .boton-cancelar {
     background-color: #1df4c8;
@@ -69,6 +71,8 @@ const StyledModal = styled.div`
     font-size: 100%;
     border-radius: 1rem;
     font-family: "MADE Soulmaze";
+    cursor: pointer;
+
   }
 `;
 

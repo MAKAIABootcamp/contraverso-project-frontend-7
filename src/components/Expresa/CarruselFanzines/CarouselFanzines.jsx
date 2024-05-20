@@ -10,17 +10,53 @@ const CarouselContainer = styled.div`
   max-width: 60%;
   margin: 0 auto;
   position: relative;
+
+  @media (max-width: 736px) {
+    max-width: 100%;
+  }
+
+  @media (min-width: 600px) and (min-height: 768px) {
+    width: 64%;
+    padding-top: 5%;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1366px) {
+    max-width: 100%;
+    padding-top: 5%;
+    width: 94%;
+  }
 `;
 
 const CustomSlider = styled(Slider)`
-  .slick-slide {
-    padding: 0 10px;
+  .slick-slide img {
+    height: auto;
+    border-radius: 10px;
+    max-width: 100%;
+  }
+
+  @media (max-width: 1024px) {
+    .slick-slide img {
+      height: 300px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .slick-slide img {
+      height: 400px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .slick-slide img {
+      height: 500px;
+    }
   }
 
   .slick-slide img {
     height: auto;
     border-radius: 10px;
     max-width: 100%;
+    cursor: grab;
   }
 
   .slick-current img {
@@ -28,6 +64,7 @@ const CustomSlider = styled(Slider)`
     padding: 10%;
     height: 5rem;
     border-radius: 5%;
+    cursor: grab;
   }
 
   .slick-slide-content {
@@ -92,6 +129,30 @@ const CarouselFanzines = () => {
     centerMode: true,
     focusOnSelect: true,
     beforeChange: (next) => setCurrentIndex(next),
+
+    responsive: [
+      {
+        breakpoint: 1024, 
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 768, 
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480, 
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const handleImageClick = (url) => {
@@ -102,7 +163,10 @@ const CarouselFanzines = () => {
     <CarouselContainer>
       <CustomSlider {...settings}>
         {fanzines.map((fanzine, index) => (
-          <div key={index} onClick={() => handleImageClick(fanzine.urlDocument)}>
+          <div
+            key={index}
+            onClick={() => handleImageClick(fanzine.urlDocument)}
+          >
             <div className="slick-slide-content">
               <img src={fanzine.poster} alt={`Poster ${index + 1}`} />
             </div>
