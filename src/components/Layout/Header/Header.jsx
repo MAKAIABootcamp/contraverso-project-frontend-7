@@ -19,6 +19,7 @@ const StyledNav = styled.nav`
   height: 15vh;
   scroll-snap-align: start;
   align-items: center;
+  
   .containerNav {
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 
