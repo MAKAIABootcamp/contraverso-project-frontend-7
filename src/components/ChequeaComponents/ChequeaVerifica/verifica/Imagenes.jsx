@@ -1,45 +1,88 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { getData } from '../../../../app/features/filtersByButtons/filtersByButtonsActions';
-import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { getDataFiltered } from '../../../../app/features/filtersByButtons/filtersByButtonsActions';
+import BusquedaInversa from "./ImagenCarousels/BusquedaInversa";
 import { useEffect } from 'react';
+import '../../../../../fonts/fonts.css';
+import styled from 'styled-components';
+import MetadatosImg from './ImagenCarousels/MetadatosImg';
+import AnalisisDigital from './ImagenCarousels/AnalisisDigital';
 
-const DivStyledCuatro = styled.div`
-    background-color: blue;
+
+const SectionStyled = styled.section`
+  background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336860/MONTAJE/CHEQUEA/8_bp66eb.png");
+  background-size: cover;
+  width: 100%;
+  height: 95vh;
+  scroll-snap-align: start;
+  padding: 2% 6%;
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+
+  h1 {
+    font-family: 'MADE Soulmaze Outline';
+    font-size: 3.5rem;
+    font-style: italic;
+  }
+
+  h2 {
+    font-family: 'Founders Grotesk Bold';
+    text-transform: uppercase;
+    font-size: 2.1rem;
+    padding-bottom: 1rem;
+  }
+
+  @media screen and (max-width: 816px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
+
+const DivStyled = styled.div`
+  overflow-y: auto;
+  padding: 0 4%;
+  height: 65vh;
+  
+  &::-webkit-scrollbar {
+    width: .8rem; 
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #4900DA;
+    border-radius: 50px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #161616;
+    border-radius: 50px;
+    
+}
+`;
+
+
+
 
 const Imagenes = () => {
   const dispatch = useDispatch();
-  const carouselImagenes = useSelector(state => state.filtersByButtons.data);
-  const isLoading = useSelector(state => state.filtersByButtons.loading);
-  const hasError = useSelector(state =>!!state.filtersByButtons.error);
-
   useEffect(() => {
-    dispatch(getData('verificaImagenes'));
+    dispatch(getDataFiltered({ collectionName: 'verificaImagenes', filterValue: 'metadatos' }));
+    dispatch(getDataFiltered({ collectionName: 'verificaImagenes', filterValue: 'analisisDigital'}));
+    dispatch(getDataFiltered({ collectionName: 'verificaImagenes', filterValue: 'busquedaInversa' }));
   }, [dispatch]);
 
-  if (isLoading) {
-    return <DivStyledCuatro>Cargando...</DivStyledCuatro>;
-  }
-
-  if (hasError) {
-    return <DivStyledCuatro>Error: {state.filtersByButtons.error}</DivStyledCuatro>;
-  }
-
   return (
-    <DivStyledCuatro>
-      <h2>Imagenes</h2>
-      <div>
-        {carouselImagenes.map((data) => (
-          <div key={data.id}>
-            <h3>{data.category}</h3>
-            <p>Description: {data.description}</p>
-            <img src={data.poster} alt={data.description} />
-            <p>URL: {data.url}</p>
-            <p>Web Name: {data.webName}</p>
-          </div>
-        ))}
-      </div>
-    </DivStyledCuatro>
+    <SectionStyled>
+      <h1>Imágenes</h1>
+      <DivStyled>
+      <h2>Busqueda inversa de imágenes</h2>
+        <BusquedaInversa />
+        <h2>Metadatos</h2>
+        <MetadatosImg />
+        <h2>Analisis Digital</h2>
+        <AnalisisDigital/>
+      </DivStyled>
+    </SectionStyled>
   );
 }
 

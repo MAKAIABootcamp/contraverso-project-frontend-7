@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import "../../../fonts/fonts.css";
-import CarouselFanzines from "./Carrusel/CarouselFanzines";
+import CarouselFanzines from "./CarruselFanzines/CarouselFanzines";
+import Modal from "./ModalFanzines";
+import { useSelector } from "react-redux";
+
 const StyledFanzine = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336876/MONTAJE/EXPRESA/17_iteslr.png");
   background-size: 100% 100%;
@@ -11,6 +14,7 @@ const StyledFanzine = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   scroll-snap-align: start;
+  position: relative;
 `;
 
 const StyledTitle = styled.div`
@@ -41,18 +45,165 @@ const StyledTextoImg = styled.img`
   z-index: 2;
   position: absolute;
 `;
-
 const StyledImgCat = styled.img`
-  width: 25%;
-  margin-top: auto;
+  width: 29%;
+  bottom:0;
   z-index: 3;
-  @media (max-width: 950px) {
-    width: 35%;
+  position: absolute;
+  display:none;
+
+
+  /* @media (max-width: 736px) {
+    width: 67%;
+    padding-top: 93%;
+  }
+
+  @media (min-width: 375px) and (min-height: 812px) {
+    width: 90%;
+    padding-top: 112%;
+  }
+
+  @media (min-width: 600px) and (min-height: 800px) {
+    width: 67%;
+    padding-top: 45%;
+  }
+
+  @media (min-width: 812px) and (min-height: 1025px) {
+    width: 54%;
+    padding-top: 24%;
+  }
+
+  @media (min-width: 1024px) and (max-height: 1400px) {
+    width: 26%;
+    padding-top: 0%;
+  }
+  @media (min-width: 1024px) and (max-height: 2050px) {
+    width: 20%;
+    padding-top: 0%;
+  }
+
+  @media (min-width: 1466px) and (max-width: 1920px) {
+    width: 26%;
+    padding-top: 0%;
+  } */
+`;
+
+const StyledComponent = styled.div`
+  text-align: center;
+  margin-top: 2rem;
+
+  .boton-añadir,
+  .boton-editar {
+    background-color: #fff35f;
+    border: none;
+    height: 2rem;
+    width: 9rem;
+    font-size: 100%;
+    font-family: "MADE Soulmaze";
+    cursor: pointer;
+    margin-left: 2rem;
+    position: relative;
+  }
+  .container {
+    gap: 0.5rem;
+    display: grid;
+    justify-content: space-around;
+    margin-right: 112px;
+    padding: 6%;
+    position: relative;
+  }
+  .container-title {
+    font-family: "Founders Grotesk";
+    color: #514d5b;
+    text-align: justify;
+  }
+  .container-text {
+    border-radius: 1rem;
+    font-size: 128%;
+    width: 90%;
+  }
+  .image-link {
+    /* previsializacion cuando se cargue la imagen */
   }
 `;
+
 const FanzinesExpresa = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [title, setTitle] = useState("");
+  const [imageLink, setImageLink] = useState("");
+  const isAuthenticated = useSelector(
+    (store) => store.userAuth.isAuthenticated
+  );
+
+  const handleOpenModal = (isEdit = false) => {
+    setIsEditing(isEdit);
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setTitle("");
+    setImageLink("");
+  };
+
+  const handleSubmit = () => {
+    if (isEditing) {
+      // Lógica para editar 
+    } else {
+      // Lógica para crear 
+    }
+    handleCloseModal();
+  };
+
   return (
     <StyledFanzine>
+      <StyledComponent>
+        {isAuthenticated && (
+          <>
+            <button
+              className="boton-añadir"
+              onClick={() => handleOpenModal(false)}
+            >
+              Añadir
+            </button>
+            <button
+              className="boton-editar"
+              onClick={() => handleOpenModal(true)}
+            >
+              Editar
+            </button>
+            <Modal
+              isOpen={isModalOpen}
+              isEditing={isEditing}
+              title="FANZINES:"
+              subtitle={
+                isEditing ? "¡EDITAR PUBLICACIÓN!" : "¡LISTA PARA PUBLICAR!"
+              }
+              onClose={handleCloseModal}
+              onSubmit={handleSubmit}
+            >
+              <img className="image-link" src={imageLink} alt="Fanzines" />
+              <div className="container">
+                <h4 className="container-title">Titulo:</h4>
+                <input
+                  type="text"
+                  className="container-text"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+                <h4 className="container-title">Link de fanzines:</h4>
+                <input
+                  type="text"
+                  className="container-text"
+                  value={imageLink}
+                  onChange={(e) => setImageLink(e.target.value)}
+                />
+              </div>
+            </Modal>
+          </>
+        )}
+      </StyledComponent>
       <StyledTitle>
         <StyledBackgroundImg
           src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336877/MONTAJE/EXPRESA/4-3_SUBR_m8fbpa.png"
