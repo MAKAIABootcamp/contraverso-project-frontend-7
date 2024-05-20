@@ -44,13 +44,44 @@ const StyledTextoImg = styled.img`
   z-index: 2;
   position: absolute;
 `;
-
 const StyledImgCat = styled.img`
-  width: 25%;
-  margin-top: auto;
+  width: 29%;
   z-index: 3;
-  @media (max-width: 950px) {
-    width: 35%;
+  position: absolute;
+  margin-top: 31%;
+
+  @media (max-width: 736px) {
+    width: 67%;
+    padding-top: 93%;
+  }
+
+  @media (min-width: 375px) and (min-height: 812px) {
+    width: 90%;
+    padding-top: 112%;
+  }
+
+  @media (min-width: 600px) and (min-height: 800px) {
+    width: 67%;
+    padding-top: 45%;
+  }
+
+  @media (min-width: 812px) and (min-height: 1025px) {
+    width: 54%;
+    padding-top: 24%;
+  }
+
+  @media (min-width: 1024px) and (max-height: 1400px) {
+    width: 26%;
+    padding-top: 0%;
+  }
+  @media (min-width: 1024px) and (max-height: 2050px) {
+    width: 20%;
+    padding-top: 0%;
+  }
+
+  @media (min-width: 1466px) and (max-width: 1920px) {
+    width: 26%;
+    padding-top: 0%;
   }
 `;
 
@@ -58,13 +89,17 @@ const StyledComponent = styled.div`
   text-align: center;
   margin-top: 2rem;
 
-  .boton-añadir {
+  .boton-añadir,
+  .boton-editar {
     background-color: #fff35f;
     border: none;
     height: 2rem;
     width: 9rem;
     font-size: 100%;
     font-family: "MADE Soulmaze";
+    cursor: pointer;
+    margin-left: 2rem;
+    position: relative;
   }
   .container {
     gap: 0.5rem;
@@ -90,13 +125,15 @@ const StyledComponent = styled.div`
 
 const FanzinesExpresa = () => {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState("");
   const [imageLink, setImageLink] = useState("");
   const isAuthenticated = useSelector(
     (store) => store.userAuth.isAuthenticated
   );
 
-  const handleOpenModal = () => {
+  const handleOpenModal = (isEdit = false) => {
+    setIsEditing(isEdit);
     setModalOpen(true);
   };
 
@@ -107,7 +144,11 @@ const FanzinesExpresa = () => {
   };
 
   const handleSubmit = () => {
-    // Lógica para cargar la ilustración
+    if (isEditing) {
+      // Lógica para editar 
+    } else {
+      // Lógica para crear 
+    }
     handleCloseModal();
   };
 
@@ -116,13 +157,25 @@ const FanzinesExpresa = () => {
       <StyledComponent>
         {isAuthenticated && (
           <>
-            <button className="boton-añadir" onClick={handleOpenModal}>
+            <button
+              className="boton-añadir"
+              onClick={() => handleOpenModal(false)}
+            >
               Añadir
+            </button>
+            <button
+              className="boton-editar"
+              onClick={() => handleOpenModal(true)}
+            >
+              Editar
             </button>
             <Modal
               isOpen={isModalOpen}
+              isEditing={isEditing}
               title="FANZINES:"
-              subtitle="¡LISTA PARA PUBLICAR!"
+              subtitle={
+                isEditing ? "¡EDITAR PUBLICACIÓN!" : "¡LISTA PARA PUBLICAR!"
+              }
               onClose={handleCloseModal}
               onSubmit={handleSubmit}
             >
