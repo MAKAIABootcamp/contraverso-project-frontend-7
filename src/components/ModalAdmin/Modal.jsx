@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from 'styled-components';
 import { actionLogout } from "../../app/features/userAuth/userAuthActions";
+import FormModal from "./FormModal";
 
 const SyledModal = styled.div`
   position: fixed;
@@ -17,7 +18,8 @@ const SyledModal = styled.div`
   .containerModal {
     width: 90%;
     max-width: 31.25rem;
-    background-color: #161616;
+    //#161616
+    background-color: white;
     position: relative;
     border-radius: 6px;
     border-color: transparent;
@@ -81,6 +83,7 @@ export const Modal = ({ onClose }) => {
             <button className='buttonClose' onClick={onClose}>X</button>  
             <div className="contenidoModal">
                 <h1>Contenido</h1>
+                <FormModal/>
                 {isAuthenticated && <button onClick={handleLogout} className='buttonLogout'>Cerrar sesión</button>}
             </div>   
         </div>
