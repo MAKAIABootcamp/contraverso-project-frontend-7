@@ -25,6 +25,7 @@ const StyledTitle = styled.div`
   align-items: center;
   padding: 4%;
   position: relative;
+  background-color: #3b247a;
 
   @media (max-width: 800px) {
     align-self: center;
@@ -50,42 +51,6 @@ const StyledImgCat = styled.img`
   bottom:0;
   z-index: 3;
   position: absolute;
-  display:none;
-
-
-  /* @media (max-width: 736px) {
-    width: 67%;
-    padding-top: 93%;
-  }
-
-  @media (min-width: 375px) and (min-height: 812px) {
-    width: 90%;
-    padding-top: 112%;
-  }
-
-  @media (min-width: 600px) and (min-height: 800px) {
-    width: 67%;
-    padding-top: 45%;
-  }
-
-  @media (min-width: 812px) and (min-height: 1025px) {
-    width: 54%;
-    padding-top: 24%;
-  }
-
-  @media (min-width: 1024px) and (max-height: 1400px) {
-    width: 26%;
-    padding-top: 0%;
-  }
-  @media (min-width: 1024px) and (max-height: 2050px) {
-    width: 20%;
-    padding-top: 0%;
-  }
-
-  @media (min-width: 1466px) and (max-width: 1920px) {
-    width: 26%;
-    padding-top: 0%;
-  } */
 `;
 
 const StyledComponent = styled.div`
