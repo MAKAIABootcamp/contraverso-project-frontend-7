@@ -29,7 +29,7 @@ const StyledContainer = styled.div`
 `;
 const StyledTexture = styled.img`
   width: 50%;
-  max-height: 90%;
+  max-height: 80%;
   filter: brightness(1) opacity(0.8);
   mix-blend-mode: color-burn;
   z-index: 1;

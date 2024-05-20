@@ -14,6 +14,7 @@ const StyledFanzine = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   scroll-snap-align: start;
+  position: relative;
 `;
 
 const StyledTitle = styled.div`
@@ -46,11 +47,13 @@ const StyledTextoImg = styled.img`
 `;
 const StyledImgCat = styled.img`
   width: 29%;
+  bottom:0;
   z-index: 3;
   position: absolute;
-  margin-top: 31%;
+  display:none;
 
-  @media (max-width: 736px) {
+
+  /* @media (max-width: 736px) {
     width: 67%;
     padding-top: 93%;
   }
@@ -82,7 +85,7 @@ const StyledImgCat = styled.img`
   @media (min-width: 1466px) and (max-width: 1920px) {
     width: 26%;
     padding-top: 0%;
-  }
+  } */
 `;
 
 const StyledComponent = styled.div`
@@ -107,6 +110,7 @@ const StyledComponent = styled.div`
     justify-content: space-around;
     margin-right: 112px;
     padding: 6%;
+    position: relative;
   }
   .container-title {
     font-family: "Founders Grotesk";
