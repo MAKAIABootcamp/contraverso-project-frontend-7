@@ -67,16 +67,21 @@ const StyledNav = styled.nav`
         }
       }
       .userAdmin {
-        .openUserAdmin{
+        .openUserAdmin {
           color: #fff35f;
           gap: 5%;
           margin-left: 50px;
           font-size: 22px;
+          .userPhoto {
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 50%;
+          }
         }
         .modalAdmin {
-        display: flex;
-        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-      }
+          display: flex;
+          box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+        }
       }
     }
   }
@@ -113,12 +118,17 @@ const StyledNav = styled.nav`
             color: #1df4c8;
           }
 
-          .openUserAdmin{
-          color: #fff35f;
-          margin-left: -101vw;
-          margin-right: 5vw;
-          font-size: 22px;
-        }
+          .openUserAdmin {
+            color: #fff35f;
+            margin-left: -9vw;
+            margin-right: 5vw;
+            font-size: 22px;
+          }
+          .userPhoto {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+          }
         }
       }
 
@@ -133,11 +143,16 @@ const StyledNav = styled.nav`
       ul {
         .liVisibles {
           padding: 0px;
-          .openUserAdmin{
-          color: #fff35f;
-          margin-right: 5vw;
-          font-size: 22px;
-        }
+          .openUserAdmin {
+            color: #fff35f;
+            margin-right: -2vw;
+            font-size: 22px;
+            .userPhoto {
+              width: 2rem;
+              height: 2rem;
+              border-radius: 50%;
+            }
+          }
         }
       }
     }
@@ -305,15 +320,26 @@ const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const { isAuthenticated } = useSelector(store => store.userAuth);
+  const { isAuthenticated } = useSelector((store) => store.userAuth);
+  const [userPhotoURL, setUserPhotoURL] = useState("");
+
+  useEffect(() => {
+    const loadUserPhotoURL = () => {
+      const storedPhotoURL = localStorage.getItem("userPhotoURL");
+      if (storedPhotoURL) {
+        setUserPhotoURL(storedPhotoURL);
+      }
+    };
+    loadUserPhotoURL();
+  }, []);
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 1120); // Ajusta el valor según tus necesidades
+      setIsMobile(window.innerWidth <= 1120);
     };
 
     window.addEventListener("resize", checkScreenSize);
-    checkScreenSize(); // Llamada inicial para establecer el estado inicial
+    checkScreenSize();
 
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
@@ -339,7 +365,7 @@ const Header = () => {
               <li
                 key={index}
                 className={
-                  item.label === "label" ? "highlighted-labelPages" : ""
+                  item.label === "Inicio" ? "highlighted-labelPages" : ""
                 }
               >
                 <NavLink
@@ -386,14 +412,28 @@ const Header = () => {
             {isAuthenticated ? (
               <>
                 <li className="userAdmin">
-                  <div className="openUserAdmin"><FaUserCircle onClick={openModal}/></div>
-                  <div className="modalAdmin">{showModal && <Modal onClose={closeModal} />}</div>
+                  {!userPhotoURL ? (
+                    <div className="openUserAdmin">
+                      <FaUserCircle onClick={openModal} />
+                    </div>
+                  ) : (
+                    <div className="openUserAdmin">
+                      <img
+                        className="userPhoto"
+                        src={userPhotoURL}
+                        alt="Perfil"
+                        onClick={openModal}
+                      />
+                    </div>
+                  )}
+                  <div className="modalAdmin">
+                    {showModal && <Modal onClose={closeModal} />}
+                  </div>
                 </li>
               </>
             ) : null}
           </ul>
         </nav>
-
         {isMobile && (
           <>
             <div className="isMobile">
@@ -422,13 +462,28 @@ const Header = () => {
                   <MdFilterList className="openModal" onClick={toggleModal} />
                 </li>
                 {isAuthenticated ? (
-              <>
-                <li className="liVisibles">
-                  <div className="openUserAdmin"><FaUserCircle onClick={openModal}/></div>
-                  <div className="modalAdmin">{showModal && <Modal onClose={closeModal} />}</div>
-                </li>
-              </>
-            ) : null}
+                  <>
+                    <li className="liVisibles">
+                      {!userPhotoURL ? (
+                        <div className="openUserAdmin">
+                          <FaUserCircle onClick={openModal} />
+                        </div>
+                      ) : (
+                        <div className="openUserAdmin">
+                          <img
+                            className="userPhoto"
+                            src={userPhotoURL}
+                            alt="Perfil"
+                            onClick={openModal}
+                          />
+                        </div>
+                      )}
+                      <div className="modalAdmin">
+                        {showModal && <Modal onClose={closeModal} />}
+                      </div>
+                    </li>
+                  </>
+                ) : null}
               </ul>
               <div className="modal">
                 {isModalOpen && (
