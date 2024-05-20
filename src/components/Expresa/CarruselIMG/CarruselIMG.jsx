@@ -5,6 +5,14 @@ import Slider from "react-slick";
 import "../../../../fonts/fonts.css";
 import { useExpImg } from './Data';
 import styled from 'styled-components';
+import { ImgForm } from "./ImgForm";
+import { EditForm } from "./EditForm";
+import { MdAddToPhotos } from "react-icons/md";
+import { AiFillDelete } from "react-icons/ai";
+import { FaEdit } from "react-icons/fa";
+import { actionDeleteImgs } from "../../../app/CarruselIMG/carruselActions";
+import { useDispatch, useSelector } from "react-redux";
+import { setImageForEdit } from "../../../app/CarruselIMG/imgsSlice";
 
 const CustomSlider = styled.div`
 
@@ -76,7 +84,11 @@ const CustomSlider = styled.div`
 const CarruselIMG = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [autoplayActive, setAutoplayActive] = useState(true);
-  const images = useExpImg(); 
+  const [showModal, setShowModal] = useState(false);
+  const [showModalEdit, setShowModalEdit] = useState(false);
+  const { isAuthenticated } = useSelector(store => store.userAuth);
+  const dispatch = useDispatch();
+  const images = useExpImg();
 
   const settings = {
     dots: true,
@@ -87,12 +99,12 @@ const CarruselIMG = () => {
     centerMode: true,
     focusOnSelect: false,
     beforeChange: (current, next) => {
-      if (!autoplayActive) { 
+      if (!autoplayActive) {
         setSelectedImage(images[next]);
       }
     },
     afterChange: (current) => {
-      if (!autoplayActive) { 
+      if (!autoplayActive) {
         setSelectedImage(images[current]);
       }
     },
@@ -100,32 +112,32 @@ const CarruselIMG = () => {
     autoplaySpeed: 2000,
     responsive: [
       {
-          breakpoint: 1024,
-          settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
-              infinite: true,
-              dots: true
-          }
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
       },
       {
-          breakpoint: 600,
-          settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              initialSlide: 0,
-              infinite: true,
-              dots: true
-          }
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 0,
+          infinite: true,
+          dots: true
+        }
       },
       {
-          breakpoint: 480,
-          settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-          }
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
       }
-  ]
+    ]
   };
 
   const handleImageClick = (image) => {
@@ -136,13 +148,68 @@ const CarruselIMG = () => {
     setSelectedImage(null);
   };
 
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  
+  const handleEditClick = (image) => {
+    dispatch(setImageForEdit(image));
+    // Aquí también puedes abrir el modal de edición si es necesario
+    openModalEdit(image);
+  };
+  
+  
+  const openModalEdit = (image) => {
+    setShowModalEdit(true);
+    setSelectedImage({ ...image, id: image.id });
+  };
+
+  const closeModalEdit = () => {
+    setShowModalEdit(false);
+    setSelectedImage(null); // Limpia la imagen seleccionada al cerrar el modal
+  };
+
+  function handleDeleteClick(id) {
+    dispatch(actionDeleteImgs(id));
+  }
+
+  
+
   return (
     <>
       <CustomSlider>
+        {isAuthenticated ? (
+          <>
+            <div className="modalImgs">
+              <div className="openModalImg"><MdAddToPhotos onClick={openModal} /></div>
+              <div className="modalImg">{showModal && <ImgForm onClose={closeModal} />}</div>
+              <div className="modalImg">{showModalEdit && <EditForm onClose={closeModalEdit} initialData={selectedImage} />}</div>
+            </div>
+          </>
+        ) : null}
         <Slider {...settings} className="containerCarrusel">
           {images.map((image, index) => (
             <div key={index} onClick={() => handleImageClick(image)}>
               <div className="slick-slide-content">
+                {isAuthenticated ? (
+                  <>
+                      <div className="actionButtons">
+                        <AiFillDelete
+                          alt="eliminar"
+                          onClick={() => handleDeleteClick(image.id)}
+                        />
+                        <FaEdit
+                           onClick={() => openModalEdit(image)}
+                          alt="editar"
+                        />
+                      </div>
+                  </>
+                ) : null}
                 <img src={image.poster} alt={`${image.name}`} />
               </div>
               <p>{image.name}</p>

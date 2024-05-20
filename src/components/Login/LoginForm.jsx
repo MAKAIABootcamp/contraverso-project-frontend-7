@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { actionLogin } from "../../app/features/userAuth/userAuthActions";
@@ -71,26 +71,22 @@ align-items: center;
 width: 100%;
 `;
 
+
 const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { user, isAuthenticated, error } = useSelector(
-    (store) => store.userAuth
-  );
+  const { user, error } = useSelector((store) => store.userAuth);
+  const isAuthenticated = useSelector((state) => state.userAuth.isAuthenticated);
 
   const formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
     validationSchema: Yup.object({
-      email: Yup.string()
-        .email("Ingrese un email válido")
-        .required("Su email es requerido"),
-      password: Yup.string()
-        .min(8, "Debe tener min 8 caracteres")
-        .required("La contraseña es requerida"),
+      email: Yup.string().email('Ingrese un email válido').required('Su email es requerido'),
+      password: Yup.string().min(8, 'Debe tener min 8 caracteres').required('La contraseña es requerida'),
     }),
     onSubmit: async (values) => {
       dispatch(actionLogin(values));
@@ -103,54 +99,35 @@ const LoginForm = () => {
   };
 
   const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       handleFormSubmit(event);
     }
   };
 
-  if (error) {
-    alert("Ocurrió un error en el inicio de sesión");
-    dispatch(setError(null));
-  }
-  if (isAuthenticated) {
-    alert(`Bienvenido${user.displayName ? `, ${user.displayName}!` : "!"}`);
-    navigate("/");
-  }
-
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/');
+    }
+  }, [isAuthenticated, user, navigate]);
 
   return (
     <FormStyled onSubmit={handleFormSubmit} onKeyDown={handleKeyDown}>
       <SectionForm>
-        <FormGroup className="acceso__login-card-body-form-group">
-          <label htmlFor="email"> Email</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            onChange={formik.handleChange}
-            value={formik.values.email}
-          />
-          {formik.errors.email && formik.touched.email ? (
-            <div className="div">{formik.errors.email}</div>
-          ) : null}
+        <FormGroup className='acceso__login-card-body-form-group'>
+          <label htmlFor='email'>Email</label>
+          <input id='email' name='email' type='email' onChange={formik.handleChange} value={formik.values.email} />
+          {formik.errors.email && formik.touched.email ? <div className='div'>{formik.errors.email}</div> : null}
         </FormGroup>
-        <FormGroup className="acceso__login-card-body-form-group">
-          <label htmlFor="password">Contraseña</label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            onChange={formik.handleChange}
-            value={formik.values.password}
-          />
-          {formik.errors.password && formik.touched.password ? (
-            <div>{formik.errors.password}</div>
-          ) : null}
+        <FormGroup className='acceso__login-card-body-form-group'>
+          <label htmlFor='password'>Contraseña</label>
+          <input id='password' name='password' type='password' onChange={formik.handleChange} value={formik.values.password} />
+          {formik.errors.password && formik.touched.password ? <div>{formik.errors.password}</div> : null}
         </FormGroup>
       </SectionForm>
 
-      <ButtonStyled type="submit" style={{ fontFamily: 'MADE Soulmaze' }}>Iniciar sesión</ButtonStyled>
-
+      <ButtonStyled type='submit' style={{ fontFamily: 'MADE Soulmaze' }}>
+        Iniciar sesión
+      </ButtonStyled>
     </FormStyled>
   );
 };
