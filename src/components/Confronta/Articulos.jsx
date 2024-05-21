@@ -16,8 +16,19 @@ width: 40%;
 height: 20%;
 display: flex;
 justify-content: center;
+align-items: center;
 margin-left: 5%;
 margin-top: 2%;
+
+@media (max-width:800px){
+  width: 100%;
+  margin-left: 0;
+  align-items: center;
+}
+@media (min-width:801px) and (max-width:1000px){
+  width:60%;
+  align-items: center;
+}
 `
 const StyledBgTitle = styled.img`
 width: 100%;
@@ -26,6 +37,12 @@ const StyledTextTitle = styled.p`
 font-size: 6vw;
 font-family: 'MADE Soulmaze Brush';
 position: absolute;
+@media (max-width:800px){
+  font-size: 12vw;
+}
+@media (min-width:801px) and (max-width:1000px){
+  font-size: 8vw;
+}
 `
 
 const StyledContainer = styled.div`
@@ -35,6 +52,11 @@ display: flex;
 justify-content: center;
 align-items: center;
 position: relative;
+@media (max-width:800px){
+
+  align-items: flex-start;
+
+}
 `
 
 const StyledIcono = styled.img`
@@ -44,6 +66,13 @@ right: 0;
 width: 30%;
 position: absolute;
 z-index: 2;
+
+@media (max-width:600px){
+  width: 80%;
+}
+@media (min-width:601px) and (max-width:800px){
+  width:60%
+}
 `
 
 const Articulos = () => {

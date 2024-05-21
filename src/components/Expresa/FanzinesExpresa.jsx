@@ -52,24 +52,6 @@ const StyledImgCat = styled.img`
   bottom: 0;
   z-index: 3;
   position: absolute;
-
-  @media (max-width: 736px) {
-    width: 67%;
-  }
-
-  @media (min-width: 375px) and (min-height: 812px) {
-    width: 100%;
-  }
-
-  @media (min-width: 600px) and (min-height: 800px) {
-    width: 67%;
-  }
-  @media (min-width: 812px) and (min-height: 1025px) {
-    width: 100%;
-  }
-  @media (min-width: 1024px) and (max-height: 2050px) {
-    width: 24%;
-  }
 `;
 
 const StyledComponent = styled.div`
