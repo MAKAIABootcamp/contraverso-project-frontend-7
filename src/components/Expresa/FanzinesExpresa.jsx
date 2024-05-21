@@ -38,54 +38,38 @@ const StyledTitle = styled.div`
 const StyledBackgroundImg = styled.img`
   width: 100%;
   z-index: 1;
+  margin-top: -4rem;
 `;
 
 const StyledTextoImg = styled.img`
   width: 70%;
   z-index: 2;
   position: absolute;
+  margin-top: -4rem;
 `;
 const StyledImgCat = styled.img`
   width: 29%;
-  bottom:0;
+  bottom: 0;
   z-index: 3;
   position: absolute;
-  display:none;
 
-
-  /* @media (max-width: 736px) {
+  @media (max-width: 736px) {
     width: 67%;
-    padding-top: 93%;
   }
 
   @media (min-width: 375px) and (min-height: 812px) {
-    width: 90%;
-    padding-top: 112%;
+    width: 100%;
   }
 
   @media (min-width: 600px) and (min-height: 800px) {
     width: 67%;
-    padding-top: 45%;
   }
-
   @media (min-width: 812px) and (min-height: 1025px) {
-    width: 54%;
-    padding-top: 24%;
-  }
-
-  @media (min-width: 1024px) and (max-height: 1400px) {
-    width: 26%;
-    padding-top: 0%;
+    width: 100%;
   }
   @media (min-width: 1024px) and (max-height: 2050px) {
-    width: 20%;
-    padding-top: 0%;
+    width: 24%;
   }
-
-  @media (min-width: 1466px) and (max-width: 1920px) {
-    width: 26%;
-    padding-top: 0%;
-  } */
 `;
 
 const StyledComponent = styled.div`
@@ -149,9 +133,9 @@ const FanzinesExpresa = () => {
 
   const handleSubmit = () => {
     if (isEditing) {
-      // Lógica para editar 
+      // Lógica para editar
     } else {
-      // Lógica para crear 
+      // Lógica para crear
     }
     handleCloseModal();
   };

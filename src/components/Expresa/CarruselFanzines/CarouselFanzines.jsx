@@ -13,17 +13,33 @@ const CarouselContainer = styled.div`
 
   @media (max-width: 736px) {
     max-width: 100%;
+    margin-top: 14%;
   }
 
-  @media (min-width: 600px) and (min-height: 768px) {
+  @media (max-width: 600px) and (min-height: 814px) {
     width: 64%;
     padding-top: 5%;
   }
 
-  @media (min-width: 1024px) and (max-width: 1366px) {
-    max-width: 100%;
+  @media (max-height: 1024px) and (min-width: 600px) {
+    width: 60%;
+    margin-top: -2%;
+  }
+  @media (min-width: 1024px) and (min-height: 1111px) {
+    width: 100%;
     padding-top: 5%;
-    width: 94%;
+  }
+
+  @media (min-width: 111px) and (min-height: 1111px) {
+    max-width: 100%;
+    padding-top: 10%;
+  }
+  @media (min-width: 1111px) and (min-height: 1080px) {
+    max-width: 60%;
+  }
+  @media (min-width: 2000px) and (max-height: 2133px) {
+    max-width: 50%;
+    padding-top: 0%;
   }
 `;
 
@@ -132,21 +148,21 @@ const CarouselFanzines = () => {
 
     responsive: [
       {
-        breakpoint: 1024, 
+        breakpoint: 1024,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
         },
       },
       {
-        breakpoint: 768, 
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 480, 
+        breakpoint: 480,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
