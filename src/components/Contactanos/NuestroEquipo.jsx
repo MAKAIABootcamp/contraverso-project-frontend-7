@@ -13,9 +13,9 @@ const StyledNuestroEquipo = styled.div`
 const StyledLogo = styled.img`
   position: absolute;
   right: 0;
-  padding: 5%;
-  width: 20%;
-  @media (max-width:500px){
+  padding: 2%;
+  width: 15%;
+  @media (max-width: 500px) {
     width: 25%;
   }
 `;
@@ -25,7 +25,7 @@ const StyledFigure = styled.img`
   width: 20%;
   top: 0;
   margin-top: 5%;
-  @media (max-width:500px){
+  @media (max-width: 500px) {
     display: none;
   }
 `;
@@ -45,21 +45,21 @@ const StyledTexture = styled.img`
 `;
 const StyledTitle = styled.div`
   width: 100%;
-  height: 25%;
+  height: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 5%;
+  padding-top: 2%;
 `;
 const StyledBgTitle = styled.img`
-  width: 50%;
+  width: 40%;
   @media (max-width: 800px) {
     width: 90%;
   }
 `;
 const StyledTextTitle = styled.p`
   font-family: "MADE Soulmaze Brush";
-  font-size: 5vw;
+  font-size: 4vw;
   position: absolute;
 
   @media (max-width: 800px) {
@@ -69,20 +69,26 @@ const StyledTextTitle = styled.p`
 
 const StyledContainer = styled.div`
   width: 100%;
-  height: 75%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
+`;
+
+const StyledCardsContainer = styled.div`
+  width: 80%;
+  height: 60%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding-left: 5%;
-  padding-right: 5%;
-  @media (max-width:500px){
-flex-direction: column;
-  }
 `;
 const StyledCard = styled.div`
-  width: 40%;
-  height: 100%;
+  width: 25%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -102,9 +108,55 @@ const StyledText = styled.span`
   font-size: 1.5vw;
   line-height: 1.5;
   margin-top: 5%;
-  z-index:2;
+  z-index: 2;
 `;
 
+const StyledDesarrollo = styled.div`
+width: 80%;
+height: 35%;
+margin-top: 3%;
+margin-bottom: 2%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`;
+
+const StyledSecondTitle = styled.h2`
+  font-family: 'MADE Soulmaze Outline';
+  color: #4100D0;
+  text-align: center;
+  font-size: 2.5vw;
+`
+
+const StyledNames = styled.div`
+width: 100%;
+height: 80%;
+display: flex;
+flex-direction: row;
+justify-content: center;
+z-index:2;
+
+figure{
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 100%;
+}
+
+p{
+  font-size:1vw;
+  margin-top:3%;
+}
+img{
+  margin-top: 5%;
+  width: 35%;
+  object-fit: cover;
+}
+`
 const NuestroEquipo = () => {
   return (
     <StyledNuestroEquipo>
@@ -119,16 +171,39 @@ const NuestroEquipo = () => {
         <StyledTextTitle>NUESTRO EQUIPO</StyledTextTitle>
       </StyledTitle>
       <StyledContainer>
-        <StyledCard>
-          <StyledCardImg src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336895/MONTAJE/SOMOS/6-3_hbbkgp.png"></StyledCardImg>
-          <StyledText>Sofía Vitery</StyledText>
-          <StyledText>Diseñadora gráfica</StyledText>
-        </StyledCard>
-        <StyledCard>
-          <StyledCardImg src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336895/MONTAJE/SOMOS/6-4_xdkktr.png"></StyledCardImg>
-          <StyledText>Samuel Coral</StyledText>
-          <StyledText>Lic. Ciencias Sociales</StyledText>
-        </StyledCard>
+        <StyledCardsContainer>
+          <StyledCard>
+            <StyledCardImg src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336895/MONTAJE/SOMOS/6-3_hbbkgp.png"></StyledCardImg>
+            <StyledText>Sofía Vitery</StyledText>
+            <StyledText>Diseñadora gráfica</StyledText>
+          </StyledCard>
+          <StyledCard>
+            <StyledCardImg src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336895/MONTAJE/SOMOS/6-4_xdkktr.png"></StyledCardImg>
+            <StyledText>Samuel Coral</StyledText>
+            <StyledText>Lic. Ciencias Sociales</StyledText>
+          </StyledCard>
+        </StyledCardsContainer>
+        <StyledDesarrollo>
+          <StyledSecondTitle>Desarrollo Web</StyledSecondTitle>
+          <StyledNames>
+            <figure>
+            <img src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1716308232/MONTAJE/SOMOS/QR%20DESARROLLO%20FRONT/JulianaArgaez_zcpero.png" alt="QR info Juliana" />
+            <p>Juliana Argaez</p>
+            </figure>
+            <figure>
+            <img src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1716308232/MONTAJE/SOMOS/QR%20DESARROLLO%20FRONT/gabrielaaguiarmarquez_abij7c.png" alt="QR info Gabriela" />
+            <p>Gabriela Aguiar</p>
+            </figure>
+            <figure>
+            <img src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1716308232/MONTAJE/SOMOS/QR%20DESARROLLO%20FRONT/estefaniavillan_sppvx4.png" alt="QR info Estefania" />
+            <p>Estefania Villan</p>
+            </figure>
+            <figure>
+            <img src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1716308233/MONTAJE/SOMOS/QR%20DESARROLLO%20FRONT/SofiaVitery_ehejeu.png" alt="QR info Sofia" />
+            <p>Sofía Vitery</p>
+            </figure>
+          </StyledNames>
+        </StyledDesarrollo>
       </StyledContainer>
     </StyledNuestroEquipo>
   );
