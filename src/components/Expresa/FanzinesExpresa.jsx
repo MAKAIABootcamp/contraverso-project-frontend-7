@@ -39,16 +39,18 @@ const StyledTitle = styled.div`
 const StyledBackgroundImg = styled.img`
   width: 100%;
   z-index: 1;
+  margin-top: -4rem;
 `;
 
 const StyledTextoImg = styled.img`
   width: 70%;
   z-index: 2;
   position: absolute;
+  margin-top: -4rem;
 `;
 const StyledImgCat = styled.img`
   width: 29%;
-  bottom:0;
+  bottom: 0;
   z-index: 3;
   position: absolute;
 `;
@@ -114,9 +116,9 @@ const FanzinesExpresa = () => {
 
   const handleSubmit = () => {
     if (isEditing) {
-      // Lógica para editar 
+      // Lógica para editar
     } else {
-      // Lógica para crear 
+      // Lógica para crear
     }
     handleCloseModal();
   };
