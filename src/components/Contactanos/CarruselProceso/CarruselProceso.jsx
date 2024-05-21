@@ -1,8 +1,8 @@
-import { collection, getDocs } from "@firebase/firestore";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Slider from "react-slick";
 import styled from "styled-components";
-import { db } from "../../../Firebase/firebaseConfig";
+import { actionGetProceso } from "../../../app/proceso/procesoActions";
 
 const CarouselContainer = styled.div`
   max-width: 70%;
@@ -91,23 +91,15 @@ const StyledTitle = styled.p`
 
 
 const CarruselProceso = () => {
-  const [procesos, setProcesos] = useState([]);
+
+  const dispatch = useDispatch();
+  const proceso = useSelector((store) => store.proceso.proceso);
 
   useEffect(() => {
-    const fetchProceso = async () => {
-      try {
-        const procesoCollection = collection(db, "somosNuestroProceso");
-        const procesoSnapshot = await getDocs(procesoCollection);
-        const procesoList = procesoSnapshot.docs.map((doc) => doc.data());
-        console.log("Proceso fetched: ", procesoList);
-        setProcesos(procesoList);
-      } catch (error) {
-        console.error("Error fetching Proceso: ", error);
-      }
-    };
+    dispatch(actionGetProceso());
+  }, [dispatch]);
+  console.log(proceso);
 
-    fetchProceso();
-  }, []);
   const settings = {
     infinite: true,
     speed: 500,
@@ -140,7 +132,7 @@ const CarruselProceso = () => {
   return (
     <CarouselContainer>
       <CustomSlider {...settings}>
-        {procesos.map((proceso, index) => (
+        {proceso.map((proceso, index) => (
           <div key={index}>
             <div className="slick-slide-content">
               <img src={proceso.poster} alt={`Poster ${index + 1}`} />

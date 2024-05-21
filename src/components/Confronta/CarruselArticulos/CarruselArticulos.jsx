@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { actionGetArticulos } from "../../../app/articulos/articulosActions";
 import Slider from "react-slick";
@@ -111,22 +111,6 @@ const CarruselArticulos = () => {
     dispatch(actionGetArticulos());
   }, [dispatch]);
   console.log(articulos);
-
-  // useEffect(() => {
-  //   const fetchArticulos = async () => {
-  //     try {
-  //       const articulosCollection = collection(db, "confrontaArticulos");
-  //       const articulosSnapshot = await getDocs(articulosCollection);
-  //       const articulosList = articulosSnapshot.docs.map((doc) => doc.data());
-  //       console.log("Articulos fetched: ", articulosList);
-  //       setArticulos(articulosList);
-  //     } catch (error) {
-  //       console.error("Error fetching articulos: ", error);
-  //     }
-  //   };
-
-  //   fetchArticulos();
-  // }, []);
 
   const settings = {
     infinite: true,
