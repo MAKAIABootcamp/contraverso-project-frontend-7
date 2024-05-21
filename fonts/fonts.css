@@ -107,8 +107,8 @@
   
   @font-face {
     font-family: 'MADE Soulmaze';
-    src: url('./made_souldmaze/MADE Soulmaze PERSONAL USE.otf') format('opentype');
-  }  
+    src: url('https://res.cloudinary.com/dvafjaqbd/raw/upload/v1716330669/MONTAJE/TYPES/made_soulmaze/MADE_Soulmaze_PERSONAL_USE_cpyd7j.otf') format('opentype');
+}
 
   /* --------------------------------------------------------------------------------------- */
   /*   Filson Pro Black                                                                      */
