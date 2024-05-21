@@ -1,8 +1,8 @@
-import { collection, getDocs } from "@firebase/firestore";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { actionGetArticulos } from "../../../app/articulos/articulosActions";
 import Slider from "react-slick";
 import styled from "styled-components";
-import { db } from "../../../Firebase/firebaseConfig";
 
 const CarouselContainer = styled.div`
   max-width: 60%;
@@ -104,23 +104,29 @@ const StyledButton = styled.button`
 `;
 
 const CarruselArticulos = () => {
-  const [articulos, setArticulos] = useState([]);
+  const dispatch = useDispatch();
+  const articulos = useSelector((store) => store.articulos.articulos);
 
   useEffect(() => {
-    const fetchArticulos = async () => {
-      try {
-        const articulosCollection = collection(db, "confrontaArticulos");
-        const articulosSnapshot = await getDocs(articulosCollection);
-        const articulosList = articulosSnapshot.docs.map((doc) => doc.data());
-        console.log("Articulos fetched: ", articulosList);
-        setArticulos(articulosList);
-      } catch (error) {
-        console.error("Error fetching articulos: ", error);
-      }
-    };
+    dispatch(actionGetArticulos());
+  }, [dispatch]);
+  console.log(articulos);
 
-    fetchArticulos();
-  }, []);
+  // useEffect(() => {
+  //   const fetchArticulos = async () => {
+  //     try {
+  //       const articulosCollection = collection(db, "confrontaArticulos");
+  //       const articulosSnapshot = await getDocs(articulosCollection);
+  //       const articulosList = articulosSnapshot.docs.map((doc) => doc.data());
+  //       console.log("Articulos fetched: ", articulosList);
+  //       setArticulos(articulosList);
+  //     } catch (error) {
+  //       console.error("Error fetching articulos: ", error);
+  //     }
+  //   };
+
+  //   fetchArticulos();
+  // }, []);
 
   const settings = {
     infinite: true,
@@ -136,13 +142,13 @@ const CarruselArticulos = () => {
       {
         breakpoint: 700,
         settings: {
-          slidesToShow: 2, 
+          slidesToShow: 2,
         },
       },
       {
         breakpoint: 400,
         settings: {
-          slidesToShow: 1, 
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },

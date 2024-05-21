@@ -15,8 +15,8 @@ const StyledLogo = styled.img`
   right: 0;
   padding: 2%;
   width: 15%;
-  @media (max-width: 500px) {
-    width: 25%;
+  @media (max-width: 800px) {
+    display: none;
   }
 `;
 
@@ -25,22 +25,22 @@ const StyledFigure = styled.img`
   width: 20%;
   top: 0;
   margin-top: 5%;
-  @media (max-width: 500px) {
+  @media (max-width:800px) {
     display: none;
   }
 `;
 
 const StyledTexture = styled.img`
-  filter: brightness(491%) opacity(0.8);
+  filter: brightness(491%) opacity(0.4);
   width: 30%;
   bottom: 0;
   right: 0;
   position: absolute;
   @media (max-width: 500px) {
-    width: 80%;
+    display: none;
   }
-  @media (min-width: 501px) and (max-width: 800px) {
-    width: 50%;
+  @media (min-width: 501px) and (max-width: 1115px) {
+    display: none;
   }
 `;
 const StyledTitle = styled.div`
@@ -53,6 +53,7 @@ const StyledTitle = styled.div`
 `;
 const StyledBgTitle = styled.img`
   width: 40%;
+  z-index:2;
   @media (max-width: 800px) {
     width: 90%;
   }
@@ -61,7 +62,7 @@ const StyledTextTitle = styled.p`
   font-family: "MADE Soulmaze Brush";
   font-size: 4vw;
   position: absolute;
-
+  z-index:3;
   @media (max-width: 800px) {
     font-size: 10vw;
   }
@@ -74,9 +75,6 @@ const StyledContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  @media (max-width: 500px) {
-    flex-direction: column;
-  }
 `;
 
 const StyledCardsContainer = styled.div`
@@ -86,6 +84,13 @@ const StyledCardsContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 800px) {
+    width: 100%;
+    height: 50%;
+    margin-bottom: 5%;
+  }
+
 `;
 const StyledCard = styled.div`
   width: 25%;
@@ -93,6 +98,19 @@ const StyledCard = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media (max-width:500px) {
+    width: 100%;
+    height: 100%;
+  }
+  @media (min-width:501px) and (max-width:670px){
+    width: 40%;
+  }
+  @media (min-width:671px) and (max-width:734px){
+    width: 35%;
+  }
+  @media (min-width: 735px) and (max-width: 1115px) {
+    width: 40%;
+  }
 `;
 
 const StyledCardImg = styled.img`
@@ -100,6 +118,9 @@ const StyledCardImg = styled.img`
   height: auto;
   border-radius: 50%;
   object-fit: cover;
+  @media (max-width: 900px) {
+    width: 60%;
+  }
 `;
 const StyledText = styled.span`
   color: #ffffff;
@@ -109,6 +130,12 @@ const StyledText = styled.span`
   line-height: 1.5;
   margin-top: 5%;
   z-index: 2;
+  @media (max-width: 500px) {
+    font-size: 4vw;
+  }
+  @media (min-width: 415px) and (max-width:734px) {
+    font-size: 3vw;
+  }
 `;
 
 const StyledDesarrollo = styled.div`
@@ -120,6 +147,11 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+@media (max-width: 800px) {
+    width: 100%;
+    height: 70%;
+  }
+
 `;
 
 const StyledSecondTitle = styled.h2`
@@ -127,6 +159,14 @@ const StyledSecondTitle = styled.h2`
   color: #4100D0;
   text-align: center;
   font-size: 2.5vw;
+  z-index: 2;
+  @media (max-width: 800px) {
+    font-size: 5vw;
+    margin-bottom: 5%;
+  }
+  @media (min-width:801px) and (max-width:1115px){
+    font-size: 3vw;
+  }
 `
 
 const StyledNames = styled.div`
@@ -136,25 +176,59 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 z-index:2;
+@media (max-width: 800px) {
+
+flex-wrap: wrap;
+  }
 
 figure{
   
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: baseline;
   align-items: center;
   width: 20%;
   height: 100%;
+  z-index:3;
+  padding: 5px;
+  @media (max-width: 415px) {
+    width: 50%;
+    height: 45%;
+    margin-top:5%
+  }
+  @media (min-width: 415px) and (max-width:577px) {
+    width: 35%;
+    height: 45%;
+  }
+  @media (min-width:801px) and (max-width:1115px){
+    width: 40%;
+  }
 }
+
 
 p{
   font-size:1vw;
   margin-top:3%;
+  text-align: center;
+  word-wrap: break-word;
+  @media (max-width: 800px) {
+    font-size: 3vw;
+  }
+  @media (min-width:801px) and (max-width:1115px){
+    font-size: 1.5vw;
+  }
 }
 img{
   margin-top: 5%;
   width: 35%;
   object-fit: cover;
+  z-index: 3;
+  @media (max-width: 800px) {
+    margin-top:0;
+  }
+  @media (min-width:801px) and (max-width:1115px){
+    width: 45%;
+  }
 }
 `
 const NuestroEquipo = () => {
