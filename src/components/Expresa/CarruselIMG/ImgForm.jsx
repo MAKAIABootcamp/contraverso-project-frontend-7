@@ -194,6 +194,14 @@ export const ImgForm = ({ onClose }) => {
         setAuthor("");
         setName("");
         document.getElementById("preview").src = "";
+        Swal.fire({
+          icon: "success",
+          title: "¡Has subido una imagen correctamente!",
+          showConfirmButton: false,
+          timer: 2500,
+        }).finally(() => {
+          location.reload();
+        });
       } catch (error) {
         console.error(error);
       }

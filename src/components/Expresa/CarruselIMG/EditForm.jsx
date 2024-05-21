@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { actionEditImgs } from "../../../app/CarruselIMG/carruselActions";
-import styled from 'styled-components';
-import Swal from 'sweetalert2';
-
+import styled from "styled-components";
+import Swal from "sweetalert2";
 
 const SyledModal = styled.div`
   position: fixed;
@@ -71,84 +70,106 @@ const SyledModal = styled.div`
 `;
 
 export const EditForm = ({ onClose, initialData }) => {
-    const [selectedFile, setSelectedFile] = useState(initialData?.file || null);
-    const [author, setAuthor] = useState(initialData?.author || '');
-    const [name, setName] = useState(initialData?.name || '');
-  
-    const imageForEdit = useSelector(state => state.imgs.imageForEdit);
+  const dispatch = useDispatch();
+  const [selectedFile, setSelectedFile] = useState(initialData?.file || null);
+  const [author, setAuthor] = useState(initialData?.author || "");
+  const [name, setName] = useState(initialData?.name || "");
 
-    useEffect(() => {
-        if (imageForEdit) {
-          setSelectedFile(imageForEdit.file || null);
-          setAuthor(imageForEdit.author || '');
-          setName(imageForEdit.name || '');
-        }
-      }, [imageForEdit]);
-      
-  
-    const onFileChange = event => {
-      setSelectedFile(event.target.files[0]);
-      updateImagePreview(event.target.files[0]);
-    };
-  
-    const onAuthorChange = event => {
-      setAuthor(event.target.value);
-    };
-  
-    const onNameChange = event => {
-      setName(event.target.value);
-    };
-  
-    const onFormSubmit = async event => {
-      event.preventDefault();
-      if (selectedFile && author && name && initialData) {
-        try {
-          await dispatch(actionEditImgs(initialData.id, { file: selectedFile, author, name }));
-          setSelectedFile(null);
-          setAuthor('');
-          setName('');
-          document.getElementById('preview').src = '';
-          Swal.fire({
-            icon: 'success',
-            title: '¡Imagen editada correctamente!',
-            showConfirmButton: false,
-            timer: 2500,
-          }).then(() => {
-            onClose();
-          });
-        } catch (error) {
-          console.error(error);
-        }
-      } else {
-        console.error("initialData is null or not properly initialized.");
-      }
-    };
-  
-    const updateImagePreview = (file) => {
-      if (file) {
-        document.getElementById('preview').src = URL.createObjectURL(file);
-      } else {
-        document.getElementById('preview').src = '';
-      }
-    };
-  
-    return (
-      <SyledModal>
-        <div className="containerModal">
-          <div className="contenidoModal">
-            <button className='buttonClose' onClick={onClose}>X</button>
-            <form onSubmit={onFormSubmit}>
-              <label htmlFor="file">Seleccionar imagen:</label>
-              <input type="file" id="file" onChange={onFileChange}/>
-              <img id="preview" alt="Preview" style={{ width: '200px', height: 'auto' }} />
-              <label htmlFor="author">Autor:</label>
-              <input type="text" id="author" value={author} onChange={onAuthorChange} required />
-              <label htmlFor="name">Título:</label>
-              <input type="text" id="name" value={name} onChange={onNameChange} required />
-              <button type="submit">Actualizar imagen</button>
-            </form>
-          </div>
-        </div>
-      </SyledModal>
-    );
+  const imageForEdit = useSelector((state) => state.imgs.imageForEdit);
+
+  useEffect(() => {
+    if (imageForEdit) {
+      setSelectedFile(imageForEdit.file || null);
+      setAuthor(imageForEdit.author || "");
+      setName(imageForEdit.name || "");
+    }
+  }, [imageForEdit]);
+
+  const onFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+    updateImagePreview(event.target.files[0]);
   };
+
+  const onAuthorChange = (event) => {
+    setAuthor(event.target.value);
+  };
+
+  const onNameChange = (event) => {
+    setName(event.target.value);
+  };
+
+  const onFormSubmit = async (event) => {
+    event.preventDefault();
+    if (initialData) {
+      try {
+        const editData = {};
+        if (selectedFile) editData.file = selectedFile;
+        if (author) editData.author = author;
+        if (name) editData.name = name;
+        dispatch(actionEditImgs(initialData.id, { ...editData }));
+        setSelectedFile(null);
+        setAuthor("");
+        setName("");
+        document.getElementById("preview").src = "";
+        Swal.fire({
+          icon: "success",
+          title: "¡Imagen editada correctamente!",
+          showConfirmButton: false,
+          timer: 2500,
+        }).then(() => {
+          onClose();
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      console.error("initialData is null or not properly initialized.");
+    }
+  };
+
+  const updateImagePreview = (file) => {
+    if (file) {
+      document.getElementById("preview").src = URL.createObjectURL(file);
+    } else {
+      document.getElementById("preview").src = "";
+    }
+  };
+
+  return (
+    <SyledModal>
+      <div className="containerModal">
+        <div className="contenidoModal">
+          <button className="buttonClose" onClick={onClose}>
+            X
+          </button>
+          <form onSubmit={onFormSubmit}>
+            <label htmlFor="file">Seleccionar imagen:</label>
+            <input type="file" id="file" onChange={onFileChange} />
+            <img
+              id="preview"
+              alt="Preview"
+              style={{ width: "200px", height: "auto" }}
+            />
+            <label htmlFor="author">Autor:</label>
+            <input
+              type="text"
+              id="author"
+              value={author}
+              onChange={onAuthorChange}
+              required
+            />
+            <label htmlFor="name">Título:</label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={onNameChange}
+              required
+            />
+            <button type="submit">Actualizar imagen</button>
+          </form>
+        </div>
+      </div>
+    </SyledModal>
+  );
+};

@@ -195,14 +195,7 @@ const CarruselIMG = () => {
   const closeModal = () => {
     setShowModal(false);
   };
-
-  
-  const handleEditClick = (image) => {
-    dispatch(setImageForEdit(image));
-    setSelectedImage({ ...image, id: image.id });
-    openModalEdit(image);
-  };
-  
+ 
   
   const openModalEdit = (image) => {
     setShowModalEdit(true);
@@ -226,41 +219,55 @@ const CarruselIMG = () => {
         {isAuthenticated ? (
           <>
             <div className="modalImgs">
-              <button className="openModalImg" onClick={openModal}><MdAddToPhotos className="iconAdd"/> <p>AñadIr Imagen</p></button>
-              <div className="modalImg">{showModal && <ImgForm onClose={closeModal} />}</div>
-              <div className="modalImg">{showModalEdit && <EditForm onClose={closeModalEdit} initialData={selectedImage} />}</div>
+              <button className="openModalImg" onClick={openModal}>
+                <MdAddToPhotos className="iconAdd" /> <p>AñadIr Imagen</p>
+              </button>
+              <div className="modalImg">
+                {showModal && <ImgForm onClose={closeModal} />}
+              </div>
+              <div className="modalImg">
+                {showModalEdit && (
+                  <EditForm
+                    onClose={closeModalEdit}
+                    initialData={selectedImage}
+                  />
+                )}
+              </div>
             </div>
           </>
         ) : null}
         <Slider {...settings} className="containerCarrusel">
           {images.map((image, index) => (
-            <div key={index} onClick={() => handleImageClick(image)}>
+            <div key={index}>
               <div className="slick-slide-content">
-                <img src={image.poster} alt={`${image.name}`} />
+                <img
+                  src={image.poster}
+                  alt={`${image.name}`}
+                  onClick={() => handleImageClick(image)}
+                />
               </div>
               {isAuthenticated ? (
-                  <>
-                      <div className="actionButtons">
-                        <AiFillDelete
-                          alt="eliminar"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleDeleteClick(image.id);
-                            setIsActionButtonClicked(true);
-                          }}
-                        />
-                        <FaEdit
-                           onClick={(e) => {
-                            e.stopPropagation(); 
-                            // openModalEdit(image);
-                            handleEditClick(image.id);
-                            setIsActionButtonClicked(true); 
-                          }}
-                          alt="editar"
-                        />
-                      </div>
-                  </>
-                ) : null}
+                <>
+                  <div className="actionButtons">
+                    <AiFillDelete
+                      alt="eliminar"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDeleteClick(image.id);
+                        setIsActionButtonClicked(true);
+                      }}
+                    />
+                    <FaEdit
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openModalEdit(image);
+                        // setIsActionButtonClicked(true);
+                      }}
+                      alt="editar"
+                    />
+                  </div>
+                </>
+              ) : null}
               <p>{image.name}</p>
               <p>{image.author}</p>
             </div>
@@ -272,20 +279,24 @@ const CarruselIMG = () => {
       {selectedImage && (
         <div
           style={{
-            position: 'fixed',
+            position: "fixed",
             top: 0,
             left: 0,
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'rgba(0,0,0,0.7)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            cursor: 'pointer',
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0,0,0,0.7)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
           }}
           onClick={handleCloseModal}
         >
-          <img src={selectedImage.poster} alt={selectedImage.name} style={{ maxWidth: '90%', maxHeight: '90%' }} />
+          <img
+            src={selectedImage.poster}
+            alt={selectedImage.name}
+            style={{ maxWidth: "90%", maxHeight: "90%" }}
+          />
         </div>
       )}
     </>
