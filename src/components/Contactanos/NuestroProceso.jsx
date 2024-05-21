@@ -2,8 +2,9 @@ import styled from "styled-components";
 import "../../../fonts/fonts.css";
 
 const StyledNuestroProceso = styled.div`
-  background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336891/MONTAJE/SOMOS/24_x3fx6d.png");
+  /* background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336891/MONTAJE/SOMOS/24_x3fx6d.png"); */
   height: 30rem;
+  background-color: red;
   scroll-snap-align: start;
 `;
 const StyledImageBackground = styled.img`
