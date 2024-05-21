@@ -9,8 +9,8 @@ export const actionLogin = ({ email, password }) => {
       const user = userCredential.user;
 
       // Verificar los datos del usuario en la consola
-      alert(`Inicio de sesión exitoso: ${user.displayName}, ${user.photoURL}`);
-
+      alert(`Inicio de sesión exitoso: ${user.displayName}`);
+// ${user.photoURL}
       dispatch(
         login({
           id: user.uid,

@@ -4,22 +4,23 @@ import { actionLogout } from "../../app/features/userAuth/userAuthActions";
 import FormModal from "./FormModal";
 
 const SyledModal = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 1000;
 
   .containerModal {
     width: 90%;
     max-width: 31.25rem;
-    //#161616
-    background-color: white;
+    display: flex;
+    flex-direction: column;
+    background-color: #4100D0;
     position: relative;
     border-radius: 6px;
     border-color: transparent;
@@ -37,7 +38,6 @@ const SyledModal = styled.div`
       width: 25px;
       height: 25px;
       border-radius: 50px;
-      border: none;
       color: #161616; /* neutral-600 */
       background: #fff35f;
       cursor: pointer;
@@ -45,6 +45,17 @@ const SyledModal = styled.div`
 
     .contenidoModal {
       display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8%;
+
+      h1 {
+        font-size: 2.6rem;
+        font-family: 'MADE Soulmaze Brush';
+        // color: #4100D0;
+        color: #fff35f;
+        letter-spacing: 0.2rem;
+      }
 
       .buttonLogout {
         display: flex;
@@ -82,7 +93,7 @@ export const Modal = ({ onClose }) => {
         <div className="containerModal">
             <button className='buttonClose' onClick={onClose}>X</button>  
             <div className="contenidoModal">
-                <h1>Contenido</h1>
+              <h1>¡Edita tu perfil!</h1>
                 <FormModal/>
                 {isAuthenticated && <button onClick={handleLogout} className='buttonLogout'>Cerrar sesión</button>}
             </div>   
