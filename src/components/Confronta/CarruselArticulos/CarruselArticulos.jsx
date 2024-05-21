@@ -25,13 +25,6 @@ const CustomSlider = styled(Slider)`
     max-width: 100%;
   }
 
-  .slick-current img {
-    transform: scale(1.1);
-    padding: 1%;
-    height: 5rem;
-    border-radius: 5%;
-  }
-
   .slick-slide-content {
     position: relative;
     overflow: hidden;

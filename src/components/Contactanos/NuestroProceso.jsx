@@ -4,7 +4,7 @@ import CarruselProceso from "./CarruselProceso/CarruselProceso";
 
 const StyledNuestroProceso = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336891/MONTAJE/SOMOS/24_x3fx6d.png");
-  height: 30rem;
+  background-size: 100% 100%;
   width: 100%;
   height: 100vh;
   position: relative;
