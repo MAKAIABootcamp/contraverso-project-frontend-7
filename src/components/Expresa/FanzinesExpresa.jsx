@@ -25,7 +25,6 @@ const StyledTitle = styled.div`
   align-items: center;
   padding: 4%;
   position: relative;
-  background-color: #3b247a;
 
   @media (max-width: 800px) {
     align-self: center;
