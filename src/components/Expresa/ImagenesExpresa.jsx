@@ -8,11 +8,7 @@ const StyledImagenes = styled.div`
   scroll-snap-align: start;
   scroll-snap-align: start;
 
-  div{
-    z-index: 1;
-  }
   .ContainerIMG{
-    z-index: 2;
     width: 98%;
     height: auto;
     @media(max-width: 735px) {

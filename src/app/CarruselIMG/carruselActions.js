@@ -17,6 +17,7 @@ import {
   } from "./imgsSlice";
 
   import fileUpload from "../../services/cloudiCarruIMG/fileUpload";
+  import Swal from 'sweetalert2';
   
 
 const COLLECTION_NAME = "expresaImagenes"; 
@@ -38,7 +39,14 @@ export const actionAddImg = ({ file, author, name }) => {
         author: author,
         name: name,
       });
-      
+      Swal.fire({
+        icon: 'success',
+        title: '¡Has subido una imagen correctamente!',
+        showConfirmButton: false,
+        timer: 2500,
+      }).finally(() => {
+        location.reload();        
+      });      
       console.log("Documento escrito con ID: ", docRef.id);
     } catch (error) {
       console.error("Error al agregar la imagen: ", error);
@@ -81,6 +89,16 @@ export const actionDeleteImgs = (idImg) => {
       // Por ejemplo:
       const docRef = doc(db, "expresaImagenes", idImg);
       await deleteDoc(docRef);
+      Swal.fire({
+        title: "Bien hecho",
+        text: "Imagen eliminada correctamente de la base de datos",
+        icon: "success",
+        confirmButtonText: 'OK',
+        // Función a ejecutar cuando se confirma la alerta
+        preConfirm: () => {
+          location.reload(); // Recarga la página
+        },
+      });
       console.log("Documento eliminado correctamente de Firestore");
     } catch (error) {
       console.error("Error al eliminar el documento:", error);
