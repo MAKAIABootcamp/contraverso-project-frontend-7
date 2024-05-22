@@ -79,6 +79,8 @@ const StyledImgTitle = styled.img`
 `;
 
 const StyledBotonExpresa = styled(NavLink)`
+border-radius: .4rem;
+
   background-color: #fff35f;
   color: #000000;
   padding: 0.5rem;
