@@ -1,5 +1,6 @@
 import LoginForm from "../../components/Login/LoginForm";
-import { FaUserSecret } from "react-icons/fa";
+// import { FaUserSecret } from "react-icons/fa";
+import { CgUserlane } from "react-icons/cg";
 import { useEffect, useState } from "react";
 import { useAnimation, motion } from "framer-motion";
 import styled from "styled-components";
@@ -18,8 +19,8 @@ const UserContainer = styled.header`
   left: 50%;
   transform: translate(-50%, -30%);
   background-color: #fff35f;
-  border-top: 1rem solid #000000;
-  border-bottom: 1rem solid #000000;
+  border-top: 1rem solid #161616;
+  border-bottom: 1rem solid #161616;
   border-radius: 0.625rem;
   padding: 2rem 0;
   height: auto;
@@ -97,9 +98,9 @@ const Acceso = () => {
       <UserContainer>
         <User>
           <div>
-            <FaUserSecret
-              fill="#000000"
-              style={{ fontSize: "11vh", margin: "18%" }}
+            <CgUserlane
+              color="#ffff"
+              style={{ fontSize: "11vh", margin: "18%", opacity: ".9" }}
             />
           </div>
         </User>

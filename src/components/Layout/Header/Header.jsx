@@ -87,7 +87,7 @@ const StyledNav = styled.nav`
       }
     }
   }
-  @media (max-width: 1360px) {
+  @media (max-width: 1260px) {
     .containerNav ul li {
       display: none;
     }
@@ -210,9 +210,9 @@ const ModalBackground = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 1000;
-`;
-
-const ModalContent = styled.div`
+  `;
+  
+  const ModalContent = styled.div`
   background-color: #161616;
   padding: 1.25rem;
   border-radius: 0.875rem;
@@ -341,7 +341,7 @@ const Header = () => {
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 1360);
+      setIsMobile(window.innerWidth <= 1260);
     };
 
     window.addEventListener("resize", checkScreenSize);

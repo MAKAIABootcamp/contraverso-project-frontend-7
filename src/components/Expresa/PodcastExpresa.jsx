@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import "../../../fonts/fonts.css";
 import BotonExpresa from "./BotonExpresa";
+import { NavLink } from "react-router-dom";
 
 const StyledPodcast = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336876/MONTAJE/EXPRESA/16_wsdajl.png");
@@ -42,6 +43,7 @@ const StyledText = styled.h1`
   font-family: "MADE Soulmaze Brush";
   font-size: 7rem;
   position: absolute;
+  color: #161616;
 
   @media (max-width: 400px) {
     font-size: 2rem;
@@ -72,9 +74,9 @@ const StyledContainer = styled.div`
 const StyledImgLeft = styled.img`
   width: 35%;
   max-height: 100%;
-  filter: brightness(491%) opacity(0.8);
   z-index: 1;
   align-self: flex-end;
+  mix-blend-mode: difference; 
   @media (max-width: 800px) {
     display: none;
   }
@@ -104,7 +106,7 @@ const StyleSpotifyImg = styled.img`
   }
 `;
 
-const StyledBotonExpresa = styled(BotonExpresa)`
+const StyledBotonExpresa = styled(NavLink)`
   width: 60%;
   background-color: #dd77cc;
   color: #000000;
@@ -118,6 +120,7 @@ const StyledBotonExpresa = styled(BotonExpresa)`
   cursor: pointer;
   align-self: center;
   border-radius: 5px;
+  text-align: center;
 
   @media (max-width: 400px) {
     font-size: 0.8rem;
@@ -136,9 +139,7 @@ const StyledImgDog = styled.img`
 `;
 
 const PodcastExpresa = () => {
-  const handleClick = () => {
-    console.log("click");
-  };
+
   return (
     <StyledPodcast>
       <StyledTitle>
@@ -154,13 +155,13 @@ const PodcastExpresa = () => {
         <StyledImgLeft
           src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336877/MONTAJE/EXPRESA/4-2_TEXTU_hf0vgk.png"
           alt="Imagen lateral"
-        ></StyledImgLeft>
+        />
         <StyledBtnContainer>
           <StyleSpotifyImg
             src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336876/MONTAJE/EXPRESA/4-2_SPOTI_xhfnyj.png"
             alt="Imagen spotify"
           ></StyleSpotifyImg>
-          <StyledBotonExpresa onClick={handleClick}>
+          <StyledBotonExpresa to="https://discord.gg/tCqfzHWGCV">
             ESCUCHAR
           </StyledBotonExpresa>
         </StyledBtnContainer>

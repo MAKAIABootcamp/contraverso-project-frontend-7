@@ -31,7 +31,7 @@ const StyledTitulo = styled.h1`
   font-family: "MADE Soulmaze Brush";
   font-size: 5vw;
   position: absolute;
-
+  color: #161616;
   @media (max-width:800px){
     font-size: 10vw;
   }
@@ -47,7 +47,7 @@ const StyledTexto = styled.p`
 `;
 const StyledTextoSpan = styled.span`
   color: #ffffff;
-  background-color: #000000;
+  background-color: #161616;
   font-family: "Filson Pro Book";
   font-size: 1.5vw;
   line-height: 1.5;
@@ -74,8 +74,8 @@ const StyledFigure = styled.img`
 `;
 
 const StyledTexture = styled.img`
-  filter: brightness(491%) opacity(0.8);
   width: 40%;
+  mix-blend-mode: difference;
   bottom: 0;
   position: absolute;
   @media (max-width:500px){

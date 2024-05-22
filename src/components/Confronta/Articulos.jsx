@@ -37,6 +37,7 @@ const StyledTextTitle = styled.p`
 font-size: 6vw;
 font-family: 'MADE Soulmaze Brush';
 position: absolute;
+color: #161616;
 @media (max-width:800px){
   font-size: 12vw;
 }

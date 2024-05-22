@@ -1,10 +1,11 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { actionUpdateProfile } from "../../app/features/userAuth/userAuthActions";
 import styled from "styled-components";
+import Button from "../Button/Button";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const FormStyled = styled.form`
@@ -24,8 +25,9 @@ const DivImg = styled.div`
   flex-direction: column;
   align-items: center;
   img {
-    width: 6rem;
-    height: 6rem;
+    object-fit: cover;
+    width: 15vh;
+    height: 15vh;
     border-radius: 50%;
   }
   input {
@@ -38,6 +40,11 @@ const DivPassword = styled.div`
   align-items: center;
   flex-direction: column;
   padding-bottom: 1rem;
+  label {
+    display: flex;
+    gap: 1rem;
+    cursor: pointer
+  }
 `;
 const DivName = styled.div`
   display: flex;
@@ -67,42 +74,37 @@ const InputStyled = styled.input`
   }
 `;
 
-const ButtonStyled = styled.button`
-  width: 15vw;
-  font-size: 0.8rem;
-  color: #000000;
-  border: 2px outset #f1f1d8;
-  padding: 0.4rem 0.5rem;
-  border-radius: 0.3rem;
-  background: #f1f1d8;
-  cursor: pointer;
-  box-shadow: 0 0.24rem #b2adad4d;
-  &:active {
-    background-color: #4900da;
-    color: #f1f1d8;
-    border: 2px solid #000000;
-    box-shadow: 0 0.2rem #b2adad4d;
-    transform: translateY(0.2rem);
-    letter-spacing: 0.2rem;
-  }
-`;
-
-const TogglePasswordIcon = styled.div`
-  position: absolute;
-  right: 10px;
-  top: 30px;
-  cursor: pointer;
-  color: white;
-`;
-
 const FormModal = () => {
   const dispatch = useDispatch();
   const [previewImage, setPreviewImage] = useState("");
+  const { imgProfile } = useSelector((store)=> store.userAuth);
   const [showPassword, setShowPassword] = useState(false);
+  const [width, setWidth] = useState(9);
+
+  useEffect(() => {
+    const handleButtonWidth = () => {
+      const screenWidth = window.innerWidth;
+
+      if (screenWidth < 1200) {
+        setWidth(12);
+      } else if (screenWidth > 1800) {
+        setWidth(14);
+      } else {
+        setWidth(8.5);
+      }
+    };
+
+    handleButtonWidth();
+
+    window.addEventListener("resize", handleButtonWidth);
+
+    return () => {
+      window.removeEventListener("resize", handleButtonWidth);
+    };
+  }, []);
 
 
-  const url_pv =
-    "https://img.freepik.com/vector-premium/icono-imagen-o-foto-representacion-3d_593228-92.jpg";
+  const url_pv = imgProfile;
 
   const formik = useFormik({
     initialValues: {
@@ -128,18 +130,15 @@ const FormModal = () => {
     }),
     onSubmit: async (values) => {
       try {
-        // Verificar el archivo antes de subir
         if (!values.image) {
           alert("La imagen es requerida");
           return;
         }
 
-        // Preparar los datos para subir a Cloudinary
         const formData = new FormData();
         formData.append("file", values.image);
         formData.append("upload_preset", "profileimg");
 
-        // Subir la imagen a Cloudinary
         const response = await axios.post(
           "https://api.cloudinary.com/v1_1/dvafjaqbd/image/upload",
           formData
@@ -147,7 +146,6 @@ const FormModal = () => {
 
         const imageUrl = response.data.secure_url;
 
-        // Despachar la acción para actualizar el perfil
         await dispatch(
           actionUpdateProfile({
             name: values.name || null,
@@ -192,7 +190,7 @@ const FormModal = () => {
           {formik.errors.image ? <div>{formik.errors.image}</div> : null}
         </DivImg>
         <DivName>
-          <label htmlFor="name">Nombre</label>
+          <label htmlFor="name">Cambiar nombre</label>
           <InputStyled
             id="name"
             name="name"
@@ -205,7 +203,9 @@ const FormModal = () => {
           ) : null}
         </DivName>
         <DivPassword>
-          <label htmlFor="password">Contraseña (opcional) </label>
+          <label htmlFor="password">Cambiar contraseña <span onClick={() => setShowPassword(!showPassword)}>
+            {showPassword ? <FaEye /> : <FaEyeSlash />}
+          </span> </label>
           <InputStyled
             id="password"
             name="password"
@@ -213,12 +213,11 @@ const FormModal = () => {
             onChange={formik.handleChange}
             value={formik.values.password}
           />
-          <TogglePasswordIcon onClick={() => setShowPassword(!showPassword)}>
-            {showPassword ? <FaEyeSlash /> : <FaEye />}
-          </TogglePasswordIcon>
           {formik.errors.password ? <DivErrors>{formik.errors.password}</DivErrors> : null}
         </DivPassword>
-        <ButtonStyled type="submit">Actualizar</ButtonStyled>
+        <div type="submit">
+          <Button fondoColor={'#FFF35F'} width={width}>Actualizar</Button>
+        </div>
       </FormStyled>
     </div>
   );

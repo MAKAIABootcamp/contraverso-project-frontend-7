@@ -54,6 +54,7 @@ const StyledTitle = styled.div`
 const StyledBgTitle = styled.img`
   width: 40%;
   z-index:2;
+  color: #161616;
   @media (max-width: 800px) {
     width: 90%;
   }
@@ -124,7 +125,7 @@ const StyledCardImg = styled.img`
 `;
 const StyledText = styled.span`
   color: #ffffff;
-  background-color: #000000;
+  background-color: #161616;
   font-family: "Filson Pro Book";
   font-size: 1.5vw;
   line-height: 1.5;
@@ -160,6 +161,7 @@ const StyledSecondTitle = styled.h2`
   text-align: center;
   font-size: 2.5vw;
   z-index: 2;
+  margin-bottom: 3vh;
   @media (max-width: 800px) {
     font-size: 5vw;
     margin-bottom: 5%;
@@ -182,7 +184,6 @@ flex-wrap: wrap;
   }
 
 figure{
-  
   display: flex;
   flex-direction: column;
   justify-content: baseline;
@@ -207,10 +208,13 @@ figure{
 
 
 p{
-  font-size:1vw;
+  font-family: "Filson Pro Book";
+  font-size:1.2vw;
   margin-top:3%;
   text-align: center;
   word-wrap: break-word;
+  margin-top: 2vh;
+  color: #161616;
   @media (max-width: 800px) {
     font-size: 3vw;
   }
