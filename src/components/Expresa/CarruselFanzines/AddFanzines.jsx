@@ -124,6 +124,8 @@ const SyledModal = styled.div`
               width: 75%;
             }
 
+          
+
             .selecImg input[type="file"] {
               opacity: 0;
               width: 200px;
@@ -157,6 +159,8 @@ const SyledModal = styled.div`
             color: #161616;
             font-family: "MADE Soulmaze";
             font-size: 0.75rem;
+
+           
           }
         }
       }
@@ -193,7 +197,7 @@ export const AddFanzines = ({ onClose }) => {
         setSelectedFile(null);
         setName("");
         setUrlDocument("");
-        document.getElementById("preview").src = "";
+        document.getElementById("preview").src = "https://cdn.icon-icons.com/icons2/65/PNG/128/imageup_imagen_12892.png " ;
         Swal.fire({
           icon: "success",
           title: "¡Has subido un Fanzine correctamente!",
@@ -250,7 +254,7 @@ export const AddFanzines = ({ onClose }) => {
                 <div className="selecImg"><input type="file" id="file" onChange={onFileChange} required /></div>
               </div>
               <div className="imagePrev">
-                <img id="preview" style={{ width: "200px", height: "auto" }} />
+                <img id="preview" style={{width: "200px", height: "auto" }} />
               </div>
             </div>
 

@@ -9,9 +9,6 @@ import { actionDeleteFanzi, actionGetFanzines } from "../../../app/CarruselFanzi
 import { AiFillDelete } from "react-icons/ai";
 import {AddFanzines }from "./AddFanzines"
 import {EditFanzines} from "./EditFanzines"
-
-
-import { MdAddToPhotos } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 
 const CarouselContainer = styled.div`
@@ -119,20 +116,78 @@ const CustomSlider = styled(Slider)`
     transform: rotate(-180deg);
     font-size: 25px;
   }
+.boton-añadir {
+    background-color: #fff35f;
+    border: none;
+    height: 2rem;
+    width: 9rem;
+    font-size: 1em;
+    font-family: "MADE Soulmaze";
+    cursor: pointer;
+    position: absolute;
+    margin-top: 4rem;
+    margin-left: -5rem;
+
+    @media (max-height: 1024px) and (min-width: 600px) {
+      margin-top: 20%;
+    }
+    @media (min-width: 111px) and (min-height: 1111px) {
+      margin-top: 21%;
+    }
+    @media (min-width: 1111px) and (min-height: 1080px) {
+      margin-top: 10%;
+    }
+    @media (min-width: 1164px) and (max-height: 2133px) {
+      margin-top: 8rem;
+      margin-left: 2rem;
+    }
+  }
+  .modalImgs{
+  }
 `;
-// const ImageContainer = styled.div`
-//   position: relative;
-// `;
-// const EditButtons = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   width: 100%;
-//   position: absolute;
-//   top: 10px;
-//   left: 0;
-//   padding: 0 10px;
-//   font-size: 123%;
-// `;
+const StyledComponent = styled.div`
+   text-align: center;
+   margin-top: 2rem;
+
+   .boton-añadir {
+     background-color: #fff35f;
+     border: none;
+     height: 2rem;
+     width: 12rem;
+     font-size: 1em;
+     font-family: "MADE Soulmaze";
+     cursor: pointer;
+     position: absolute;
+     margin-left: -5rem;
+
+     @media (max-height: 1024px) and (min-width: 600px) {
+       margin-top: 20%;
+     }
+     @media (min-width: 111px) and (min-height: 1111px) {
+       margin-top: 21%;
+     }
+     @media (min-width: 1111px) and (min-height: 1080px) {
+       margin-top: 10%;
+     }
+     @media (min-width: 1164px) and (max-height: 2133px) {
+       margin-top: -5rem;
+       margin-left: 2rem;
+     }
+   }
+   `;
+ /* const ImageContainer = styled.div`
+   position: relative;
+ `;
+ const EditButtons = styled.div`
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+   position: absolute;
+   top: 10px;
+   left: 0;
+   padding: 0 10px;
+   font-size: 123%;
+ */
 
 const CarouselFanzines = () => {
   const dispatch = useDispatch();
@@ -211,12 +266,14 @@ const CarouselFanzines = () => {
 
   return (
     <CarouselContainer>
+     < StyledComponent>
       {isAuthenticated ? (
         <>
           <div className="modalImgs">
-            <button className="openModalImg" onClick={openModal}>
-              <MdAddToPhotos className="iconAdd" /> <p>AñadIr Imagen</p>
+            <button className="boton-añadir" onClick={openModal}>
+               AÑADIR IMAGEN
             </button>
+            
             <div className="modalImg">
               {showModal && <AddFanzines onClose={closeModal} />}
             </div>
@@ -231,15 +288,12 @@ const CarouselFanzines = () => {
           </div>
         </>
       ) : null}
+      </StyledComponent>
             <CustomSlider {...settings}>
         {fanzines.map((fanzine, index) => (
           <div key={index}>
             <div className="slick-slide-content">
               <img src={fanzine.poster} alt={`Poster ${index + 1}`} />
-              <p>{fanzine.description}</p>
-              <button onClick={() => handleImageClick(fanzine.url)}>
-                SEGUIR LEYENDO
-              </button>
               {isAuthenticated ? (
                 <>
                   <div className="actionButtons">
