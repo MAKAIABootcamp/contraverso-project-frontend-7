@@ -7,6 +7,7 @@ import DireccionesIP from "../../components/ChequeaComponents/ChequeaVerifica/ve
 import Imagenes from "../../components/ChequeaComponents/ChequeaVerifica/verifica/Imagenes";
 import Videos from "../../components/ChequeaComponents/ChequeaVerifica/verifica/Videos";
 import RedesSociales from "../../components/ChequeaComponents/ChequeaVerifica/verifica/RedesSociales";
+import Valora from "../../components/ChequeaComponents/valora/Valora";
 import "./Chequea.scss";
 
 const Chequea = () => {
@@ -29,6 +30,7 @@ const Chequea = () => {
         {componentToRender === 'DireccionesIP' && <DireccionesIP/>}
         {componentToRender === 'RedesSociales' && <RedesSociales/>}
         <Recomienda />
+        <Valora />
       </div>
     </>
   );
