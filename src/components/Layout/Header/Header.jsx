@@ -69,6 +69,7 @@ const StyledNav = styled.nav`
       }
       .userAdmin {
         .openUserAdmin {
+          cursor: pointer;
           color: #fff35f;
           gap: 5%;
           margin-left: 50px;
