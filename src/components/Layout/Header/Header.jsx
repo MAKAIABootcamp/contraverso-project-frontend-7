@@ -323,17 +323,19 @@ const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const { isAuthenticated } = useSelector((store) => store.userAuth);
-  const [userPhotoURL, setUserPhotoURL] = useState("");
+  const { imgProfile } = useSelector((store) => store.userAuth);
 
-  useEffect(() => {
-    const loadUserPhotoURL = () => {
-      const storedPhotoURL = localStorage.getItem("userPhotoURL");
-      if (storedPhotoURL) {
-        setUserPhotoURL(storedPhotoURL);
-      }
-    };
-    loadUserPhotoURL();
-  }, []);
+  // const [imgProfile, setUserPhotoURL] = useState("");
+
+  // useEffect(() => {
+  //   const loadUserPhotoURL = () => {
+  //     const storedPhotoURL = localStorage.getItem("userPhotoURL");
+  //     if (storedPhotoURL) {
+  //       setUserPhotoURL(storedPhotoURL);
+  //     }
+  //   };
+  //   loadUserPhotoURL();
+  // }, []);
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -414,7 +416,7 @@ const Header = () => {
             {isAuthenticated ? (
               <>
                 <li className="userAdmin">
-                  {!userPhotoURL ? (
+                  {!imgProfile ? (
                     <div className="openUserAdmin">
                       <FaUserCircle onClick={openModal} />
                     </div>
@@ -422,7 +424,7 @@ const Header = () => {
                     <div className="openUserAdmin">
                       <img
                         className="userPhoto"
-                        src={userPhotoURL}
+                        src={imgProfile}
                         alt="Perfil"
                         onClick={openModal}
                       />
@@ -466,7 +468,7 @@ const Header = () => {
                 {isAuthenticated ? (
                   <>
                     <li className="liVisibles">
-                      {!userPhotoURL ? (
+                      {!imgProfile ? (
                         <div className="openUserAdmin">
                           <FaUserCircle onClick={openModal} />
                         </div>
@@ -474,7 +476,7 @@ const Header = () => {
                         <div className="openUserAdmin">
                           <img
                             className="userPhoto"
-                            src={userPhotoURL}
+                            src={imgProfile}
                             alt="Perfil"
                             onClick={openModal}
                           />

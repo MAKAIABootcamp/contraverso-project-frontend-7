@@ -14,7 +14,7 @@ const HeroSection = styled(motion.main)`
 `;
 const UserContainer = styled.header`
   position: absolute;
-  top: 47%;
+  top: 46%;
   left: 50%;
   transform: translate(-50%, -30%);
   background-color: #fff35f;
@@ -22,19 +22,26 @@ const UserContainer = styled.header`
   border-bottom: 1rem solid #000000;
   border-radius: 0.625rem;
   padding: 2rem 0;
-  height: 73vh;
-  width: 32%;
+  height: auto;
+  width: 65vh;
   box-shadow: 0rem 0.3125rem 0.625rem rgba(0, 0, 0, 0.1);
+  @media (max-width: 512px) {
+    top: 40%;
+    width: 80vw;
+  }
 `;
 const User = styled.div`
   text-align: center;
   div {
     margin-left: auto;
     margin-right: auto;
-    height: 7rem;
-    width: 7rem;
+    height: auto;
+    width: 30%;
     border-radius: 50%;
     background-color: #4900da;
+    @media (max-width: 512px) {
+      width: 42%;
+    }
   }
 `;
 const ImgStyled = styled.img`
@@ -43,8 +50,14 @@ const ImgStyled = styled.img`
   top: 13%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 15%;
-  width: auto;
+  height: auto;
+  width: 40vh;
+  @media (max-width: 512px) {
+    width: 55vw;
+  }
+  @media (max-width: 350px) {
+    top: 10%;
+  }
 `;
 
 const Acceso = () => {
@@ -86,7 +99,7 @@ const Acceso = () => {
           <div>
             <FaUserSecret
               fill="#000000"
-              style={{ fontSize: "4rem", margin: "18%" }}
+              style={{ fontSize: "11vh", margin: "18%" }}
             />
           </div>
         </User>
