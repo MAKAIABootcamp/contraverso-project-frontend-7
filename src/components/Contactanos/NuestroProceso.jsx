@@ -31,7 +31,7 @@ const StyledTitulo = styled.h1`
   font-family: "MADE Soulmaze Brush";
   font-size: 5vw;
   position: absolute;
-
+  color: #161616;
   @media (max-width: 800px) {
     font-size: 10vw;
   }

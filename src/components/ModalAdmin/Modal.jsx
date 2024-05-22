@@ -27,7 +27,12 @@ z-index: 1000;
     outline: none;
     height: auto;
     overflow: auto;
-    display: flex;
+
+    @media(max-width: 1020px) {
+      width: 90%;
+      max-width: 31.25rem;
+      height: 70%;
+    }
 
     .buttonClose {
       font-family: Roboto;

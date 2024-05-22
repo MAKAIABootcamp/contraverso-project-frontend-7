@@ -32,7 +32,8 @@ const StyledContainer = styled.div`
 const StyledTitulo = styled.h1`
   font-family: "MADE Soulmaze brush";
   color: #ffffff;
-  font-size: 10em;
+  margin-top: 12vh;
+  font-size: 9em;
 
   @media (max-width:1300px){
     font-size: 8em;
@@ -48,9 +49,10 @@ const StyledParrafo = styled.p`
   font-family: "Filson Pro Book";
   display: flex;
   width: 100%;
-  font-size: 2em;
+  font-size: 1.5em;
   padding-left: 5%;
   padding-right: 5%;
+  margin-bottom: 2vh;
 
   @media (max-width:1300px){
     font-size: 1.8em;

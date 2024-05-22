@@ -12,7 +12,6 @@ import { AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
 import { actionDeleteImgs } from "../../../app/CarruselIMG/carruselActions";
 import { useDispatch, useSelector } from "react-redux";
-import { setImageForEdit } from "../../../app/CarruselIMG/imgsSlice";
 
 const CarouselContainer = styled.div`
   max-width: 55%;

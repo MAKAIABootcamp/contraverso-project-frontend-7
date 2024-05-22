@@ -42,6 +42,7 @@ const StyledText = styled.h1`
   font-family: "MADE Soulmaze Brush";
   font-size: 7rem;
   position: absolute;
+  color: #161616;
 
   @media (max-width: 400px) {
     font-size: 2rem;
@@ -72,9 +73,9 @@ const StyledContainer = styled.div`
 const StyledImgLeft = styled.img`
   width: 35%;
   max-height: 100%;
-  filter: brightness(491%) opacity(0.8);
   z-index: 1;
   align-self: flex-end;
+  mix-blend-mode: difference; 
   @media (max-width: 800px) {
     display: none;
   }
@@ -154,7 +155,7 @@ const PodcastExpresa = () => {
         <StyledImgLeft
           src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336877/MONTAJE/EXPRESA/4-2_TEXTU_hf0vgk.png"
           alt="Imagen lateral"
-        ></StyledImgLeft>
+        />
         <StyledBtnContainer>
           <StyleSpotifyImg
             src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336876/MONTAJE/EXPRESA/4-2_SPOTI_xhfnyj.png"

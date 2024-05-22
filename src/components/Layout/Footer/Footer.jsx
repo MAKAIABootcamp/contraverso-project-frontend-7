@@ -1,4 +1,3 @@
-import "./Footer.scss";
 import { Link, NavLink } from "react-router-dom";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaXTwitter } from "react-icons/fa6";

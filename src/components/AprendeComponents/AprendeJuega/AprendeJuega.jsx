@@ -33,6 +33,7 @@ const ContainerStyled = styled.div`
     font-size: 6rem;
     font-family: "MADE Soulmaze Brush";
     position: absolute;
+    color: #161616;
   }
    @media (max-width: 500px) {
     width: 100%;
@@ -125,12 +126,8 @@ const TextureStyled = styled.figure`
   width: 50%;
   padding-right: 10%;
   max-height: 80%;
+  mix-blend-mode: difference; 
   align-self: flex-end;
-  img {
-    opacity: 0.5;
-    width: 100%;
-    z-index: 0;
-  }
 
   @media (max-width: 500px) {
     display: none;

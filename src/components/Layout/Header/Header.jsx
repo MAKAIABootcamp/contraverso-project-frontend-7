@@ -147,8 +147,7 @@ const StyledNav = styled.nav`
           padding: 0px;
           .openUserAdmin {
             color: #fff35f;
-            margin-right: -2vw;
-            font-size: 22px;
+            font-size: 20px;
             .userPhoto {
               width: 2rem;
               height: 2rem;
@@ -164,9 +163,12 @@ const StyledNav = styled.nav`
       ul {
         .liVisibles {
           padding: 0px;
+          .openUserAdmin {
+            font-size: 15px;
+          }
           img {
-            width: 9.1875rem;
-            height: 3rem;
+            width: 5.1875rem;
+            height: 2rem;
           }
         }
       }
@@ -176,7 +178,7 @@ const StyledNav = styled.nav`
     .isMobile {
       ul {
         .liVisibles {
-          width: 60%;
+          width: 50%;
         }
       }
     }
@@ -208,9 +210,9 @@ const ModalBackground = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 1000;
-`;
-
-const ModalContent = styled.div`
+  `;
+  
+  const ModalContent = styled.div`
   background-color: #161616;
   padding: 1.25rem;
   border-radius: 0.875rem;
@@ -339,7 +341,7 @@ const Header = () => {
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 1120);
+      setIsMobile(window.innerWidth <= 1260);
     };
 
     window.addEventListener("resize", checkScreenSize);

@@ -24,6 +24,7 @@ const SectionStyled = styled.section`
     font-family: 'MADE Soulmaze Outline';
     font-size: 3.5rem;
     font-style: italic;
+    color: #161616;
     @media(max-width: 1000px) {
       font-size: 2.9rem;
     }
@@ -33,6 +34,7 @@ const SectionStyled = styled.section`
   }
 
   h2 {
+    color: #161616;
     font-family: 'Founders Grotesk Bold';
     text-transform: uppercase;
     font-size: 2.1rem;

@@ -14,7 +14,7 @@ export const actionLogin = ({ email, password }) => {
         icon: 'success',
         title: `Inicio de sesión exitoso: ${user.displayName}`,
         showConfirmButton: false,
-        timer: 3000,
+        timer: 2900,
       });
 
       dispatch(
