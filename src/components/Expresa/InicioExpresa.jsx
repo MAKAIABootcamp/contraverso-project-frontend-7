@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import BotonExpresa from "./BotonExpresa";
+import { NavLink } from "react-router-dom";
 
 const StyledExpresa = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336876/MONTAJE/EXPRESA/16_wsdajl.png");
@@ -77,7 +78,7 @@ const StyledImgTitle = styled.img`
   }
 `;
 
-const StyledBotonExpresa = styled(BotonExpresa)`
+const StyledBotonExpresa = styled(NavLink)`
   background-color: #fff35f;
   color: #000000;
   padding: 0.5rem;
@@ -101,9 +102,7 @@ const StyledBotonExpresa = styled(BotonExpresa)`
 `;
 
 const InicioExpresa = () => {
-  const handleClick = () => {
-    console.log("click");
-  };
+
 
   return (
     <StyledExpresa>
@@ -124,7 +123,7 @@ const InicioExpresa = () => {
             debate es central para comprender y transformar la realidad.
           </StyledTextoSpan>
         </StyledTextoContainer>
-        <StyledBotonExpresa onClick={handleClick}>
+        <StyledBotonExpresa to="https://discord.gg/tCqfzHWGCV">
           ENVIAR APORTE
         </StyledBotonExpresa>
       </StyledContainer>
