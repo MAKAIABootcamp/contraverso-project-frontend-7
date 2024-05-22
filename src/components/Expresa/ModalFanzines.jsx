@@ -4,77 +4,141 @@ import "../../../fonts/fonts.css";
 import styled from "styled-components";
 
 const StyledModal = styled.div`
-  background-color: #4900da;
-  width: 50%;
-  height: 50%;
-  position: absolute;
+  background-color: #6027ce82;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 10;
-  margin-top: 2rem;
-  margin-left: 25%;
 
   .modal {
     background-color: #000000;
-    max-width: 68%;
+    width: 90%;
+    max-width: 700px;
     margin: auto;
-    margin-top: 4rem;
-    padding: 2rem 0 2rem 0;
-    border-radius: 3%;
+    padding: 1rem 0 1rem;
+        border-radius: 3%;
   }
 
   .modal-content {
-    background-color: #fff35f;
+    background-color: #1df4c8;
     margin: auto;
-    height: 21rem;
+    max-height: 80vh;
+    overflow-y: auto;
   }
 
   .title {
     color: #4900da;
     font-family: "MADE Soulmaze Brush";
-    font-size: -webkit-xxx-large;
+    font-size: 7.5vw;
     text-align: center;
+    padding-top: 2rem;
   }
+
   .subtitle {
     text-align: center;
     font-family: "MADE Soulmaze";
-    font-size: larger;
+    font-size: 3vw;
     font-weight: bold;
   }
+
   .container-flex {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     justify-content: space-evenly;
+    flex-wrap: wrap;
   }
+
   .boton {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 5vw;
+    padding-bottom: 2rem;
   }
+
+  .boton-cargar, .boton-cancelar {
+    width: 80%;
+    max-width: 13rem;
+    height: 3rem;
+    font-size: 1.12em;
+    border-radius: 1rem;
+    font-family: "MADE Soulmaze";
+    cursor: pointer;
+    text-align: center;
+  }
+
   .boton-cargar {
-    background-color: #4100d0;
+    background-color: #DD77CC;
     color: white;
     border: none;
-    height: 2rem;
-    width: 9rem;
-    font-size: 80%;
-    border-radius: 1rem;
-    font-family: "MADE Soulmaze";
-    cursor: pointer;
-
   }
-  .boton-cancelar {
-    background-color: #1df4c8;
-    color: white;
-    border: none;
-    height: 2rem;
-    width: 9rem;
-    font-size: 100%;
-    border-radius: 1rem;
-    font-family: "MADE Soulmaze";
-    cursor: pointer;
 
+  .boton-cancelar {
+    background-color: #FFF35F;
+    border: none;
+  }
+
+  @media (min-width: 768px) {
+    .modal {
+      width: 70%;
+    }
+    .title {
+      font-size: 4vw;
+    }
+    .subtitle {
+      font-size: 2vw;
+    }
+    .boton-cargar, .boton-cancelar {
+      width: 40%;
+    }
+  }
+ 
+  
+  .container {
+    gap: 0.5rem;
+    display: grid;
+    justify-content: space-around;
+    margin-right: 2rem;
+    padding: 6%;
+    position: relative;
+  }
+
+  .container-title {
+    font-family: "Founders Grotesk";
+    color: #514d5b;
+    text-align: justify;
+    font-size: 1.5rem;
+  }
+
+  .container-text {
+    border-radius: 1rem;
+    font-size: 1rem;
+    width: 100%;
+    border: none;
+    height: 140%;
+  }
+
+  .image-link {
+    width: 18%;
+  }
+
+  @media (max-width: 768px) {
+    .boton-añadir {
+      width: 7rem;
+      font-size: 0.8em;
+    }
+    .container-title {
+      font-size: 1.5rem;
+    }
   }
 `;
+
 
 const Modal = ({ isOpen, title, subtitle, children, onClose, onSubmit }) => {
   if (!isOpen) return null;

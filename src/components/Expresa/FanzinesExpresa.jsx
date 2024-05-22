@@ -38,14 +38,11 @@ const StyledTitle = styled.div`
 const StyledBackgroundImg = styled.img`
   width: 100%;
   z-index: 1;
-  margin-top: -4rem;
 `;
-
 const StyledTextoImg = styled.img`
   width: 70%;
   z-index: 2;
   position: absolute;
-  margin-top: -4rem;
 `;
 const StyledImgCat = styled.img`
   width: 29%;
@@ -53,61 +50,52 @@ const StyledImgCat = styled.img`
   z-index: 3;
   position: absolute;
 
+
   @media (max-width: 736px) {
     width: 67%;
   }
-
   @media (min-width: 375px) and (min-height: 812px) {
     width: 100%;
   }
-
   @media (min-width: 600px) and (min-height: 800px) {
     width: 67%;
   }
   @media (min-width: 812px) and (min-height: 1025px) {
-    width: 100%;
+    width: 60%;
   }
-  @media (min-width: 1024px) and (max-height: 2050px) {
-    width: 24%;
+  @media (min-width: 1164px) and (max-height: 2133px) {
+    width: 25%;
   }
 `;
-
 const StyledComponent = styled.div`
   text-align: center;
   margin-top: 2rem;
 
-  .boton-añadir,
-  .boton-editar {
+  .boton-añadir {
     background-color: #fff35f;
     border: none;
     height: 2rem;
     width: 9rem;
-    font-size: 100%;
+    font-size: 1em;
     font-family: "MADE Soulmaze";
     cursor: pointer;
-    margin-left: 2rem;
-    position: relative;
-  }
-  .container {
-    gap: 0.5rem;
-    display: grid;
-    justify-content: space-around;
-    margin-right: 112px;
-    padding: 6%;
-    position: relative;
-  }
-  .container-title {
-    font-family: "Founders Grotesk";
-    color: #514d5b;
-    text-align: justify;
-  }
-  .container-text {
-    border-radius: 1rem;
-    font-size: 128%;
-    width: 90%;
-  }
-  .image-link {
-    /* previsializacion cuando se cargue la imagen */
+    position: absolute;
+    margin-top: 4rem;
+    margin-left: -5rem;
+
+    @media (max-height: 1024px) and (min-width: 600px) {
+      margin-top: 20%;
+    }
+    @media (min-width: 111px) and (min-height: 1111px) {
+      margin-top: 21%;
+    }
+    @media (min-width: 1111px) and (min-height: 1080px) {
+      margin-top: 10%;
+    }
+    @media (min-width: 1164px) and (max-height: 2133px) {
+      margin-top: 8rem;
+      margin-left: 2rem;
+    }
   }
 `;
 
@@ -151,23 +139,24 @@ const FanzinesExpresa = () => {
             >
               Añadir
             </button>
-            <button
-              className="boton-editar"
-              onClick={() => handleOpenModal(true)}
-            >
-              Editar
-            </button>
+
             <Modal
               isOpen={isModalOpen}
               isEditing={isEditing}
               title="FANZINES:"
               subtitle={
-                isEditing ? "¡EDITAR PUBLICACIÓN!" : "¡LISTA PARA PUBLICAR!"
+                isEditing ? "¡AÑADIR PUBLICACIÓN!" : "¡LISTA PARA PUBLICAR!"
               }
               onClose={handleCloseModal}
               onSubmit={handleSubmit}
             >
-              <img className="image-link" src={imageLink} alt="Fanzines" />
+              <img
+                className="image-link"
+                src={
+                  "https://cdn.icon-icons.com/icons2/65/PNG/128/imageup_imagen_12892.png"
+                }
+                alt="Fanzines"
+              />
               <div className="container">
                 <h4 className="container-title">Titulo:</h4>
                 <input

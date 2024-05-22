@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { actionGetArticulos } from "../../../app/articulos/articulosActions";
 import Slider from "react-slick";
 import styled from "styled-components";
+import { actionGetProceso } from "../../../app/proceso/procesoActions";
 
 const CarouselContainer = styled.div`
-  max-width: 60%;
+  max-width: 70%;
   margin-bottom: 5%;
   position: relative;
   z-index: 3;
@@ -53,7 +53,7 @@ const CustomSlider = styled(Slider)`
     font-size: 40px;
     border-radius: 55%;
     transition: transform 0.3s ease;
-    color: #e94430;
+    color: #4100CE;
     @media (max-width: 800px) {
       font-size: 20px;
     }
@@ -61,7 +61,7 @@ const CustomSlider = styled(Slider)`
 
   .slick-prev:hover:before,
   .slick-next:hover:before {
-    color: #e94430;
+    color: #4100CE;
     transform: rotate(-180deg);
     font-size: 45px;
     @media (max-width: 800px) {
@@ -70,7 +70,7 @@ const CustomSlider = styled(Slider)`
   }
 `;
 
-const StyledDescription = styled.p`
+const StyledTitle = styled.p`
   font-family: "Filson Pro Book";
   overflow: hidden;
   text-overflow: ellipsis;
@@ -85,32 +85,20 @@ const StyledDescription = styled.p`
   width: 100%;
   font-size: 15px;
   line-height: 1.5;
-`;
-
-const StyledButton = styled.button`
-  cursor: pointer;
-  background-color: #fff35f;
-  color: #000000;
-  padding: 0.5rem;
-  font-family: "MADE Soulmaze";
-  border: none;
-  border-radius: 8px;
-  text-decoration: none;
   text-align: center;
-  width: 80%;
-  @media (max-width: 800px) {
-    width: 100%;
-  }
 `;
 
-const CarruselArticulos = () => {
+
+
+const CarruselProceso = () => {
+
   const dispatch = useDispatch();
-  const articulos = useSelector((store) => store.articulos.articulos);
+  const proceso = useSelector((store) => store.proceso.proceso);
 
   useEffect(() => {
-    dispatch(actionGetArticulos());
+    dispatch(actionGetProceso());
   }, [dispatch]);
-  console.log(articulos);
+  console.log(proceso);
 
   const settings = {
     infinite: true,
@@ -118,48 +106,43 @@ const CarruselArticulos = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    focusCenter: true,
+  
     focusOnSelect: false,
     autoplaySpeed: 2000,
     initialSlide: 0,
+   
     responsive: [
       {
-        breakpoint: 700,
+        breakpoint: 800,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 2, 
         },
       },
       {
-        breakpoint: 400,
+        breakpoint: 600,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1, 
           slidesToScroll: 1,
         },
       },
     ],
   };
 
-  const handleImageClick = (url) => {
-    window.open(url, "_blank");
-  };
 
   return (
     <CarouselContainer>
       <CustomSlider {...settings}>
-        {articulos.map((articulo, index) => (
+        {proceso.map((proceso, index) => (
           <div key={index}>
             <div className="slick-slide-content">
-              <img src={articulo.poster} alt={`Poster ${index + 1}`} />
-              <StyledDescription>{articulo.description}</StyledDescription>
-              <StyledButton onClick={() => handleImageClick(articulo.url)}>
-                SEGUIR LEYENDO
-              </StyledButton>
+              <img src={proceso.poster} alt={`Poster ${index + 1}`} />
+              <StyledTitle>{proceso.title}</StyledTitle>
             </div>
           </div>
         ))}
       </CustomSlider>
     </CarouselContainer>
   );
-};
+}
 
-export default CarruselArticulos;
+export default CarruselProceso

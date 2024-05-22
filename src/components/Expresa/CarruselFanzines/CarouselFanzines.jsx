@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Slider from "react-slick";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../../Firebase/firebaseConfig";
+import Modal from "../ModalFanzines";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { actionGetFanzines } from "../../../app/CarruselFanzines/fanzinesActions";
+import { AiFillDelete } from "react-icons/ai";
+import { FaEdit } from "react-icons/fa";
+
+import {
+  editFanzine,
+  deleteFanzine,
+} from "../../../app/CarruselFanzines/fanzinesSlices";
 
 const CarouselContainer = styled.div`
   max-width: 60%;
@@ -23,26 +31,20 @@ const CarouselContainer = styled.div`
 
   @media (max-height: 1024px) and (min-width: 600px) {
     width: 60%;
-    margin-top: -2%;
-  }
-  @media (min-width: 1024px) and (min-height: 1111px) {
-    width: 100%;
-    padding-top: 5%;
+    margin-top: 8%;
   }
 
   @media (min-width: 111px) and (min-height: 1111px) {
-    max-width: 100%;
-    padding-top: 10%;
+    margin-top: 10%;
   }
   @media (min-width: 1111px) and (min-height: 1080px) {
     max-width: 60%;
   }
-  @media (min-width: 2000px) and (max-height: 2133px) {
-    max-width: 50%;
-    padding-top: 0%;
+  @media (min-width: 1164px) and (max-height: 2133px) {
+    max-width: 60%;
+    margin-top: auto;
   }
 `;
-
 const CustomSlider = styled(Slider)`
   .slick-slide img {
     height: auto;
@@ -118,21 +120,67 @@ const CustomSlider = styled(Slider)`
     font-size: 25px;
   }
 `;
+const ImageContainer = styled.div`
+  position: relative;
+`;
+const EditButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  padding: 0 10px;
+  font-size: 123%;
+`;
 
 const CarouselFanzines = () => {
-  const [fanzines, setFanzines] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const dispatch = useDispatch();
+  const { fanzines } = useSelector((state) => state.fanzines);
+  const isAuthenticated = useSelector(
+    (state) => state.userAuth.isAuthenticated
+  );
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [title, setTitle] = useState("");
+  const [imageLink, setImageLink] = useState("");
+  const [fanzineId, setFanzineId] = useState(null);
 
   useEffect(() => {
-    const fetchFanzines = async () => {
-      const fanzinesCollection = collection(db, "fanzines");
-      const fanzinesSnapshot = await getDocs(fanzinesCollection);
-      const fanzinesList = fanzinesSnapshot.docs.map((doc) => doc.data());
-      setFanzines(fanzinesList);
-    };
+    dispatch(actionGetFanzines());
+  }, [dispatch]);
 
-    fetchFanzines();
-  }, []);
+  console.log(fanzines);
+
+  const handleOpenModal = (isEdit = false, fanzine) => {
+    setIsEditing(isEdit);
+    setTitle(fanzine.title);
+    setImageLink(fanzine.poster);
+    setFanzineId(fanzine.id);
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setTitle("");
+    setImageLink("");
+    setFanzineId(null);
+  };
+
+  const handleSubmit = () => {
+    if (isEditing) {
+      dispatch(editFanzine({ id: fanzineId, title, poster: imageLink }));
+    } else {
+      //  crear fanzine
+    }
+    handleCloseModal();
+  };
+
+  const handleDelete = (fanzineId) => {
+    dispatch(deleteFanzine(fanzineId));
+  };
+
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const settings = {
     dots: true,
@@ -179,16 +227,59 @@ const CarouselFanzines = () => {
     <CarouselContainer>
       <CustomSlider {...settings}>
         {fanzines.map((fanzine, index) => (
-          <div
-            key={index}
-            onClick={() => handleImageClick(fanzine.urlDocument)}
-          >
-            <div className="slick-slide-content">
-              <img src={fanzine.poster} alt={`Poster ${index + 1}`} />
+          <ImageContainer key={index}>
+            <div onClick={() => handleImageClick(fanzine.urlDocument)}>
+              <div className="slick-slide-content">
+                <img src={fanzine.poster} alt={`Poster ${index + 1}`} />
+              </div>
             </div>
-          </div>
+            {isAuthenticated && (
+              <EditButtons>
+                <AiFillDelete
+                  className="boton-eliminar"
+                  alt="eliminar"
+                  onClick={() => handleDelete(fanzine.id)}
+                />
+                <FaEdit
+                  className="boton-editar"
+                  alt="editar"
+                  onClick={() => handleOpenModal(true, fanzine)}
+                ></FaEdit>
+              </EditButtons>
+            )}
+          </ImageContainer>
         ))}
       </CustomSlider>
+      {isAuthenticated && (
+        <Modal
+          isOpen={isModalOpen}
+          isEditing={isEditing}
+          title="FANZINES:"
+          subtitle={
+            isEditing ? "¡EDITAR PUBLICACIÓN!" : "¡LISTA PARA PUBLICAR!"
+          }
+          onClose={handleCloseModal}
+          onSubmit={handleSubmit}
+        >
+          <img className="image-link" src={imageLink} alt="Fanzines" />
+          <div className="container">
+            <h4 className="container-title">Titulo:</h4>
+            <input
+              type="text"
+              className="container-text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <h4 className="container-title">Link de fanzines:</h4>
+            <input
+              type="text"
+              className="container-text"
+              value={imageLink}
+              onChange={(e) => setImageLink(e.target.value)}
+            />
+          </div>
+        </Modal>
+      )}
     </CarouselContainer>
   );
 };

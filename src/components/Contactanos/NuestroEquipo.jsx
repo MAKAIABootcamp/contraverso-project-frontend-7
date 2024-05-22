@@ -1,360 +1,236 @@
 import styled from "styled-components";
 import "../../../fonts/fonts.css";
-import ComponenteEquipo from "./ComponenteEquipo";
 
 const StyledNuestroEquipo = styled.div`
-  background-image: url(
-    "https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336891/MONTAJE/SOMOS/24_x3fx6d.png"
-  );
-  height: 30rem;
+  background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336891/MONTAJE/SOMOS/24_x3fx6d.png");
+  background-size: 100% 100%;
+  width: 100%;
+  height: 100vh;
+  position: relative;
   scroll-snap-align: start;
 `;
 
 const StyledLogo = styled.img`
-  width: 6rem;
-  margin-left: 105rem;
-  @media (min-width: 1024px) and (max-width: 1366px) {
-    margin-left: 67rem;
-  }
-  @media (max-width: 1024px) {
-    margin-left: 53rem;
-  }
-  @media (max-width: 768px) {
-    margin-left: 36rem;
-  }
-  @media (max-width: 600px) {
-    margin-left: 28rem;
-  }
-  @media (max-width: 414px) {
-    margin-left: 16rem;
-  }
-  @media (max-width: 375px) {
-    margin-left: 12rem;
-  }
-  @media (max-width: 320px) {
-    margin-left: 12rem;
-  }
-`;
-const StyledBackground = styled.img`
-  max-width: 31rem;
-  margin-left: 44rem;
-  width: 30rem;
-  @media (min-width: 1024px) and (max-width: 1366px) {
-    width: 22rem;
-    margin-left: 21rem;
-  }
-  @media (max-width: 1024px) {
-    width: 22rem;
-    margin-left: 21rem;
-  }
-  @media (max-width: 768px) {
-    width: 22rem;
-    margin-left: 7rem;
-  }
-  @media (max-width: 600px) {
-    width: 22rem;
-    margin-left: 7rem;
-  }
-  @media (max-width: 414px) {
-    width: 19rem;
-    margin-left: 3rem;
-  }
-  @media (max-width: 375px) {
-    width: 17rem;
-    margin-left: 1rem;
-    margin-top: 1rem;
-  }
-  @media (max-width: 320px) {
-    width: 17rem;
-    margin-left: 1rem;
-    margin-top: 1rem;
-  }
-`;
-const StyledTitulo = styled.h1`
-  font-family: "MADE Soulmaze Brush";
-  font-size: 3rem;
-  margin-top: -5rem;
-  text-align: center;
-  @media (max-width: 1024px) {
-    font-size: 196%;
-    margin-top: -5%;
-  }
-  @media (max-width: 768px) {
-    font-size: 196%;
-    margin-top: -9%;
-  }
-  @media (max-width: 600px) {
-    font-size: 196%;
-    margin-top: -9%;
-  }
-  @media (max-width: 414px) {
-    margin-right: 0rem;
-    font-size: 148%;
-    margin-top: -12%;
-  }
-  @media (max-width: 375px) {
-    margin-right: 3rem;
-    font-size: 148%;
-    margin-top: -12%;
-  }
-  @media (max-width: 320px) {
-    margin-left: 2rem;
-    font-size: 148%;
-    margin-top: -15%;
-  }
-`;
-
-const StyledImagenLateralIzquierda = styled.img`
-  width: 12rem;
   position: absolute;
-  margin-top: -5rem;
-  @media (max-width: 1024px) {
-    width: 19%;
-    margin-left: 0%;
-  }
-  @media (max-width: 768px) {
-    width: 19%;
-    margin-left: 0%;
-  }
-  @media (max-width: 600px) {
-    width: 19%;
-    margin-left: 0%;
-  }
-  @media (max-width: 414px) {
-    display: none;
-  }
-  @media (max-width: 375px) {
-    display: none;
-  }
-  @media (max-width: 320px) {
+  right: 0;
+  padding: 2%;
+  width: 15%;
+  @media (max-width: 800px) {
     display: none;
   }
 `;
 
-const StyledImagenLateralDerecha = styled.img`
-  width: 25rem;
-  margin-top: -1.7rem;
-  opacity: 0.8;
-  margin-left: 93.5rem;
+const StyledFigure = styled.img`
   position: absolute;
-
-  filter: brightness(491%) opacity(0.8);
-  @media (min-width: 1024px) and (max-width: 1366px) {
-    margin-left: 64%;
-    width: 36%;
-    margin-top: -7.2%;
-  }
-  @media (max-width: 1024px) {
-    margin-left: 64%;
-    width: 36%;
-    margin-top: 2%;
-  }
-  @media (max-width: 768px) {
-    margin-top: 17.3%;
-    margin-left: 64%;
-    width: 36%;
-  }
-  @media (max-width: 600px) {
-    margin-top: 31%;
-    margin-left: 64%;
-    width: 36%;
-  }
-  @media (max-width: 414px) {
-    display: none;
-  }
-  @media (max-width: 375px) {
-    display: none;
-  }
-  @media (max-width: 320px) {
+  width: 20%;
+  top: 0;
+  margin-top: 5%;
+  @media (max-width:800px) {
     display: none;
   }
 `;
 
-const StyledComponenteEquipoContainer = styled.div`
+const StyledTexture = styled.img`
+  filter: brightness(491%) opacity(0.4);
+  width: 30%;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  @media (max-width: 500px) {
+    display: none;
+  }
+  @media (min-width: 501px) and (max-width: 1115px) {
+    display: none;
+  }
+`;
+const StyledTitle = styled.div`
+  width: 100%;
+  height: 20%;
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 2rem;
-  margin-left: 12rem;
-  @media (max-width: 1024px) {
-    margin-top: 4%;
-    width: 35rem;
-    margin-left: 19rem;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2%;
+`;
+const StyledBgTitle = styled.img`
+  width: 40%;
+  z-index:2;
+  @media (max-width: 800px) {
+    width: 90%;
   }
-  @media (max-width: 768px) {
-    margin-top: 9%;
-    width: 35rem;
-    margin-left: 10rem;
-  }
-  @media (max-width: 600px) {
-    margin-top: 8%;
-    width: 31rem;
-    margin-left: 5rem;
-  }
-  @media (max-width: 414px) {
-    margin-top: 9%;
-    width: 23rem;
-    margin-left: 16%;
-  }
-  @media (max-width: 375px) {
-    margin-top: 9%;
-    width: 23rem;
-    margin-left: 1rem;
-  }
-  @media (max-width: 320px) {
-    margin-top: 9%;
-    width: 20rem;
-    margin-left: 1rem;
+`;
+const StyledTextTitle = styled.p`
+  font-family: "MADE Soulmaze Brush";
+  font-size: 4vw;
+  position: absolute;
+  z-index:3;
+  @media (max-width: 800px) {
+    font-size: 10vw;
   }
 `;
 
-const StyledComponenteEquipo = styled(ComponenteEquipo)`
+const StyledContainer = styled.div`
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledCardsContainer = styled.div`
+  width: 80%;
+  height: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 800px) {
+    width: 100%;
+    height: 50%;
+    margin-bottom: 5%;
+  }
+
+`;
+const StyledCard = styled.div`
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media (max-width:500px) {
+    width: 100%;
+    height: 100%;
+  }
+  @media (min-width:501px) and (max-width:670px){
+    width: 40%;
+  }
+  @media (min-width:671px) and (max-width:734px){
+    width: 35%;
+  }
+  @media (min-width: 735px) and (max-width: 1115px) {
+    width: 40%;
+  }
+`;
+
+const StyledCardImg = styled.img`
+  width: 50%;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  @media (max-width: 900px) {
+    width: 60%;
+  }
+`;
+const StyledText = styled.span`
+  color: #ffffff;
+  background-color: #000000;
+  font-family: "Filson Pro Book";
+  font-size: 1.5vw;
+  line-height: 1.5;
+  margin-top: 5%;
+  z-index: 2;
+  @media (max-width: 500px) {
+    font-size: 4vw;
+  }
+  @media (min-width: 415px) and (max-width:734px) {
+    font-size: 3vw;
+  }
+`;
+
+const StyledDesarrollo = styled.div`
+width: 80%;
+height: 35%;
+margin-top: 3%;
+margin-bottom: 2%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+@media (max-width: 800px) {
+    width: 100%;
+    height: 70%;
+  }
+
+`;
+
+const StyledSecondTitle = styled.h2`
+  font-family: 'MADE Soulmaze Outline';
+  color: #4100D0;
   text-align: center;
-  @media (max-width: 1024px) {
-    margin-top: 3%;
-    font-size: 171%;
-    margin-left: 8%;
+  font-size: 2.5vw;
+  z-index: 2;
+  @media (max-width: 800px) {
+    font-size: 5vw;
+    margin-bottom: 5%;
   }
-  @media (max-width: 768px) {
-    margin-top: 3%;
-    font-size: 171%;
-    margin-left: 8%;
+  @media (min-width:801px) and (max-width:1115px){
+    font-size: 3vw;
   }
-  @media (max-width: 600px) {
-    margin-top: 3%;
-    font-size: 171%;
-    margin-left: 8%;
-  }
-  @media (max-width: 414px) {
-    margin-top: 3%;
-    font-size: 171%;
-    margin-left: 8%;
-  }
-  @media (max-width: 375px) {
-    margin-top: 2%;
-  }
-  @media (max-width: 320px) {
-    margin-top: 2rem;
-  }
-`;
+`
 
-const StyledSubTitulo = styled.h2`
-  font-family: "MADE Soulmaze Outline";
-  color: #4100d0;
-  font-style: italic;
+const StyledNames = styled.div`
+width: 100%;
+height: 80%;
+display: flex;
+flex-direction: row;
+justify-content: center;
+z-index:2;
+@media (max-width: 800px) {
+
+flex-wrap: wrap;
+  }
+
+figure{
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: center;
+  width: 20%;
+  height: 100%;
+  z-index:3;
+  padding: 5px;
+  @media (max-width: 415px) {
+    width: 50%;
+    height: 45%;
+    margin-top:5%
+  }
+  @media (min-width: 415px) and (max-width:577px) {
+    width: 35%;
+    height: 45%;
+  }
+  @media (min-width:801px) and (max-width:1115px){
+    width: 40%;
+  }
+}
+
+
+p{
+  font-size:1vw;
+  margin-top:3%;
   text-align: center;
-
-  @media (max-width: 1024px) {
-    margin-top: 3%;
-    font-size: 163%;
-    margin-right: -3%;
+  word-wrap: break-word;
+  @media (max-width: 800px) {
+    font-size: 3vw;
   }
-  @media (max-width: 768px) {
-    margin-top: 3%;
-    font-size: 163%;
-    margin-right: 1%;
+  @media (min-width:801px) and (max-width:1115px){
+    font-size: 1.5vw;
   }
-  @media (max-width: 600px) {
-    margin-top: 3%;
-    font-size: 163%;
-    margin-right: 2%;
+}
+img{
+  margin-top: 5%;
+  width: 35%;
+  object-fit: cover;
+  z-index: 3;
+  @media (max-width: 800px) {
+    margin-top:0;
   }
-  @media (max-width: 414px) {
-    margin-top: 6%;
-    font-size: 171%;
-    margin-right: -2%;
+  @media (min-width:801px) and (max-width:1115px){
+    width: 45%;
   }
-  @media (max-width: 375px) {
-    margin-top: 11%;
-    margin-left: 12%;
-  }
-  @media (max-width: 320px) {
-    font-size: 127%;
-    margin-left: 15%;
-    margin-top: 11%;
-  }
-`;
-const StyledContribuyentes = styled.div`
-  margin-left: 43rem;
-  margin-top: 2rem;
-  @media (min-width: 1024px) and (max-width: 1366px) {
-    margin-left: 16rem;
-    font-size: 50%;
-    display: flex;
-    margin-top: -3%;
-  }
-  @media (max-width: 1024px) {
-    margin-left: 8rem;
-    font-size: 50%;
-    display: flex;
-    margin-top: 0%;
-  }
-  @media (max-width: 768px) {
-    margin: auto;
-    font-size: 50%;
-    display: flex;
-  }
-  @media (max-width: 600px) {
-    margin: auto;
-    font-size: 50%;
-    display: flex;
-  }
-  @media (max-width: 414px) {
-    margin-left: 27%;
-    font-size: 50%;
-    display: grid;
-  }
-  @media (max-width: 375px) {
-    margin-left: 15%;
-    font-size: 50%;
-    display: grid;
-  }
-  @media (max-width: 320px) {
-    margin-left: 15%;
-    font-size: 50%;
-    display: grid;
-  }
-`;
-
-const StyledNombre = styled.span`
-  margin-right: 2rem;
-  font-family: "Filson Pro";
-  @media (min-width: 1024px) and (max-width: 1366px) {
-    font-size: 192%;
-    margin-top: 6%;
-    margin-left: 2rem;
-  }
-  @media (max-width: 1024px) {
-    font-size: 192%;
-    margin-top: 6%;
-    margin-left: 2rem;
-  }
-  @media (max-width: 768px) {
-    font-size: 192%;
-    margin-top: 6%;
-    margin-left: 2rem;
-  }
-  @media (max-width: 600px) {
-    font-size: 192%;
-    margin-top: 6%;
-    margin-left: 2rem;
-  }
-  @media (max-width: 414px) {
-    font-size: 192%;
-    margin-top: 6%;
-    margin-left: 2rem;
-  }
-  @media (max-width: 375px) {
-    font-size: 192%;
-    margin-top: 6%;
-    margin-left: 2rem;
-  }
-  @media (max-width: 320px) {
-    font-size: 192%;
-    margin-top: 6%;
-    margin-left: 2rem;
-  }
-`;
-
+}
+`
 const NuestroEquipo = () => {
   return (
     <StyledNuestroEquipo>
@@ -362,31 +238,47 @@ const NuestroEquipo = () => {
         src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336892/MONTAJE/SOMOS/6-2_wcgkbl.png"
         alt="Logo"
       />
-      <StyledBackground src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336894/MONTAJE/SOMOS/6-SUBR_eyuuxc.png" />
-      <StyledTitulo>NUESTRO EQUIPO</StyledTitulo>
-      <StyledImagenLateralIzquierda src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336891/MONTAJE/SOMOS/6-2_FORM_uolhnl.png" />
-      <StyledImagenLateralDerecha src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336892/MONTAJE/SOMOS/6-2_TEXTU_ca8kre.png" />
-
-      <StyledComponenteEquipoContainer>
-        <StyledComponenteEquipo
-          imagen="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336895/MONTAJE/SOMOS/6-3_hbbkgp.png"
-          titulo="Sofía Vitery"
-          texto="Diseñadora Gráfica"
-        />
-        <StyledComponenteEquipo
-          imagen="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336895/MONTAJE/SOMOS/6-4_xdkktr.png"
-          titulo="Samuel Coral"
-          texto="Lic. Ciencias Sociales"
-        />
-      </StyledComponenteEquipoContainer>
-
-      <StyledSubTitulo>DESARROLLO WEB</StyledSubTitulo>
-      <StyledContribuyentes>
-        <StyledNombre>ESTEFANÍA VILLÁN</StyledNombre>
-        <StyledNombre>GABRIELA AGUIAR</StyledNombre>
-        <StyledNombre>JULIANA ARGAEZ</StyledNombre>
-        <StyledNombre>SOFIA VITERY</StyledNombre>
-      </StyledContribuyentes>
+      <StyledFigure src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336891/MONTAJE/SOMOS/6-2_FORM_uolhnl.png"></StyledFigure>
+      <StyledTexture src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336892/MONTAJE/SOMOS/6-2_TEXTU_ca8kre.png"></StyledTexture>
+      <StyledTitle>
+        <StyledBgTitle src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336894/MONTAJE/SOMOS/6-SUBR_eyuuxc.png"></StyledBgTitle>
+        <StyledTextTitle>NUESTRO EQUIPO</StyledTextTitle>
+      </StyledTitle>
+      <StyledContainer>
+        <StyledCardsContainer>
+          <StyledCard>
+            <StyledCardImg src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336895/MONTAJE/SOMOS/6-3_hbbkgp.png"></StyledCardImg>
+            <StyledText>Sofía Vitery</StyledText>
+            <StyledText>Diseñadora gráfica</StyledText>
+          </StyledCard>
+          <StyledCard>
+            <StyledCardImg src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336895/MONTAJE/SOMOS/6-4_xdkktr.png"></StyledCardImg>
+            <StyledText>Samuel Coral</StyledText>
+            <StyledText>Lic. Ciencias Sociales</StyledText>
+          </StyledCard>
+        </StyledCardsContainer>
+        <StyledDesarrollo>
+          <StyledSecondTitle>Desarrollo Web</StyledSecondTitle>
+          <StyledNames>
+            <figure>
+            <img src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1716308232/MONTAJE/SOMOS/QR%20DESARROLLO%20FRONT/JulianaArgaez_zcpero.png" alt="QR info Juliana" />
+            <p>Juliana Argaez</p>
+            </figure>
+            <figure>
+            <img src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1716308232/MONTAJE/SOMOS/QR%20DESARROLLO%20FRONT/gabrielaaguiarmarquez_abij7c.png" alt="QR info Gabriela" />
+            <p>Gabriela Aguiar</p>
+            </figure>
+            <figure>
+            <img src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1716308232/MONTAJE/SOMOS/QR%20DESARROLLO%20FRONT/estefaniavillan_sppvx4.png" alt="QR info Estefania" />
+            <p>Estefania Villan</p>
+            </figure>
+            <figure>
+            <img src="https://res.cloudinary.com/dvafjaqbd/image/upload/v1716308233/MONTAJE/SOMOS/QR%20DESARROLLO%20FRONT/SofiaVitery_ehejeu.png" alt="QR info Sofia" />
+            <p>Sofía Vitery</p>
+            </figure>
+          </StyledNames>
+        </StyledDesarrollo>
+      </StyledContainer>
     </StyledNuestroEquipo>
   );
 };

@@ -87,7 +87,7 @@ const StyledNav = styled.nav`
       }
     }
   }
-  @media (max-width: 1120px) {
+  @media (max-width: 1260px) {
     .containerNav ul li {
       display: none;
     }
