@@ -158,36 +158,37 @@ const SyledModal = styled.div`
             color: #161616;
             font-family: "MADE Soulmaze";
             font-size: 0.75rem;
+            
           }
+          
         }
       }
     }
   }
+  `;
+const StyledImage = styled.img`
+  width: 200px;
+  height: auto;
+  border: 2px solid #ddd; 
+  border-radius: 5px; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
 `;
+
 
 export const EditFanzines = ({ onClose, initialData }) => {
   const dispatch = useDispatch();
-  const [selectedFile, setSelectedFile] = useState(initialData?.file || null);
+  const [selectedFile, setSelectedFile] = useState(initialData?.poster || null); // Usar directamente initialData.poster
   const [name, setName] = useState(initialData?.name || "");
-  const [urlDocument, setUrlDocument] = useState(
-    initialData?.urlDocument || ""
-  );
-
-  const fanzinesForEdit = useSelector(
-    (state) => state.fanzines.fanzinesForEdit
-  );
+  const [urlDocument, setUrlDocument] = useState(initialData?.urlDocument || "");
 
   useEffect(() => {
-    if (fanzinesForEdit) {
-      setSelectedFile(fanzinesForEdit.file || null);
-      setName(fanzinesForEdit.name || "");
-      setUrlDocument(fanzinesForEdit.urlDocument || "");
+    if (initialData && initialData.poster) {
+      setSelectedFile(initialData.poster); // Corregir la creación de la URL de objeto
     }
-  }, [fanzinesForEdit]);
+  }, [initialData]);
 
   const onFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-    updateImagePreview(event.target.files[0]);
+    setSelectedFile(URL.createObjectURL(event.target.files[0])); // Crear URL de objeto para el archivo seleccionado
   };
 
   const onNameChange = (event) => {
@@ -230,9 +231,9 @@ export const EditFanzines = ({ onClose, initialData }) => {
 
   const updateImagePreview = (file) => {
     if (file) {
-      document.getElementById("preview").src = URL.createObjectURL(file);
+      setSelectedFile(URL.createObjectURL(file));
     } else {
-      document.getElementById("preview").src = "";
+      setSelectedFile(""); // Limpiar si no hay archivo seleccionado
     }
   };
 
@@ -270,11 +271,9 @@ export const EditFanzines = ({ onClose, initialData }) => {
                 <input type="file" id="file" onChange={onFileChange} />
               </div>
               <div className="imagePrev">
-                <img
-                  id="preview"
-                  style={{ width: "200px", height: "auto" }}
-                />
-              </div>
+  {selectedFile && <StyledImage src={selectedFile} alt="Imagen seleccionada" />}
+  <img id="preview" style={{ width: "200px", height: "auto" }} />
+</div>
             </div>
             <span>
               <button type="submit">ACTUALIZAR</button>

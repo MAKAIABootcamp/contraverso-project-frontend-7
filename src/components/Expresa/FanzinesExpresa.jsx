@@ -1,7 +1,7 @@
-import React, { useState } from "react";
 import styled from "styled-components";
 import "../../../fonts/fonts.css";
 import CarouselFanzines from "./CarruselFanzines/CarouselFanzines";
+import Modal from "./ModalFanzines";
 import { useSelector } from "react-redux";
 
 const StyledFanzine = styled.div`
@@ -66,38 +66,39 @@ const StyledImgCat = styled.img`
     width: 25%;
   }
 `;
+const StyledComponent = styled.div`
+  text-align: center;
+  margin-top: 2rem;
 
+  .boton-añadir {
+    background-color: #fff35f;
+    border: none;
+    height: 2rem;
+    width: 9rem;
+    font-size: 1em;
+    font-family: "MADE Soulmaze";
+    cursor: pointer;
+    position: absolute;
+    margin-top: 4rem;
+    margin-left: -5rem;
 
+    @media (max-height: 1024px) and (min-width: 600px) {
+      margin-top: 20%;
+    }
+    @media (min-width: 111px) and (min-height: 1111px) {
+      margin-top: 21%;
+    }
+    @media (min-width: 1111px) and (min-height: 1080px) {
+      margin-top: 10%;
+    }
+    @media (min-width: 1164px) and (max-height: 2133px) {
+      margin-top: 8rem;
+      margin-left: 2rem;
+    }
+  }
+`;
 
 const FanzinesExpresa = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
-  const [title, setTitle] = useState("");
-  const [imageLink, setImageLink] = useState("");
-  const isAuthenticated = useSelector(
-    (store) => store.userAuth.isAuthenticated
-  );
-
-  const handleOpenModal = (isEdit = false) => {
-    setIsEditing(isEdit);
-    setModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
-    setTitle("");
-    setImageLink("");
-  };
-
-  const handleSubmit = () => {
-    if (isEditing) {
-      // Lógica para editar
-    } else {
-      // Lógica para crear
-    }
-    handleCloseModal();
-  };
-
   return (
     <StyledFanzine>
       <StyledTitle>

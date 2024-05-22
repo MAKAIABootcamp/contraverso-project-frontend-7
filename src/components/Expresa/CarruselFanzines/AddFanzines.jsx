@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Swal from "sweetalert2";
 import { actionAddFanzi } from "../../../app/CarruselFanzines/fanzinesActions";
 
-const SyledModal = styled.div`
+const StyledModal = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -40,7 +40,7 @@ const SyledModal = styled.div`
       height: 25px;
       border-radius: 50px;
       border: none;
-      color: #161616; /* neutral-600 */
+      color: #161616;
       background: #fff35f;
       cursor: pointer;
     }
@@ -118,7 +118,7 @@ const SyledModal = styled.div`
               justify-content: center;
               align-items: center;
               border-radius: 1rem;
-              content: "Seleccionar"; /* testo por defecto */
+              content: "Seleccionar";
               position: absolute;
               padding: 5px;
               width: 75%;
@@ -168,36 +168,47 @@ const SyledModal = styled.div`
   }
 `;
 
+const PreviewImage = styled.img`
+  width: 200px;
+  height: auto;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+`;
+
 export const AddFanzines = ({ onClose }) => {
   const dispatch = useDispatch();
   const [selectedFile, setSelectedFile] = useState(null);
   const [name, setName] = useState("");
   const [urlDocument, setUrlDocument] = useState("");
+  const defaultImage =
+    "https://cdn.icon-icons.com/icons2/65/PNG/128/imageup_imagen_12892.png";
 
   const onFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-    // Actualizar la previsualización de la imagen
-    updateImagePreview(event.target.files[0]);
+    const file = event.target.files[0];
+    setSelectedFile(file);
+    updateImagePreview(file);
   };
-
 
   const onNameChange = (event) => {
     setName(event.target.value);
   };
-  
+
   const onUrlDocumentChange = (event) => {
     setUrlDocument(event.target.value);
   };
 
   const onFormSubmit = async (event) => {
     event.preventDefault();
-    if (selectedFile && name && urlDocument) {      
+    if (selectedFile && name && urlDocument) {
       try {
-        await dispatch(actionAddFanzi({ file: selectedFile, name, urlDocument }));
+        await dispatch(
+          actionAddFanzi({ file: selectedFile, name, urlDocument })
+        );
         setSelectedFile(null);
         setName("");
         setUrlDocument("");
-        document.getElementById("preview").src = "https://cdn.icon-icons.com/icons2/65/PNG/128/imageup_imagen_12892.png " ;
+        document.getElementById("preview").src = "";
         Swal.fire({
           icon: "success",
           title: "¡Has subido un Fanzine correctamente!",
@@ -215,13 +226,19 @@ export const AddFanzines = ({ onClose }) => {
   const updateImagePreview = (file) => {
     if (file) {
       document.getElementById("preview").src = URL.createObjectURL(file);
+      Swal.fire({
+        icon: "success",
+        title: "¡Imagen agregada correctamente!",
+        showConfirmButton: false,
+        timer: 2500,
+      });
     } else {
-      document.getElementById("preview").src = "";
+      document.getElementById("preview").src = defaultImage;
     }
   };
 
   return (
-    <SyledModal>
+    <StyledModal>
       <div className="containerModal">
         <button className="buttonClose" onClick={onClose}>
           X
@@ -251,10 +268,17 @@ export const AddFanzines = ({ onClose }) => {
                   required
                 />
                 <label htmlFor="file">Seleccionar imagen:</label>
-                <div className="selecImg"><input type="file" id="file" onChange={onFileChange} required /></div>
+                <div className="selecImg">
+                  <input
+                    type="file"
+                    id="file"
+                    onChange={onFileChange}
+                    required
+                  />
+                </div>
               </div>
               <div className="imagePrev">
-                <img id="preview" style={{width: "200px", height: "auto" }} />
+                <img id="preview" style={{ width: "200px", height: "auto" }} />
               </div>
             </div>
 
@@ -264,6 +288,6 @@ export const AddFanzines = ({ onClose }) => {
           </form>
         </div>
       </div>
-    </SyledModal>
+    </StyledModal>
   );
 };
