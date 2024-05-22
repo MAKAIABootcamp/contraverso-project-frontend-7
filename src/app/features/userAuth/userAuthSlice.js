@@ -4,6 +4,7 @@ const initialState = {
   user: null,
   isAuthenticated: false,
   error: null,
+  imgProfile: ''
 };
 
 const userAuthSlice = createSlice({
@@ -13,6 +14,7 @@ const userAuthSlice = createSlice({
     login: (state, action) => {
       state.user = action.payload;
       state.isAuthenticated = true;
+      state.imgProfile = action.payload.photo; 
     },
     logout: (state) => {
       state.user = null;
@@ -25,6 +27,7 @@ const userAuthSlice = createSlice({
       if (state.user) {
         state.user.displayName = action.payload.name;
         state.user.photoURL = action.payload.photo;
+        state.imgProfile = action.payload.photo;
       }
     },
   },
