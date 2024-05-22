@@ -5,7 +5,12 @@ import styled from "styled-components";
 import Swal from "sweetalert2";
 import { FaPaintbrush } from "react-icons/fa6";
 
+
 const SyledModal = styled.div`
+.mi-clase-alarma {
+  z-index: 1000000!important; /* Un valor muy alto para asegurar que se muestre por encima de todo */
+}
+
   position: fixed;
   top: 0;
   left: 0;
@@ -30,6 +35,7 @@ const SyledModal = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 998; 
 
     .buttonClose {
       font-family: Roboto;
@@ -194,11 +200,15 @@ export const ImgForm = ({ onClose }) => {
         setAuthor("");
         setName("");
         document.getElementById("preview").src = "";
+        onClose();
         Swal.fire({
           icon: "success",
           title: "¡Has subido una imagen correctamente!",
           showConfirmButton: false,
           timer: 2500,
+          customClass: {
+            container: 'mi-clase-alarma', // Clase personalizada para el contenedor de la alarma
+          },
         }).finally(() => {
           location.reload();
         });
