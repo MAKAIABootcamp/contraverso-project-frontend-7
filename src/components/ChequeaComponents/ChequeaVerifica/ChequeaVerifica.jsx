@@ -50,6 +50,7 @@ const TitleStyled = styled.figure`
     width: 100%;
   }
   h1 {
+    color: #161616;
     position: absolute;
     font-size: 8vw;
     font-family: "MADE Soulmaze Brush";

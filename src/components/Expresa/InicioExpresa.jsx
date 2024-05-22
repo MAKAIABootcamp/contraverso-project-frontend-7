@@ -33,11 +33,10 @@ const StyledImgTexture = styled.img`
   width: 40%;
   height: auto;
   z-index: 1;
+  mix-blend-mode: difference; 
   align-self: flex-start;
   margin-left: auto;
   margin-bottom: auto;
-
-  filter: brightness(491%) opacity(0.8);
 `;
 
 const StyledImgIcono = styled.img`
@@ -59,7 +58,7 @@ const StyledTextoContainer = styled.p`
 
 const StyledTextoSpan = styled.span`
   color: #f1f1d8;
-  background-color: #000000;
+  background-color: #161616;
   font-family: "Filson Pro Book";
   font-size: 2rem;
   @media screen and (max-width: 800px) {

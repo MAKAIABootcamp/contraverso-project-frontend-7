@@ -31,7 +31,7 @@ const StyledTexture = styled.img`
   width: 50%;
   max-height: 80%;
   filter: brightness(1) opacity(0.8);
-  mix-blend-mode: color-burn;
+  mix-blend-mode: difference; 
   z-index: 1;
   bottom: 5vh;
   position: absolute;
@@ -61,7 +61,7 @@ const StyledTexto = styled.p`
 
 const StyledSpan = styled.span`
   color: #f1f1d8;
-  background-color: #000000;
+  background-color: #161616;
   font-family: "Filson Pro Book";
   font-size: 2.5vw;
   line-height: 1.5;

@@ -208,9 +208,9 @@ const ModalBackground = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 1000;
-`;
-
-const ModalContent = styled.div`
+  `;
+  
+  const ModalContent = styled.div`
   background-color: #161616;
   padding: 1.25rem;
   border-radius: 0.875rem;
