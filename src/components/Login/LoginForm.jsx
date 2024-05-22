@@ -60,12 +60,16 @@ position: absolute;
   color: white;
   @media (min-width: 1164px) and (max-height: 2133px) {
     top: 72%;
-        left: 84%;
-    }
-    @media (min-width: 111px) and (min-height: 1111px) {
-      top: 76%;
-        left: 84%;
-    }
+    left: 84%;
+  }
+  @media (min-width: 111px) and (min-height: 1111px) {
+    top: 76%;
+    left: 84%;
+  }
+  @media screen and (max-width: 1366px) {
+    left: 80%;
+    top: 68%;
+  }
   @media screen and (min-width: 1920px) and (height: 1080px) {
     top: 74%;
     left: 80%;
