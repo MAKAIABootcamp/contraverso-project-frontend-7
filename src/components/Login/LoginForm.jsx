@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { actionLogin } from "../../app/features/userAuth/userAuthActions";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import Button from "../Button/Button"
+import Button from "../Button/Button";
 import * as Yup from "yup";
 
 import "../../../fonts/fonts.css";
@@ -14,9 +14,9 @@ const SectionForm = styled.section`
   margin-top: 1rem;
   padding-bottom: 1.3rem;
   width: 80%;
-  `;
+`;
 
-  const FormGroup = styled.form`
+const FormGroup = styled.form`
   padding-top: 0.4rem;
   label {
     display: block;
@@ -24,14 +24,15 @@ const SectionForm = styled.section`
     color: #555;
   }
   input[type="email"],
-  input[type="password"], input[type="text"] {
+  input[type="password"],
+  input[type="text"] {
     position: relative;
     width: 100%;
     padding: 0.5rem;
     margin-bottom: 0.5rem;
     border-radius: 5px;
     border: none;
-    background-color:;
+    background-color: ;
     font-size: 0.9rem;
     color: #555;
     box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1);
@@ -56,44 +57,42 @@ const FormStyled = styled.form`
   width: 100%;
 `;
 const TogglePasswordIcon = styled.div`
-  position: fixed;
-  left: 78%;
+position: absolute;
+  right: 0;
+  left: 75%;
   top: 68%;
   cursor: pointer;
   color: white;
-  z-index: 10;
-  @media(max-width: 1920px) {
-    left: 82%;
+  @media screen and (min-width: 1920px) and (height: 1080px) {
     top: 74%;
+    left: 80%;
   }
   @media screen and (min-width: 1920px) and (height: 911px) {
     top: 72%;
+    left: 80%;
   }
- @media(max-width: 1024px) {
-   left: 84%;
-   top: 76%;
- }
-  @media(max-width: 768px) {
-    left: 82%;
+  @media screen and (min-width: 768px) and (height: 1024px) {
     top: 73%;
+    left: 80%;
   }
-  @media(max-width: 414px) {
-    left: 78%;
+  @media screen and (min-width: 600px) and (height: 800px) {
     top: 70%;
+    left: 80%;
   }
-@media(max-width: 375px) {
-  left: 75%;
-  top: 68.5%;
+@media(width: 414px) {
+  top: 69%;
+}
+@media screen and (min-width: 375px) and (height: 812px) {
+  top: 70%;
 }
 `;
 
 const StyledIcon = styled.i`
   font-size: 1.2rem;
-  @media(max-width: 320px) {
+  @media (max-width: 320px) {
     font-size: 1rem;
   }
 `;
-
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -102,11 +101,13 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const { user } = useSelector((store) => store.userAuth);
-  const isAuthenticated = useSelector((state) => state.userAuth.isAuthenticated);
+  const isAuthenticated = useSelector(
+    (state) => state.userAuth.isAuthenticated
+  );
 
   const [width, setWidth] = useState(10);
 
-  useEffect(()=> {
+  useEffect(() => {
     const handleButtonWidth = () => {
       const screenWidth = window.innerWidth;
 
@@ -189,8 +190,15 @@ const LoginForm = () => {
             value={formik.values.password}
           />
           <TogglePasswordIcon onClick={() => setShowPassword(!showPassword)}>
-          {showPassword? <StyledIcon><FaEye /></StyledIcon> : <StyledIcon><FaEyeSlash /></StyledIcon>}
-
+            {showPassword ? (
+              <StyledIcon>
+                <FaEye />
+              </StyledIcon>
+            ) : (
+              <StyledIcon>
+                <FaEyeSlash />
+              </StyledIcon>
+            )}
           </TogglePasswordIcon>
           {formik.errors.password && formik.touched.password ? (
             <div>{formik.errors.password}</div>
@@ -199,7 +207,9 @@ const LoginForm = () => {
       </SectionForm>
 
       <div type="submit">
-        <Button width={width} fondoColor={'#29EBC4'}>Iniciar sesión</Button>
+        <Button width={width} fondoColor={"#29EBC4"}>
+          Iniciar sesión
+        </Button>
       </div>
     </FormStyled>
   );
