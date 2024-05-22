@@ -145,8 +145,10 @@ const AprendeJuega = () => {
         <h1>Juegos</h1>
       </ContainerStyled>
       <ButtonsStyled>
-        <Button fondoColor="#1DF4C8">JUEGOS EN LÍNEA</Button>
-        <Button fondoColor="#1DF4C8">JUEGOS DE MESA</Button>
+      <a target="_blank" href="https://juegosenlineacontraverso.my.canva.site/" ><Button fondoColor="#1DF4C8">JUEGOS EN LÍNEA</Button></a>
+      <a target="_blank" href="https://juegosenlineacontraverso.my.canva.site/juegosdemesacontraverso">
+      <Button fondoColor="#1DF4C8">JUEGOS DE MESA</Button>
+      </a>
       </ButtonsStyled>
 
       <StyledContainer>

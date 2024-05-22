@@ -26,12 +26,14 @@ const DivImg = styled.div`
   align-items: center;
   img {
     object-fit: cover;
-    width: 15vh;
-    height: 15vh;
+    width: 13vh;
     border-radius: 50%;
   }
   input {
     padding-bottom: 1rem;
+    @media(max-width: 768px) {
+      display: none;
+    }
   }
 `;
 
@@ -174,13 +176,16 @@ const FormModal = () => {
     <div>
       <FormStyled onSubmit={formik.handleSubmit}>
         <DivImg>
-          <label htmlFor="image" style={{ marginBottom: "10px" }}>
+          <div>
+          <label htmlFor="image" style={{ marginBottom: ".625rem" }}>
             {previewImage ? (
               <img src={previewImage} alt="Vista previa" />
             ) : (
               <img src={url_pv} alt="Imagen previa" />
             )}
           </label>
+          </div>
+          <div>
           <input
             id="image"
             name="image"
@@ -188,6 +193,7 @@ const FormModal = () => {
             onChange={handleFileChange}
           />
           {formik.errors.image ? <div>{formik.errors.image}</div> : null}
+          </div>
         </DivImg>
         <DivName>
           <label htmlFor="name">Cambiar nombre</label>
