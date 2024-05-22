@@ -89,7 +89,7 @@ const StyledBotonExpresa = styled(NavLink)`
   font-weight: bold;
   box-shadow: 0px 1px 3px #1c1c21;
   cursor: pointer;
-
+  border-radius: 5%;
   align-self: flex-end;
 
   margin-top: auto;
