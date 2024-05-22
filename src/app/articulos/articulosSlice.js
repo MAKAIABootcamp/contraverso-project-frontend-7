@@ -22,11 +22,19 @@ const articulosSlice = createSlice({
         articulosFail: (state, action) => {
             state.errorArticulos = action.payload;
             state.isLoadingArticulos = false;
-        }
+        },
+        editArti: (state, action) => {
+            state.isLoadingArtis = false;
+            state.artis = state.artis.map((item) =>
+              action.payload.id == item.id ? { ...item, ...action.payload } : item
+            );
+            state.successRequest = "editArti";
+          },
+
     }
 })
 
-export const { articulosRequest, fillArticulos, articulosFail } =
+export const { articulosRequest, fillArticulos, articulosFail, editArti } =
   articulosSlice.actions;
 
 export default articulosSlice.reducer;

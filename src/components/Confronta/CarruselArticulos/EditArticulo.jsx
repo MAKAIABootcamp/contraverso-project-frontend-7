@@ -1,16 +1,10 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { actionAddImg } from "../../../app/CarruselIMG/carruselActions";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { actionEditArti } from "../../../app/articulos/articulosActions";
 import styled from "styled-components";
 import Swal from "sweetalert2";
-import { FaPaintbrush } from "react-icons/fa6";
-
 
 const SyledModal = styled.div`
-.mi-clase-alarma {
-  z-index: 1000000!important; /* Un valor muy alto para asegurar que se muestre por encima de todo */
-}
-
   position: fixed;
   top: 0;
   left: 0;
@@ -35,7 +29,6 @@ const SyledModal = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 998; 
 
     .buttonClose {
       font-family: Roboto;
@@ -117,6 +110,7 @@ const SyledModal = styled.div`
               font-family: "Filson Pro Book";
               position: relative;
               display: inline-block;
+              height: 20vh;
             }
             .selecImg::before {
               background-color: #d977c8;
@@ -127,14 +121,14 @@ const SyledModal = styled.div`
               border-radius: 1rem;
               content: "Seleccionar"; /* testo por defecto */
               position: absolute;
-              padding: 5px;
-              width: 75%;
+              padding: 6px;
+              width: 84%;
             }
 
             .selecImg input[type="file"] {
               opacity: 0;
               width: 200px;
-              height: 32px;
+              height: 332px;
               display: inline-block;
             }
 
@@ -171,50 +165,73 @@ const SyledModal = styled.div`
   }
 `;
 
-export const ImgForm = ({ onClose }) => {
+export const EditArticulo = ({ onClose, initialData }) => {
   const dispatch = useDispatch();
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [author, setAuthor] = useState("");
-  const [name, setName] = useState("");
+  const [selectedFile, setSelectedFile] = useState(initialData?.file || null);
+  const [title, setTitle] = useState(initialData?.title || "");
+  const [description, setDescription] = useState(
+    initialData?.description || ""
+  );
+  const [url, setUrl] = useState(initialData?.url || "");
+
+  const articuloForEdit = useSelector(
+    (state) => state.articulos.articuloForEdit
+  );
+
+  useEffect(() => {
+    if (articuloForEdit) {
+      setSelectedFile(articuloForEdit.file || null);
+      setTitle(articuloForEdit.title || "");
+      setDescription(articuloForEdit.description || "");
+    }
+  }, [articuloForEdit]);
 
   const onFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
-    // Actualizar la previsualización de la imagen
     updateImagePreview(event.target.files[0]);
   };
 
-  const onAuthorChange = (event) => {
-    setAuthor(event.target.value);
+  const onTitleChange = (event) => {
+    setTitle(event.target.value);
   };
 
-  const onNameChange = (event) => {
-    setName(event.target.value);
+  const onDescriptionChange = (event) => {
+    setDescription(event.target.value);
+  };
+
+  const onUrlChange = (event) => {
+    setUrl(event.target.value);
   };
 
   const onFormSubmit = async (event) => {
     event.preventDefault();
-    if (selectedFile && author && name) {
+    if (initialData) {
       try {
-        await dispatch(actionAddImg({ file: selectedFile, author, name }));
+        const editData = {};
+        if (selectedFile) editData.file = selectedFile;
+        if (title) editData.title = title;
+        if (description) editData.description = description;
+        if (url) editData.url = url;
+        dispatch(actionEditArti(initialData.id, { ...editData }));
         setSelectedFile(null);
-        setAuthor("");
-        setName("");
+        setTitle("");
+        setDescription("");
+        setUrl("");
         document.getElementById("preview").src = "";
         onClose();
         Swal.fire({
           icon: "success",
-          title: "¡Has subido una imagen correctamente!",
+          title: "¡Imagen editada correctamente!",
           showConfirmButton: false,
           timer: 2500,
-          customClass: {
-            container: 'mi-clase-alarma', // Clase personalizada para el contenedor de la alarma
-          },
         }).finally(() => {
           location.reload();
         });
       } catch (error) {
         console.error(error);
       }
+    } else {
+      console.error("initialData is null or not properly initialized.");
     }
   };
 
@@ -233,39 +250,50 @@ export const ImgForm = ({ onClose }) => {
           X
         </button>
         <div className="contenidoModal">
-          <h1>IMAGENES</h1>
-          <p>¡LISTA PARA PUBLICAR!</p>
+          <h1> EDITAR ARTICULO</h1>
+          <p>¡LISTA PARA ACTUALIZAR!</p>
           <form onSubmit={onFormSubmit}>
             <div className="containInfo">
               <div className="info">
-                <label htmlFor="name">Título:</label>
+                <label htmlFor="title">Título:</label>
                 <input
-                  className="infoImg"
+                className="infoImg"
                   type="text"
-                  id="name"
-                  value={name}
-                  onChange={onNameChange}
+                  id="title"
+                  value={title}
+                  onChange={onTitleChange}
                   required
                 />
-                <label htmlFor="author">Autor:</label>
+                <label htmlFor="description"> Descripción:</label>
                 <input
-                  className="infoImg"
+                className="infoImg"
                   type="text"
-                  id="author"
-                  value={author}
-                  onChange={onAuthorChange}
+                  id="description"
+                  value={description}
+                  onChange={onDescriptionChange}
+                  required
+                />
+                <label htmlFor="url">Url:</label>
+                <input
+                className="infoImg"
+                  type="text"
+                  id="url"
+                  value={url}
+                  onChange={onUrlChange}
                   required
                 />
                 <label htmlFor="file">Seleccionar imagen:</label>
-                <div className="selecImg"><input type="file" id="file" onChange={onFileChange} required /></div>
+                <input type="file" id="file" onChange={onFileChange} />
               </div>
               <div className="imagePrev">
-                <img id="preview" style={{ width: "200px", height: "auto" }} />
+                <img
+                  id="preview"
+                  style={{ width: "200px", height: "auto" }}
+                />
               </div>
             </div>
-
             <span>
-              <button type="submit">SUBIR IMAGEN</button>
+              <button type="submit">ACTUALIZAR</button>
             </span>
           </form>
         </div>

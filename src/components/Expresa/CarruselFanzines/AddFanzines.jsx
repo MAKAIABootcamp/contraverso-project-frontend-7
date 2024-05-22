@@ -1,16 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { actionAddImg } from "../../../app/CarruselIMG/carruselActions";
 import styled from "styled-components";
 import Swal from "sweetalert2";
-import { FaPaintbrush } from "react-icons/fa6";
-
+import { actionAddFanzi } from "../../../app/CarruselFanzines/fanzinesActions";
 
 const SyledModal = styled.div`
-.mi-clase-alarma {
-  z-index: 1000000!important; /* Un valor muy alto para asegurar que se muestre por encima de todo */
-}
-
   position: fixed;
   top: 0;
   left: 0;
@@ -35,7 +29,6 @@ const SyledModal = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 998; 
 
     .buttonClose {
       font-family: Roboto;
@@ -171,11 +164,11 @@ const SyledModal = styled.div`
   }
 `;
 
-export const ImgForm = ({ onClose }) => {
+export const AddFanzines = ({ onClose }) => {
   const dispatch = useDispatch();
   const [selectedFile, setSelectedFile] = useState(null);
-  const [author, setAuthor] = useState("");
   const [name, setName] = useState("");
+  const [urlDocument, setUrlDocument] = useState("");
 
   const onFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -183,32 +176,29 @@ export const ImgForm = ({ onClose }) => {
     updateImagePreview(event.target.files[0]);
   };
 
-  const onAuthorChange = (event) => {
-    setAuthor(event.target.value);
-  };
 
   const onNameChange = (event) => {
     setName(event.target.value);
   };
+  
+  const onUrlDocumentChange = (event) => {
+    setUrlDocument(event.target.value);
+  };
 
   const onFormSubmit = async (event) => {
     event.preventDefault();
-    if (selectedFile && author && name) {
+    if (selectedFile && name && urlDocument) {      
       try {
-        await dispatch(actionAddImg({ file: selectedFile, author, name }));
+        await dispatch(actionAddFanzi({ file: selectedFile, name, urlDocument }));
         setSelectedFile(null);
-        setAuthor("");
         setName("");
+        setUrlDocument("");
         document.getElementById("preview").src = "";
-        onClose();
         Swal.fire({
           icon: "success",
-          title: "¡Has subido una imagen correctamente!",
+          title: "¡Has subido un Fanzine correctamente!",
           showConfirmButton: false,
           timer: 2500,
-          customClass: {
-            container: 'mi-clase-alarma', // Clase personalizada para el contenedor de la alarma
-          },
         }).finally(() => {
           location.reload();
         });
@@ -233,12 +223,12 @@ export const ImgForm = ({ onClose }) => {
           X
         </button>
         <div className="contenidoModal">
-          <h1>IMAGENES</h1>
-          <p>¡LISTA PARA PUBLICAR!</p>
+          <h1>FANZINES</h1>
+          <p>¡LISTO PARA PUBLICAR!</p>
           <form onSubmit={onFormSubmit}>
             <div className="containInfo">
               <div className="info">
-                <label htmlFor="name">Título:</label>
+                <label htmlFor="name">Nombre:</label>
                 <input
                   className="infoImg"
                   type="text"
@@ -247,13 +237,13 @@ export const ImgForm = ({ onClose }) => {
                   onChange={onNameChange}
                   required
                 />
-                <label htmlFor="author">Autor:</label>
+                <label htmlFor="urlDocument">Url del sitio:</label>
                 <input
                   className="infoImg"
                   type="text"
-                  id="author"
-                  value={author}
-                  onChange={onAuthorChange}
+                  id="urlDocument"
+                  value={urlDocument}
+                  onChange={onUrlDocumentChange}
                   required
                 />
                 <label htmlFor="file">Seleccionar imagen:</label>

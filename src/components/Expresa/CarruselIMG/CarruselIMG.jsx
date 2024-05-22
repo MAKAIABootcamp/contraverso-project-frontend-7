@@ -61,6 +61,9 @@ const CustomSlider = styled.div`
     .actionButtons{
       display: flex;
       margin-top: 20px;
+      color: #DD77CC;
+      font-size: 25px;
+      gap: 10px;
     }
   }
 
@@ -261,7 +264,7 @@ const CarruselIMG = () => {
                       onClick={(e) => {
                         e.stopPropagation();
                         openModalEdit(image);
-                        // setIsActionButtonClicked(true);
+                        setIsActionButtonClicked(true);
                       }}
                       alt="editar"
                     />

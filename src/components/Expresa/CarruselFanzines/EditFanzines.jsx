@@ -1,16 +1,10 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { actionAddImg } from "../../../app/CarruselIMG/carruselActions";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { actionEditFanzi } from "../../../app/CarruselFanzines/fanzinesActions";
 import styled from "styled-components";
 import Swal from "sweetalert2";
-import { FaPaintbrush } from "react-icons/fa6";
-
 
 const SyledModal = styled.div`
-.mi-clase-alarma {
-  z-index: 1000000!important; /* Un valor muy alto para asegurar que se muestre por encima de todo */
-}
-
   position: fixed;
   top: 0;
   left: 0;
@@ -35,7 +29,6 @@ const SyledModal = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 998; 
 
     .buttonClose {
       font-family: Roboto;
@@ -117,6 +110,7 @@ const SyledModal = styled.div`
               font-family: "Filson Pro Book";
               position: relative;
               display: inline-block;
+              height: 20vh;
             }
             .selecImg::before {
               background-color: #d977c8;
@@ -127,14 +121,14 @@ const SyledModal = styled.div`
               border-radius: 1rem;
               content: "Seleccionar"; /* testo por defecto */
               position: absolute;
-              padding: 5px;
-              width: 75%;
+              padding: 6px;
+              width: 84%;
             }
 
             .selecImg input[type="file"] {
               opacity: 0;
               width: 200px;
-              height: 32px;
+              height: 332px;
               display: inline-block;
             }
 
@@ -171,50 +165,66 @@ const SyledModal = styled.div`
   }
 `;
 
-export const ImgForm = ({ onClose }) => {
+export const EditFanzines = ({ onClose, initialData }) => {
   const dispatch = useDispatch();
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [author, setAuthor] = useState("");
-  const [name, setName] = useState("");
+  const [selectedFile, setSelectedFile] = useState(initialData?.file || null);
+  const [name, setName] = useState(initialData?.name || "");
+  const [urlDocument, setUrlDocument] = useState(
+    initialData?.urlDocument || ""
+  );
+
+  const fanzinesForEdit = useSelector(
+    (state) => state.fanzines.fanzinesForEdit
+  );
+
+  useEffect(() => {
+    if (fanzinesForEdit) {
+      setSelectedFile(fanzinesForEdit.file || null);
+      setName(fanzinesForEdit.name || "");
+      setUrlDocument(fanzinesForEdit.urlDocument || "");
+    }
+  }, [fanzinesForEdit]);
 
   const onFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
-    // Actualizar la previsualización de la imagen
     updateImagePreview(event.target.files[0]);
-  };
-
-  const onAuthorChange = (event) => {
-    setAuthor(event.target.value);
   };
 
   const onNameChange = (event) => {
     setName(event.target.value);
   };
 
+  const onUrlDocumentChange = (event) => {
+    setUrlDocument(event.target.value);
+  };
+
   const onFormSubmit = async (event) => {
     event.preventDefault();
-    if (selectedFile && author && name) {
+    if (initialData) {
       try {
-        await dispatch(actionAddImg({ file: selectedFile, author, name }));
+        const editData = {};
+        if (selectedFile) editData.file = selectedFile;
+        if (name) editData.name = name;
+        if (urlDocument) editData.urlDocument = urlDocument;
+        dispatch(actionEditFanzi(initialData.id, { ...editData }));
         setSelectedFile(null);
-        setAuthor("");
         setName("");
+        setUrlDocument("");
         document.getElementById("preview").src = "";
         onClose();
         Swal.fire({
           icon: "success",
-          title: "¡Has subido una imagen correctamente!",
+          title: "¡Fanzine editado correctamente!",
           showConfirmButton: false,
           timer: 2500,
-          customClass: {
-            container: 'mi-clase-alarma', // Clase personalizada para el contenedor de la alarma
-          },
         }).finally(() => {
           location.reload();
         });
       } catch (error) {
         console.error(error);
       }
+    } else {
+      console.error("initialData is null or not properly initialized.");
     }
   };
 
@@ -233,39 +243,41 @@ export const ImgForm = ({ onClose }) => {
           X
         </button>
         <div className="contenidoModal">
-          <h1>IMAGENES</h1>
-          <p>¡LISTA PARA PUBLICAR!</p>
+          <h1> EDITAR FANZINE</h1>
+          <p>¡LISTO PARA ACTUALIZAR!</p>
           <form onSubmit={onFormSubmit}>
             <div className="containInfo">
               <div className="info">
-                <label htmlFor="name">Título:</label>
+                <label htmlFor="name">Nombre:</label>
                 <input
-                  className="infoImg"
+                className="infoImg"
                   type="text"
                   id="name"
                   value={name}
                   onChange={onNameChange}
                   required
                 />
-                <label htmlFor="author">Autor:</label>
+                <label htmlFor="urlDocument"> Url:</label>
                 <input
-                  className="infoImg"
+                className="infoImg"
                   type="text"
-                  id="author"
-                  value={author}
-                  onChange={onAuthorChange}
+                  id="urlDocument"
+                  value={urlDocument}
+                  onChange={onUrlDocumentChange}
                   required
                 />
                 <label htmlFor="file">Seleccionar imagen:</label>
-                <div className="selecImg"><input type="file" id="file" onChange={onFileChange} required /></div>
+                <input type="file" id="file" onChange={onFileChange} />
               </div>
               <div className="imagePrev">
-                <img id="preview" style={{ width: "200px", height: "auto" }} />
+                <img
+                  id="preview"
+                  style={{ width: "200px", height: "auto" }}
+                />
               </div>
             </div>
-
             <span>
-              <button type="submit">SUBIR IMAGEN</button>
+              <button type="submit">ACTUALIZAR</button>
             </span>
           </form>
         </div>
