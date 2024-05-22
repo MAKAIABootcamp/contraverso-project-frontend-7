@@ -21,7 +21,7 @@ const StyledButton = styled.button`
   border-radius: 0.5rem;
   border: none;
   padding: 0.375rem 0.2rem;
-  font-size: 0.9375rem;
+  font-size: 0.8rem;
   // font-family: 'MADE Soulmaze Brush';
   text-transform: uppercase;
   color: ${(props) => props.color || "#161616"};
@@ -34,7 +34,7 @@ const StyledButton = styled.button`
   &:hover {
     background-color: ${(props) => props.color || "#161616"};
     color: ${(props) => props.fondoColor || "#1DF4C8"};
-    letter-spacing: 0.2rem;
+    letter-spacing: 0.1rem;
   }
 `;
 
