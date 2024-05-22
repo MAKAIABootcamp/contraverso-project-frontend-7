@@ -55,11 +55,14 @@ z-index: 1000;
       padding: 8%;
 
       h1 {
-        font-size: 2.6rem;
+        text-align: center;
+        font-size: 8vh;
         font-family: 'MADE Soulmaze Brush';
-        // color: #4100D0;
         color: #fff35f;
         letter-spacing: 0.2rem;
+        @media(max-width: 768px) {
+          font-size: 4vh;
+        }
       }
 
       .buttonLogout {
