@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Slider from "react-slick";
-
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { actionDeleteFanzi, actionGetFanzines } from "../../../app/CarruselFanzines/fanzinesActions";
+import {
+  actionDeleteFanzi,
+  actionGetFanzines,
+} from "../../../app/CarruselFanzines/fanzinesActions";
 import { AiFillDelete } from "react-icons/ai";
-import {AddFanzines }from "./AddFanzines"
-import {EditFanzines} from "./EditFanzines"
-
-
+import { AddFanzines } from "./AddFanzines";
+import { EditFanzines } from "./EditFanzines";
 import { MdAddToPhotos } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 
@@ -37,14 +37,17 @@ const CarouselContainer = styled.div`
   @media (min-width: 111px) and (min-height: 1111px) {
     margin-top: 10%;
   }
+
   @media (min-width: 1111px) and (min-height: 1080px) {
     max-width: 60%;
   }
+
   @media (min-width: 1164px) and (max-height: 2133px) {
     max-width: 60%;
     margin-top: auto;
   }
 `;
+
 const CustomSlider = styled(Slider)`
   .slick-slide img {
     height: auto;
@@ -74,7 +77,7 @@ const CustomSlider = styled(Slider)`
     height: auto;
     border-radius: 10px;
     max-width: 100%;
-    cursor: grab;
+    cursor: pointer;
   }
 
   .slick-current img {
@@ -82,7 +85,6 @@ const CustomSlider = styled(Slider)`
     padding: 10%;
     height: 5rem;
     border-radius: 5%;
-    cursor: grab;
   }
 
   .slick-slide-content {
@@ -113,6 +115,7 @@ const CustomSlider = styled(Slider)`
     border-radius: 55%;
     transition: transform 0.3s ease;
   }
+
   .slick-prev:hover:before,
   .slick-next:hover:before {
     color: #ffff00;
@@ -120,19 +123,75 @@ const CustomSlider = styled(Slider)`
     font-size: 25px;
   }
 `;
-// const ImageContainer = styled.div`
-//   position: relative;
-// `;
-// const EditButtons = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   width: 100%;
-//   position: absolute;
-//   top: 10px;
-//   left: 0;
-//   padding: 0 10px;
-//   font-size: 123%;
-// `;
+
+const StyledComponent = styled.div`
+  text-align: center;
+
+  .boton-añadir {
+    background-color: #fff35f;
+    border: none;
+    border-radius: 2rem;
+    height: 3rem;
+    width: 10rem;
+    font-size: 1em;
+    font-family: "MADE Soulmaze";
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    @media (max-width: 736px) {
+      width: 42%;
+      height: 2rem;
+      margin-top: -13%;
+      margin-left: 6rem;
+    }
+
+    @media (max-height: 1024px) and (min-width: 600px) {
+      margin-top: -13%;
+      margin-left: 7rem;
+      width: 10rem;
+    }
+
+    @media (min-width: 111px) and (min-height: 1111px) {
+      margin-top: -13%;
+      margin-left: 14rem;
+      width: 10rem;
+    }
+
+    @media (min-width: 1164px) and (max-height: 2133px) {
+      margin-top: -7rem;
+      margin-left: 35rem;
+    }
+
+    .MdAddToPhotos {
+      font-size: 1.875rem;
+      color: #dd77cc;
+    }
+
+    p {
+      color: #161616;
+      font-family: "MADE Soulmaze";
+      font-size: 0.75rem;
+    }
+  }
+`;
+
+const EditButtons = styled.div`
+display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: absolute;
+    top: -1px;
+    left: 3px;
+    padding: 0 10px;
+    color: #fff35f;
+    cursor: pointer;
+    font-size: 2rem;
+  
+
+`;
 
 const CarouselFanzines = () => {
   const dispatch = useDispatch();
@@ -156,8 +215,6 @@ const CarouselFanzines = () => {
     autoplaySpeed: 2000,
     centerMode: true,
     focusOnSelect: true,
-    // beforeChange: (next) => setCurrentIndex(next),
-
     responsive: [
       {
         breakpoint: 1024,
@@ -183,10 +240,6 @@ const CarouselFanzines = () => {
     ],
   };
 
-  const handleImageClick = (url) => {
-    window.open(url, "_blank");
-  };
-
   const openModal = () => {
     setShowModal(true);
   };
@@ -205,58 +258,58 @@ const CarouselFanzines = () => {
     setSelectedFanzine(null);
   };
 
-  function handleDeleteClick(id) {
+  const handleDeleteClick = (id) => {
     dispatch(actionDeleteFanzi(id));
-  }
+  };
 
   return (
     <CarouselContainer>
-      {isAuthenticated ? (
-        <>
-          <div className="modalImgs">
-            <button className="openModalImg" onClick={openModal}>
-              <MdAddToPhotos className="iconAdd" /> <p>AñadIr Imagen</p>
-            </button>
-            <div className="modalImg">
-              {showModal && <AddFanzines onClose={closeModal} />}
+      <StyledComponent>
+        {isAuthenticated ? (
+          <>
+            <div className="modalImgs">
+              <button className="boton-añadir" onClick={openModal}>
+                <MdAddToPhotos className="MdAddToPhotos" /> <p>AÑADIR IMAGEN</p>
+              </button>
+              <div className="modalImg">
+                {showModal && <AddFanzines onClose={closeModal} />}
+              </div>
+              <div className="modalImg">
+                {showModalEdit && (
+                  <EditFanzines
+                    onClose={closeModalEdit}
+                    initialData={selectedFanzine}
+                  />
+                )}
+              </div>
             </div>
-            <div className="modalImg">
-              {showModalEdit && (
-                <EditFanzines
-                  onClose={closeModalEdit}
-                  initialData={selectedFanzine}
-                />
-              )}
-            </div>
-          </div>
-        </>
-      ) : null}
-            <CustomSlider {...settings}>
+          </>
+        ) : null}
+      </StyledComponent>
+
+      <CustomSlider {...settings}>
         {fanzines.map((fanzine, index) => (
           <div key={index}>
             <div className="slick-slide-content">
-              <img src={fanzine.poster} alt={`Poster ${index + 1}`} />
-              <p>{fanzine.description}</p>
-              <button onClick={() => handleImageClick(fanzine.url)}>
-                SEGUIR LEYENDO
-              </button>
+              <a
+                href={fanzine.urlDocument}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={fanzine.poster} alt={`Poster ${index + 1}`} />
+              </a>
               {isAuthenticated ? (
-                <>
-                  <div className="actionButtons">
-                    <AiFillDelete
-                      alt="eliminar"
-                      onClick={(e) => {
-                        handleDeleteClick(fanzine.id);
-                      }}
-                    />
-                    <FaEdit
-                      onClick={() => {
-                        openModalEdit(fanzine);
-                      }}
-                      alt="editar"
-                    />
-                  </div>
-                </>
+                <EditButtons>
+                  <FaEdit
+                    className="boton-editar"
+                    onClick={() => openModalEdit(fanzine)}
+                  />
+
+                  <AiFillDelete
+                    className="boton-eliminar"
+                    onClick={() => handleDeleteClick(fanzine.id)}
+                  />
+                </EditButtons>
               ) : null}
             </div>
           </div>

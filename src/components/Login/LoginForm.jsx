@@ -32,7 +32,6 @@ const FormGroup = styled.form`
     margin-bottom: 0.5rem;
     border-radius: 5px;
     border: none;
-    background-color: ;
     font-size: 0.9rem;
     color: #555;
     box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1);
@@ -42,12 +41,8 @@ const FormGroup = styled.form`
       box-shadow: 0 0 5px #000000;
     }
   }
-  div {
-    padding-top: 0.1rem;
-    padding-left: 1rem;
+div {
     color: #4900da;
-    font-size: 0.8rem;
-    width: 15vw;
   }
 `;
 const FormStyled = styled.form`
@@ -63,6 +58,14 @@ position: absolute;
   top: 68%;
   cursor: pointer;
   color: white;
+  @media (min-width: 1164px) and (max-height: 2133px) {
+    top: 72%;
+        left: 84%;
+    }
+    @media (min-width: 111px) and (min-height: 1111px) {
+      top: 76%;
+        left: 84%;
+    }
   @media screen and (min-width: 1920px) and (height: 1080px) {
     top: 74%;
     left: 80%;
