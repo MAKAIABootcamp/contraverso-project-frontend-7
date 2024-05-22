@@ -9,8 +9,6 @@ import {
 import { db } from "../../Firebase/firebaseConfig";
 
 import {
-  addImgs,
-  deleteImg,
   editImg,
   imgsFail,
   imgsRequest,
@@ -45,25 +43,6 @@ export const actionAddImg = ({ file, author, name }) => {
   };
 };
 
-export const actionGetImgs = () => {
-  return async (dispatch) => {
-    dispatch(imgsRequest());
-    const imgs = [];
-    try {
-      const querySnapshot = await getDocs(collectionRef);
-      querySnapshot.forEach((doc) => {
-        imgs.push({
-          id: doc.id,
-          ...doc.data(),
-        });
-      });
-      dispatch(fillImgs(imgs));
-    } catch (error) {
-      console.error(error);
-      dispatch(imgsFail(error.message));
-    }
-  };
-};
 
 export const actionDeleteImgs = (idImg) => {
   return async (dispatch) => {
