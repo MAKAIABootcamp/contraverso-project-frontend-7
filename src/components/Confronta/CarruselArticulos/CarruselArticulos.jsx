@@ -173,7 +173,6 @@ const CarruselArticulos = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    focusCenter: true,
     focusOnSelect: false,
     autoplaySpeed: 2000,
     initialSlide: 0,

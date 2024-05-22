@@ -3,8 +3,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "../../../../fonts/fonts.css";
-import { useExpImg } from './Data';
-import styled from 'styled-components';
+import { useExpImg } from "./Data";
+import styled from "styled-components";
 import { ImgForm } from "./ImgForm";
 import { EditForm } from "./EditForm";
 import { MdAddToPhotos } from "react-icons/md";
@@ -14,109 +14,124 @@ import { actionDeleteImgs } from "../../../app/CarruselIMG/carruselActions";
 import { useDispatch, useSelector } from "react-redux";
 import { setImageForEdit } from "../../../app/CarruselIMG/imgsSlice";
 
-const CustomSlider = styled.div`
-  .modalImgs {
-    .openModalImg {
-      display: flex;
-      margin-left: auto;
-      margin-right: 25vw;
-      margin-top: 12vh;
-      background-color: #1df4c8;
-      padding: 1rem;
-      color: #ffffff;
-      border: none;
-      border-radius: 1.25rem;      
+const CarouselContainer = styled.div`
+  max-width: 55%;
+  margin-bottom: 5%;
+  position: relative;
+  z-index: 3;
+  padding-top: 5%;
+  @media (max-width: 975px) {
+    padding-top: 10%;
+  }
+`;
 
-      .iconAdd {
-        font-size: 1.875rem;
-        color:#DD77CC;
-      }
-      p{
-      color: #161616;
-      font-family: "MADE Soulmaze";
-      font-size: .75rem;
-      margin-left: .625rem;
-      margin-top: .3125rem;
-      margin-right: .625rem;
-      }
+const CustomSlider = styled(Slider)`
+  .slick-slide {
+    padding: 0 10px;
+    @media (max-width: 800px) {
+      padding: 0;
     }
   }
-  .containerCarrusel {
-    height: auto;
-    width: 90%;
-    margin-left: 60px;
-    margin-top: 100px;
-    position: relative;
-    @media (max-width: 900px) {
-      width: 80%;
-    }
 
-    p {
-      margin: 1vh;
-      color: #161616;
-      font-family: "Filson Pro Book";
-      font-size: 12px;
-    }
-
-    .actionButtons{
-      display: flex;
-      margin-top: 20px;
-      color: #DD77CC;
-      font-size: 25px;
-      gap: 10px;
-    }
+  .slick-slide img {
+    height: 5rem;
+    border-radius: 5%;
+    width: 5rem;
   }
 
   .slick-slide-content {
-    //container slice
     position: relative;
-    object-fit: cover;
+    overflow: hidden;
     padding: 10px;
     border-radius: 10px;
-    overflow: hidden;
-    height: 35vh;
-  }
-
-  .slick-slide {
-    // slide individual
-    padding: 0 4vw;
-  }
-  .slick-slide img {
-    height: auto;
-    border-radius: 10px;
-    max-width: 100%;
-  }
-
-  .slick-current img {
-    //img center
-    transform: scale(1.1);
-    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .slick-slide-content img {
-    //img dentro de container
-    width: auto;
-    height: 100%;
+    width: 100%;
+    height: 20rem;
     object-fit: cover;
+    margin-bottom: 5%;
   }
 
-  .slick-dots li button:before {
-    color: #9500ff;
+  .slick-prev {
+    left: -45px;
   }
 
-  .slick-dots li.slick-active button:before {
-    color: #1df4c8;
+  .slick-prev:before,
+  .slick-next:before {
+    display: inline-block;
+    font-size: 40px;
+    border-radius: 55%;
+    transition: transform 0.3s ease;
+    color: #d977c8;
+    @media (max-width: 800px) {
+      font-size: 20px;
+    }
   }
 
-  .slick-next:before,
-  .slick-prev:before {
-    font-family: "slick";
-    font-size: 20px;
-    line-height: 1;
-    opacity: 0.75;
-    color: #1df4c8;
+  .slick-prev:hover:before,
+  .slick-next:hover:before {
+    color: #d977c8;
+    transform: rotate(-180deg);
+    font-size: 45px;
+    @media (max-width: 800px) {
+      font-size: 25px;
+    }
+  }
+
+  .actionButtons {
+    display: flex;
+    justify-content:center;
+    margin-top: 20px;
+    color: #d977c8;
+    font-size: 25px;
+    gap: 10px;
+    z-index: 5;
+    cursor: pointer;
   }
 `;
+
+const StyledButtonAdd = styled.button`
+  cursor: pointer;
+  background-color: #fff35f;
+  color: #000000;
+  padding: 0.5rem;
+  font-family: "MADE Soulmaze";
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  position: absolute;
+  right: 0;
+  z-index: 3;
+  width: 30%;
+  @media (max-width: 600px) {
+    width: 100%;
+    font-size: 3vw;
+    align-self: center;
+  }
+  @media (min-width: 601px) and (max-width: 800px) {
+    width: 60%;
+  }
+  @media (min-width: 801px) and (max-width: 900px) {
+    width: 40%;
+  }
+`;
+
+const StyledText = styled.p`
+  text-align: center;
+`;
+
+
 
 const CarruselIMG = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -124,17 +139,16 @@ const CarruselIMG = () => {
   const [showModal, setShowModal] = useState(false);
   const [showModalEdit, setShowModalEdit] = useState(false);
   const [isActionButtonClicked, setIsActionButtonClicked] = useState(false);
-  const { isAuthenticated } = useSelector(store => store.userAuth);
+  const { isAuthenticated } = useSelector((store) => store.userAuth);
   const dispatch = useDispatch();
   const images = useExpImg();
 
   const settings = {
-    dots: true,
+    dots:true,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    centerMode: true,
     focusOnSelect: false,
     beforeChange: (current, next) => {
       if (!autoplayActive) {
@@ -155,8 +169,18 @@ const CarruselIMG = () => {
           slidesToShow: 2,
           slidesToScroll: 1,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 0,
+          infinite: true,
+          dots: false,
+        },
       },
       {
         breakpoint: 600,
@@ -165,17 +189,18 @@ const CarruselIMG = () => {
           slidesToScroll: 1,
           initialSlide: 0,
           infinite: true,
-          dots: true
-        }
+          dots: false,
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+          dots:false
+        },
+      },
+    ],
   };
 
   const handleImageClick = (image) => {
@@ -183,13 +208,11 @@ const CarruselIMG = () => {
       setSelectedImage(image);
     }
   };
-  
 
   const handleCloseModal = () => {
     setSelectedImage(null);
     setIsActionButtonClicked(false); // Restablece el estado después de cerrar el modal
   };
-  
 
   const openModal = () => {
     setShowModal(true);
@@ -198,8 +221,7 @@ const CarruselIMG = () => {
   const closeModal = () => {
     setShowModal(false);
   };
- 
-  
+
   const openModalEdit = (image) => {
     setShowModalEdit(true);
     setSelectedImage({ ...image, id: image.id });
@@ -214,17 +236,16 @@ const CarruselIMG = () => {
     dispatch(actionDeleteImgs(id));
   }
 
-  
-
   return (
     <>
-      <CustomSlider>
+      <CarouselContainer>
         {isAuthenticated ? (
           <>
             <div className="modalImgs">
-              <button className="openModalImg" onClick={openModal}>
-                <MdAddToPhotos className="iconAdd" /> <p>AñadIr Imagen</p>
-              </button>
+              <StyledButtonAdd onClick={openModal}>
+                <MdAddToPhotos className="iconAdd" />
+                AÑADIR IMAGEN
+              </StyledButtonAdd>
               <div className="modalImg">
                 {showModal && <ImgForm onClose={closeModal} />}
               </div>
@@ -239,7 +260,7 @@ const CarruselIMG = () => {
             </div>
           </>
         ) : null}
-        <Slider {...settings} className="containerCarrusel">
+        <CustomSlider {...settings}>
           {images.map((image, index) => (
             <div key={index}>
               <div className="slick-slide-content">
@@ -249,6 +270,8 @@ const CarruselIMG = () => {
                   onClick={() => handleImageClick(image)}
                 />
               </div>
+              <StyledText>{image.name}</StyledText>
+              <StyledText>{image.author}</StyledText>
               {isAuthenticated ? (
                 <>
                   <div className="actionButtons">
@@ -271,13 +294,10 @@ const CarruselIMG = () => {
                   </div>
                 </>
               ) : null}
-              <p>{image.name}</p>
-              <p>{image.author}</p>
             </div>
           ))}
-        </Slider>
-      </CustomSlider>
-
+        </CustomSlider>
+      </CarouselContainer>
       {/* Modal de Previsualización */}
       {selectedImage && (
         <div
@@ -292,6 +312,7 @@ const CarruselIMG = () => {
             justifyContent: "center",
             alignItems: "center",
             cursor: "pointer",
+            zIndex:3,
           }}
           onClick={handleCloseModal}
         >
@@ -307,5 +328,3 @@ const CarruselIMG = () => {
 };
 
 export default CarruselIMG;
-
-
