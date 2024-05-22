@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Slider from "react-slick";
-import Modal from "../ModalFanzines";
+
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { actionGetFanzines } from "../../../app/CarruselFanzines/fanzinesActions";
+import { actionDeleteFanzi, actionGetFanzines } from "../../../app/CarruselFanzines/fanzinesActions";
 import { AiFillDelete } from "react-icons/ai";
-import { FaEdit } from "react-icons/fa";
+import {AddFanzines }from "./AddFanzines"
+import {EditFanzines} from "./EditFanzines"
 
-import {
-  editFanzine,
-  deleteFanzine,
-} from "../../../app/CarruselFanzines/fanzinesSlices";
+
+import { MdAddToPhotos } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
 
 const CarouselContainer = styled.div`
   max-width: 60%;
@@ -120,67 +120,31 @@ const CustomSlider = styled(Slider)`
     font-size: 25px;
   }
 `;
-const ImageContainer = styled.div`
-  position: relative;
-`;
-const EditButtons = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  position: absolute;
-  top: 10px;
-  left: 0;
-  padding: 0 10px;
-  font-size: 123%;
-`;
+// const ImageContainer = styled.div`
+//   position: relative;
+// `;
+// const EditButtons = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   width: 100%;
+//   position: absolute;
+//   top: 10px;
+//   left: 0;
+//   padding: 0 10px;
+//   font-size: 123%;
+// `;
 
 const CarouselFanzines = () => {
   const dispatch = useDispatch();
-  const { fanzines } = useSelector((state) => state.fanzines);
-  const isAuthenticated = useSelector(
-    (state) => state.userAuth.isAuthenticated
-  );
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
-  const [title, setTitle] = useState("");
-  const [imageLink, setImageLink] = useState("");
-  const [fanzineId, setFanzineId] = useState(null);
+  const fanzines = useSelector((state) => state.fanzines.fanzines);
+  const [showModal, setShowModal] = useState(false);
+  const [showModalEdit, setShowModalEdit] = useState(false);
+  const { isAuthenticated } = useSelector((store) => store.userAuth);
+  const [selectedFanzine, setSelectedFanzine] = useState(null);
 
   useEffect(() => {
     dispatch(actionGetFanzines());
   }, [dispatch]);
-
-  console.log(fanzines);
-
-  const handleOpenModal = (isEdit = false, fanzine) => {
-    setIsEditing(isEdit);
-    setTitle(fanzine.title);
-    setImageLink(fanzine.poster);
-    setFanzineId(fanzine.id);
-    setModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
-    setTitle("");
-    setImageLink("");
-    setFanzineId(null);
-  };
-
-  const handleSubmit = () => {
-    if (isEditing) {
-      dispatch(editFanzine({ id: fanzineId, title, poster: imageLink }));
-    } else {
-      //  crear fanzine
-    }
-    handleCloseModal();
-  };
-
-  const handleDelete = (fanzineId) => {
-    dispatch(deleteFanzine(fanzineId));
-  };
-
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   const settings = {
     dots: true,
@@ -192,7 +156,7 @@ const CarouselFanzines = () => {
     autoplaySpeed: 2000,
     centerMode: true,
     focusOnSelect: true,
-    beforeChange: (next) => setCurrentIndex(next),
+    // beforeChange: (next) => setCurrentIndex(next),
 
     responsive: [
       {
@@ -223,63 +187,81 @@ const CarouselFanzines = () => {
     window.open(url, "_blank");
   };
 
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const openModalEdit = (fanzine) => {
+    setShowModalEdit(true);
+    setSelectedFanzine({ ...fanzine, id: fanzine.id });
+  };
+
+  const closeModalEdit = () => {
+    setShowModalEdit(false);
+    setSelectedFanzine(null);
+  };
+
+  function handleDeleteClick(id) {
+    dispatch(actionDeleteFanzi(id));
+  }
+
   return (
     <CarouselContainer>
-      <CustomSlider {...settings}>
-        {fanzines.map((fanzine, index) => (
-          <ImageContainer key={index}>
-            <div onClick={() => handleImageClick(fanzine.urlDocument)}>
-              <div className="slick-slide-content">
-                <img src={fanzine.poster} alt={`Poster ${index + 1}`} />
-              </div>
+      {isAuthenticated ? (
+        <>
+          <div className="modalImgs">
+            <button className="openModalImg" onClick={openModal}>
+              <MdAddToPhotos className="iconAdd" /> <p>AñadIr Imagen</p>
+            </button>
+            <div className="modalImg">
+              {showModal && <AddFanzines onClose={closeModal} />}
             </div>
-            {isAuthenticated && (
-              <EditButtons>
-                <AiFillDelete
-                  className="boton-eliminar"
-                  alt="eliminar"
-                  onClick={() => handleDelete(fanzine.id)}
+            <div className="modalImg">
+              {showModalEdit && (
+                <EditFanzines
+                  onClose={closeModalEdit}
+                  initialData={selectedFanzine}
                 />
-                <FaEdit
-                  className="boton-editar"
-                  alt="editar"
-                  onClick={() => handleOpenModal(true, fanzine)}
-                ></FaEdit>
-              </EditButtons>
-            )}
-          </ImageContainer>
+              )}
+            </div>
+          </div>
+        </>
+      ) : null}
+            <CustomSlider {...settings}>
+        {fanzines.map((fanzine, index) => (
+          <div key={index}>
+            <div className="slick-slide-content">
+              <img src={fanzine.poster} alt={`Poster ${index + 1}`} />
+              <p>{fanzine.description}</p>
+              <button onClick={() => handleImageClick(fanzine.url)}>
+                SEGUIR LEYENDO
+              </button>
+              {isAuthenticated ? (
+                <>
+                  <div className="actionButtons">
+                    <AiFillDelete
+                      alt="eliminar"
+                      onClick={(e) => {
+                        handleDeleteClick(fanzine.id);
+                      }}
+                    />
+                    <FaEdit
+                      onClick={() => {
+                        openModalEdit(fanzine);
+                      }}
+                      alt="editar"
+                    />
+                  </div>
+                </>
+              ) : null}
+            </div>
+          </div>
         ))}
       </CustomSlider>
-      {isAuthenticated && (
-        <Modal
-          isOpen={isModalOpen}
-          isEditing={isEditing}
-          title="FANZINES:"
-          subtitle={
-            isEditing ? "¡EDITAR PUBLICACIÓN!" : "¡LISTA PARA PUBLICAR!"
-          }
-          onClose={handleCloseModal}
-          onSubmit={handleSubmit}
-        >
-          <img className="image-link" src={imageLink} alt="Fanzines" />
-          <div className="container">
-            <h4 className="container-title">Titulo:</h4>
-            <input
-              type="text"
-              className="container-text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <h4 className="container-title">Link de fanzines:</h4>
-            <input
-              type="text"
-              className="container-text"
-              value={imageLink}
-              onChange={(e) => setImageLink(e.target.value)}
-            />
-          </div>
-        </Modal>
-      )}
     </CarouselContainer>
   );
 };

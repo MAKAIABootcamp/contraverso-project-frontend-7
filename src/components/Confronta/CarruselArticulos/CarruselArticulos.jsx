@@ -1,8 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { actionGetArticulos } from "../../../app/articulos/articulosActions";
+import { actionDeleteArti, actionGetArticulos } from "../../../app/articulos/articulosActions";
 import Slider from "react-slick";
 import styled from "styled-components";
+import { MdAddToPhotos } from "react-icons/md";
+import { AddArticulo } from "./AddArticulo";
+import { FaEdit } from "react-icons/fa";
+import { EditArticulo } from "./EditArticulo";
+import { AiFillDelete } from "react-icons/ai";
 
 const CarouselContainer = styled.div`
   max-width: 60%;
@@ -68,6 +73,14 @@ const CustomSlider = styled(Slider)`
       font-size: 25px;
     }
   }
+
+  .actionButtons{
+    display: flex;
+    margin-top: 20px;
+    color: #e94430;
+    font-size: 25px;
+    gap: 10px;
+  }
 `;
 
 const StyledDescription = styled.p`
@@ -104,13 +117,17 @@ const StyledButton = styled.button`
 `;
 
 const CarruselArticulos = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
   const articulos = useSelector((store) => store.articulos.articulos);
+  const [showModal, setShowModal] = useState(false);
+  const [showModalEdit, setShowModalEdit] = useState(false);
+  const { isAuthenticated } = useSelector(store => store.userAuth);
+  const [selectedArticulo, setSelectedArticulo] = useState(null); 
 
   useEffect(() => {
     dispatch(actionGetArticulos());
   }, [dispatch]);
-  console.log(articulos);
+  
 
   const settings = {
     infinite: true,
@@ -143,8 +160,51 @@ const CarruselArticulos = () => {
     window.open(url, "_blank");
   };
 
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+ 
+  
+  const openModalEdit = (articulo) => {
+    setShowModalEdit(true);
+    setSelectedArticulo({ ...articulo, id: articulo.id });
+  };
+
+  const closeModalEdit = () => {
+    setShowModalEdit(false);
+    setSelectedArticulo(null); 
+  };
+
+  function handleDeleteClick(id) {
+    dispatch(actionDeleteArti(id));
+  }
+
   return (
     <CarouselContainer>
+       {isAuthenticated ? (
+          <>
+            <div className="modalImgs">
+              <button className="openModalImg" onClick={openModal}>
+                <MdAddToPhotos className="iconAdd" /> <p>AñadIr Imagen</p>
+              </button>
+              <div className="modalImg">
+                {showModal && <AddArticulo onClose={closeModal} />}
+              </div>
+              <div className="modalImg">
+                {showModalEdit && (
+                  <EditArticulo
+                    onClose={closeModalEdit}
+                    initialData={selectedArticulo}
+                  />
+                )}
+              </div>
+            </div>
+          </>
+        ) : null}
       <CustomSlider {...settings}>
         {articulos.map((articulo, index) => (
           <div key={index}>
@@ -154,6 +214,24 @@ const CarruselArticulos = () => {
               <StyledButton onClick={() => handleImageClick(articulo.url)}>
                 SEGUIR LEYENDO
               </StyledButton>
+              {isAuthenticated ? (
+                <>
+                  <div className="actionButtons">
+                    <AiFillDelete
+                      alt="eliminar"
+                      onClick={(e) => {
+                        handleDeleteClick(articulo.id);
+                      }}
+                    />
+                    <FaEdit
+                      onClick={() => {
+                        openModalEdit(articulo);
+                      }}
+                      alt="editar"
+                    />
+                  </div>
+                </>
+              ) : null}
             </div>
           </div>
         ))}
