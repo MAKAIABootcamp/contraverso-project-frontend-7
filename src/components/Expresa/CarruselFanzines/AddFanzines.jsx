@@ -124,8 +124,6 @@ const StyledModal = styled.div`
               width: 75%;
             }
 
-          
-
             .selecImg input[type="file"] {
               opacity: 0;
               width: 200px;
@@ -141,6 +139,8 @@ const StyledModal = styled.div`
               content: "Seleccionar Archivo 2";
             }
           }
+
+         
         }
 
         span {
@@ -159,8 +159,6 @@ const StyledModal = styled.div`
             color: #161616;
             font-family: "MADE Soulmaze";
             font-size: 0.75rem;
-
-           
           }
         }
       }
@@ -171,9 +169,9 @@ const StyledModal = styled.div`
 const PreviewImage = styled.img`
   width: 200px;
   height: auto;
-  border: 2px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid #ddd; 
+  border-radius: 5px; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
 `;
 
 export const AddFanzines = ({ onClose }) => {
@@ -208,7 +206,7 @@ export const AddFanzines = ({ onClose }) => {
         setSelectedFile(null);
         setName("");
         setUrlDocument("");
-        document.getElementById("preview").src = "";
+        document.getElementById("preview").src = defaultImage;
         Swal.fire({
           icon: "success",
           title: "¡Has subido un Fanzine correctamente!",
@@ -230,7 +228,7 @@ export const AddFanzines = ({ onClose }) => {
         icon: "success",
         title: "¡Imagen agregada correctamente!",
         showConfirmButton: false,
-        timer: 2500,
+        timer: 2500 
       });
     } else {
       document.getElementById("preview").src = defaultImage;
@@ -278,7 +276,11 @@ export const AddFanzines = ({ onClose }) => {
                 </div>
               </div>
               <div className="imagePrev">
-                <img id="preview" style={{ width: "200px", height: "auto" }} />
+                <PreviewImage
+                  id="preview"
+                  src={defaultImage}
+                  alt="Vista previa"
+                />
               </div>
             </div>
 

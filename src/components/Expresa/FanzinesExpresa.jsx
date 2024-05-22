@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import "../../../fonts/fonts.css";
 import CarouselFanzines from "./CarruselFanzines/CarouselFanzines";
-import Modal from "./ModalFanzines";
-import { useSelector } from "react-redux";
+
 
 const StyledFanzine = styled.div`
   background-image: url("https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336876/MONTAJE/EXPRESA/17_iteslr.png");
