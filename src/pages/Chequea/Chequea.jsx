@@ -29,8 +29,8 @@ const Chequea = () => {
         {componentToRender === 'Videos' && <Videos/>}
         {componentToRender === 'DireccionesIP' && <DireccionesIP/>}
         {componentToRender === 'RedesSociales' && <RedesSociales/>}
-        <Recomienda />
         <Valora />
+        <Recomienda />
       </div>
     </>
   );
