@@ -5,20 +5,35 @@ import {
   doc,
   getDocs,
   updateDoc,
-} from "firebase/firestore";
+} from "@firebase/firestore";
+import { imgsRequest, imgsFail, fillImgs, editImg } from "./imgsSlice";
 import { db } from "../../Firebase/firebaseConfig";
-
-import {
-  editImg,
-  imgsFail,
-  imgsRequest,
-} from "./imgsSlice";
-
 import fileUpload from "../../services/cloudiCarruIMG/fileUpload";
 import Swal from "sweetalert2";
 
 const COLLECTION_NAME = "expresaImagenes";
 const collectionRef = collection(db, COLLECTION_NAME);
+
+
+export const actionGetImgs = () => {
+    return async (dispatch) => {
+        dispatch(imgsRequest());
+        const imgs = [];
+        try {
+            const querySnapshot = await getDocs(collectionRef);
+            querySnapshot.forEach((doc) => {
+              imgs.push({
+                id: doc.id,
+                ...doc.data(),
+              });
+            });
+            dispatch(fillImgs(imgs));
+        } catch (error) {
+            console.error(error);
+            dispatch(imgsFail(error.message));
+        }
+    }
+}
 
 export const actionAddImg = ({ file, author, name }) => {
   return async (dispatch) => {
@@ -61,10 +76,6 @@ export const actionDeleteImgs = (idImg) => {
         text: "Imagen eliminada correctamente de la base de datos",
         icon: "success",
         confirmButtonText: "OK",
-        // Función a ejecutar cuando se confirma la alerta
-        preConfirm: () => {
-          location.reload(); // Recarga la página
-        },
       });
       console.log("Documento eliminado correctamente de Firestore");
     } catch (error) {
