@@ -177,18 +177,24 @@ const StyledImage = styled.img`
 
 export const EditFanzines = ({ onClose, initialData }) => {
   const dispatch = useDispatch();
-  const [selectedFile, setSelectedFile] = useState(initialData?.poster || null); // Usar directamente initialData.poster
+  const [selectedFile, setSelectedFile] = useState(initialData?.file || null); // Usar directamente initialData.poster
   const [name, setName] = useState(initialData?.name || "");
   const [urlDocument, setUrlDocument] = useState(initialData?.urlDocument || "");
+  const fanzineForEdit = useSelector(
+    (state) => state.fanzines.fanzineForEdit
+  );
 
   useEffect(() => {
-    if (initialData && initialData.poster) {
-      setSelectedFile(initialData.poster); // Corregir la creación de la URL de objeto
+    if (fanzineForEdit) {
+      setSelectedFile(fanzineForEdit.file || null);
+      setName(fanzineForEdit.name || "");
+      setUrlDocument(fanzineForEdit.urlDocument || "");
     }
-  }, [initialData]);
+  }, [fanzineForEdit]);
 
   const onFileChange = (event) => {
-    setSelectedFile(URL.createObjectURL(event.target.files[0])); // Crear URL de objeto para el archivo seleccionado
+    setSelectedFile(event.target.files[0]);
+    updateImagePreview(event.target.files[0]);
   };
 
   const onNameChange = (event) => {
@@ -219,7 +225,7 @@ export const EditFanzines = ({ onClose, initialData }) => {
           showConfirmButton: false,
           timer: 2500,
         }).finally(() => {
-          location.reload();
+          onClose();
         });
       } catch (error) {
         console.error(error);

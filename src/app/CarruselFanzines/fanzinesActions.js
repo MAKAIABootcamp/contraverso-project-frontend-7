@@ -1,7 +1,7 @@
 import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from "@firebase/firestore";
-import {fanzinesRequest, fanzinesFail, fillFanzines, editFanzi } from "./fanzinesSlices";
+import {fanzinesRequest, fanzinesFail, fillFanzines, editFanzi, addFanzi, deleteFanzi } from "./fanzinesSlices";
 import { db } from "../../Firebase/firebaseConfig";
-import fileUpload from "../../services/cloudiFanzines/addFile";
+import fileUpload from "../../services/cloudiFanzines/fileUpload";
 import Swal from "sweetalert2";
 
 
@@ -34,6 +34,7 @@ export const actionAddFanzi= ({ file, name, urlDocument}) => {
         console.error("Datos del formulario inválidos.");
         return;
       }
+      dispatch(fanzinesRequest());
       try {
         // Subir la imagen a Cloudinary
         const imageUrl = await fileUpload(file);
@@ -45,8 +46,10 @@ export const actionAddFanzi= ({ file, name, urlDocument}) => {
           urlDocument: urlDocument,
         });
         console.log("Documento escrito con ID: ", docRef.id);
+        dispatch(addFanzi({ id: docRef.id, poster: imageUrl, name, urlDocument }));
       } catch (error) {
         console.error("Error al agregar la imagen: ", error);
+        dispatch(fanzinesFail(error.message));
       }
     };
   };
@@ -68,17 +71,14 @@ export const actionAddFanzi= ({ file, name, urlDocument}) => {
           text: "Fanzine eliminado correctamente de la base de datos",
           icon: "success",
           confirmButtonText: "OK",
-          // Función a ejecutar cuando se confirma la alerta
-          preConfirm: () => {
-            location.reload(); // Recarga la página
-          },
         });
-        console.log("Documento eliminado correctamente de Firestore");
+        dispatch(deleteFanzi(idFanzi))
       } catch (error) {
         console.error("Error al eliminar el documento:", error);
       }
     };
   };
+
 
   export const actionEditFanzi = (idFanzi, editedFanzi) => {
     return async (dispatch) => {
@@ -97,7 +97,7 @@ export const actionAddFanzi= ({ file, name, urlDocument}) => {
         }
         const imgRef = doc(db, COLLECTION_NAME, idFanzi);
   
-        await updateDoc(imgRef, {...editedFanzi});
+        await updateDoc(imgRef, { ...editedFanzi });
         dispatch(
           editFanzi({
             id: idFanzi,

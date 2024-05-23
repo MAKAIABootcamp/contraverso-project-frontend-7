@@ -206,7 +206,7 @@ export const AddArticulo = ({ onClose }) => {
           showConfirmButton: false,
           timer: 2500,
         }).finally(() => {
-          // location.reload();
+          onClose()
         });
       } catch (error) {
         console.error(error);
