@@ -151,7 +151,7 @@ const links = [
     label: "Inicio",
     iconLogo:
       "https://res.cloudinary.com/dvafjaqbd/image/upload/v1714336881/MONTAJE/INICIO/1-7-2_lbpqjx.png",
-    link: "/",
+    link: "YWNjZXNvIGFsIGxvZ2luIGRlbCBhZG1pbg==",
     description:
       "Plataforma web creada como parte de la estrategia transmedia interdisciplinaria: Contraverso. ¡Confronta las ideas, confronta tu mundo!",
   },
