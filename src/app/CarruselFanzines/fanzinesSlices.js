@@ -23,18 +23,25 @@ const fanzinesSlice = createSlice({
             state.errorFanzines = action.payload;
             state.isLoadingFanzines = false;
         },
+        addFanzi: (state, action) => {
+            state.fanzines.push(action.payload);
+            state.isLoadingFanzines = false;
+            state.errorFanzines = null;
+        },
         editFanzi: (state, action) => {
-            state.isLoadingFanzi = false;
-            state.fanzi = state.fanzi.map((item) =>
-              action.payload.id == item.id ? { ...item, ...action.payload } : item
+            state.isLoadingFanzines = false;
+            state.fanzines = state.fanzines.map((item) =>
+              action.payload.id === item.id ? { ...item, ...action.payload } : item
             );
-            state.successRequest = "editFanzi";
-          },
-
+        },
+        deleteFanzi: (state, action) => {
+            state.fanzines = state.fanzines.filter(
+              article => article.id !== action.payload
+            );
+        }
     }
 })
 
-export const { fanzinesRequest, fillFanzines, fanzinesFail, fanzinesArti, editFanzi} =
-  fanzinesSlice.actions;
+export const { fanzinesRequest, fillFanzines, fanzinesFail, editFanzi, addFanzi, deleteFanzi } = fanzinesSlice.actions;
 
 export default fanzinesSlice.reducer;

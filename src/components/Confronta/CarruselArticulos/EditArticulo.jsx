@@ -225,7 +225,7 @@ export const EditArticulo = ({ onClose, initialData }) => {
           showConfirmButton: false,
           timer: 2500,
         }).finally(() => {
-          // location.reload();
+          onClose()
         });
       } catch (error) {
         console.error(error);
