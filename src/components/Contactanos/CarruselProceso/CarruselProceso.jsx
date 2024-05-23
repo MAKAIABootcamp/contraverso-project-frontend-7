@@ -9,6 +9,9 @@ const CarouselContainer = styled.div`
   margin-bottom: 5%;
   position: relative;
   z-index: 3;
+  @media (max-width: 975px) {
+    width:50%;
+  }
 `;
 
 const CustomSlider = styled(Slider)`
