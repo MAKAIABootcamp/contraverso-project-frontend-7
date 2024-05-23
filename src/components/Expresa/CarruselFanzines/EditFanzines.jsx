@@ -174,27 +174,29 @@ const StyledImage = styled.img`
   box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
 `;
 
-
 export const EditFanzines = ({ onClose, initialData }) => {
   const dispatch = useDispatch();
-  const [selectedFile, setSelectedFile] = useState(initialData?.file || null); // Usar directamente initialData.poster
+  const [selectedFile, setSelectedFile] = useState(null);
   const [name, setName] = useState(initialData?.name || "");
   const [urlDocument, setUrlDocument] = useState(initialData?.urlDocument || "");
-  const fanzineForEdit = useSelector(
-    (state) => state.fanzines.fanzineForEdit
-  );
+  const [imagePreview, setImagePreview] = useState(initialData?.poster || "");
+  const fanzineForEdit = useSelector((state) => state.fanzines.fanzineForEdit);
 
   useEffect(() => {
     if (fanzineForEdit) {
-      setSelectedFile(fanzineForEdit.file || null);
+      setSelectedFile(null);
       setName(fanzineForEdit.name || "");
       setUrlDocument(fanzineForEdit.urlDocument || "");
+      setImagePreview(fanzineForEdit.poster || "");
     }
   }, [fanzineForEdit]);
 
   const onFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-    updateImagePreview(event.target.files[0]);
+    const file = event.target.files[0];
+    setSelectedFile(file);
+    if (file) {
+      setImagePreview(URL.createObjectURL(file));
+    }
   };
 
   const onNameChange = (event) => {
@@ -213,11 +215,11 @@ export const EditFanzines = ({ onClose, initialData }) => {
         if (selectedFile) editData.file = selectedFile;
         if (name) editData.name = name;
         if (urlDocument) editData.urlDocument = urlDocument;
-        dispatch(actionEditFanzi(initialData.id, { ...editData }));
+        dispatch(actionEditFanzi(initialData.id, editData));
         setSelectedFile(null);
         setName("");
         setUrlDocument("");
-        document.getElementById("preview").src = "";
+        setImagePreview("");
         onClose();
         Swal.fire({
           icon: "success",
@@ -235,14 +237,6 @@ export const EditFanzines = ({ onClose, initialData }) => {
     }
   };
 
-  const updateImagePreview = (file) => {
-    if (file) {
-      setSelectedFile(URL.createObjectURL(file));
-    } else {
-      setSelectedFile(""); // Limpiar si no hay archivo seleccionado
-    }
-  };
-
   return (
     <SyledModal>
       <div className="containerModal">
@@ -257,7 +251,7 @@ export const EditFanzines = ({ onClose, initialData }) => {
               <div className="info">
                 <label htmlFor="name">Nombre:</label>
                 <input
-                className="infoImg"
+                  className="infoImg"
                   type="text"
                   id="name"
                   value={name}
@@ -266,7 +260,7 @@ export const EditFanzines = ({ onClose, initialData }) => {
                 />
                 <label htmlFor="urlDocument"> Url:</label>
                 <input
-                className="infoImg"
+                  className="infoImg"
                   type="text"
                   id="urlDocument"
                   value={urlDocument}
@@ -277,9 +271,9 @@ export const EditFanzines = ({ onClose, initialData }) => {
                 <input type="file" id="file" onChange={onFileChange} />
               </div>
               <div className="imagePrev">
-  {selectedFile && <StyledImage src={selectedFile} alt="Imagen seleccionada" />}
-  <img id="preview" style={{ width: "200px", height: "auto" }} />
-</div>
+                {imagePreview && <StyledImage src={imagePreview} alt="Imagen seleccionada" />}
+                <img id="preview" style={{ width: "200px", height: "auto" }} />
+              </div>
             </div>
             <span>
               <button type="submit">ACTUALIZAR</button>
