@@ -210,7 +210,7 @@ export const ImgForm = ({ onClose }) => {
             container: 'mi-clase-alarma', // Clase personalizada para el contenedor de la alarma
           },
         }).finally(() => {
-          location.reload();
+          onClose();
         });
       } catch (error) {
         console.error(error);
