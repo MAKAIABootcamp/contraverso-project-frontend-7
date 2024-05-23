@@ -37,9 +37,14 @@ const imgsSlice = createSlice({
       state.imageForEdit = action.payload;
     },
 
+    fillImgs: (state, action) => {
+      state.imgs = action.payload;
+      state.isLoadingImgs = false;
+      state.errorImgs = null;
+  },
     deleteImg: (state, action) => {
       state.isLoadingImgs = false;
-      state.mascotas = state.imgs.filter(
+      state.imgs = state.imgs.filter(
         (item) => item.id != action.payload
       );
       state.successRequest = true;
@@ -59,6 +64,7 @@ export const {
   setImageForEdit,
   deleteImg,
   setSuccessRequest,
+  fillImgs,
 } = imgsSlice.actions; //Creators action
 
 export default imgsSlice.reducer; //La función reductora

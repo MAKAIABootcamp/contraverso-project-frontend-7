@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "../../../../fonts/fonts.css";
-import { useExpImg } from "./Data";
 import styled from "styled-components";
 import { ImgForm } from "./ImgForm";
 import { EditForm } from "./EditForm";
 import { MdAddToPhotos } from "react-icons/md";
 import { AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
-import { actionDeleteImgs } from "../../../app/CarruselIMG/carruselActions";
+import { actionDeleteImgs, actionGetImgs } from "../../../app/CarruselIMG/carruselActions";
 import { useDispatch, useSelector } from "react-redux";
 
 const CarouselContainer = styled.div`
@@ -141,7 +140,12 @@ const CarruselIMG = () => {
   const [isActionButtonClicked, setIsActionButtonClicked] = useState(false);
   const { isAuthenticated } = useSelector((store) => store.userAuth);
   const dispatch = useDispatch();
-  const images = useExpImg();
+  const imgs = useSelector((store) => store.imgs.imgs);
+  const images = imgs;
+
+  useEffect(() => {
+    dispatch(actionGetImgs());
+  }, [dispatch]);
 
   const settings = {
     dots:true,

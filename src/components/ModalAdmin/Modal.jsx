@@ -77,6 +77,10 @@ z-index: 1000;
         margin-top: 5%;
         width: 10vw;
         justify-content: center;
+        @media (max-width: 512px) {
+          width: 60%;
+          padding: .5rem;
+        }
       }
       .buttonLogout:hover {
         background-color: #1df4c8;

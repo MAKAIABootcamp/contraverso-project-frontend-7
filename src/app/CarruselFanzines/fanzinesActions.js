@@ -1,9 +1,8 @@
 import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from "@firebase/firestore";
-import {fanzinesRequest, fanzinesFail, fillFanzines, editFanzi, addFanzi, deleteFanzi } from "./fanzinesSlices";
+import { fanzinesRequest, fanzinesFail, fillFanzines, editFanzi, addFanzi, deleteFanzi } from "./fanzinesSlices";
 import { db } from "../../Firebase/firebaseConfig";
 import fileUpload from "../../services/cloudiFanzines/fileUpload";
 import Swal from "sweetalert2";
-
 
 const COLLECTION_NAME = "fanzines";
 const collectionRef = collection(db, COLLECTION_NAME);
@@ -28,7 +27,7 @@ export const actionGetFanzines = () => {
     }
 }
 
-export const actionAddFanzi= ({ file, name, urlDocument}) => {
+export const actionAddFanzi = ({ file, name, urlDocument }) => {
     return async (dispatch) => {
       if (!file || !name.trim() || !urlDocument.trim()){
         console.error("Datos del formulario inválidos.");
@@ -36,34 +35,27 @@ export const actionAddFanzi= ({ file, name, urlDocument}) => {
       }
       dispatch(fanzinesRequest());
       try {
-        // Subir la imagen a Cloudinary
         const imageUrl = await fileUpload(file);
-  
-        // Guardar los metadatos en Firestore
         const docRef = await addDoc(collectionRef, {
           poster: imageUrl,
           name: name,
           urlDocument: urlDocument,
         });
-        console.log("Documento escrito con ID: ", docRef.id);
         dispatch(addFanzi({ id: docRef.id, poster: imageUrl, name, urlDocument }));
       } catch (error) {
         console.error("Error al agregar la imagen: ", error);
         dispatch(fanzinesFail(error.message));
       }
     };
-  };
+};
 
-  export const actionDeleteFanzi = (idFanzi) => {
+export const actionDeleteFanzi = (idFanzi) => {
     return async (dispatch) => {
       if (!idFanzi) {
         console.error("ID del documento no especificado.");
         return;
       }
-  
       try {
-        // Lógica para eliminar el documento de Firestore
-        // Por ejemplo:
         const docRef = doc(db, COLLECTION_NAME, idFanzi);
         await deleteDoc(docRef);
         Swal.fire({
@@ -72,41 +64,31 @@ export const actionAddFanzi= ({ file, name, urlDocument}) => {
           icon: "success",
           confirmButtonText: "OK",
         });
-        dispatch(deleteFanzi(idFanzi))
+        dispatch(deleteFanzi(idFanzi));
       } catch (error) {
         console.error("Error al eliminar el documento:", error);
       }
     };
-  };
+};
 
-
-  export const actionEditFanzi = (idFanzi, editedFanzi) => {
+export const actionEditFanzi = (idFanzi, editedFanzi) => {
     return async (dispatch) => {
       dispatch(fanzinesRequest());
       try {
-        // Subir la imagen a Cloudinary
         if (editedFanzi?.file) {
           const imageUrl = await fileUpload(editedFanzi.file);
-  
           if (!imageUrl) {
             throw new Error("Error al subir la imagen a Cloudinary");
           }
-  
           editedFanzi.poster = imageUrl;
           delete editedFanzi.file;
         }
         const imgRef = doc(db, COLLECTION_NAME, idFanzi);
-  
         await updateDoc(imgRef, { ...editedFanzi });
-        dispatch(
-          editFanzi({
-            id: idFanzi,
-            ...editedFanzi,
-          })
-        );
+        dispatch(editFanzi({ id: idFanzi, ...editedFanzi }));
       } catch (error) {
         console.error(error);
         dispatch(fanzinesFail(error.message));
       }
     };
-  };
+};

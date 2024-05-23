@@ -24,15 +24,20 @@ const DivImg = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  img {
+  #imgAdmin {
     object-fit: cover;
     width: 13vh;
     border-radius: 50%;
+    @media(max-width: 1024px) {
+      border-radius: 8%;
+      width: -30vw;
+      height: 14vh;
+    }
   }
   input {
     padding-bottom: 1rem;
-    @media(max-width: 768px) {
-      display: none;
+    @media (max-width: 1024px) {
+      font-size: .66rem;
     }
   }
 `;
@@ -42,6 +47,9 @@ const DivPassword = styled.div`
   align-items: center;
   flex-direction: column;
   padding-bottom: 1rem;
+  @media(max-width: 1024px) {
+    font-size: .9rem;
+  }
   label {
     display: flex;
     gap: 1rem;
@@ -52,6 +60,9 @@ const DivName = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  @media(max-width: 600px) {
+    font-size: .9rem;
+  }
 `;
 const DivErrors = styled.div`
   padding-bottom: 0.2rem;
@@ -63,10 +74,9 @@ const InputStyled = styled.input`
   border-bottom: 2px solid skyblue;
   outline: none;
   padding: 8px 0;
-  font-size: 16px;
+  font-size: 1rem;
   background-color: transparent;
   color: white;
-
   &:hover {
     border-bottom-color: yellow;
   }
@@ -179,9 +189,9 @@ const FormModal = () => {
           <div>
           <label htmlFor="image" style={{ marginBottom: ".625rem" }}>
             {previewImage ? (
-              <img src={previewImage} alt="Vista previa" />
+              <img id="imgAdmin" src={previewImage} alt="Vista previa" />
             ) : (
-              <img src={url_pv} alt="Imagen previa" />
+              <img id="imgAdmin" src={url_pv} alt="Imagen previa" />
             )}
           </label>
           </div>
