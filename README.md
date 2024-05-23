@@ -5,7 +5,7 @@
 
 
 
-## Descripción
+## Descripción.
 Contraverso es una innovadora estrategia transmedia creada con el objetivo de empoderar a los jóvenes en la lucha contra la desinformación y las fake news. En un mundo donde la información falsa se propaga rápidamente a través de diversas plataformas, Contraverso se posiciona no como un medio de comunicación tradicional, sino como un facilitador de herramientas y recursos esenciales. Nuestro enfoque está en educar y proporcionar a los usuarios jóvenes las habilidades necesarias para identificar, verificar y confrontar contenido engañoso.
 
 La plataforma de Contraverso ofrece una variedad de secciones y recursos diseñados para diferentes aspectos de la verificación de información. Desde herramientas específicas para comprobar la autenticidad de videos, imágenes y publicaciones en redes sociales, hasta juegos educativos que hacen del aprendizaje una experiencia divertida e interactiva. Además, fomentamos la participación activa de la comunidad a través de secciones creativas donde los usuarios pueden compartir sus propias producciones visuales y fanzines.
@@ -14,11 +14,12 @@ Nuestro sitio web no solo sirve como un punto central de recursos, sino que tamb
 
 
 
-[URL CONTRAVERSO ](https://makaiabootcamp.github.io/contraverso-project-frontend-7/)
+[URL CONTRAVERSO ](https://makaiabootcamp.github.io/contraverso-project-frontend-7/) <br/><br/>
+![ViewCounter](https://komarev.com/ghpvc/?username=MAKAIABootcamp&repo=contraverso-project-frontend-7)
 
 ![image](https://github.com/MAKAIABootcamp/contraverso-project-frontend-7/assets/117688109/5561727e-49e9-4390-b653-0edeaceb5658)
 
-## Características Principales
+## Características Principales.
 - **Página de Inicio:** Redirecciones a secciones del sitio, comunidad en Discord y Spotify (disponible próximamente). Diseño responsive.
 - **Verifica:** Herramientas para verificar la autenticidad de videos, imágenes, redes sociales y direcciones IP.
 ![image](https://github.com/MAKAIABootcamp/contraverso-project-frontend-7/assets/117688109/97346a21-8067-464a-9651-bd9bcd631679)
@@ -40,32 +41,39 @@ Nuestro sitio web no solo sirve como un punto central de recursos, sino que tamb
 ![image](https://github.com/MAKAIABootcamp/contraverso-project-frontend-7/assets/117688109/626def30-8bb5-46dc-a53b-a874806da562)
 
 
-## Uso del Proyecto
+## Uso del Proyecto.
 - **Vista Administración:** Login gestion de contenido para actualizar la información de los carruseles.
 ![image](https://github.com/MAKAIABootcamp/contraverso-project-frontend-7/assets/117688109/b7de7f4a-0de6-4e57-a3aa-d774c6766792)
 
-## Tecnologías Utilizadas
+## Tecnologías Utilizadas.
 - Detalle de las tecnologías empleadas. <br/>
 **Trabajo en grupo**: Git flow <br/>
 **Manejo de imágenes**: Cloudinary <br/>
 **Base de datos**: Firebase <br/>
 **Librerías**: React, Redux, Frame motion, Formik, Yup <br/>
 **Estilizar la página**: Styled-components, sass <br/>
-**Herramientas**: vite, node, npm, 
+**Herramientas**: vite, node, npm.
 
-## Instalación y Configuración
+  [![Our Skills](https://skillicons.dev/icons?i=react,firebase,figma,npm,redux,sass,styledcomponents,vite,vscode,git,github,)](https://skillicons.dev)
+
+## Instalación y Configuración.
 1. Clonar el repositorio: `git clone https://github.com/usuario/contraverso.git](https://github.com/MAKAIABootcamp/contraverso-project-frontend-7.git`
 2. cd contraverso-project-frontend-7
 3. Instalar dependencias: `npm install`
 4. Configurar el entorno: Variables de entorno y otros ajustes necesarios.
 
-## Contribución
+## Contribución.
 1. Hacer un fork del repositorio.
 2. Crear una nueva rama: `git checkout -b feature/nueva-funcionalidad`
 3. Realizar cambios y hacer commit: `git commit -m 'Agregar nueva funcionalidad'`
 4. Enviar los cambios: `git push origin feature/nueva-funcionalidad`
 5. Crear un pull request en GitHub.
 
+## Encarpetado.
+![image](https://github.com/MAKAIABootcamp/contraverso-project-frontend-7/assets/117688109/6c1e0bef-f6b9-47a7-afb3-5c904b7b9060) 
+
+## Fuentes.
+- Multiples fuentes.
 
 ## Agradecimientos
 Agradecimientos a todas las personas y organizaciones que apoyaron el desarrollo de Contraverso.
@@ -76,12 +84,13 @@ Agradecimientos a todas las personas y organizaciones que apoyaron el desarrollo
 - Jenny Sofía Vitery ([rojasofia](https://github.com/rojasofia))
 - Juliana Argáez Cartagena ([Juliana-AC04](https://github.com/Juliana-AC04))
 ---
-## Descargo de responsabilidades
+## Descargo de responsabilidades.
 Todos los derechos de autor de los enlaces y recursos utilizados en Contraverso pertenecen a sus respectivos propietarios y autores. Contraverso no reclama la propiedad de ningún contenido externo enlazado en nuestro sitio web. Siempre nos esforzamos por respetar y cumplir con los derechos de autor y las políticas de uso justo. Si tienes alguna pregunta o inquietud sobre el contenido utilizado en Contraverso, no dudes en ponerte en contacto con nosotros para abordar cualquier problema relacionado con los derechos de autor.
 
-## Contacto
+## Contacto.
 - Correo: contraverso.proyec@gmail.com
 - Discord: [Nuestra comunidad](https://discord.gg/tCqfzHWGCV)
 
 ¡Ayúdanos a combatir la desinformación con Contraverso! Chequea, verifica, valora, expresa y aprende. Confronta las ideas, confronta tu mundo.
 Muchas gracias por tu atención.
+
