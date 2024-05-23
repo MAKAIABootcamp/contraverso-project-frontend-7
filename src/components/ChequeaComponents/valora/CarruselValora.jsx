@@ -11,7 +11,7 @@ const CarouselContainer = styled.div`
   z-index: 3;
   padding-top: 5%;
   @media (max-width: 975px) {
-    padding-top: 10%;
+    width:50%;
   }
 `;
 
