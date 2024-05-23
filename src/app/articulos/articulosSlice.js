@@ -23,18 +23,28 @@ const articulosSlice = createSlice({
             state.errorArticulos = action.payload;
             state.isLoadingArticulos = false;
         },
+        addArti: (state, action) => {
+            state.articulos.push(action.payload);
+            state.isLoadingArticulos = false;
+            state.errorArticulos = null;
+        },
         editArti: (state, action) => {
-            state.isLoadingArtis = false;
-            state.artis = state.artis.map((item) =>
+            state.isLoadingArticulos = false;
+            state.articulos = state.articulos.map((item) =>
               action.payload.id == item.id ? { ...item, ...action.payload } : item
             );
             state.successRequest = "editArti";
           },
+        deleteArti: (state, action) => {
+            state.articulos = state.articulos.filter(
+              article => article.id !== action.payload
+            );
+        }
 
     }
 })
 
-export const { articulosRequest, fillArticulos, articulosFail, editArti } =
+export const { articulosRequest, fillArticulos, articulosFail,addArti, editArti, deleteArti } =
   articulosSlice.actions;
 
 export default articulosSlice.reducer;

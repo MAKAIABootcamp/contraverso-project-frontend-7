@@ -1,5 +1,5 @@
 import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from "@firebase/firestore";
-import { articulosRequest, articulosFail, fillArticulos, editArti } from "./articulosSlice";
+import { articulosRequest, articulosFail, fillArticulos, editArti, deleteArti, addArti } from "./articulosSlice";
 import { db } from "../../Firebase/firebaseConfig";
 import fileUpload from "../../services/clouCarrArti/fileUpload";
 import Swal from "sweetalert2";
@@ -28,29 +28,34 @@ export const actionGetArticulos = () => {
     }
 }
 
-export const actionAddArti= ({ file, description, title, url}) => {
-    return async (dispatch) => {
-      if (!file || !description.trim() || !title.trim() || !url.trim()){
-        console.error("Datos del formulario inválidos.");
-        return;
-      }
-      try {
-        // Subir la imagen a Cloudinary
-        const imageUrl = await fileUpload(file);
-  
-        // Guardar los metadatos en Firestore
-        const docRef = await addDoc(collectionRef, {
-          poster: imageUrl,
-          description: description,
-          title: title,
-          url: url,
-        });
-        console.log("Documento escrito con ID: ", docRef.id);
-      } catch (error) {
-        console.error("Error al agregar la imagen: ", error);
-      }
-    };
+export const actionAddArti= ({ file, description, title, url }) => {
+  return async (dispatch) => {
+    if (!file || !description.trim() || !title.trim() || !url.trim()) {
+      console.error("Datos del formulario inválidos.");
+      return;
+    }
+    dispatch(articulosRequest());
+    try {
+      // Subir la imagen a Cloudinary
+      const imageUrl = await fileUpload(file);
+
+      // Guardar los metadatos en Firestore
+      const docRef = await addDoc(collectionRef, {
+        poster: imageUrl,
+        description: description,
+        title: title,
+        url: url,
+      });
+      console.log("Documento escrito con ID: ", docRef.id);
+
+      // Despachar la acción para actualizar el estado de Redux
+      dispatch(addArti({ id: docRef.id, poster: imageUrl, description, title, url }));
+    } catch (error) {
+      console.error("Error al agregar la imagen: ", error);
+      dispatch(articulosFail(error.message));
+    }
   };
+};
 
   export const actionDeleteArti = (idArti) => {
     return async (dispatch) => {
@@ -70,11 +75,9 @@ export const actionAddArti= ({ file, description, title, url}) => {
           icon: "success",
           confirmButtonText: "OK",
           // Función a ejecutar cuando se confirma la alerta
-          preConfirm: () => {
-            location.reload(); // Recarga la página
-          },
         });
-        console.log("Documento eliminado correctamente de Firestore");
+        dispatch(deleteArti(idArti));
+        
       } catch (error) {
         console.error("Error al eliminar el documento:", error);
       }
